@@ -1,1 +1,1 @@
-# here are my pure-data projects
+# pure-data projects
