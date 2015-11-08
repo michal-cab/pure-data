@@ -1,0 +1,150 @@
+#N canvas 1 54 718 1017 12;
+#X obj 67 73 cnv 15 200 15 empty empty "TYPOGRAFICKÁ"_KONVENCE 2 8
+0 12 -228856 -66577 0;
+#X obj 89 277 + 1;
+#X floatatom 89 308 5 0 0 0 - - -;
+#X obj 89 338 * 2;
+#X floatatom 89 369 5 0 0 0 - - -;
+#X obj 89 398 - 7;
+#X floatatom 89 429 5 0 0 0 - - -;
+#X floatatom 89 246 5 0 0 0 - - -;
+#X obj 420 398 + 1;
+#X floatatom 440 372 5 0 0 0 - - -;
+#X obj 461 348 * 2;
+#X floatatom 480 323 5 0 0 0 - - -;
+#X obj 498 298 - 7;
+#X floatatom 520 272 5 0 0 0 - - -;
+#X floatatom 396 426 5 0 0 0 - - -;
+#X obj 222 356 + 1;
+#X floatatom 274 300 5 0 0 0 - - -;
+#X obj 274 387 * 2;
+#X floatatom 325 317 5 0 0 0 - - -;
+#X obj 325 348 - 7;
+#X floatatom 367 297 5 0 0 0 - - -;
+#X floatatom 222 325 5 0 0 0 - - -;
+#X text 130 415 ok;
+#X text 66 455 Výsledek bude ve všech třech případech stejný
+\, ale je snad na první pohled patrné \, která z ukázek kódu se
+dobře čte.;
+#X obj 544 411 + 1;
+#X floatatom 545 420 5 0 0 0 - - -;
+#X obj 551 410 * 2;
+#X floatatom 536 415 5 0 0 0 - - -;
+#X obj 558 417 - 7;
+#X floatatom 544 440 5 0 0 0 - - -;
+#X floatatom 544 389 5 0 0 0 - - -;
+#X obj 67 532 cnv 15 200 15 empty empty AKTIVNÍ_A_PASIVNÍ_VSTUPY
+2 8 0 12 -228856 -66577 0;
+#X text 1173 1199 - zapamatujme si dve veci;
+#X obj 1181 1278 bng 15 250 50 0 empty empty empty 17 7 0 10 -262144
+-1 -1;
+#X obj 1330 1325 print prvni_bang;
+#X obj 1255 1349 print prostredni_bang;
+#X obj 1181 1374 print posledni_bang;
+#X obj 1181 1304 trigger bang bang bang;
+#X text 1230 1287 <-------------;
+#X floatatom 1480 1283 5 0 0 0 - - -;
+#X obj 1480 1319 t f f f;
+#X floatatom 1519 1343 5 0 0 0 - - -;
+#X floatatom 1499 1359 5 0 0 0 - - -;
+#X floatatom 1480 1377 5 0 0 0 - - -;
+#X text 1490 1302 <----;
+#X text 1210 1222 - tok dat v pd je treba usmernovat pomoci objekty
+[trigger];
+#X text 1210 1241 - [trigger] vykonava akce postupne zprava do leva
+;
+#X text 66 485 Pokud chcete \, aby váš patch byl dobře čitelný
+\, můžete se podívat i na další konvence psaní zde:;
+#X obj 537 674 pack f f f f;
+#X obj 548 606 +;
+#X text 500 595 hot ->;
+#X text 499 607 inlet;
+#X text 592 606 inlet;
+#X text 576 594 <- cold;
+#X text 590 652 |;
+#X text 568 639 c o l d;
+#X text 495 659 hot ->;
+#X obj 112 867 + 3;
+#X floatatom 112 898 5 0 0 0 - - -;
+#X msg 87 817 1;
+#X msg 130 816 2;
+#X msg 168 816 4;
+#X text 66 709 V čem spočívá rozdíl? Zpráva poslaná na aktivní
+vstup je bezprostředně zpracována \, vyhodnocena a poslána objektem
+dál. Pasivní vstupy slouží k aktualizaci vnitřního nastavení
+objektu (změna argumentů). Zprávy přijaté na pasivní vstup objekt
+aktualizují \, ale neposílají nic na výstup.;
+#X text 292 252 Takto prosím ne:;
+#X text 206 836 hned výsledek \, protože zpráva s jedničkou je
+zapojena na;
+#X text 207 852 aktivní vstup. Po kliknutí na zprávu [2( nebo [4(
+do;
+#X text 207 867 číselného boxu nic nedoteče \, protože jsou tyto
+zprávy zapojeny do pasivního vstupu. Změní ale atribut objektu
+\, takže již nebudeme přičítat 3 \, ale 2 nebo 4;
+#X text 508 897 .;
+#X obj 336 500 pddplink http://www.earcatching.com/pdconv/ -text PD
+programming conventions.;
+#X text 66 85 V dataflow jazycích je důležité propojení objektů.
+To \, jak kód vypadá vizuálně \, je v podstatě lhostejné. Přesto
+je ale dobré dodržovat určité konvence \, které vám usnadní
+jeho čtení.;
+#X text 67 153 Již samotné propojování objektů a to \, že výstupy
+zapojujeme do vstupů \, nás intuitivně vede k organizaci kódu od
+shora dolů. Proti této intuici můžeme jít a rozmístit kód obráceně
+\, na přeskáčku \, nebo chaoticky. Výsledná podoba ale nebude
+tak elegantní a srozumitelná.;
+#X text 66 544 Dalším důležitým bodem \, bez kterého se programování
+v Pd neobejde a který souvisí s tím \, jak data tečou a jak jsou
+vyhodnocována \, je rozlišení aktivních a pasivních vstupů.;
+#X text 66 596 Objekty \, jež přijímají a zpracovávají zprávy
+\, mají jeden tzv. aktivní vstup (hot inlet) \, který je situovaný
+úplně vlevo \, a žádný nebo více tzv. pasivních vstupů (cold
+inlet). Např. objekty s aritmetickými operacemi \, které jsme si
+ukázali \, mají dva vstupy: jeden aktivní a jeden pasivní. Objekt
+[pack f f f f] (se kterým se seznámíme později) má jeden aktivní
+a tři pasivní vstupy.;
+#X text 207 820 Když klikneme na zprávu [1( \, uvidíme v číselném
+boxu;
+#X text 590 657 v;
+#X text 617 652 |;
+#X text 617 657 v;
+#X text 562 652 |;
+#X text 562 657 v;
+#X connect 1 0 2 0;
+#X connect 2 0 3 0;
+#X connect 3 0 4 0;
+#X connect 4 0 5 0;
+#X connect 5 0 6 0;
+#X connect 7 0 1 0;
+#X connect 8 0 9 0;
+#X connect 9 0 10 0;
+#X connect 10 0 11 0;
+#X connect 11 0 12 0;
+#X connect 12 0 13 0;
+#X connect 14 0 8 0;
+#X connect 15 0 16 0;
+#X connect 16 0 17 0;
+#X connect 17 0 18 0;
+#X connect 18 0 19 0;
+#X connect 19 0 20 0;
+#X connect 21 0 15 0;
+#X connect 24 0 25 0;
+#X connect 25 0 26 0;
+#X connect 26 0 27 0;
+#X connect 27 0 28 0;
+#X connect 28 0 29 0;
+#X connect 30 0 24 0;
+#X connect 33 0 37 0;
+#X connect 37 0 36 0;
+#X connect 37 1 35 0;
+#X connect 37 2 34 0;
+#X connect 39 0 40 0;
+#X connect 40 0 43 0;
+#X connect 40 1 42 0;
+#X connect 40 2 41 0;
+#X connect 57 0 58 0;
+#X connect 59 0 57 0;
+#X connect 60 0 57 1;
+#X connect 61 0 57 1;
+#X coords 0 1120 1 1119 85 60 0;

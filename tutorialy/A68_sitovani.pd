@@ -1,0 +1,93 @@
+#N canvas 1 54 718 1017 12;
+#X obj 71 127 cnv 15 200 15 empty empty NETCAT_A_JINÉ_ALTERNATIVY
+2 8 0 12 -228856 -66577 0;
+#X text 209 285 .;
+#X obj 524 152 pddplink http://netcat.sourceforge.net/ -text Link na
+Netcat;
+#X obj 526 320 pddplink http://en.wikipedia.org/wiki/FUDI -text FUDI
+protokol;
+#X obj 510 453 pddplink https://github.com/sebpiq/WebPd -text WebPd
+na GitHubu;
+#X obj 71 492 cnv 15 200 15 empty empty OPEN_SOUND_CONTROL 2 8 0 12
+-228856 -66577 0;
+#X obj 532 563 pddplink http://en.wikipedia.org/wiki/Open_Sound_Control
+-text OSC na Wiki;
+#X obj 545 655 pddplink http://www.porcaro.org/blendnik/ -text Blendnik
+;
+#X obj 465 838 dumpOSC 10000;
+#X obj 94 922 sendOSC;
+#X msg 94 837 connect localhost 10000;
+#X msg 118 889 send /foo \$1;
+#X msg 270 888 send /goo \$1;
+#X floatatom 94 946 5 0 0 0 - - -;
+#X msg 271 836 disconnect;
+#X obj 465 877 OSCroute /foo /goo;
+#X floatatom 270 865 5 0 0 0 - - -;
+#X floatatom 118 866 5 0 0 0 - - -;
+#X floatatom 465 910 5 0 0 0 - - -;
+#X floatatom 526 909 5 0 0 0 - - -;
+#X text 70 68 Vidíme \, že do [netsend]u lze posílat pojmenované
+proměnné _ a ty na druhé straně z objektu [netreceive] rozbalovat
+pomocí [route].;
+#X text 134 254 \;;
+#X text 70 647 Jeden příklad za všechny: V projektu Blendnik od
+Nicholase Porcaro má 3D software Blender na starosti vizuální ______
+a interaktivní složku a OSC protokolem posílá zprávy do Pd \,
+které se starají o zvuk.;
+#X obj 436 666 cnv 15 60 15 empty empty empty 20 12 0 14 -262144 -66577
+0;
+#X obj 473 76 cnv 15 60 15 empty empty empty 20 12 0 14 -262144 -66577
+0;
+#X text 70 139 K posílání dat do Pd po síti lze použít i jiné
+programy. Ukážeme si \, jak to provést s Netcatem (nc). Ten umí
+\, podobně jako [netreceive] a [netsend] \, otevřít port \, nebo
+na něj poslat data. Nejprve ho do systému musíme nainstalovat: v
+Linuxu je standardně součástí repozitářů \, existuje ale ve
+verzi i pro Windows a MacOS.;
+#X text 70 240 Když po jeho nainstalování do terminálu zapíšeme
+příkaz: echo "100 " | nc 192.168.0.10 10001" a pokud druhý počítač
+má tuto IP adresu a naslouchá na portu 10001 \, bude mu doručena
+hodnota 100 Všimněẗe si \, že hodnota je ukončena středníkem.
+Toto je třeba dodržet. Pd k zasílání _________ a přijímání
+zpráv používají totiž tzv. FUDI protokol \, ve kterém je definováno
+\, že každá zpráva musí být oddělena středníkem.;
+#X text 243 370 \,;
+#X text 70 370 Netcat je šikovný nástroj s jehož pomocí můžeme
+přesměrovat síťový provoz do Pd. Stejně jednoduše to ale lze
+provést _ v jakémkoliv programovacím jazyku (PHP \, Python \, Java
+\, atd.) - takže např. s pomocí kombinace HTML a PHP by bylo možné
+postavit systém \, jehož uživatelské rozhraní je viditelné ve
+webovém prohlížeči. Jeden z projektů tohoto typu jménem WebPd
+\, využívající jazyk Java \, je právě ve vývoji.;
+#X text 70 503 Open Sound Control (OSC) je další síťový protokol
+podporovaný Pd. Slouží k přenosu jednoduchých zpráv mezi různými
+multimediálními aplikacemi a má poměrně širokou podporu (Processing
+\, Blender \, Supercollider \, vvvv \, Ableton \, Reaktor \, Resloume
+\, Quartz Composer - kompletní výčet najdete na Wikipedii). Jeho
+prostřednictvím lze tedy snadno vytvářet robustní multimediální
+systémy \, ve kterých každý software obstarává oblast \, pro
+kterou je určen \, a jiným software pouze posílá zprávy ke zpracování.
+;
+#X text 70 715 Objekty [dumpOSC] a [sendOSC] jsou podobné jako [netreceive]
+a [netsend] \, jen slouží k přenosu zpráv _____ v rámci protokolu
+OSC. Rozdíl spočívá v tom \, že jménům proměnných předchází
+znak "/". Objektem [OSCroute] zprávy rozbalujeme. Následující příklad
+demonstruje komunikaci pouze na lokálním hostiteli \, snadno si jej
+ale upravíte tak \, abyste ho mohli otestovat i v provozu na síti.
+;
+#X obj 442 735 cnv 15 60 15 empty empty empty 20 12 0 14 -262144 -66577
+0;
+#X obj 412 304 cnv 15 120 15 empty empty empty 20 12 0 14 -262144 -66577
+0;
+#X obj 467 389 cnv 15 60 15 empty empty empty 20 12 0 14 -262144 -66577
+0;
+#X connect 8 0 15 0;
+#X connect 9 0 13 0;
+#X connect 10 0 9 0;
+#X connect 11 0 9 0;
+#X connect 12 0 9 0;
+#X connect 14 0 9 0;
+#X connect 15 0 18 0;
+#X connect 15 1 19 0;
+#X connect 16 0 12 0;
+#X connect 17 0 11 0;

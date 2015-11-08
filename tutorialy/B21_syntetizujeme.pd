@@ -1,0 +1,121 @@
+#N canvas 1 54 718 1017 12;
+#X obj 71 204 cnv 15 200 15 empty empty ADITIVNÍ_SYNTÉZA 2 8 0 12
+-228856 -66577 0;
+#X obj 71 73 cnv 15 567 25 empty empty syntetizujeme 20 12 0 14 -1
+-262144 0;
+#X obj 131 827 limiter~;
+#X obj 93 352 random 900;
+#X obj 93 381 + 100;
+#X obj 174 352 random 900;
+#X obj 174 381 + 100;
+#X obj 255 352 random 900;
+#X obj 255 381 + 100;
+#X obj 332 353 random 900;
+#X obj 332 383 + 100;
+#X obj 93 322 bng 15 250 50 0 empty empty empty 17 7 0 10 -262144 -1
+-1;
+#X obj 94 517 *~;
+#X obj 176 517 *~;
+#X obj 256 518 *~;
+#X obj 334 520 *~;
+#X obj 352 436 bng 15 250 50 0 empty empty empty 17 7 0 10 -262144
+-1 -1;
+#X obj 212 553 +~;
+#X obj 212 579 *~;
+#X obj 245 581 tgl 15 0 empty empty empty 17 7 0 10 -262144 -1 -1 0
+1;
+#X obj 212 608 dac~;
+#X obj 93 409 osc~;
+#X obj 174 407 osc~;
+#X obj 255 407 osc~;
+#X obj 332 408 osc~;
+#X obj 112 466 random 25;
+#X obj 194 466 random 25;
+#X obj 274 467 random 25;
+#X obj 352 469 random 25;
+#X obj 112 491 / 100;
+#X obj 194 491 / 100;
+#X obj 274 492 / 100;
+#X obj 352 494 / 100;
+#X text 120 318 Vytvoř čtyři náhodné frekvence.;
+#X text 372 435 A čtyři náhodné amplitudy.;
+#X text 263 562 sčítáme objektem [+~].;
+#X obj 96 754 +~;
+#X obj 97 791 z~ 64;
+#X obj 98 872 *~;
+#X text 202 833 aby byl normalizovaný.;
+#X text 146 790 Objekt [z~] "zbrzdí" signál o 64 vzorků.;
+#X text 142 861 "Zbržděný" signál násobíme hodnotou \, kterou
+našel [limiter~].;
+#X text 146 746 Aditivní syntéza \, je lhostejno kolik signálů
+a do jakých vstupů objektu [+~] je zapojíme.;
+#X text 266 609 "syntetický gong".;
+#X text 267 594 Kdybychom přidali obálku \, měli bychom;
+#X text 70 216 Aditivní syntéza je v Pd realizovatelná prostým
+sčítáním různých signálů s pomocí objektu [+~]. Když sečteme
+několik signálů z objektu [osc~] o různých frekvencích ___________
+a amplitudách \, je výsledná vlna komplexnější a barva zvuku
+plnější. Vzpomeňte si na kapitolu o interních zprávách - _ v
+ní jsme vlastně sestrojili masivní aditivní syntetizér.;
+#X obj 399 250 cnv 15 120 15 empty empty empty 20 12 0 14 -262144 -66577
+0;
+#X obj 468 282 cnv 15 120 15 empty empty empty 20 12 0 14 -262144 -66577
+0;
+#X text 70 96 Řecké slovo synthesis \, od kterého se odvozuje slovo
+syntéza \, označuje proces slučování - skládání různých částí
+do jednoho celku. V DSP se syntézou míní různé techniky vytváření
+zvuku. V této kapitole si v základech představíme aditivní \,
+subtraktivní \, tabulkovou (wavetable) a frekvenčně modulovanou
+syntézu.;
+#X text 262 548 Aditivní syntéza - všechny signály;
+#X text 70 636 Když budete sčítat více různých signálů o různých
+amplitudách \, snadno se přihodí \, že amplituda "vyskočí" nad
+limit -1..1 a dojde ke zkreslení signálu. Předcházet tomuto nežádoucímu
+jevu můžeme objekty [limiter~] a [z~] \, které jsou součástí
+knihovny zexy. Segment patche usměrňující součet amplitud do patřičného
+limitu vypadá takto:;
+#X text 199 820 [limiter~] mezitím spočítá \, jakou hodnotou signál
+vynásobit \,;
+#X text 70 902 Aditivní syntézou se nám otevírají možnosti sonických
+průzkumů. Na následujícím jednoduchém příkladu si ukážeme
+\, jak např. provést morfing jednoho témbru do jiného.;
+#X connect 2 0 38 1;
+#X connect 3 0 4 0;
+#X connect 4 0 21 0;
+#X connect 5 0 6 0;
+#X connect 6 0 22 0;
+#X connect 7 0 8 0;
+#X connect 8 0 23 0;
+#X connect 9 0 10 0;
+#X connect 10 0 24 0;
+#X connect 11 0 3 0;
+#X connect 11 0 5 0;
+#X connect 11 0 7 0;
+#X connect 11 0 9 0;
+#X connect 12 0 17 0;
+#X connect 13 0 17 0;
+#X connect 14 0 17 1;
+#X connect 15 0 17 1;
+#X connect 16 0 25 0;
+#X connect 16 0 26 0;
+#X connect 16 0 27 0;
+#X connect 16 0 28 0;
+#X connect 17 0 18 0;
+#X connect 18 0 20 0;
+#X connect 18 0 20 1;
+#X connect 19 0 18 1;
+#X connect 21 0 12 0;
+#X connect 22 0 13 0;
+#X connect 23 0 14 0;
+#X connect 24 0 15 0;
+#X connect 25 0 29 0;
+#X connect 26 0 30 0;
+#X connect 27 0 31 0;
+#X connect 28 0 32 0;
+#X connect 29 0 12 1;
+#X connect 30 0 13 1;
+#X connect 31 0 14 1;
+#X connect 32 0 15 1;
+#X connect 36 0 37 0;
+#X connect 36 0 2 0;
+#X connect 37 0 38 0;

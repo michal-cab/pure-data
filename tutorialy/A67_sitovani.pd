@@ -1,0 +1,90 @@
+#N canvas 1 54 718 1017 12;
+#X obj 71 73 cnv 15 200 15 empty empty POSÍLÁME_DATA_NA_PORT 2 8
+0 12 -228856 -66577 0;
+#X text 158 274 .;
+#X obj 90 691 netsend;
+#X floatatom 90 719 5 0 0 0 - - -;
+#X msg 124 662 send \$1;
+#X floatatom 124 639 5 0 0 0 - - -;
+#X msg 107 607 disconnect;
+#X text 296 574 Do [netsend]u posíláme zprávu;
+#X text 296 588 začínající příkazem "connect" \,;
+#X text 296 601 následovanou IP adresou a portem;
+#X text 296 614 počítače \, ke kterému se připojujeme.;
+#X text 219 660 v pořádku \, pak na výstupu [netsend]u uvidíme
+;
+#X text 218 675 jedničku. Pak zprávou [send \$1( na druhý počítač
+;
+#X text 220 690 můžeme poslat data (číslo \, nebo symbol). Zpráva
+;
+#X text 218 705 [disconnect( spojení ukončí.;
+#X obj 91 808 netreceive 11111;
+#X floatatom 200 834 5 0 0 0 - - -;
+#X obj 278 906 netsend;
+#X msg 278 806 connect localhost 11111;
+#X floatatom 278 931 5 0 0 0 - - -;
+#X msg 311 854 send foo \$1;
+#X floatatom 91 894 5 0 0 0 - - -;
+#X floatatom 135 893 5 0 0 0 - - -;
+#X obj 91 868 route foo goo;
+#X msg 405 853 send goo \$1;
+#X floatatom 311 831 5 0 0 0 - - -;
+#X floatatom 405 830 5 0 0 0 - - -;
+#X msg 406 879 disconnect;
+#X text 219 646 Jesliže připojení k druhému počítači proběhlo
+;
+#X msg 90 577 connect 192.168.0.10 10001;
+#X text 70 516 Pakliže na sebe počítače v síti "vidí" \, můžeme
+mezi nimi uskutečnit síťovou komunikaci. K zasílání zpráv po
+síti __ v Pd slouží objekt [netsend].;
+#X obj 464 537 cnv 15 60 15 empty empty empty 20 12 0 14 -262144 -66577
+0;
+#X text 70 84 Abychom mohli zprávu na počítač \, který v síti
+naslouchá \, něco poslat \, musíme znát jeho IP adresu a port.
+Ke zjištění IP adresy vám poslouží program ifconfig (ve Windows
+ipconfig) \, který se spouští z terminálu (pod Windows klikněte
+na tlačítko Start -> Spustit -> cmd). Jeho výstupem je řada informací
+o dostupných síťových rozhraních \, mezi kterými najdete také
+číslo označující IP adresu daného počítače. IP adresa sestává
+ze čtyř čísel __ v rozsahu 0..255 oddělených tečkou. If/pconfig
+samozřejmě spouštíme na počítači \, který naslouchá.;
+#X obj 460 192 cnv 15 60 15 empty empty empty 20 12 0 14 -262144 -66577
+0;
+#X text 69 244 IP adresu si poznamenáme (v lokálních sítích má
+obvykle tvar 192.168.0.xxx) \, port již známe - v našem případě
+jde _ o číslo 10001 Nyní se můžeme přemístit k počítači \,
+ze kterého budeme data posílat.;
+#X text 70 313 K prověření dostupnosti druhého počítače vám
+poslouží příkaz ping \, který se taktéž spouští z terminálu.
+Když příkazu ping předáme v argumentu IP adresu (např. ping 192.168.0.10)
+a druhý počítač s touto IP je v síti dostupný \, měli bychom
+v terminálu vidět hlášku jako "64 bytes from 192.168.0.10: icmp:req..."
+- ta nás informuje _ o rychlosti odezvy druhého počítače. Pokud
+ping dlouho žádnou hlášku nevypíše nebo zahlásí "connect: Network
+is unreachable" \, pak na sebe naše počítače v síti nevidí a
+je třeba jejich IP adresy správně nastavit. Problematikou konfigurace
+lokální sítě se zde ale nebudeme zabývat. Eventuelně prosím
+tuto látku dostudujte v patřičné odborné literatuře.;
+#X text 70 745 Pokud nemáte k dispozici síť \, na které byste funkčnost
+objektů [netreceive] a [netsend] otestovali \, vyzkoušejte aspoň
+následující lokální provoz.;
+#X obj 465 396 cnv 15 60 15 empty empty empty 20 12 0 14 -262144 -66577
+0;
+#X obj 474 266 cnv 15 60 15 empty empty empty 20 12 0 14 -262144 -66577
+0;
+#X connect 2 0 3 0;
+#X connect 4 0 2 0;
+#X connect 5 0 4 0;
+#X connect 6 0 2 0;
+#X connect 15 0 23 0;
+#X connect 15 1 16 0;
+#X connect 17 0 19 0;
+#X connect 18 0 17 0;
+#X connect 20 0 17 0;
+#X connect 23 0 21 0;
+#X connect 23 1 22 0;
+#X connect 24 0 17 0;
+#X connect 25 0 20 0;
+#X connect 26 0 24 0;
+#X connect 27 0 17 0;
+#X connect 29 0 2 0;

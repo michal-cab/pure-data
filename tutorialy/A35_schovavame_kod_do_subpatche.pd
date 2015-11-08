@@ -1,0 +1,460 @@
+#N canvas 1 54 718 1017 12;
+#X obj 75 532 cnv 15 70 60 empty empty empty 20 12 0 14 -233017 -66577
+0;
+#X obj 67 73 cnv 15 567 25 empty empty schováváme_kód_do_subpatche
+20 12 0 14 -1 -262144 0;
+#X text 235 405 Vidíte \, že tento subpatch nemá žádné;
+#X text 235 418 vstupy ani výstupy.;
+#X obj 87 537 inlet;
+#X obj 87 568 outlet;
+#X text 150 546 ---------->;
+#N canvas 359 66 450 300 subpatch 0;
+#X obj 116 89 inlet;
+#X obj 117 138 outlet;
+#X restore 244 548 pd subpatch;
+#X text 346 525 Mezi [inlet] a [outlet];
+#X text 345 554 který bude subpatch;
+#X text 345 567 provádět.;
+#X obj 74 603 cnv 15 260 160 empty empty empty 20 12 0 14 -233017 -66577
+0;
+#X obj 85 614 inlet;
+#X obj 85 732 outlet;
+#X obj 157 614 inlet;
+#X obj 157 732 outlet;
+#X obj 85 645 + 10;
+#X obj 157 646 + 20;
+#X obj 233 614 inlet;
+#X obj 233 732 outlet;
+#X obj 283 613 inlet;
+#X obj 233 709 +;
+#X text 360 673 ---------->;
+#X floatatom 454 619 5 0 0 0 - - -;
+#X floatatom 495 619 5 0 0 0 - - -;
+#X obj 283 672 t b f;
+#X floatatom 536 618 5 0 0 0 - - -;
+#X floatatom 577 618 5 0 0 0 - - -;
+#X floatatom 475 717 5 0 0 0 - - -;
+#X floatatom 518 717 5 0 0 0 - - -;
+#X floatatom 561 717 5 0 0 0 - - -;
+#X text 356 659 kód umístěný;
+#X text 357 687 v subpatchi;
+#N canvas 514 125 374 220 +10+20++ 0;
+#X obj 21 -397 inlet;
+#X obj 21 -279 outlet;
+#X obj 93 -397 inlet;
+#X obj 93 -279 outlet;
+#X obj 21 -366 + 10;
+#X obj 93 -365 + 20;
+#X obj 171 -396 inlet;
+#X obj 171 -278 outlet;
+#X obj 221 -397 inlet;
+#X obj 171 -305 +;
+#X obj 221 -340 t b f;
+#X connect 0 0 4 0;
+#X connect 2 0 5 0;
+#X connect 4 0 1 0;
+#X connect 5 0 3 0;
+#X connect 6 0 9 0;
+#X connect 8 0 10 0;
+#X connect 9 0 7 0;
+#X connect 10 0 9 0;
+#X connect 10 1 9 1;
+#X restore 484 671 pd +10+20++;
+#X text 66 770 Vstupů a výstupů v subpatchi může být víc. Uvedený
+subpatch k prvnímu vstupu přičítá 10 a výsledek posílá do prvního
+výstupu. Ke druhému vstupu přičítá 20 Třetí a čtvrtý vstup
+sečte a pošle ho na třetí výstup.;
+#X text 325 800 .;
+#N canvas 570 189 450 300 toto_je_subpatch 0;
+#X text 58 60 Sem je možné umístit další části patche...;
+#X text 190 202 hic sunt leones;
+#X obj 306 193 cnv 6 6 6 empty jibberishhhh empty 20 12 0 14 -241291
+-262144 0;
+#X obj 306 199 cnv 6 6 6 empty jibberishhhh empty 20 12 0 14 -241291
+-262144 0;
+#X obj 282 181 cnv 6 6 6 empty jibberishhhh empty 20 12 0 14 -241291
+-262144 0;
+#X obj 276 187 cnv 6 6 6 empty jibberishhhh empty 20 12 0 14 -241291
+-262144 0;
+#X obj 282 187 cnv 6 6 6 empty jibberishhhh empty 20 12 0 14 -241291
+-262144 0;
+#X obj 288 181 cnv 6 6 6 empty jibberishhhh empty 20 12 0 14 -241291
+-262144 0;
+#X obj 300 181 cnv 6 6 6 empty jibberishhhh empty 20 12 0 14 -241291
+-262144 0;
+#X obj 306 181 cnv 6 6 6 empty jibberishhhh empty 20 12 0 14 -241291
+-262144 0;
+#X obj 289 187 cnv 6 6 6 empty jibberishhhh empty 20 12 0 14 -241291
+-262144 0;
+#X obj 294 187 cnv 6 6 6 empty jibberishhhh empty 20 12 0 14 -241291
+-262144 0;
+#X obj 300 187 cnv 6 6 6 empty jibberishhhh empty 20 12 0 14 -241291
+-262144 0;
+#X obj 306 187 cnv 6 6 6 empty jibberishhhh empty 20 12 0 14 -241291
+-262144 0;
+#X obj 306 169 cnv 6 6 6 empty jibberishhhh empty 20 12 0 14 -241291
+-262144 0;
+#X obj 288 175 cnv 6 6 6 empty jibberishhhh empty 20 12 0 14 -241291
+-262144 0;
+#X obj 294 175 cnv 6 6 6 empty jibberishhhh empty 20 12 0 14 -241291
+-262144 0;
+#X obj 300 175 cnv 6 6 6 empty jibberishhhh empty 20 12 0 14 -241291
+-262144 0;
+#X obj 306 175 cnv 6 6 6 empty jibberishhhh empty 20 12 0 14 -241291
+-262144 0;
+#X obj 312 193 cnv 6 6 6 empty jibberishhhh empty 20 12 0 14 -241291
+-262144 0;
+#X obj 312 199 cnv 6 6 6 empty jibberishhhh empty 20 12 0 14 -241291
+-262144 0;
+#X obj 312 181 cnv 6 6 6 empty jibberishhhh empty 20 12 0 14 -241291
+-262144 0;
+#X obj 312 169 cnv 6 6 6 empty jibberishhhh empty 20 12 0 14 -241291
+-262144 0;
+#X obj 312 175 cnv 6 6 6 empty jibberishhhh empty 20 12 0 14 -241291
+-262144 0;
+#X obj 318 199 cnv 6 6 6 empty jibberishhhh empty 20 12 0 14 -241291
+-262144 0;
+#X obj 318 169 cnv 6 6 6 empty jibberishhhh empty 20 12 0 14 -241291
+-262144 0;
+#X obj 318 175 cnv 6 6 6 empty jibberishhhh empty 20 12 0 14 -241291
+-262144 0;
+#X obj 324 199 cnv 6 6 6 empty jibberishhhh empty 20 12 0 14 -241291
+-262144 0;
+#X obj 324 169 cnv 6 6 6 empty jibberishhhh empty 20 12 0 14 -241291
+-262144 0;
+#X obj 324 175 cnv 6 6 6 empty jibberishhhh empty 20 12 0 14 -241291
+-262144 0;
+#X obj 324 222 cnv 6 6 6 empty jibberishhhh empty 20 12 0 14 -241291
+-262144 0;
+#X obj 276 228 cnv 6 6 6 empty jibberishhhh empty 20 12 0 14 -241291
+-262144 0;
+#X obj 282 228 cnv 6 6 6 empty jibberishhhh empty 20 12 0 14 -241291
+-262144 0;
+#X obj 282 234 cnv 6 6 6 empty jibberishhhh empty 20 12 0 14 -241291
+-262144 0;
+#X obj 288 228 cnv 6 6 6 empty jibberishhhh empty 20 12 0 14 -241291
+-262144 0;
+#X obj 294 228 cnv 6 6 6 empty jibberishhhh empty 20 12 0 14 -241291
+-262144 0;
+#X obj 300 228 cnv 6 6 6 empty jibberishhhh empty 20 12 0 14 -241291
+-262144 0;
+#X obj 306 228 cnv 6 6 6 empty jibberishhhh empty 20 12 0 14 -241291
+-262144 0;
+#X obj 288 234 cnv 6 6 6 empty jibberishhhh empty 20 12 0 14 -241291
+-262144 0;
+#X obj 294 234 cnv 6 6 6 empty jibberishhhh empty 20 12 0 14 -241291
+-262144 0;
+#X obj 300 234 cnv 6 6 6 empty jibberishhhh empty 20 12 0 14 -241291
+-262144 0;
+#X obj 306 234 cnv 6 6 6 empty jibberishhhh empty 20 12 0 14 -241291
+-262144 0;
+#X obj 312 228 cnv 6 6 6 empty jibberishhhh empty 20 12 0 14 -241291
+-262144 0;
+#X obj 312 234 cnv 6 6 6 empty jibberishhhh empty 20 12 0 14 -241291
+-262144 0;
+#X obj 318 228 cnv 6 6 6 empty jibberishhhh empty 20 12 0 14 -241291
+-262144 0;
+#X obj 318 234 cnv 6 6 6 empty jibberishhhh empty 20 12 0 14 -241291
+-262144 0;
+#X obj 324 228 cnv 6 6 6 empty jibberishhhh empty 20 12 0 14 -241291
+-262144 0;
+#X obj 324 234 cnv 6 6 6 empty jibberishhhh empty 20 12 0 14 -241291
+-262144 0;
+#X obj 294 239 cnv 6 6 6 empty jibberishhhh empty 20 12 0 14 -241291
+-262144 0;
+#X obj 300 239 cnv 6 6 6 empty jibberishhhh empty 20 12 0 14 -241291
+-262144 0;
+#X obj 306 239 cnv 6 6 6 empty jibberishhhh empty 20 12 0 14 -241291
+-262144 0;
+#X obj 306 245 cnv 6 6 6 empty jibberishhhh empty 20 12 0 14 -241291
+-262144 0;
+#X obj 312 239 cnv 6 6 6 empty jibberishhhh empty 20 12 0 14 -241291
+-262144 0;
+#X obj 312 245 cnv 6 6 6 empty jibberishhhh empty 20 12 0 14 -241291
+-262144 0;
+#X obj 318 239 cnv 6 6 6 empty jibberishhhh empty 20 12 0 14 -241291
+-262144 0;
+#X obj 318 245 cnv 6 6 6 empty jibberishhhh empty 20 12 0 14 -241291
+-262144 0;
+#X obj 324 239 cnv 6 6 6 empty jibberishhhh empty 20 12 0 14 -241291
+-262144 0;
+#X obj 324 245 cnv 6 6 6 empty jibberishhhh empty 20 12 0 14 -241291
+-262144 0;
+#X obj 330 205 cnv 6 6 6 empty jibberishhhh empty 20 12 0 14 -241291
+-262144 0;
+#X obj 330 199 cnv 6 6 6 empty jibberishhhh empty 20 12 0 14 -241291
+-262144 0;
+#X obj 330 181 cnv 6 6 6 empty jibberishhhh empty 20 12 0 14 -241291
+-262144 0;
+#X obj 330 175 cnv 6 6 6 empty jibberishhhh empty 20 12 0 14 -241291
+-262144 0;
+#X obj 336 205 cnv 6 6 6 empty jibberishhhh empty 20 12 0 14 -241291
+-262144 0;
+#X obj 336 211 cnv 6 6 6 empty jibberishhhh empty 20 12 0 14 -241291
+-262144 0;
+#X obj 337 199 cnv 6 6 6 empty jibberishhhh empty 20 12 0 14 -241291
+-262144 0;
+#X obj 323 216 cnv 6 6 6 empty jibberishhhh empty 20 12 0 14 -241291
+-262144 0;
+#X obj 336 181 cnv 6 6 6 empty jibberishhhh empty 20 12 0 14 -241291
+-262144 0;
+#X obj 336 187 cnv 6 6 6 empty jibberishhhh empty 20 12 0 14 -241291
+-262144 0;
+#X obj 336 175 cnv 6 6 6 empty jibberishhhh empty 20 12 0 14 -241291
+-262144 0;
+#X obj 342 204 cnv 6 6 6 empty jibberishhhh empty 20 12 0 14 -241291
+-262144 0;
+#X obj 342 211 cnv 6 6 6 empty jibberishhhh empty 20 12 0 14 -241291
+-262144 0;
+#X obj 342 193 cnv 6 6 6 empty jibberishhhh empty 20 12 0 14 -241291
+-262144 0;
+#X obj 342 199 cnv 6 6 6 empty jibberishhhh empty 20 12 0 14 -241291
+-262144 0;
+#X obj 342 181 cnv 6 6 6 empty jibberishhhh empty 20 12 0 14 -241291
+-262144 0;
+#X obj 342 187 cnv 6 6 6 empty jibberishhhh empty 20 12 0 14 -241291
+-262144 0;
+#X obj 330 216 cnv 6 6 6 empty jibberishhhh empty 20 12 0 14 -241291
+-262144 0;
+#X obj 330 222 cnv 6 6 6 empty jibberishhhh empty 20 12 0 14 -241291
+-262144 0;
+#X obj 336 216 cnv 6 6 6 empty jibberishhhh empty 20 12 0 14 -241291
+-262144 0;
+#X obj 336 222 cnv 6 6 6 empty jibberishhhh empty 20 12 0 14 -241291
+-262144 0;
+#X obj 342 216 cnv 6 6 6 empty jibberishhhh empty 20 12 0 14 -241291
+-262144 0;
+#X obj 342 222 cnv 6 6 6 empty jibberishhhh empty 20 12 0 14 -241291
+-262144 0;
+#X obj 330 228 cnv 6 6 6 empty jibberishhhh empty 20 12 0 14 -241291
+-262144 0;
+#X obj 330 234 cnv 6 6 6 empty jibberishhhh empty 20 12 0 14 -241291
+-262144 0;
+#X obj 336 228 cnv 6 6 6 empty jibberishhhh empty 20 12 0 14 -241291
+-262144 0;
+#X obj 336 234 cnv 6 6 6 empty jibberishhhh empty 20 12 0 14 -241291
+-262144 0;
+#X obj 342 228 cnv 6 6 6 empty jibberishhhh empty 20 12 0 14 -241291
+-262144 0;
+#X obj 342 234 cnv 6 6 6 empty jibberishhhh empty 20 12 0 14 -241291
+-262144 0;
+#X obj 330 239 cnv 6 6 6 empty jibberishhhh empty 20 12 0 14 -241291
+-262144 0;
+#X obj 336 239 cnv 6 6 6 empty jibberishhhh empty 20 12 0 14 -241291
+-262144 0;
+#X obj 348 205 cnv 6 6 6 empty jibberishhhh empty 20 12 0 14 -241291
+-262144 0;
+#X obj 348 211 cnv 6 6 6 empty jibberishhhh empty 20 12 0 14 -241291
+-262144 0;
+#X obj 348 193 cnv 6 6 6 empty jibberishhhh empty 20 12 0 14 -241291
+-262144 0;
+#X obj 348 199 cnv 6 6 6 empty jibberishhhh empty 20 12 0 14 -241291
+-262144 0;
+#X obj 348 216 cnv 6 6 6 empty jibberishhhh empty 20 12 0 14 -241291
+-262144 0;
+#X obj 348 222 cnv 6 6 6 empty jibberishhhh empty 20 12 0 14 -241291
+-262144 0;
+#X obj 300 169 cnv 6 6 6 empty jibberishhhh empty 20 12 0 14 -241291
+-262144 0;
+#X obj 290 188 cnv 6 6 6 empty jibberishhhh empty 20 12 0 14 -241291
+-262144 0;
+#X obj 290 194 cnv 6 6 6 empty jibberishhhh empty 20 12 0 14 -241291
+-262144 0;
+#X obj 296 188 cnv 6 6 6 empty jibberishhhh empty 20 12 0 14 -241291
+-262144 0;
+#X obj 296 194 cnv 6 6 6 empty jibberishhhh empty 20 12 0 14 -241291
+-262144 0;
+#X obj 302 188 cnv 6 6 6 empty jibberishhhh empty 20 12 0 14 -241291
+-262144 0;
+#X obj 302 194 cnv 6 6 6 empty jibberishhhh empty 20 12 0 14 -241291
+-262144 0;
+#X obj 308 188 cnv 6 6 6 empty jibberishhhh empty 20 12 0 14 -241291
+-262144 0;
+#X obj 308 194 cnv 6 6 6 empty jibberishhhh empty 20 12 0 14 -241291
+-262144 0;
+#X obj 301 222 cnv 6 6 6 empty jibberishhhh empty 20 12 0 14 -241291
+-262144 0;
+#X obj 307 222 cnv 6 6 6 empty jibberishhhh empty 20 12 0 14 -241291
+-262144 0;
+#X obj 301 228 cnv 6 6 6 empty jibberishhhh empty 20 12 0 14 -241291
+-262144 0;
+#X obj 289 222 cnv 6 6 6 empty jibberishhhh empty 20 12 0 14 -241291
+-262144 0;
+#X obj 313 222 cnv 6 6 6 empty jibberishhhh empty 20 12 0 14 -241291
+-262144 0;
+#X obj 313 228 cnv 6 6 6 empty jibberishhhh empty 20 12 0 14 -241291
+-262144 0;
+#X obj 319 222 cnv 6 6 6 empty jibberishhhh empty 20 12 0 14 -241291
+-262144 0;
+#X obj 319 228 cnv 6 6 6 empty jibberishhhh empty 20 12 0 14 -241291
+-262144 0;
+#X obj 296 222 cnv 6 6 6 empty jibberishhhh empty 20 12 0 14 -241291
+-262144 0;
+#X obj 311 232 cnv 6 6 6 empty jibberishhhh empty 20 12 0 14 -241291
+-262144 0;
+#X obj 317 232 cnv 6 6 6 empty jibberishhhh empty 20 12 0 14 -241291
+-262144 0;
+#X obj 306 232 cnv 6 6 6 empty jibberishhhh empty 20 12 0 14 -241291
+-262144 0;
+#X obj 313 182 cnv 6 6 6 empty jibberishhhh empty 20 12 0 14 -241291
+-262144 0;
+#X obj 319 182 cnv 6 6 6 empty jibberishhhh empty 20 12 0 14 -241291
+-262144 0;
+#X obj 313 188 cnv 6 6 6 empty jibberishhhh empty 20 12 0 14 -241291
+-262144 0;
+#X obj 319 188 cnv 6 6 6 empty jibberishhhh empty 20 12 0 14 -241291
+-262144 0;
+#X obj 325 188 cnv 6 6 6 empty jibberishhhh empty 20 12 0 14 -1 -1
+0;
+#X obj 335 191 cnv 6 6 6 empty jibberishhhh empty 20 12 0 14 -241291
+-262144 0;
+#X obj 315 189 cnv 6 6 6 empty jibberishhhh empty 20 12 0 14 -241291
+-262144 0;
+#X obj 321 189 cnv 6 6 6 empty jibberishhhh empty 20 12 0 14 -241291
+-262144 0;
+#X obj 293 181 cnv 6 6 6 empty jibberishhhh empty 20 12 0 14 -241291
+-262144 0;
+#X obj 316 193 cnv 6 6 6 empty jibberishhhh empty 20 12 0 14 -241291
+-262144 0;
+#X obj 322 193 cnv 6 6 6 empty jibberishhhh empty 20 12 0 14 -241291
+-262144 0;
+#X obj 328 193 cnv 6 6 6 empty jibberishhhh empty 20 12 0 14 -241291
+-262144 0;
+#X obj 334 193 cnv 6 6 6 empty jibberishhhh empty 20 12 0 14 -241291
+-262144 0;
+#X obj 334 189 cnv 6 6 6 empty jibberishhhh empty 20 12 0 14 -241291
+-262144 0;
+#X obj 321 179 cnv 6 6 6 empty jibberishhhh empty 20 12 0 14 -241291
+-262144 0;
+#X obj 323 187 cnv 6 6 6 empty jibberishhhh empty 20 12 0 14 -241291
+-262144 0;
+#X obj 329 187 cnv 6 6 6 empty jibberishhhh empty 20 12 0 14 -241291
+-262144 0;
+#X obj 320 180 cnv 6 6 6 empty jibberishhhh empty 20 12 0 14 -241291
+-262144 0;
+#X obj 326 180 cnv 6 6 6 empty jibberishhhh empty 20 12 0 14 -241291
+-262144 0;
+#X obj 319 183 tgl 10 0 empty empty empty 17 7 0 10 -1 -1 -1 0 1;
+#X restore 84 412 pd toto_je_subpatch;
+#N canvas 54 104 708 670 klikni_na_me 0;
+#X text 286 54 Toto je subpatch.;
+#N canvas 750 151 464 766 mad_bang 0;
+#X obj 129 472 - 0;
+#X obj 163 470 f;
+#X obj 162 434 t f b;
+#X obj 62 448 - 0;
+#X obj 96 446 f;
+#X obj 95 410 t f b;
+#X obj 62 566 pack 0 0;
+#X obj 97 289 t b b b;
+#X obj 97 241 tgl 15 0 empty empty empty 17 7 0 10 -262144 -1 -1 0
+1;
+#X msg 61 589 \; bng_bng delta \$1 \$2;
+#X obj 62 506 line;
+#X obj 129 533 line;
+#X obj 97 211 r catch_me;
+#X obj 97 264 metro 200;
+#X msg 62 480 \$1 200;
+#X msg 129 497 \$1 200;
+#X obj 95 314 random 56789;
+#X obj 162 358 random 9876;
+#X obj 162 385 % 50;
+#X obj 95 337 % 50;
+#X obj 314 271 sel 1;
+#X obj 314 333 delay 15000;
+#X msg 314 407 \; pd quit;
+#X msg 346 299 stop;
+#X connect 0 0 15 0;
+#X connect 1 0 0 1;
+#X connect 2 0 1 1;
+#X connect 2 0 0 0;
+#X connect 2 1 1 0;
+#X connect 3 0 14 0;
+#X connect 4 0 3 1;
+#X connect 5 0 4 1;
+#X connect 5 0 3 0;
+#X connect 5 1 4 0;
+#X connect 6 0 9 0;
+#X connect 7 0 16 0;
+#X connect 7 1 17 0;
+#X connect 8 0 13 0;
+#X connect 8 0 20 0;
+#X connect 10 0 6 0;
+#X connect 11 0 6 1;
+#X connect 12 0 8 0;
+#X connect 13 0 7 0;
+#X connect 14 0 10 0;
+#X connect 15 0 11 0;
+#X connect 16 0 19 0;
+#X connect 17 0 18 0;
+#X connect 18 0 2 0;
+#X connect 19 0 5 0;
+#X connect 20 0 21 0;
+#X connect 20 1 23 0;
+#X connect 21 0 22 0;
+#X connect 23 0 21 0;
+#X coords 0 766 1 765 62 62 0;
+#X restore 302 435 pd mad_bang;
+#X obj 294 409 cnv 15 100 100 empty empty empty 20 12 0 14 -262144
+-66577 0;
+#X obj 314 143 bng 62 1200 50 0 catch_me bng_bng empty 8 -8 0 10 -262144
+-1 -257472;
+#X text 264 280 A na mě radeji neklikej...;
+#X coords 0 0 1 1 85 60 0;
+#X restore 503 352 pd klikni_na_me;
+#X text 66 238 K ušetření místa a schování části kódů slouží
+tzv. subpatche. S jejich pomocí lze kód také strukturovat ______
+a zpřehlednit tím \, že pro každý samostatný segment kódu se
+specifickou funkcí vyčleníme jeden subpatch.;
+#X obj 435 257 cnv 15 60 15 empty empty empty 20 12 0 14 -262144 -66577
+0;
+#X text 66 95 Při psaní rozsáhlejšího projektu v Pd se snadno
+stane \, že se kód rozroste a není již dobře přehlédnutelný.
+Také při hraní na sestavený instrument spíš doceníme jasnost
+______ a kompaktnost uživatelského rozhraní \, než to \, že vidíme
+samotné ustrojení kódu (neplatí o livecodingu). Sekvencer \, který
+jsme sestavili \, je případ jednoduchého patche \, _____ a přesto
+zabírá celkem dost místa. Kdybychom v rozšiřování jeho kódu
+pokračovali v jedné ploše \, záhy se ztratíme mezi objekty a kabely.
+;
+#X obj 437 174 cnv 15 120 15 empty empty empty 20 12 0 14 -262144 -66577
+0;
+#X text 66 307 Subpatch vytvoříme tak \, že do objektu vepíšeme
+nejprve "pd" a poté název subpatche. Otevře se nové okno \, do
+kterého můžeme psát kód \, nebo do něj vložit (CTRL + v) kód
+vyjmutý (CTRL + x) z hlavního (rodičovského) patche. Když okno
+subpatche zavřeme \, uvidíme jen objekt a prostým kliknutím LTM
+na něj subpatch znovu otevřeme.;
+#X text 66 440 Aby subpatche mohly komunikovat s rodičovským patchem
+\, ve kterém jsou "zahnízděny" \, nebo s dalšími subpatchi \,
+pak je třeba jim nadefinovat vstupy a výstupy. To provedeme tak \,
+že otevřeme subpatch a do něj umístíme objekty [inlet] ___ a [outlet].
+;
+#X text 345 539 pak můžeme umístit kód \,;
+#X text 67 839 Předchozí případovou studii sekvenceru bychom v
+případě členění patche do subpatchů asi rozdělili tak \, jak
+je v něm naznačeno přerušovanou čarou. V jednom subpatchi by byl
+umístěn generátor bangů (metro a konvertor BPM na milisekundy)
+\, ve druhém by byl objekt [select] s přepínači a kódem zajišťujícím
+škálování na MIDI hodnoty. Konečně ve třetím by byl umístěn
+samostatný syntetizér.;
+#X obj 429 128 cnv 15 60 15 empty empty empty 20 12 0 14 -262144 -66577
+0;
+#X obj 447 489 cnv 15 60 15 empty empty empty 20 12 0 14 -262144 -66577
+0;
+#X connect 12 0 16 0;
+#X connect 14 0 17 0;
+#X connect 16 0 13 0;
+#X connect 17 0 15 0;
+#X connect 18 0 21 0;
+#X connect 20 0 25 0;
+#X connect 21 0 19 0;
+#X connect 23 0 33 0;
+#X connect 24 0 33 1;
+#X connect 25 0 21 0;
+#X connect 25 1 21 1;
+#X connect 26 0 33 2;
+#X connect 27 0 33 3;
+#X connect 33 0 28 0;
+#X connect 33 1 29 0;
+#X connect 33 2 30 0;

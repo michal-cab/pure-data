@@ -1,0 +1,58 @@
+#N canvas 1 54 718 1017 12;
+#X obj 67 73 cnv 15 567 25 empty empty před_tím_než_začneme 20
+12 0 14 -1 -262144 0;
+#X obj 517 319 pddplink http://vyuka.avu.cz/tutorialy/interaktivita/pure-data/
+-text vyuka.avu.cz;
+#X text 66 413 Tato rukověť počítá s tím \, že používáte
+verzi Pd-extended \, která obsahuje již patřičné externí knihovny
+a abstrakce. Testována byla na verzi Pd-extended 0.44. Funkčnost
+všech patchů pro starší verze nebo Pd-vanilla není garantována.
+;
+#X text 81 607 [print] =;
+#X obj 163 609 print;
+#X msg 163 639 bang;
+#X text 81 638 [bang( =;
+#X text 231 109 \,;
+#X text 66 482 Vždy \, když v textu nebo na pravém okaji uvidíte
+modrý text \, jako je tomu v případě druhého odstavce \, jde o
+odkaz na web \, který souvisí s probíranou látkou. V Pd je takový
+text aktivní - můžete na něj kliknout a daný web se vám otevře
+ve vašem prohlížeči.;
+#X text 66 892 Přeji vám ve studiu hodně zdaru i zábavy. Nebojte
+se experimentovat a průběžně zkoušet realizovat vlastní nápady!
+;
+#X text 66 94 Ještě před tím \, než se pustíme do samotného
+studia Pd \, bych rád poskytl "návod" jak tuto část rukověti "používat".
+Látka je strukturována do tří samostatných oddílů. V prvním
+se budeme zabývat obecnými základy - "gramatikou" a "slovní zásobou"
+tohoto programovacího jazka. Aspoň povšechná znalost obecných
+principů zde probraných je předpokladem pro další oddíly. Ve
+druhém se budeme věnovat zvuku a ve třetím obrazu. Pokud by vás
+studium první části ve své obecnosti unavovalo \, zkuste si "odskočit"
+do druhého a třetího oddílu \, které se věnují již konkrétnějším
+aplikacím Pd v oblasti zvuku a obrazu.;
+#X text 66 270 Rukověť je samozřejmě možné studovat i v tištěné
+podobě \, nicméně její plný potenciál spočívá v tom \, že
+si příklady v ní uvedené vyzkoušíte naživo v Pd. Rukověť je
+ve zdrojových Pd kódech dostupná na webu vyuka.avu.cz. Soubory prvního
+oddílu začínají písmenem "A" \, následovaným pořadovým číslem
+stránky. Druhý oddíl začíná písmenem "B" _ a třetí pak písmenem
+"C". Doporučuji si zdrojové soubory stáhnout a probíranou látku
+a patche si otestovat \, ev. si přímo v patchi zkoušet vytvářet
+již vlastní malé kódy.;
+#X text 66 566 Z důvodů typografické "hlaskosti" budeme objekty
+a zprávy v textu označovat takto:;
+#X text 66 665 Ze začátku studia se dívejte často do Pd konzole.
+Vždy když v patchi uvidíte objekt [print] \, znamená to \, že
+do Pd konzole se vypisuje nějaká zpráva \, jež souvisí s demonstrací
+a vysvětlením funkčnosti daného kódu. Pokud během studia narazíte
+na objekt \, jehož význam vám nebude znám \, mějte na paměti
+\, že se vždy můžete podívat na jeho dokumentaci (viz kapitola
+"help_i_need_somebody").;
+#X text 66 782 VAROVÁNÍ: Ve druhém oddíle \, tj. při práci se
+zvukem \, postupujte vždy tak \, že výstup z počítače zapojte
+do zesilovače \, ten ztište a pak spusťte testovací tón (viz předchozí
+kapitola "Instalace a první spuštění"). Teprve poté si na zesilovači
+nastavte vám odpovídající hlasitost. Nedoporučuji používat sluchátka
+\, protože při neopatrném a nepoučeném zacházení s Pd může
+dojít k poškození sluchu.;

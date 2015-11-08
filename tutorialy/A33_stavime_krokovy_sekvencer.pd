@@ -1,0 +1,132 @@
+#N canvas 1 54 718 1017 12;
+#X obj 67 73 cnv 15 200 15 empty empty UDÁLOSTI 2 8 0 12 -228856 -66577
+0;
+#X obj 86 333 sel 1 2 3 4;
+#X msg 86 378 60;
+#X msg 104 405 64;
+#X msg 123 378 67;
+#X text 172 337 ...;
+#X text 157 384 ...;
+#X obj 86 358 bng 15 250 50 0 empty empty empty 17 7 0 10 -262144 -1
+-1;
+#X obj 104 358 bng 15 250 50 0 empty empty empty 17 7 0 10 -262144
+-1 -1;
+#X obj 123 358 bng 15 250 50 0 empty empty empty 17 7 0 10 -262144
+-1 -1;
+#X text 143 358 ...;
+#X floatatom 543 519 5 0 0 0 - - -;
+#X obj 525 552 f;
+#X obj 525 521 bng 15 250 50 0 empty empty empty 17 7 0 10 -262144
+-1 -1;
+#X floatatom 525 580 5 0 0 0 - - -;
+#X obj 542 832 f;
+#X obj 542 808 bng 15 250 50 0 empty empty empty 17 7 0 10 -262144
+-1 -1;
+#X obj 573 628 vradio 15 1 0 13 empty empty empty 0 -8 0 10 -262144
+-1 -1 0;
+#X obj 496 629 vradio 15 1 0 13 empty empty empty 0 -8 0 10 -262144
+-1 -1 0;
+#X floatatom 496 833 5 0 0 0 - - -;
+#X text 588 805 c1;
+#X text 589 790 #c1;
+#X text 589 774 d1;
+#X text 589 761 #d1;
+#X text 588 745 e1;
+#X text 588 730 f1;
+#X text 589 715 #f1;
+#X text 588 699 g1;
+#X text 589 684 #g1;
+#X text 588 670 a1;
+#X text 589 656 #a1;
+#X text 588 641 h1;
+#X text 588 625 c2;
+#X obj 542 860 - 12;
+#X obj 542 888 abs;
+#X floatatom 579 912 5 0 0 0 - - -;
+#X floatatom 578 886 5 0 0 0 - - -;
+#X text 512 628 0;
+#X text 511 642 .;
+#X text 511 653 .;
+#X text 511 664 .;
+#X text 511 807 12;
+#X obj 542 916 + 60;
+#X floatatom 542 943 5 0 0 0 - - -;
+#X text 591 935 MIDI;
+#X text 582 946 hodnota;
+#X text 66 85 Teoreticky bychom každý z bangů nyní mohli napojit
+na jakékoliv kódy \, takže bychom sekvencovali 16 rozdílných událostí.
+Dejme tomu \, že ale budeme chtít mít sekvencer vytvářející
+události stejného druhu: např. MIDI noty _____ v rozsahu jedné
+oktávy.;
+#X obj 436 135 cnv 15 60 15 empty empty empty 20 12 0 14 -262144 -66577
+0;
+#X text 380 173 .;
+#X text 66 263 Pakliže jsou noty reprezentovatelné v MIDI jako čísla
+\, mohli bychom je "natvrdo" zapsat do zpráv inicializovaných bangem.
+Bang by v následující ukázce vlastně ani nemusel být \, je tam
+jen pro názornost.;
+#X text 66 429 Takový "tvrdý" a jednoúčelový sekvencer by ale
+těžko hledal uplatnění za hranicemi své melodie. Pokusíme se
+spíš _____ o konstrukci \, která by nám umožnila noty (hodnoty)
+pohodlně měnit. V tomto bodě využijeme našich znalostí týkajících
+se vlastnosti Pd objektů - konkrétně půjde o důsledek vyplývající
+z toho \, že rozlišujeme aktivní a pasivní vstupy. Víme \, že
+objekt [f] funguje jako "úschovna" pro čísla. Pokud mu na pravý
+\, tj. pasivní vstup pošleme číslo \, neprovede žádnou akci \,
+pouze si ho podrží v sobě. Dostat ho z něj ven lze pomocí bangu
+poslaného na aktivní vstup.;
+#X text 67 589 To je přesně to \, co v případě sekvenceru hledáme.
+Nechceme \, aby hodnoty hrály ve chvíli \, kdy je zadáváme (to
+bychom spíš stavěli piáno) \, ale teprve ve chvíli \, kdy jsou
+______ v sekvenci inicializovány bangem.;
+#X text 66 658 Dalším krokem konstrukční úvahy je otázka \, jaký
+vhodný ____ a uživatelsky přátelský způsob zadávání hodnoty
+zvolit? Číselný box zrovna uživatelsky moc příjemný není \,
+takže raději sáhneme po nějakém grafickém prvku - nabízí se
+posuvník nebo přepínač. Posuvník by byl vhodný v situaci \, kdy
+bychom chtěli vytvářet mikrotonální sekvence \, protože nám
+poskytuje "jemnou" škálu hodnot. Pokud chceme ale posílat přesně
+vyladěné hodnoty \, jako jsou noty v MIDI \, pak bude pro náš záměr
+vhodnější vertikální přepínač.;
+#X text 66 800 Vytvoříme přepínač (CTRL + SHIFT + d) a ve vlastnostech
+(PTM -> Vlastnosti/Properties) do položky "number" zadáme 13 \, což
+bude odpovídat tónům v rozsahu jedné oktávy. Je zde ale problém:
+přepínač má dole hodnotu 12 a nahoře 0 \, to neodpovídá zápisu
+v notové osnově \, kde jsou "vysoké noty nahoře a nízké dole".
+To vyřešíme objekty [- 12] a [abs]. Když od hodnoty \, která je
+v přepínači nahoře (tj. 0) \, odečteme 12 \, dostaneme -12 a objekt
+[abs] nám vrátí absolutní (tj. nezápornou) hodnotu. Máme za sebou
+konstrukci části kódu \, jejímž výsledkem je jedna událost -
+hodnota noty v MIDI standardu.;
+#X text 66 173 Nota C1 odpovídá ve standardu MIDI hodnotě 60 Apropo
+\, tím se dostáváme oklikou k úvaze \, proč se Pure Data jmenují
+právě Pure Data. Může nám to přijít trochu nezvyklé \, ale
+ve svém důsledku je cokoliv \, s čím v počítači pracujeme \,
+redukovatelné na číslo. Cokoliv na monitoru vidíme nebo __ z reproduktorů
+slyšíme \, je jen interpretace čísel.;
+#X obj 456 239 cnv 15 60 15 empty empty empty 20 12 0 14 -262144 -66577
+0;
+#X obj 435 449 cnv 15 60 15 empty empty empty 20 12 0 14 -262144 -66577
+0;
+#X obj 431 627 cnv 15 60 15 empty empty empty 20 12 0 14 -262144 -66577
+0;
+#X obj 448 661 cnv 15 40 15 empty empty empty 20 12 0 14 -262144 -66577
+0;
+#X connect 1 0 7 0;
+#X connect 1 1 8 0;
+#X connect 1 2 9 0;
+#X connect 7 0 2 0;
+#X connect 8 0 3 0;
+#X connect 9 0 4 0;
+#X connect 11 0 12 1;
+#X connect 12 0 14 0;
+#X connect 13 0 12 0;
+#X connect 15 0 33 0;
+#X connect 16 0 15 0;
+#X connect 17 0 15 1;
+#X connect 18 0 19 0;
+#X connect 33 0 34 0;
+#X connect 33 0 36 0;
+#X connect 34 0 35 0;
+#X connect 34 0 42 0;
+#X connect 42 0 43 0;

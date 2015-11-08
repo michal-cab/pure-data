@@ -1,0 +1,69 @@
+#N canvas 1 54 718 1017 12;
+#X obj 71 73 cnv 15 567 25 empty empty síťování 20 12 0 14 -1 -262144
+0;
+#X obj 71 302 cnv 15 200 15 empty empty NASLOUCHÁME_NA_PORTU 2 8 0
+12 -228856 -66577 0;
+#X text 222 388 .;
+#X obj 92 606 netreceive 80;
+#X text 195 606 Tento port má rezervován protokol HTTP.;
+#X text 218 643 Nasloucháme na portu 10001;
+#X obj 92 643 netreceive 10001;
+#X floatatom 201 672 5 0 0 0 - - -;
+#X obj 92 671 print;
+#X text 399 643 . TCP protokol.;
+#X obj 92 736 print;
+#X obj 92 708 netreceive 22222 1;
+#X text 412 708 . UDP protokol.;
+#X text 70 765 Základní rozdíl mezi TCP a UDP spočívá v tom \,
+že TCP ověřuje \, zda byla data opravdu doručena příjemci. UDP
+toto neověřuje - datagramy se po cestě můžou ztratit.;
+#X text 70 428 Porty v rozsahu 0..1024 jsou obvykle vyhrazeny systémovým
+službám. Různé síťové aplikace využívají různé síťové
+porty a aby nám provoz po síti fungoval i v Pd \, je třeba se vždy
+ujistit \, že je daný port volný. Obecně se dá říct \, že od
+portu 10000 nahoru je "volno".;
+#X text 70 817 Na první výstup [netreceive] posílá doručená síťová
+data. _ V případě užití protokolu TCP nás pravý výstup informuje
+_ o počtu připojených klientů na daný port. Pokud jsme tedy na
+jednom počítači otevřeli port \, můžeme na něj z jiného počítače
+něco poslat.;
+#X obj 466 836 cnv 15 60 15 empty empty empty 20 12 0 14 -262144 -66577
+0;
+#X obj 474 822 cnv 15 60 15 empty empty empty 20 12 0 14 -262144 -66577
+0;
+#X text 70 313 Dnes je v podstatě každý počítač vybavený síťovou
+kartou \, takže může komunikovat v rámci protokolů TCP a UDP.
+Komunikace probíhá vždy přes nějaký port \, což je číslo ___
+v rozsahu 0..65535. Například HTTP (Hyper Text Transfer Protocol)
+standardně využívá port 80 a FTP (File Transfer Protocol) zase
+port 21 Porty jsou pomyslné dveře do počítače \, kterými data
+můžou přicházet i odcházet.;
+#X text 231 708 Nasloucháme na portu 22222;
+#X obj 453 350 cnv 15 60 15 empty empty empty 20 12 0 14 -262144 -66577
+0;
+#X text 70 95 Poslední kapitola obecné části rukověti \, kterou
+máme právě před sebou \, se bude týkat komunikace patchů po síti.
+Problematika sítí dalece přesahuje možnosti našeho pojednání
+\, proto si ukážeme pouze základní komunikaci typu server-klient.
+Pokud máte k dispozici dva počítače propojené v lokální počítačové
+síti (LAN) \, můžete si zde probranou látku naživo vyzkoušet.
+Jinak si budeme "po síti" posílat zprávy pouze v rámci místního
+hostitele (localhost).;
+#X text 70 225 Pokud je pro vás problematika počítačových sítí
+naprosto neznámá \, doporučuji vám aspoň zběžně z Wikipedie
+nastudovat hesla TCP/IP \, ethernet \, IP adresa \, síťový protokol
+_______ a síťový port.;
+#X text 70 511 K naslouchání na portu je v Pd určen objekt [netreceive].
+Má dva argumenty: prvním specifikujeme číslo portu a druhým protokol
+(0 = TCP \, 1 = UDP). Pokud náhodou zvolíme port \, jenž je již
+systémem nebo nějakou aplikací rezervován \, jeho vytvoření se
+nepodaří.;
+#X text 70 899 Nikdy neotvírejte porty na serveru \, který má veřejně
+dostupnou IP adresu \, bez toho \, aniž byste řádně zajistili jeho
+zabezpečení! Provoz na lokální síti nepřipojené do Internetu
+je samozřejmě bezpečnější.;
+#X obj 424 261 cnv 15 120 15 empty empty empty 20 12 0 14 -262144 -66577
+0;
+#X connect 6 0 8 0;
+#X connect 6 1 7 0;
+#X connect 11 0 10 0;

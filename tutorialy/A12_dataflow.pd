@@ -1,0 +1,133 @@
+#N canvas 1 54 718 1017 12;
+#X obj 67 550 cnv 15 200 15 empty empty NEJASNOSTI_V_TOKU_DAT 2 8 0
+12 -228856 -66577 0;
+#X obj 80 182 float;
+#X obj 80 152 bng 15 250 50 0 empty empty empty 17 7 0 10 -262144 -1
+-1;
+#X floatatom 80 215 5 0 0 0 - - -;
+#X floatatom 250 152 5 0 0 0 - - -;
+#X obj 218 153 bng 15 250 50 0 empty empty empty 17 7 0 10 -262144
+-1 -1;
+#X floatatom 218 216 5 0 0 0 - - -;
+#X obj 218 183 int;
+#X msg 163 149 3.14;
+#X floatatom 112 149 5 0 0 0 - - -;
+#X text 298 154 Float umí podržet hodnotu s desetinnou čárkou \,
+;
+#X obj 506 84 float;
+#X obj 572 84 f;
+#X obj 505 118 int;
+#X obj 572 118 i;
+#X obj 531 322 f;
+#X floatatom 531 249 5 0 0 0 - - -;
+#X obj 501 253 bng 15 250 50 0 empty empty empty 17 7 0 10 -262144
+-1 -1;
+#X floatatom 531 356 5 0 0 0 - - -;
+#X obj 479 355 print;
+#X msg 571 248 1;
+#X msg 567 282 2;
+#X text 66 333 a nesrozumitelné konvence dobré? Rád bych předeslal
+\, že;
+#X text 66 362 počítadlo \, které je základem řady dalších konstrukcí.
+;
+#X text 66 348 právě díky těmto vlastnostem budeme moci postavit
+např.;
+#X text 66 376 Bez znalosti těchto podivných základů bychom nemohli
+;
+#X text 66 389 postavit ani sekvencer...;
+#X obj 67 424 cnv 15 200 15 empty empty CVIČENÍ: 2 8 0 12 -204800
+-66577 0;
+#X text 72 440 - mějme k dispozici 3x;
+#X floatatom 234 441 5 0 0 0 - - -;
+#X obj 312 441 *;
+#X obj 358 440 +;
+#X obj 406 440 print;
+#X text 273 440 \, 1x;
+#X text 341 440 \,;
+#X text 389 440 a;
+#X text 72 466 - pokuste se z těchto objektů sestavit patch pro výpočet
+;
+#X text 72 503 - v jakém pořadí je třeba číselné boxy inicializovat
+\, aby;
+#X text 86 518 byl výsledek hned viditelný v konzoli?;
+#X text 66 562 Při psaní kódu v dataflow se vám často stane \,
+že potřebujete poslat danou zprávu do více objektů. Posílání
+zpráv se může větvit \, čímž dochází k malé komplikaci: jak
+zachovat posloupnost provádění kódu?;
+#X obj 86 691 print prvni;
+#X obj 176 691 print druhy;
+#X obj 266 691 print treti;
+#X obj 116 635 bng 15 250 50 0 empty empty empty 17 7 0 10 -262144
+-1 -1;
+#X text 177 647 <--- rozvětvení bangu;
+#X obj 67 816 cnv 15 200 15 empty empty CVIČENÍ: 2 8 0 12 -204800
+-66577 0;
+#X text 67 825 - pokuste se předrátovat tento příklad tak \, aby
+vytiskl do;
+#X text 548 84 ==;
+#X text 548 117 ==;
+#X obj 490 414 f 5;
+#X obj 490 383 bng 15 250 50 0 empty empty empty 17 7 0 10 -262144
+-1 -1;
+#X floatatom 490 444 5 0 0 0 - - -;
+#X text 525 406 specifikovaný;
+#X text 525 420 argumentem;
+#X text 297 169 int pouze celá čísla. Číslo \, které těmto;
+#X text 296 213 jim do aktivního vstupu pošleme bang.;
+#X text 524 393 [float];
+#X text 296 184 objektům přiteče na pasivní vstup \, je v nich
+;
+#X text 296 199 "uschováno" a ven je z nich dostaneme \, až když
+;
+#X text 66 245 Když do aktivního vstupu objektu [float] posíláme
+hodnotu \, ať už z číselného boxu nebo zprávy \, tato jím hned
+proteče dál. Zároveň je v něm ale dál "uschována" a může být
+buď změněna zprávou z pasivního vstupu nebo poslána ven bangem.
+;
+#X text 66 318 Možná si kladete otázku \, k čemu jsou tyto obskurnosti
+;
+#X text 85 481 formule x = (a * b) + c. X tiskněte do konzole;
+#X text 66 722 Do konzole se nejprve vypíše "druhý" \, poté "třetí"
+a teprve naposledy "první" - to je dáno posloupností \, ve která
+byla vytvořena jednotlivá spojení - nejprve byl bang spojen ___
+s [print druhy] \, poté s [print treti] a teprve nakonec ___ s [print
+prvni].;
+#X obj 452 761 cnv 15 60 15 empty empty empty 20 12 0 14 -262144 -66577
+0;
+#X obj 450 777 cnv 15 60 15 empty empty empty 20 12 0 14 -262144 -66577
+0;
+#X text 66 866 I když je tímto způsobem možné také dosánout
+provadění kódu v pořadí \, které vyžadujeme \, je třeba si
+uvědomit \, že takto konstruovaný kód je pro druhého nečitelný!
+Pokud se někdo druhý na patch dívá \, na první pohled nepozná
+v jakém pořadí jsou dráty zapojeny. Může na to sice přijít
+\, ale takový proces je v komplikovaných kódech zdlouhavý.;
+#X text 81 840 konzole pořadí první \, druhý \, třetí;
+#X text 66 69 Podobně je tomu i u objektů \, které umí přijmout
+hodnotu __ a podržet ji \, dokud na aktivním vstupu neobdrží bang.
+Jsou to objekty [float] a [int] - přirovnat bychom je mohli ____ k
+proměnným z klasických programovacích jazyků.;
+#X obj 456 75 cnv 15 40 15 empty empty empty 20 12 0 14 -262144 -66577
+0;
+#X obj 450 105 cnv 15 40 15 empty empty empty 20 12 0 14 -262144 -66577
+0;
+#X connect 1 0 3 0;
+#X connect 2 0 1 0;
+#X connect 4 0 7 1;
+#X connect 5 0 7 0;
+#X connect 7 0 6 0;
+#X connect 8 0 7 1;
+#X connect 8 0 1 1;
+#X connect 9 0 1 1;
+#X connect 15 0 18 0;
+#X connect 15 0 19 0;
+#X connect 16 0 15 0;
+#X connect 17 0 15 0;
+#X connect 20 0 15 0;
+#X connect 21 0 15 1;
+#X connect 43 0 41 0;
+#X connect 43 0 42 0;
+#X connect 43 0 40 0;
+#X connect 49 0 51 0;
+#X connect 50 0 49 0;
+#X coords 0 1120 1 1119 85 60 0;

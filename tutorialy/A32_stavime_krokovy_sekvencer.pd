@@ -1,0 +1,133 @@
+#N canvas 1 54 718 1017 12;
+#X obj 67 73 cnv 15 567 25 empty empty stavíme_krokový_sekvencer
+20 12 0 14 -1 -262144 0;
+#X obj 67 264 cnv 15 200 15 empty empty SRDCE_SEKVENCERU 2 8 0 12 -228856
+-66577 0;
+#X floatatom 121 472 5 0 0 1 BPM - -;
+#X obj 121 502 expr 60000 / $f1;
+#X obj 89 535 metro;
+#X obj 89 475 tgl 15 0 empty empty empty 17 7 0 10 -262144 -1 -1 0
+1;
+#X obj 89 567 f;
+#X obj 127 567 + 1;
+#X obj 127 601 mod 16;
+#X floatatom 86 631 5 0 0 0 - - -;
+#X text 166 576 abychom se procvičili v patchování.;
+#X text 166 561 Nebudeme zatím používat [cxc_couter] \,;
+#X msg 121 446 120;
+#X obj 162 446 loadbang;
+#X text 232 438 Sekvencer vždy po otevření patche;
+#X text 232 452 inicializujeme na 120 BPM.;
+#X text 129 632 A zde máme sekvenci 1..16;
+#X obj 380 497 f;
+#X obj 418 497 + 1;
+#X obj 418 528 mod 16;
+#X text 495 494 v čem spočívá;
+#X text 495 507 problém takovéto;
+#X text 494 535 funkční \, jenže...;
+#X obj 67 720 cnv 15 200 15 empty empty ROZPROSTŘENÍ 2 8 0 12 -228856
+-66577 0;
+#X obj 86 893 bng 15 250 50 0 empty empty empty 17 7 0 10 -262144 -1
+-1;
+#X obj 104 893 bng 15 250 50 0 empty empty empty 17 7 0 10 -262144
+-1 -1;
+#X obj 122 893 bng 15 250 50 0 empty empty empty 17 7 0 10 -262144
+-1 -1;
+#X obj 140 893 bng 15 250 50 0 empty empty empty 17 7 0 10 -262144
+-1 -1;
+#X floatatom 86 842 5 0 0 0 - - -;
+#X obj 86 867 sel 1 2 3 4 5 6 7 8 9 10 11 12 13 14 15 16;
+#X obj 158 893 bng 15 250 50 0 empty empty empty 17 7 0 10 -262144
+-1 -1;
+#X obj 176 893 bng 15 250 50 0 empty empty empty 17 7 0 10 -262144
+-1 -1;
+#X obj 195 893 bng 15 250 50 0 empty empty empty 17 7 0 10 -262144
+-1 -1;
+#X obj 213 893 bng 15 250 50 0 empty empty empty 17 7 0 10 -262144
+-1 -1;
+#X obj 231 893 bng 15 250 50 0 empty empty empty 17 7 0 10 -262144
+-1 -1;
+#X obj 249 893 bng 15 250 50 0 empty empty empty 17 7 0 10 -262144
+-1 -1;
+#X obj 267 893 bng 15 250 50 0 empty empty empty 17 7 0 10 -262144
+-1 -1;
+#X obj 286 893 bng 15 250 50 0 empty empty empty 17 7 0 10 -262144
+-1 -1;
+#X obj 304 893 bng 15 250 50 0 empty empty empty 17 7 0 10 -262144
+-1 -1;
+#X obj 322 893 bng 15 250 50 0 empty empty empty 17 7 0 10 -262144
+-1 -1;
+#X obj 340 893 bng 15 250 50 0 empty empty empty 17 7 0 10 -262144
+-1 -1;
+#X obj 358 893 bng 15 250 50 0 empty empty empty 17 7 0 10 -262144
+-1 -1;
+#X text 332 948 .;
+#X text 66 918 Do číselného boxu natáhneme kabel z postaveného
+modulo počítadla. Mohli bychom brát i hodnotu z objektu [f] \, ale
+pak by [select] musel začít hodnotou 0;
+#X text 66 342 První problém k řešení se týká vhodného zadávání
+tempa. Milisekundy nejsou zcela vyhovující \, standardem je jednotka
+BPM (počet úderů za minutu). 1 minuta je 60000 milisekund \, 1 BPM
+= 60000 / 1 \, 2 BPM = 60000 / 2 -> x BMP = 60000/x. Zapíšeme tento
+výraz do objektu [expr].;
+#X text 66 96 Poté \, co jsme si rozšíříli "slovní" zásobu \,
+jsme již dostatečně vybaveni k tomu \, abychom se mohli pustit do
+další případové studie. Opustíme obecný výklad ve prospěch
+konkrétního úkolu \, kterým bude stavba krokového sekvenceru.
+V procesu jeho vytváření zároveň zúročíme to \, čím jsme
+doposud prošli.;
+#X text 66 191 Sekvencer je obecně přístroj \, jenž umí v čase
+vytvářet ____ a provádět události - např. zahrát tón nebo zobrazit
+snímek. Můžeme si ho představit jako řídící jednotku hudební
+\, nebo vizuální kompozice.;
+#X text 66 276 Vyjdeme z předpokladu \, že náš sekvencer bude mít
+16 pozicí (4 takty po 4 dobách). Abychom tyto pozice mohli cyklicky
+přehrávat \, budeme potřebovat modulo počítadlo kombinované _
+s objektem [metro] \, jehož konstrukci již známe.;
+#X text 66 661 Víme také \, že [mod] nám umožňuje za běhu měnit
+maximální hodnotu \, do které počítáme \, takže kromě tempa
+budeme moci měnit i délku přehrávané sekvence.;
+#X text 67 731 Zatím máme k dispozici jen řadu čísel 1..16. Co
+ale s ní? Jak tyto hodnoty "rozprostřít" \, abychom každou z pozic
+viděli lépe jako jedinečnou událost v čase a mohli ji pak něčemu
+přiřadit? Nebo ještě jinak: jak z čísla udělat bang? Za tímto
+účelem použijeme objekt [select]. Mohli bychom použít i objekt
+[route] \, ten ale slouží k práci se seznamy \, takže v tomto případě
+by bylo jeho užití nadbytečné.;
+#X text 496 464 Apropo \, dokázali;
+#X text 495 479 byste vysvětlit \,;
+#X text 495 521 konstrukce? Je;
+#X obj 449 199 cnv 15 60 15 empty empty empty 20 12 0 14 -262144 -66577
+0;
+#X obj 471 317 cnv 15 60 15 empty empty empty 20 12 0 14 -262144 -66577
+0;
+#X connect 2 0 3 0;
+#X connect 3 0 4 1;
+#X connect 4 0 6 0;
+#X connect 5 0 4 0;
+#X connect 6 0 7 0;
+#X connect 7 0 8 0;
+#X connect 7 0 9 0;
+#X connect 8 0 6 1;
+#X connect 12 0 2 0;
+#X connect 13 0 12 0;
+#X connect 17 0 18 0;
+#X connect 18 0 17 1;
+#X connect 18 0 19 0;
+#X connect 28 0 29 0;
+#X connect 29 0 24 0;
+#X connect 29 1 25 0;
+#X connect 29 2 26 0;
+#X connect 29 3 27 0;
+#X connect 29 4 30 0;
+#X connect 29 5 31 0;
+#X connect 29 6 32 0;
+#X connect 29 7 33 0;
+#X connect 29 8 34 0;
+#X connect 29 9 35 0;
+#X connect 29 10 36 0;
+#X connect 29 11 37 0;
+#X connect 29 12 38 0;
+#X connect 29 13 39 0;
+#X connect 29 14 40 0;
+#X connect 29 15 41 0;

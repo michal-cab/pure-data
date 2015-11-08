@@ -1,0 +1,127 @@
+#N canvas 1 54 718 1017 12;
+#X obj 67 73 cnv 15 567 25 empty empty zprávy_pod_drobnohledem 20
+12 0 14 -1 -262144 0;
+#X obj 67 311 cnv 15 200 15 empty empty ATOMY_A_ANATOMIE_ZPRÁVY 2
+8 0 12 -228856 -66577 0;
+#X obj 67 473 cnv 15 200 15 empty empty SELEKTOR 2 8 0 12 -228856 -66577
+0;
+#X text 85 553 Selektor:;
+#X text 228 553 Zpráva:;
+#X msg 237 577 1024;
+#X text 92 576 float;
+#X text 93 605 symbol;
+#X msg 237 635 2 4 3.14 2e-22;
+#X msg 237 693 1 2 tri ctyri;
+#X text 93 663 list;
+#X text 524 351 |;
+#X text 524 363 v;
+#X text 581 351 |;
+#X text 581 363 v;
+#X text 567 351 |;
+#X text 567 363 v;
+#X text 553 351 |;
+#X text 553 363 v;
+#X text 539 351 |;
+#X text 539 363 v;
+#X text 347 634 seznam jen z čísel;
+#X text 328 663 seznam jen ze symbolů;
+#X text 510 692 (neviditelný);
+#X msg 514 892 symbol hevel;
+#X msg 514 923 list do re mi;
+#X text 511 840 selektory:;
+#X text 513 705 selektor float:;
+#X floatatom 93 944 5 0 0 0 - - -;
+#X msg 93 885 jedna;
+#X obj 93 917 float;
+#X text 180 882 ==;
+#X msg 513 861 float 42;
+#X msg 517 727 42;
+#X msg 148 886 1;
+#X msg 204 886 float 1;
+#X text 342 691 kombinovaný seznam;
+#X text 146 576 <---------->;
+#X text 146 604 <---------->;
+#X text 146 662 <---------->;
+#X text 194 651 |;
+#X text 194 640 |;
+#X text 198 632 --->;
+#X text 194 685 |;
+#X text 194 674 |;
+#X text 198 693 --->;
+#X msg 237 606 symbol pi;
+#X msg 237 664 list ho ho;
+#X msg 525 333 1 2 3 a b c;
+#X text 525 396 atomy seznamu;
+#X text 525 410 s implicitním;
+#X text 525 424 selektorem;
+#X text 596 351 |;
+#X text 596 363 v;
+#X msg 516 786 1 2 3;
+#X text 513 767 selektor list:;
+#X obj 533 146 openpanel;
+#X msg 533 113 bang;
+#X obj 533 234 textfile;
+#X msg 533 192 read pd.txt;
+#X text 526 534 - float;
+#X text 526 549 - symbol;
+#X text 526 566 - list;
+#X text 526 582 - bang;
+#X text 526 599 - pointer;
+#X text 507 503 předdefinované;
+#X text 507 489 V Pd jsou;
+#X text 506 517 tyto selektory:;
+#X text 163 352 .;
+#X text 148 909 Objekt [float] má metody jen pro zpracování;
+#X text 147 921 zpráv se selektorem float.;
+#X text 261 885 Explicitně zapsaný selektor float.;
+#X text 524 381 Jednotlivé;
+#X text 525 439 list.;
+#X text 512 679 Implicitní;
+#X text 513 754 Implicitní;
+#X text 511 826 Explicitní;
+#X text 66 95 Na předchozích stránkách jsme se seznámili se zprávami
+\, jejichž funkce obvykle spočívá v tom \, že jejich prostřednictvím
+mezi sebou objekty komunikují. Zpráva může po daném objektu něco
+vyžadovat: aby změnil svůj atribut \, otevřel soubor \, provedl
+výpočet atd. Kromě zvukových signálů považují Pd všechna ostatní
+data za zprávy. V této kapitole se na ně podíváme podrobněji
+\, i když to bude spíš v duchu "že je to tak a tak" než proč
+tomu tak je.;
+#X text 66 224 K základní práci s Pd nejsou informace v této kapitole
+zcela nezbytné \, nicméně její terminologii byste znát měli \,
+protože s ní dále budeme pracovat. Pokud vám ale přijde nesrozumitelná
+\, přeskočte ji a ev. se k jejímu studiu vraťte později.;
+#X text 66 322 Atomy jsou prvky obsažené ve zprávě. Základní
+dva typy atomů jsou čísla a symboly. Čísla jsou např.: 1 \, -24
+\, 2e+10 \, 3.14 \, 0 Vše ostatní \, co Pd neidentifikuje jako číslo
+\, je chápáno jako symbol: stop \, open \, zero \, 1..10 atd. Těmto
+dvěma atomům odpovídá číselný box a symbol box \, do kterých
+můžeme buď to nebo ono poslat. Obecně zpráva _____ v Pd sestává
+z jednoho prvku zvaného selektor (nečíselný atom) a jednoho nebo
+více dalších atomů \, tedy čísel a/nebo symbolů.;
+#X text 65 485 Zpráva v Pd může obsahovat jeden atom číslo \,
+jeden atom symbol \, nebo více atomů - pak jde o seznam (ten obsahuje
+čísla a/nebo symboly). Od této typologie se odvíjejí také různé
+typy tzv. selektorů: float \, symbol \, list atd.;
+#X text 66 721 Co to selektor vlastně je? Selektor je první a nečíselný
+atom. Je ve zprávě buď implicitně obsažený nebo explicitně zapsaný
+a označuje jaký typ dat v sobě zpráva nese. Díky němu daný objekt
+\, do kterého zprává doputuje \, "pozná" \, ____ o jakou zprávu
+jde a co s ní může dělat (tzn. vybere pro její zpracování vhodnou
+metodu). Pokud např. pošleme zprávu [jedna( do objektu [float] \,
+nebude si s ní vědět rady \, protože čeká na zprávu \, která
+začíná selektorem float. ___ V konzoli uvidíme chybovou hlášku:
+"float: no method for 'jedna'".;
+#X obj 447 830 cnv 15 40 15 empty empty empty 20 12 0 14 -262144 -66577
+0;
+#X obj 448 770 cnv 15 40 15 empty empty empty 20 12 0 14 -262144 -66577
+0;
+#X obj 437 400 cnv 15 40 15 empty empty empty 20 12 0 14 -262144 -66577
+0;
+#X connect 29 0 30 0;
+#X connect 30 0 28 0;
+#X connect 34 0 30 0;
+#X connect 35 0 30 0;
+#X connect 57 0 56 0;
+#X connect 59 0 58 0;
+#X coords 0 1120 1 1119 85 60 0;

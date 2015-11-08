@@ -1,0 +1,119 @@
+#N canvas 1 54 718 1017 12;
+#X obj 71 401 cnv 15 200 15 empty empty PŘEHRÁVÁME_SOUBORY_Z_DISKU
+2 8 0 12 -228856 -66577 0;
+#X obj 71 73 cnv 15 567 25 empty empty vzorky_neboli_samply 20 12 0
+14 -1 -262144 0;
+#X text 423 220 .;
+#X obj 92 737 readsf~;
+#X msg 92 539 open deska.wav;
+#X obj 91 771 dac~;
+#X msg 140 694 1;
+#X msg 183 695 0;
+#X obj 138 765 bng 15 250 50 0 empty empty empty 17 7 0 10 -262144
+-1 -1;
+#X msg 106 572 open bass_line.wav;
+#X obj 131 603 bng 15 250 50 0 empty empty empty 17 7 0 10 -262144
+-1 -1;
+#X obj 131 627 openpanel;
+#X msg 131 656 open \$1;
+#X text 254 531 Pokud máme soubory se zvukem přímo;
+#X text 253 545 v adresáři \, kde je i patch \, jenž je má;
+#X text 253 574 Jinak musíme zadat absolutní cestu k souboru.;
+#X text 254 603 Objekt [openpanel] otevře okno \, v němž můžeme
+;
+#X text 254 618 procházet adresáře a vybrat daný zvukový soubor.
+;
+#X text 254 633 Po kliknutí na tlačítko "Otevřít" pak [openpanel]
+;
+#X text 254 648 předá absolutní cestu k souboru jako symbol zprávě
+;
+#X text 252 664 [open \$1(.;
+#X obj 197 655 print;
+#X text 254 689 Po načtení souboru spustíme / zastavíme;
+#X text 253 702 jeho přehrávání.;
+#X obj 92 892 readsf~;
+#X obj 91 926 dac~;
+#X obj 138 920 bng 15 250 50 0 empty empty empty 17 7 0 10 -262144
+-1 -1;
+#X msg 92 862 1;
+#X obj 92 828 t b b;
+#X obj 92 808 bng 15 250 50 0 empty empty empty 17 7 0 10 -262144 -1
+-1;
+#X obj 170 829 spigot;
+#X obj 209 808 tgl 15 0 empty empty empty 17 7 0 10 -262144 -1 -1 0
+1;
+#X text 255 802 "Problém" objektu [readsf~] spočívá v tom \, že
+;
+#X text 258 817 před spuštěním přehrávání je vždy třeba soubor
+;
+#X text 161 762 Bang pokud jsme soubor přehráli do konce.;
+#X msg 144 862 open deska.wav;
+#X text 258 833 z disku počítače načíst. Zde to řešíme objektem
+;
+#X text 256 863 teprve spustí přehrávání. Přepínač zapojený
+do;
+#X text 257 878 objektu [spigot] pak zapíná/vypíná přehrávání
+ve;
+#X text 257 892 smyčce.;
+#X text 257 918 Dalším "problémem" je \, že [readsf~] neumí zvukový
+;
+#X text 257 931 vzorek přetáčet dopředu nebo dozadu.;
+#X text 70 94 Jestliže by předchozí látku a praxi \, kterým jsme
+se v Pd věnovali \, bylo možné přirovnat k práci na vodním díle
+\, ___ a jednoduché aritmetické operace se signálem k usměrňování
+proudu \, touto kapitolou \, věnující se vzorkům \, otvíráme
+téma "jak zacházet s kusy ledu".;
+#X obj 716 216 cnv 15 10 10 empty empty 32 -300 12 0 9 -262144 -66577
+0;
+#X text 70 176 Víme již \, že na digitální platformě je zvuk
+reprezentován vzorky \, kterých je standardně v jedné vteřině
+44100 \, _____ a pokud je jeden vzorek reprezentován 32bitovým číslem
+\, může nést hodnotu v rozsahu vyjádřitelné číslem 2;
+#X obj 440 195 cnv 15 120 15 empty empty empty 20 12 0 14 -262144 -66577
+0;
+#X text 70 248 Vzorky zvuku jsou uloženy v souborech \, k tomuto účelu
+určených. Obvykle se setkáme s formáty WAV (Waveform audio file
+format) nebo AIFF (Audio Interchange File Format) \, které používají
+tzv. bezztrátovou kompresi dat. Soubory ___ s koncovkou MP3 \, OGG
+obsahují zvuková data \, jež jsou komprimována ztrátovou kompresí
+dat. Pd zprostředkovávají objekty \, které umí pracovat s různými
+formáty. Vzhledem ___ k výpočetní nenáročnosti a kvalitě signálu
+je ale doporučitelné používat formáty s bezztrátovou kompresí.
+;
+#X text 70 413 K jednoduchému přehrávání souborů z disku slouží
+objekt [readsf~] (read sound file) \, který umí načítat soubory
+typu WAV. Ve zprávě mu předáváme příkaz open a cestu k souboru.
+Zprávy [1( a [0( spustí \, nebo zastaví jeho přehrávání. Levý
+výstup je audiosignál a na pravý výstup objekt [readsf~] posílá
+bang \, pokud byl soubor přehrán do konce. Je možné ho tedy využít
+k reinicializaci přehrávání ve smyčce.;
+#X text 253 559 načítat \, stačí předat jméno souboru.;
+#X text 255 848 [t b b] \, který nejprve načte soubor \, a pak;
+#X obj 455 113 cnv 15 120 15 empty empty empty 20 12 0 14 -262144 -66577
+0;
+#X obj 460 301 cnv 15 120 15 empty empty empty 20 12 0 14 -262144 -66577
+0;
+#X obj 461 346 cnv 15 120 15 empty empty empty 20 12 0 14 -262144 -66577
+0;
+#X connect 3 0 5 0;
+#X connect 3 0 5 1;
+#X connect 3 1 8 0;
+#X connect 4 0 3 0;
+#X connect 6 0 3 0;
+#X connect 7 0 3 0;
+#X connect 9 0 3 0;
+#X connect 10 0 11 0;
+#X connect 11 0 12 0;
+#X connect 11 0 21 0;
+#X connect 12 0 3 0;
+#X connect 24 0 25 0;
+#X connect 24 0 25 1;
+#X connect 24 1 26 0;
+#X connect 26 0 30 0;
+#X connect 27 0 24 0;
+#X connect 28 0 27 0;
+#X connect 28 1 35 0;
+#X connect 29 0 28 0;
+#X connect 30 0 29 0;
+#X connect 31 0 30 1;
+#X connect 35 0 24 0;

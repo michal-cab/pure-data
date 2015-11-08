@@ -1,0 +1,109 @@
+#N canvas 1 54 718 1017 12;
+#X obj 67 73 cnv 15 567 25 empty empty dataflow 20 12 0 14 -1 -262144
+0;
+#X obj 67 279 cnv 15 200 15 empty empty JAK_DATA_TEČOU_I 2 8 0 12
+-228856 -66577 0;
+#X text 66 346 Představíme si jednoduché aritmetické operace:;
+#X obj 87 373 +;
+#X obj 127 373 -;
+#X obj 170 373 *;
+#X obj 212 373 /;
+#X obj 87 443 + 4;
+#X obj 127 442 - 1;
+#X obj 170 442 * 2;
+#X obj 212 442 / 5;
+#X text 250 455 odečítáme 1 atd.;
+#X obj 86 592 + 4;
+#X obj 86 648 * 2;
+#X obj 86 773 / 5;
+#X floatatom 86 556 5 0 0 0 - - -;
+#X floatatom 86 806 5 0 0 0 - - -;
+#X obj 86 708 - 1;
+#X msg 173 555 24;
+#X msg 131 555 14;
+#X floatatom 86 620 5 0 0 0 - - -;
+#X floatatom 86 679 5 0 0 0 - - -;
+#X floatatom 86 739 5 0 0 0 - - -;
+#X text 234 590 do dalšího číselného boxu \, kde se ukazuje;
+#X text 234 549 Podívejme se podrobně na tento kód.;
+#X text 234 618 A pak dolů dál...;
+#X text 233 773 intuitivně řekli \, že vyhodnoceno bude nejprve
+;
+#X obj 135 620 print prvni:;
+#X obj 135 679 print druhy:;
+#X obj 135 740 print treti:;
+#X obj 135 806 print ctvrty;
+#X text 234 788 přičtení 4 a že se nám na výpisu v konzoli;
+#X text 159 638 ???;
+#X text 159 787 !!!;
+#X text 234 670 číselných boxech. Jak jsou ale výsledky;
+#X text 234 656 vidíme změnu také bezprostředně ve všech ostatních
+;
+#X text 234 684 vyhodnocovány v čase? Podívejme se na ně;
+#X text 235 698 pod drobnohledem. Budeme debuggovat s pomocí;
+#X text 233 804 objeví jako první - tak to ale není. Místo toho
+;
+#X text 66 291 Dřív jsme programování v Pd přirovnali k práci
+na vodním díle. Voda jsou data a signály. Přehrady a čističky
+jsou pak různé objekty \, které signál mění.;
+#X obj 569 375 +;
+#X floatatom 569 346 5 0 0 0 - - -;
+#X floatatom 569 407 5 0 0 0 - - -;
+#X floatatom 501 415 5 0 0 0 - - -;
+#X floatatom 501 476 5 0 0 0 - - -;
+#X obj 501 444 + 1;
+#X text 250 427 Aritmetické objekty specifikované;
+#X text 249 441 číselným atributem: přičítáme 4 \,;
+#X text 234 576 putuje do objektu [+ 4] \, ze kterého pak putuje;
+#X text 234 713 objektu [print] \, který vypisuje mezivýsledky;
+#X text 234 727 do konzole. Čeká nás malé překvapení...;
+#X text 67 95 V této kapitole se blíž seznámíme s problematikou
+dataflow programování. Těm \, kteří již mají s programováním
+nějakou zkušenost \, bude připadat asi dost podivná a najdou v
+ní několik příležitostí pro ohnutí své programátorské mysli.
+Netknutí čtenáři pak \, právě proto \, že do světa programování
+vstupují skrze dataflow paradigma \, můžou být nehezky poznamenáni
+pro budoucnost. Nicméně \, právě díky své jinakosti má dataflow
+paradigma i svůj půvab. Pokud vám zde prezentovaná látka přijde
+nejasná \, nic si z toho nedělejte a pokračujte ve studiu dál.
+V budoucnu se k této látce můžete vrátit.;
+#X text 250 374 Bez atributů přičítáme 0 \, odečítáme 0 atd.
+;
+#X text 67 479 Také jsme již řekli \, že k charakteristice dataflow
+programovacích jazyků patří \, že změna nějaké proměnné ____
+v kódu vede k bezprostřednímu přepočítání hodnot s touto proměnnou
+svázaných. Jak aritmetické operace tečou?;
+#X text 234 563 Hodnota z číselného boxu nebo zprávy nejprve;
+#X text 234 604 mezivýsledek \, a také do objektu print.;
+#X text 234 642 Když změníme hodnotu v číselném boxu \,;
+#X text 233 759 Data "jako by" tečou shora dolů \, a tak bychom;
+#X text 234 819 se v konzoli jako první objeví vyhodnocený výsledek
+\,;
+#X text 234 833 který je v řetězci operací úplně nejníž!;
+#X text 66 857 Této podivné vlastnosti se říká "DEPTH FIRST".
+Pd se pokoušejí v dané struktuře jít vždy až na nejhlubší
+úroveň \, tu vyhodnotí \, a teprve pak postupují ve vyhodnocování
+směrem nahoru.;
+#X text 66 926 Vypadá to \, že data tečou shora dolů \, ale vyhodnocována
+jsou odspoda nahoru.;
+#X obj 443 498 cnv 15 60 15 empty empty empty 20 12 0 14 -262144 -66577
+0;
+#X connect 12 0 20 0;
+#X connect 12 0 27 0;
+#X connect 13 0 21 0;
+#X connect 13 0 28 0;
+#X connect 14 0 16 0;
+#X connect 14 0 30 0;
+#X connect 15 0 12 0;
+#X connect 17 0 22 0;
+#X connect 17 0 29 0;
+#X connect 18 0 12 0;
+#X connect 19 0 12 0;
+#X connect 20 0 13 0;
+#X connect 21 0 17 0;
+#X connect 22 0 14 0;
+#X connect 40 0 42 0;
+#X connect 41 0 40 0;
+#X connect 43 0 45 0;
+#X connect 45 0 44 0;
+#X coords 0 1120 1 1119 85 60 0;

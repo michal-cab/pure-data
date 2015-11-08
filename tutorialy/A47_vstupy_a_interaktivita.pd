@@ -1,0 +1,125 @@
+#N canvas 1 54 718 1017 12;
+#X obj 91 197 MouseState;
+#X msg 91 143 poll;
+#X msg 109 169 nopoll;
+#X obj 107 442 *~;
+#X obj 87 467 +~;
+#X obj 107 415 osc~;
+#X obj 196 394 +;
+#X obj 86 493 phasor~;
+#X obj 87 349 mtof;
+#X obj 86 546 dac~;
+#X text 129 143 Nejprve zapneme čtení hodnot z myši.;
+#X msg 380 386 \; pd dsp 1;
+#X text 66 70 Jakou maximální hodnotu x a y budou mít se odvíjí
+od rozlišení monitoru. V následující malé případové studii
+si ukážeme \, jak využít čtení hodnot z myši k ovládání hudebního
+nástroje - postavíme si primitivní "theremin".;
+#X text 291 233 na vodorovné ose (x) je to 0..1024.;
+#X text 291 247 Tyto hodnoty škálujeme na rozsah -10..10.;
+#X text 291 261 To je frekvence vibrata \, které moduluje;
+#X text 292 275 základní frekvenci.;
+#X text 260 301 Hodnotu z osy y škálujeme na MIDI hodnoty;
+#X text 260 315 o rozsahu jedné oktávy. 0 je nahoře \, 600;
+#X text 260 329 dole \, proto jsou hodnoty 72 a 6O převráceny.;
+#X text 259 343 Chceme \, aby nám kurzor myši hrál dole nízké
+;
+#X text 258 357 tóny. Objekt [mtof] převádí MIDI na frekvenci.
+;
+#X text 172 197 Čteme jen x \, y a rychlost pohybu kurzoru...;
+#X text 163 474 verze FM syntetizéru.;
+#X msg 468 386 \; pd dsp 0;
+#X text 347 424 Nezapomeneme zapnout/vypnout DSP.;
+#X text 164 448 Předbíháme zde do kapitoly o zvuku.;
+#X obj 67 583 cnv 15 200 15 empty empty HID_/_HIDIN 2 8 0 12 -228856
+-66577 0;
+#X text 112 269 podle vašeho;
+#X text 339 545 jak kód vylepšit?;
+#X obj 85 518 bp~ 1000 4;
+#X obj 509 683 hid;
+#X msg 509 648 print;
+#X obj 80 843 hid;
+#X msg 80 762 print;
+#X obj 143 828 tgl 15 0 empty empty empty 17 7 0 10 -262144 -1 -1 0
+1;
+#X obj 158 870 print;
+#X text 130 753 Vytiskne seznam všech dostupných HID připojených
+;
+#X text 163 826 Začne vypisovat data ze zařízení na výstup.;
+#X text 340 519 Náš kód simuluje vibrato a glisando;
+#X msg 114 796 open 0;
+#X text 130 767 zařízení \, včetně jejich pořadového čísla
+(0..n).;
+#X floatatom 80 946 5 0 0 0 - - -;
+#X obj 80 898 route abs;
+#X obj 80 922 route abs_x abs_y;
+#X floatatom 138 946 5 0 0 0 - - -;
+#X text 157 898 Název prvního možného symbolu \, který [hid] dává.
+;
+#X text 208 925 ... a ev. čteme další názvy proměnných;
+#X text 209 939 z HID zařízení.;
+#X text 167 795 Otevře dané zařízení podle specifikovaného čísla.
+;
+#X obj 107 229 expr_scale 0 1024 -10 10;
+#X obj 87 312 expr_scale 0 576 72 60;
+#X text 111 285 rozlišení!;
+#X text 162 524 (band-pass filtr).;
+#X text 340 493 Podívejte se případně na;
+#X obj 340 506 pddplink http://cs.wikipedia.org/wiki/Theremin. -text
+informace o thereminu.;
+#X text 542 675 Prozkoumejte;
+#X text 542 690 nápovědu.;
+#X text 208 847 [print] v konzoli ukazuje \, jaký tvar zpráva z externího
+zařízení má. Obvykle je ve tvaru: symbol symbol číslo. ___ V
+takovém případě ji rozbalíme dvěma objekty [route].;
+#X obj 588 867 cnv 15 60 15 empty empty empty 20 12 0 14 -262144 -66577
+0;
+#X obj 473 598 cnv 15 60 15 empty empty empty 20 12 0 14 -262144 -66577
+0;
+#X text 112 254 Přenastavte;
+#X text 121 343 Základní;
+#X text 121 357 frekvence.;
+#X text 111 383 Frekvence;
+#X text 111 396 vibrata.;
+#X text 225 398 vibrata.;
+#X text 225 385 Rozsah;
+#X text 292 220 Náš monitor má poměrně malé rozlišení \,;
+#X text 164 461 Kód \, který vytváří zvuk \, je jednoduchá;
+#X text 165 510 Pásmová propusť;
+#X text 339 532 thereminu \, co mu ale chybí? Napadá vás \,;
+#X text 67 594 Ke zpracování dat z dalších HID zařízení kromě
+klávesnice _ a myši vám poslouží objekty [hid] (Linux a MacOS)
+a [hidin] (Windows). Zařízení k počítači připojujeme ještě
+před spuštěním Pd. Jinak totiž obvykle Pd zařízení nedetekují
+\, nebo může dojít k jejich "zamrznutí". Další problém spočívá
+v ošetření práv k HID zařízením. Přímý přístup k nim má
+obvykle jen administrátor systému \, proto pokud je chceme používat
+\, je třeba Pd spustit s administrátorským oprávněním (nebo upravit
+práva umožňující uživateli číst __ z HID zařízení).;
+#X obj 466 718 cnv 15 60 15 empty empty empty 20 12 0 14 -262144 -66577
+0;
+#X connect 0 1 50 0;
+#X connect 0 2 51 0;
+#X connect 0 3 6 0;
+#X connect 0 4 6 1;
+#X connect 1 0 0 0;
+#X connect 2 0 0 0;
+#X connect 3 0 4 1;
+#X connect 4 0 7 0;
+#X connect 5 0 3 0;
+#X connect 6 0 3 1;
+#X connect 7 0 30 0;
+#X connect 8 0 4 0;
+#X connect 30 0 9 0;
+#X connect 30 0 9 1;
+#X connect 32 0 31 0;
+#X connect 33 0 36 0;
+#X connect 33 0 43 0;
+#X connect 34 0 33 0;
+#X connect 35 0 33 0;
+#X connect 40 0 33 0;
+#X connect 43 0 44 0;
+#X connect 44 0 42 0;
+#X connect 44 1 45 0;
+#X connect 50 0 5 0;
+#X connect 51 0 8 0;

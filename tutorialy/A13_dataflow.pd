@@ -1,0 +1,108 @@
+#N canvas 1 54 718 1017 12;
+#X obj 67 348 cnv 15 220 15 empty empty JAK_DATA_TEČOU_II_-_USMĚRŇOVÁNÍ
+2 8 0 12 -228856 -66577 0;
+#X obj 88 168 +;
+#X floatatom 88 195 5 0 0 0 - - -;
+#X obj 157 169 +;
+#X floatatom 157 196 5 0 0 0 - - -;
+#X text 212 140 že se budou stejně i chovat - tedy že budou sčítat
+;
+#X text 212 154 dvě stejné hodnoty. Výsledek je ale přesto;
+#X text 66 225 Rozeberme si tok dat detailně:;
+#X obj 517 390 trigger;
+#X text 212 169 jiný \, což je způsobeno různým pořadím;
+#X text 212 185 v zadrátování \, které na první pohled nepoznáme.
+;
+#X obj 86 495 bng 15 250 50 0 empty empty empty 17 7 0 10 -262144 -1
+-1;
+#X obj 86 520 t b b b;
+#X text 409 491 ==;
+#X obj 132 551 print prvni;
+#X obj 109 579 print druhy;
+#X obj 86 607 print treti;
+#X text 85 627 <----------------;
+#X text 238 595 vpravo \, pak prostřední a jako poslední;
+#X obj 82 729 t f f;
+#X text 406 682 ==;
+#X obj 355 683 t f f;
+#X obj 435 683 trigger float float;
+#X obj 82 766 +;
+#X floatatom 82 798 5 0 0 0 - - -;
+#X text 238 580 První se inicializuje ten nejvíce;
+#X text 237 611 ten nejvíce vlevo.;
+#X text 126 697 <-- jedna zpráva typu float;
+#X text 132 726 <-- Zmnožíme zprávu z číselného boxu 2x (je to
+zpráva;
+#X floatatom 494 827 5 0 0 0 - - -;
+#X obj 540 887 print prvni;
+#X obj 517 913 print druhy;
+#X obj 494 939 print treti;
+#X text 238 550 V konzoli vidíme pořadí provádění akcí:;
+#X obj 355 492 t b b;
+#X obj 438 492 trigger bang bang;
+#X text 66 461 Zprávy z objektu trigger se vyhodnocují zprava doleva!
+;
+#X text 238 565 bang teče 3x zprava doleva.;
+#X text 159 740 typu float) \, nejprve ji pošleme do pasivního (cold)
+;
+#X text 159 785 tu samou zprávu do aktivního (hot) levého vstupu
+\, ke;
+#X text 65 885 Jeho atributy můžou být: bang (b) \, float (f) \,
+symbol (s) \, list (l) \, pointer (p) a any (a). O tom později.;
+#X obj 84 930 t b f s l p a;
+#X text 182 930 všechny možné argumenty;
+#X msg 157 138 1;
+#X msg 88 139 1;
+#X msg 82 701 1;
+#X text 108 491 <-- Jeden bang.;
+#X text 147 520 <-- "Zmnožíme" bang \, bude se posílat 3x.;
+#X text 160 800 které bude přičtena zpráva nastavená v atributu.
+;
+#X obj 494 856 t f a b;
+#X text 67 70 Další problém \, který vyvstává z možnosti posílat
+zprávu kabelem na více míst a který je příčinou řady nevysvětlitelných
+chyb v kódu \, může vypadat např. takto:;
+#X text 212 125 Vizuálně oba kódy vypadají stejně a čekali bychom
+\,;
+#X text 66 238 V prvním případě zpráva [1( do objektu [+] teče
+nejprve do levého (hot) vstupu a pak teprve do pravého (cold). Při
+změně hodnoty nebude výsledek nikdy správný \, protože tento
+kód nejprve sčítá a pak mění atribut. V druhém případě byly
+dráty zapojeny naopak \, takže se nejprve mění atribut a pak sčítá.
+Výsledek bude vždy n + n.;
+#X text 66 651 Správně \, tj. čitelně by předchozí sčítací
+patch měl být zapsán tako:;
+#X text 159 755 pravého vstupu \, tím změníme atribut - nastavíme
+hodnotu \,;
+#X text 160 770 která se bude přičítat \, a pak teprve pošleme
+;
+#X text 67 830 Zkusme si zapamatovat \, že tok dat je v Pd třeba
+usměrňovat s pomocí objektu [trigger] a že trigger vykonává akce
+postupně zprava doleva.;
+#X text 66 360 Jak zmíněným problémům a nejasnostem s tokem dat
+po více větvích předcházet? Odpovědí je objekt [trigger] \,
+s jehož pomocí se dá přesně definovat \, jak mají akce postupně
+probíhat. [trigger] "rozmnoží" jednu zprávu tolikrát \, kolik
+mu přidělíme atributů \, a od počtu atributů se odvíjí _____
+i počet výstupů \, ze kterých pak zprávu posílá dál.;
+#X obj 435 425 cnv 15 60 15 empty empty empty 20 12 0 14 -262144 -66577
+0;
+#X connect 1 0 2 0;
+#X connect 3 0 4 0;
+#X connect 11 0 12 0;
+#X connect 12 0 16 0;
+#X connect 12 1 15 0;
+#X connect 12 2 14 0;
+#X connect 19 0 23 0;
+#X connect 19 1 23 1;
+#X connect 23 0 24 0;
+#X connect 29 0 49 0;
+#X connect 43 0 3 1;
+#X connect 43 0 3 0;
+#X connect 44 0 1 0;
+#X connect 44 0 1 1;
+#X connect 45 0 19 0;
+#X connect 49 0 32 0;
+#X connect 49 1 31 0;
+#X connect 49 2 30 0;
+#X coords 0 1120 1 1119 85 60 0;

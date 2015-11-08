@@ -1,0 +1,132 @@
+#N canvas 1 54 718 1017 12;
+#X obj 67 740 cnv 15 200 15 empty empty [SWAP] 2 8 0 12 -228856 -66577
+0;
+#X obj 67 519 cnv 15 200 15 empty empty [SPIGOT] 2 8 0 12 -228856 -66577
+0;
+#X obj 87 363 random 100;
+#X obj 193 468 bng 15 250 50 0 empty empty empty 17 7 0 10 -262144
+-1 -1;
+#X obj 140 468 bng 15 250 50 0 empty empty empty 17 7 0 10 -262144
+-1 -1;
+#X obj 87 468 bng 15 250 50 0 empty empty empty 17 7 0 10 -262144 -1
+-1;
+#X text 137 488 30%;
+#X obj 67 73 cnv 15 200 15 empty empty [MOSES] 2 8 0 12 -228856 -66577
+0;
+#X floatatom 86 216 5 0 0 0 - - -;
+#X floatatom 146 216 5 0 0 0 - - -;
+#X floatatom 86 159 5 0 0 0 - - -;
+#X obj 86 187 moses 100;
+#X floatatom 405 213 5 0 0 0 - - -;
+#X floatatom 451 212 5 0 0 0 - - -;
+#X floatatom 405 156 5 0 0 0 - - -;
+#X obj 405 184 moses 0;
+#X text 185 195 Sem půjdou čísla;
+#X text 187 208 >= 100;
+#X obj 87 413 moses 50;
+#X obj 140 441 moses 80;
+#X text 83 488 50%;
+#X text 188 488 20%;
+#X floatatom 87 388 5 0 0 0 - - -;
+#X obj 87 338 bng 15 250 50 0 empty empty empty 17 7 0 10 -262144 -1
+-1;
+#X text 128 388 100%;
+#X text 156 412 Jestliže je x >= 50 \, pak čísla tečou doprava.
+;
+#X text 210 447 do levého výstupu \, jinak do pravého.;
+#X obj 87 673 spigot;
+#X floatatom 87 621 5 0 0 0 - - -;
+#X obj 126 650 tgl 15 0 empty empty empty 17 7 0 10 -262144 -1 -1 0
+1;
+#X floatatom 87 702 5 0 0 0 - - -;
+#X obj 205 674 spigot;
+#X symbolatom 205 702 10 0 0 0 - - -;
+#X symbolatom 205 619 10 0 0 0 - - -;
+#X msg 244 648 1;
+#X msg 282 648 0;
+#X obj 106 898 swap;
+#X floatatom 86 927 5 0 0 0 - - -;
+#X floatatom 136 927 5 0 0 0 - - -;
+#X floatatom 139 869 5 0 0 0 - - -;
+#X floatatom 86 868 5 0 0 0 - - -;
+#X obj 483 873 swap 1;
+#X obj 483 902 -;
+#X floatatom 483 929 5 0 0 0 - - -;
+#X floatatom 483 843 5 0 0 0 - - -;
+#X floatatom 578 824 5 0 0 0 - - -;
+#X msg 578 879 1;
+#X obj 578 909 -;
+#X obj 578 854 t b f;
+#X floatatom 578 937 5 0 0 0 - - -;
+#X text 544 886 ==;
+#X text 229 861 Ve vedlejším příkladu odečítáme;
+#X text 229 874 příchozí hodnotu z číselného boxu;
+#X text 229 888 od jedničky. Dokážeme to sice již;
+#X text 229 914 ale kód s objektem [swap] je;
+#X text 228 927 jednodušší.;
+#X msg 146 159 100;
+#X msg 187 159 50;
+#X text 343 200 Záporná;
+#X text 348 212 čísla.;
+#X text 490 198 Kladná;
+#X text 493 211 čísla.;
+#X text 229 208 .;
+#X text 209 434 X >= 50 a zároveň x < 80 \, pak dotečou;
+#X text 66 86 Objekt [moses] přijímá na levém vstupu čísla. Pokud
+je přijaté číslo větší nebo se rovná argumentu \, je posláno
+do pravého výstupu \, jinak do levého. Pravý vstup opět slouží
+_ k nastavení argumentu.;
+#X obj 470 124 cnv 15 19 15 empty empty empty 20 12 0 14 -262144 -66577
+0;
+#X text 66 252 Následuje ukázka \, jak kombinací objektu [random]
+a kaskády objektů [moses] generovat náhodné události s váhou.
+Objekty [moses] rozdělí řadu čísel 0..99 do tří sekcí (0..49
+\, 50..79 \, 80..99) \, což odpovídá 50% \, 30% a 20% pravděpodobnosti
+aktivace daného bangu.;
+#X text 67 532 Objekt [spigot] využijete vždy \, když budete potřebovat
+"přiškrtit" proud dat - ať už jde o čísla \, symboly nebo seznamy.
+Když do jeho pravého vstupu pošleme jedničku \, data přicházející
+na jeho levý vstup propouští \, a když nulu \, tak ne.;
+#X text 66 752 Na první pohled vypadá objekt [swap] velmi primitivně
+- prohazuje číselné hodnoty na vstupech a výstupech. Proč ho pak
+v patchi nenahradit překřížením drátů? Pokud mu totiž specifikujeme
+jeden číselný argument \, prohazuje vždy tento argument s příchozím
+číslem. Využijeme ho \, když budeme potřebovat např. nějakou
+hodnotu odečíst od konstanty nebo získat podíl konstanty a příchozí
+hodnoty.;
+#X text 229 901 zapsat s pomocí objektu [trigger] \,;
+#X connect 2 0 22 0;
+#X connect 10 0 11 0;
+#X connect 11 0 8 0;
+#X connect 11 1 9 0;
+#X connect 14 0 15 0;
+#X connect 15 0 12 0;
+#X connect 15 1 13 0;
+#X connect 18 0 5 0;
+#X connect 18 1 19 0;
+#X connect 19 0 4 0;
+#X connect 19 1 3 0;
+#X connect 22 0 18 0;
+#X connect 23 0 2 0;
+#X connect 27 0 30 0;
+#X connect 28 0 27 0;
+#X connect 29 0 27 1;
+#X connect 31 0 32 0;
+#X connect 33 0 31 0;
+#X connect 34 0 31 1;
+#X connect 35 0 31 1;
+#X connect 36 0 37 0;
+#X connect 36 1 38 0;
+#X connect 39 0 36 1;
+#X connect 40 0 36 0;
+#X connect 41 0 42 0;
+#X connect 41 1 42 1;
+#X connect 42 0 43 0;
+#X connect 44 0 41 0;
+#X connect 45 0 48 0;
+#X connect 46 0 47 0;
+#X connect 47 0 49 0;
+#X connect 48 0 46 0;
+#X connect 48 1 47 1;
+#X connect 56 0 11 1;
+#X connect 57 0 11 1;

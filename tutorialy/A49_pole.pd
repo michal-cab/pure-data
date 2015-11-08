@@ -1,0 +1,116 @@
+#N canvas 1 54 718 1017 12;
+#N canvas 4 44 450 300 (subpatch) 0;
+#X array array20 20 float 3;
+#A 0 20 16.2 12.8 9.8 7.2 5 3.2 1.8 0.8 0.2 0 0.2 0.8 1.8 3.2 5 7.2
+9.8 12.8 16.2;
+#X coords 0 20 20 0 200 140 1 0 0;
+#X restore 89 239 graph;
+#X floatatom 89 862 5 0 20 0 - - -;
+#X obj 87 449 f;
+#X obj 127 448 + 1;
+#X obj 87 397 bng 15 250 50 0 empty empty empty 17 7 0 10 -262144 -1
+-1;
+#X obj 224 481 hradio 15 1 1 3 empty empty empty 0 -8 0 10 -262144
+-1 -1 2;
+#X msg 88 175 \; array20 0 3 2 1 5 4 3 7 6 5 9 8 7 12 11 10 15 14 13
+17 16;
+#X text 305 230 Zpráva nahoře pošle do pole s názvem;
+#X text 305 245 "array20" od indexu 0 seznam dvaceti;
+#X text 305 261 hodnot začínajících 3 2 1 5 ...;
+#X msg 308 297 \; array20 const 0;
+#X obj 87 422 uzi 20;
+#X obj 127 473 mod 20;
+#X text 305 342 A tato zpráva nastaví na všech indexech;
+#X text 305 356 konstantu 0;
+#X text 382 356 .;
+#X obj 89 900 tabread array20;
+#X obj 87 532 t f f;
+#X obj 87 738 tabwrite array20;
+#X obj 155 533 t f f;
+#X obj 155 582 log;
+#X obj 155 557 + 1;
+#X obj 87 503 demux 0 1 2---------;
+#X obj 224 532 t f f;
+#X obj 224 587 -;
+#X obj 224 640 t f f;
+#X obj 224 666 *;
+#X obj 224 693 * 80;
+#X obj 224 614 / 20;
+#X obj 224 559 swap 10;
+#X text 305 413 hodnoty ručně si postavit patch \, jenž za;
+#X text 305 428 nás práci vyplnění pole provede. "array20";
+#X text 306 444 má 20 prvků \, které můžou nabývat hodnotu;
+#X text 306 459 v rozsahu 20..0 (podívejte se do vlastností;
+#X text 305 475 tohoto pole).;
+#X text 305 503 Počítadlem vytváříme hodnoty 0..20 a;
+#X text 305 518 používáme je k indexování prvků pole.;
+#X text 305 549 objekt [demux] se pak provede jedna ze;
+#X text 304 565 tří větví kódu. Nejprve hodnotu posíláme;
+#X text 305 580 objektem [t f f] do pasivního vstupu;
+#X text 303 596 [tabwrite array20] \, takže nastavíme index;
+#X text 305 627 vstupu.;
+#X text 305 653 První větev patche do pole vykresluje;
+#X text 304 668 lineární posloupnost \, druhá logaritmickou;
+#X floatatom 89 937 5 0 0 0 - - -;
+#X obj 235 899 tabdump array20;
+#X obj 235 863 bng 15 250 50 0 empty empty empty 17 7 0 10 -262144
+-1 -1;
+#X obj 235 935 print;
+#X text 67 767 K získání hodnoty prvku na určitém indexu používáme
+objekt [tabread] s argumentem odpovídajícím názvu pole \, ze kterého
+chceme číst. Na vstup [tebread] posíláme číslo indexu a na výstupu
+nám dá hodnotu daného prvku. Objekt [tabdump] zase \, po obdržení
+bangu \, vypíše všechny prvky jako seznam.;
+#X obj 392 882 tabdump array20;
+#X obj 392 862 bng 15 250 50 0 empty empty empty 17 7 0 10 -262144
+-1 -1;
+#X obj 392 910 prepend set;
+#X msg 392 937;
+#X text 304 682 a třetí parabolu.;
+#X text 256 859 Do konzole \,;
+#X text 413 858 nebo do zprávy.;
+#X text 477 903 Jako bychom poslali;
+#X text 478 918 zprávu [set + seznam(.;
+#X text 66 70 Jiným způsobem \, jak pole vyplnit \, je poslat do
+něj zprávu se seznamem. Zpráva musí mít následující formát:
+začíná středníkem \, pak následuje název pole \, do kterého
+seznam posíláme \, poslední složkou zprávy je pak seznam čísel
+\, jehož první hodnota označuje index \, od kterého zapisujeme
+\, a pak následují již samotné hodnoty.;
+#X text 305 398 V řadě případů je jednodušší než zadávat
+;
+#X text 305 534 Podle hodnoty v přepínači napojeném na;
+#X text 305 611 prvku \, a pak teprve jeho hodnotu na aktivním;
+#X connect 1 0 16 0;
+#X connect 2 0 3 0;
+#X connect 2 0 22 0;
+#X connect 3 0 12 0;
+#X connect 4 0 11 0;
+#X connect 5 0 22 1;
+#X connect 11 0 2 0;
+#X connect 12 0 2 1;
+#X connect 16 0 44 0;
+#X connect 17 0 18 0;
+#X connect 17 1 18 1;
+#X connect 19 0 21 0;
+#X connect 19 1 18 1;
+#X connect 20 0 18 0;
+#X connect 21 0 20 0;
+#X connect 22 0 17 0;
+#X connect 22 1 19 0;
+#X connect 22 2 23 0;
+#X connect 23 0 29 0;
+#X connect 23 1 18 1;
+#X connect 24 0 28 0;
+#X connect 25 0 26 0;
+#X connect 25 1 26 1;
+#X connect 26 0 27 0;
+#X connect 27 0 18 0;
+#X connect 28 0 25 0;
+#X connect 29 0 24 0;
+#X connect 29 1 24 1;
+#X connect 45 0 47 0;
+#X connect 46 0 45 0;
+#X connect 49 0 51 0;
+#X connect 50 0 49 0;
+#X connect 51 0 52 0;

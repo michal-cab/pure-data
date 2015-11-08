@@ -1,0 +1,166 @@
+#N canvas 1 54 718 1017 12;
+#X obj 96 634 limiter~;
+#X obj 75 465 *~;
+#X obj 169 465 *~;
+#X obj 262 465 *~;
+#X obj 355 465 *~;
+#X obj 74 523 +~;
+#X obj 74 198 osc~;
+#X obj 168 198 osc~;
+#X obj 261 198 osc~;
+#X obj 356 198 osc~;
+#X obj 73 607 z~ 64;
+#X obj 73 660 *~;
+#X obj 73 687 *~;
+#X obj 106 689 tgl 15 0 empty empty empty 17 7 0 10 -262144 -1 -1 1
+1;
+#X text 105 524 Aditivní syntéza.;
+#X obj 448 465 *~;
+#X obj 448 198 osc~;
+#X obj 542 465 *~;
+#X obj 542 198 osc~;
+#X text 158 119 Základní frekvence a její vyšší harmonické.
+;
+#X obj 93 408 pack f f;
+#X obj 93 356 random 100;
+#X obj 93 381 / 100;
+#X obj 272 276 + 100;
+#X obj 93 223 t b b;
+#X obj 187 408 pack f f;
+#X obj 280 408 pack f f;
+#X obj 373 408 pack f f;
+#X obj 466 408 pack f f;
+#X obj 560 408 pack f f;
+#X obj 187 356 random 100;
+#X obj 187 381 / 100;
+#X obj 280 356 random 100;
+#X obj 280 381 / 100;
+#X obj 373 356 random 100;
+#X obj 373 381 / 100;
+#X obj 466 356 random 100;
+#X obj 466 381 / 100;
+#X obj 560 356 random 100;
+#X obj 560 381 / 100;
+#X obj 93 76 bng 15 250 50 1 empty empty empty 17 7 0 10 -262144 -1
+-1;
+#X obj 93 436 line~;
+#X obj 187 436 line~;
+#X obj 280 436 line~;
+#X obj 373 436 line~;
+#X obj 466 436 line~;
+#X obj 560 436 line~;
+#X obj 603 520 tgl 15 0 empty empty empty 17 7 0 10 -262144 -1 -1 1
+1;
+#X obj 73 713 throw~ signal;
+#X obj 347 513 catch~ signal;
+#X obj 346 720 dac~;
+#X text 122 606 Usměrnění amplitudy.;
+#X obj 347 538 analyzer_nolimit;
+#X obj 108 577 throw~ signal_clip;
+#X obj 463 510 catch~ signal_clip;
+#X obj 108 552 *~;
+#X obj 141 554 tgl 15 0 empty empty empty 17 7 0 10 -262144 -1 -1 0
+1;
+#X text 115 68 Vytvoří náhodné hodnoty - jednu pro čas morfingu
+amplitud a pak šest v rozsahu 0..1 pro amplitudy jednotlivých oscilátorů.
+;
+#X obj 272 251 random 2900;
+#X text 160 551 Neusměrněné amplitudy.;
+#X obj 74 123 nbx 4 30 110 5000 0 1 empty empty empty 0 -8 0 14 -262144
+-1 -1 193 256;
+#X text 70 902 Aditivní syntéza hrála důležitou roli na úsvitu
+elektronické hudby. Zkuste si např. poslechnout kompozici Studie
+II od Karlheinze Stockhausena a dohledejte si k ní informace.;
+#X text 158 133 Zkuste je později změnit jen na liché hodnoty.;
+#X obj 168 170 * 2;
+#X obj 261 171 * 3;
+#X obj 356 170 * 4;
+#X obj 448 169 * 5;
+#X obj 542 169 * 6;
+#X text 71 742 Doba morfingu amplitud je náhodná \, ale pro všechny
+oscilátory stejná - je v rozsahu 100..3000 ms. Velikost amplitudy
+je pro každý oscilátor jedinečná. Obě hodnoty zabalíme do seznamu
+objektem [pack] a posíláme je rovnou do objektu [line~]. Nemusíme
+používat zprávu [\$1 \$2(. Signál usměrňujeme [limiter~]em. Prozkoumejte
+v [analyzer]u \, co se s vlnou během morfingu děje a jak vypadá
+signál před a po usměrnění. Kdybychom patch ještě doplnili o
+obálku _______ a schovali do abstrakce \, máme hezký monofonní
+aditivní syntetizér - pokuste se o to.;
+#X obj 428 855 cnv 15 100 10 empty empty empty 20 12 0 14 -262144 -66577
+0;
+#X connect 0 0 11 1;
+#X connect 1 0 5 0;
+#X connect 2 0 5 0;
+#X connect 3 0 5 0;
+#X connect 4 0 5 1;
+#X connect 5 0 10 0;
+#X connect 5 0 0 0;
+#X connect 5 0 55 0;
+#X connect 6 0 1 0;
+#X connect 7 0 2 0;
+#X connect 8 0 3 0;
+#X connect 9 0 4 0;
+#X connect 10 0 11 0;
+#X connect 11 0 12 0;
+#X connect 12 0 48 0;
+#X connect 13 0 12 1;
+#X connect 15 0 5 1;
+#X connect 16 0 15 0;
+#X connect 17 0 5 1;
+#X connect 18 0 17 0;
+#X connect 20 0 41 0;
+#X connect 21 0 22 0;
+#X connect 22 0 20 0;
+#X connect 23 0 20 1;
+#X connect 23 0 25 1;
+#X connect 23 0 26 1;
+#X connect 23 0 27 1;
+#X connect 23 0 28 1;
+#X connect 23 0 29 1;
+#X connect 24 0 21 0;
+#X connect 24 0 30 0;
+#X connect 24 0 32 0;
+#X connect 24 0 34 0;
+#X connect 24 0 36 0;
+#X connect 24 0 38 0;
+#X connect 24 1 58 0;
+#X connect 25 0 42 0;
+#X connect 26 0 43 0;
+#X connect 27 0 44 0;
+#X connect 28 0 45 0;
+#X connect 29 0 46 0;
+#X connect 30 0 31 0;
+#X connect 31 0 25 0;
+#X connect 32 0 33 0;
+#X connect 33 0 26 0;
+#X connect 34 0 35 0;
+#X connect 35 0 27 0;
+#X connect 36 0 37 0;
+#X connect 37 0 28 0;
+#X connect 38 0 39 0;
+#X connect 39 0 29 0;
+#X connect 40 0 24 0;
+#X connect 41 0 1 1;
+#X connect 42 0 2 1;
+#X connect 43 0 3 1;
+#X connect 44 0 4 1;
+#X connect 45 0 15 1;
+#X connect 46 0 17 1;
+#X connect 47 0 52 1;
+#X connect 49 0 52 0;
+#X connect 52 0 50 0;
+#X connect 52 0 50 1;
+#X connect 55 0 53 0;
+#X connect 56 0 55 1;
+#X connect 58 0 23 0;
+#X connect 60 0 6 0;
+#X connect 60 0 63 0;
+#X connect 60 0 64 0;
+#X connect 60 0 65 0;
+#X connect 60 0 66 0;
+#X connect 60 0 67 0;
+#X connect 63 0 7 0;
+#X connect 64 0 8 0;
+#X connect 65 0 9 0;
+#X connect 66 0 16 0;
+#X connect 67 0 18 0;

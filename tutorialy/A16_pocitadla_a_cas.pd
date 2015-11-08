@@ -1,0 +1,114 @@
+#N canvas 1 54 718 1017 12;
+#X obj 67 252 cnv 15 200 15 empty empty MODULO 2 8 0 12 -228856 -66577
+0;
+#X obj 67 875 cnv 15 200 15 empty empty CVIČENÍ: 2 8 0 12 -204800
+-66577 0;
+#X obj 506 316 mod;
+#X text 537 316 ==;
+#X obj 563 316 %;
+#X floatatom 86 482 5 0 0 0 - - -;
+#X obj 86 449 mod 5;
+#X msg 86 415 18;
+#X msg 122 415 10;
+#X floatatom 88 653 5 0 0 0 - - -;
+#X obj 88 620 % 12;
+#X floatatom 88 589 5 0 0 0 - - -;
+#X text 66 679 Když konstrukci počítadla rozšíříme o mod \,
+budeme mít kód \, který bude počítat opakující se řady.;
+#X obj 167 752 + 1;
+#X floatatom 167 782 5 0 0 0 - - -;
+#X obj 89 726 bng 15 250 50 0 empty empty empty 17 7 0 10 -262144 -1
+-1;
+#X obj 89 753 float 0;
+#X obj 167 812 mod 12;
+#X floatatom 167 843 5 0 0 0 - - -;
+#X floatatom 89 843 5 0 0 0 - - -;
+#X text 271 745 Z různých míst v kódu dokážeme;
+#X text 271 759 získat různé výsledky.;
+#X text 135 620 Jako bychom počítali hodiny na ciferníku.;
+#X obj 91 86 bng 15 250 50 0 empty empty empty 17 7 0 10 -262144 -1
+-1;
+#X obj 91 183 bng 15 250 50 0 empty empty empty 17 7 0 10 -262144 -1
+-1;
+#X obj 91 119 del 500;
+#X obj 91 206 del 500;
+#X obj 228 183 bng 15 250 50 0 empty empty empty 17 7 0 10 -262144
+-1 -1;
+#X obj 208 206 del 500;
+#X obj 229 86 bng 15 250 50 0 empty empty empty 17 7 0 10 -262144 -1
+-1;
+#X obj 208 119 del 500;
+#X text 73 121 |;
+#X text 73 139 |;
+#X text 73 158 |;
+#X text 73 174 v;
+#X text 267 143 |;
+#X text 267 161 |;
+#X text 267 180 |;
+#X text 268 133 ^;
+#X text 158 208 --->;
+#X text 155 85 <---;
+#X text 290 145 má vyhodnocení zprávy zpomalit.;
+#X text 289 172 Postavili jsme tak vlastně primitivní;
+#X text 289 185 a nekonečný kruhový sekvencer.;
+#X floatatom 179 415 5 0 0 0 - - -;
+#X text 289 103 přetečení zásobníku předejít "zbržděním"
+;
+#X text 69 940 - jak počítadlo vynulujeme?;
+#X text 83 900 přičítají dvojku \, nebo počítají mocniny dvou
+\, tří atd.;
+#X text 289 117 bangu objektem [del] (delay) \, jehož;
+#X text 66 365 Objekt [mod] nám na výstupu dá zbytek po dělení.
+18 / 5 jsou 3 se zbytkem 3;
+#X text 199 380 .;
+#X text 230 409 Na pasivním vstupu měníme atribut;
+#X text 230 422 objektu [mod].;
+#X text 137 451 Atribut znamená jakou hodnotou dělíme.;
+#X text 137 483 Výsledek je zbytek po dělení.;
+#X text 207 784 1..12;
+#X text 214 844 0..11;
+#X text 271 773 Z objektu [float] dostaneme řadu;
+#X text 271 787 0..11 \, která bude počítána;
+#X text 271 828 neprošla objekty [+ 1] a [mod 12].;
+#X text 270 801 "dřív" než výstup z objektu [mod] \,;
+#X text 271 814 protože pochopitelně ještě;
+#X text 69 887 - pokuste se sestrojit alternativní počítadla \,
+která;
+#X text 69 920 - sestrojte počítadlo dávající řadu 10..20;
+#X text 363 921 .;
+#X text 66 512 Pomůckou pro pochopení chování objektu mod a modulární
+aritmetiky nám může být způsob počítání hodin na ciferníku.
+Když k šesti hodinám přičteme čtyři \, je deset hodin. Když
+_ k šesti ale přičteme sedm \, je jedna hodina.;
+#X obj 472 549 cnv 15 120 15 empty empty empty 20 12 0 14 -262144 -66577
+0;
+#X text 288 89 V případě zacyklení bangů lze;
+#X text 290 132 atribut určuje \, o kolik milisekund se;
+#X text 66 264 V předchozí variantě počítadla jsme neošetřili
+horní maximální hranici \, do které budeme počítat. Jednak bychom
+po dlouhé době dospěli k hodnotě \, která by překračovala možnosti
+reprezentace v počítači \, a jednak v případě kódů \, ke kterým
+pomalu směřujeme \, spíš budeme potřebovat počítat jen stále
+se opakující řady. K tomu nám pomůže objekt [mod].;
+#X connect 6 0 5 0;
+#X connect 7 0 6 0;
+#X connect 8 0 6 0;
+#X connect 10 0 9 0;
+#X connect 11 0 10 0;
+#X connect 13 0 14 0;
+#X connect 14 0 17 0;
+#X connect 15 0 16 0;
+#X connect 16 0 19 0;
+#X connect 16 0 13 0;
+#X connect 17 0 16 1;
+#X connect 17 0 18 0;
+#X connect 23 0 25 0;
+#X connect 24 0 26 0;
+#X connect 25 0 24 0;
+#X connect 26 0 27 0;
+#X connect 27 0 28 0;
+#X connect 28 0 29 0;
+#X connect 29 0 30 0;
+#X connect 30 0 23 0;
+#X connect 44 0 6 1;
+#X coords 0 1120 1 1119 85 60 0;

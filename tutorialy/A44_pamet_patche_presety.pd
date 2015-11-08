@@ -1,0 +1,65 @@
+#N canvas 1 54 718 1017 12;
+#X obj 67 73 cnv 15 200 15 empty empty ANALÝZA_PŘEDCHOZÍHO 2 8 0
+12 -228856 -66577 0;
+#X text 479 216 .;
+#X obj 460 607 cnv 15 60 15 empty my_cnv empty 20 12 0 14 -262144 -262144
+0;
+#X text 66 85 Věřím \, že vám "četba" a prozkoumávání činnosti
+předchozího patche v Pd nedělala potíže. Analýzou patchů se
+toho sami můžete hodně naučit. Nuže \, nyní si rozebereme segment
+po segmentu.;
+#X text 67 156 Segment 1 a 2: Pět posuvníků \, které mají ve vlastnostech
+nastaveno posílání zpráv se jménem sld1..5 a přijímání zpráv
+sld_rec_1..5. Jediné místo \, kam hodnoty z posuvníků bezdrátově
+putují \, je v segmentu č. 2 \, kde z nich objekt [pack] vytvoří
+seznam a ten pak putuje do kódu v Segmentu 4;
+#X text 66 242 Segment 3: Objekt [unpack] rozbalí seznam \, který
+mu bude bezdrátově doručen z objektu [msgfile]. Jednotlivé hodnoty
+se rovnou bezdrátově přenášejí do posuvníků \, které přijímají
+zprávu sld_rec_1..5).;
+#X text 66 316 Segment 4: Zde se řeší ukládání stavu všech posuvníků
+do souboru. Bang pošle číslo \, které je v objektu [f] nastaveno
+přepínačem na jednu z hodnot v rozsahu 0..7 - to jsou čísla presetů.
+[trigger] provede nejprve to \, že v souboru nastaví danou řádku
+(v souboru preset.txt je 8 řádků a každý je vyčleněn pro jeden
+preset). Druhá akce [trigger]u do všech posuvníků pošle bang \,
+čímž se z nich "protlačí ven" aktuální hodnoty. Vytvoří se
+z nich seznam (viz Segment 2) a ten je bezdrátově poslán ke třetí
+akci \, kterou [trigger] vykonává. Seznam "aktualni_stav" je nejprve
+konvertován na symbol objektem [list2symbol]. To z důvodu \, abychom
+______ v následující zprávě [set replace \$1( nemuseli vypisovat
+všechny proměnné. Když je posuvníků 5 \, není to ještě takový
+problém \, pokud by ale preset měl mít např. 32 položek \, při
+psaní bychom to již pocítili. V [set replace \$1( se tedy nahradí
+\$1 hodnotami z posuvníků a třetí bang pošle zprávu k zapsání
+na daný řádek. Zpráva je sice uložena uvnitř objektu [msgfile]
+\, ale ještě není zapsána fyzicky do souboru. To provádí poslední
+- čtvrtý bang v [trigger]u. Objekt [getdit] na výstupu dává cestu
+k aktuálnímu adresáři \, jež se pak ve zprávě spojí s názvem
+souboru - tedy s textem "/preset.txt".;
+#X text 66 660 Segment 5: Podobně jako u segmentu \, který řeší
+nahrávání \, _ i zde posíláme bang \, který "protlačí" hodnotu
+s číslem presetu - ale tentokrát ho budeme chtít nahrát. Vidíme
+\, že soubor preset.txt je automaticky objektem [msgfile] nahrán
+vždy před čtením řádku s presetem. To je potřeba provést _
+z důvodu odstranění selektoru symbol \, který si jinak [msgfile]
+pamatuje. Ve zprávě [set replace \$1( jsme totiž selektor seznamu
+změnili na symbol \, abychom ho mohli pohodlně do zprávy vložit
+(viz Segment 4). Soubor preset.txt se také vždy automaticky nahrává
+po otevření patche \, což zajišťuje [loadbang]. Soubor je tedy
+nejprve nahrán - jsou v něm pouze řádky s čísly \, takže každý
+řádek má automaticky selektor list. Poté [trigger] inicializuje
+příkaz [goto \$1( \, čímž se nastavíme na řádek presetu \,
+jenž chceme číst \, a konečně poslední bang jej z objektu [msgfile]
+"protlačí" ven. Seznam čísel s hodnotami posuvníků je bezdrátově
+poslán ke zpracování do objektu _ [r ulozeny_stav] (viz Segment
+3) \, který ho rozbalí na jednotlivé hodnoty a ty pošle do posuvníků.
+;
+#X obj 430 473 cnv 15 60 15 empty my_cnv empty 20 12 0 14 -262144 -262144
+0;
+#X obj 471 669 cnv 15 60 15 empty my_cnv empty 20 12 0 14 -262144 -262144
+0;
+#X obj 463 731 cnv 15 60 15 empty my_cnv empty 20 12 0 14 -262144 -262144
+0;
+#X obj 457 905 cnv 15 60 15 empty my_cnv empty 20 12 0 14 -262144 -262144
+0;

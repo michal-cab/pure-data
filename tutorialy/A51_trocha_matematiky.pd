@@ -1,0 +1,237 @@
+#N canvas 1 54 718 1017 12;
+#X text 66 183 Po vyhodnocení výrazu s binárním srovnávacím operátorem
+pak obvykle v kódu následuje objekt [select 0 1] \, kterým spouštíme
+další akce.;
+#X obj 67 527 cnv 15 200 15 empty empty LOGICKÉ_OPERÁTORY 2 8 0 12
+-228856 -66577 0;
+#X text 514 571 AND;
+#X text 565 571 OR;
+#X obj 515 550 &&;
+#X obj 564 550 ||;
+#X obj 331 772 &&;
+#X msg 304 709 1;
+#X msg 304 737 0;
+#X msg 369 708 1;
+#X msg 370 737 0;
+#X floatatom 331 799 5 0 0 0 - - -;
+#X text 510 599 1 == pravda;
+#X text 510 618 0 == nepravda;
+#X text 66 539 Logické operátory vrací \, podobně jako srovnávací
+operátory \, pouze hodnotu 1 nebo 0 Uvedeme si pouze dva základní:
+AND (logická konjunkce) a OR (logická disjunkce).;
+#X text 180 717 a;
+#X text 197 717 b;
+#X text 189 713 |;
+#X text 189 721 |;
+#X text 189 731 |;
+#X text 189 739 |;
+#X text 189 748 |;
+#X text 189 756 |;
+#X text 189 766 |;
+#X text 189 774 |;
+#X text 205 748 |;
+#X text 205 756 |;
+#X text 205 766 |;
+#X text 205 774 |;
+#X text 205 739 |;
+#X text 205 713 |;
+#X text 205 721 |;
+#X text 205 731 |;
+#X text 172 713 |;
+#X text 172 721 |;
+#X text 172 731 |;
+#X text 172 739 |;
+#X text 172 748 |;
+#X text 172 756 |;
+#X text 172 766 |;
+#X text 172 774 |;
+#X text 189 772 |;
+#X text 205 772 |;
+#X text 172 772 |;
+#X text 237 748 |;
+#X text 237 756 |;
+#X text 237 766 |;
+#X text 237 774 |;
+#X text 237 739 |;
+#X text 237 713 |;
+#X text 237 721 |;
+#X text 237 731 |;
+#X text 189 785 |;
+#X text 205 785 |;
+#X text 172 785 |;
+#X text 189 783 |;
+#X text 205 783 |;
+#X text 172 783 |;
+#X text 237 785 |;
+#X text 189 795 |;
+#X text 205 795 |;
+#X text 172 795 |;
+#X text 189 793 |;
+#X text 205 793 |;
+#X text 172 793 |;
+#X text 237 795 |;
+#X text 173 801 ----------;
+#X text 173 707 ----------;
+#X text 173 725 ----------;
+#X text 173 744 ----------;
+#X text 173 763 ----------;
+#X text 173 784 ----------;
+#X text 89 717 a;
+#X text 122 717 AND;
+#X text 106 717 b;
+#X text 98 713 |;
+#X text 98 721 |;
+#X text 98 731 |;
+#X text 98 739 |;
+#X text 98 748 |;
+#X text 98 756 |;
+#X text 98 766 |;
+#X text 98 774 |;
+#X text 114 748 |;
+#X text 114 756 |;
+#X text 114 766 |;
+#X text 114 774 |;
+#X text 114 739 |;
+#X text 114 713 |;
+#X text 114 721 |;
+#X text 114 731 |;
+#X text 81 713 |;
+#X text 81 721 |;
+#X text 81 731 |;
+#X text 81 739 |;
+#X text 81 748 |;
+#X text 81 756 |;
+#X text 81 766 |;
+#X text 81 774 |;
+#X text 98 772 |;
+#X text 114 772 |;
+#X text 81 772 |;
+#X text 146 748 |;
+#X text 146 756 |;
+#X text 146 766 |;
+#X text 146 774 |;
+#X text 146 739 |;
+#X text 146 713 |;
+#X text 146 721 |;
+#X text 146 731 |;
+#X text 98 785 |;
+#X text 114 785 |;
+#X text 81 785 |;
+#X text 98 783 |;
+#X text 114 783 |;
+#X text 81 783 |;
+#X text 146 785 |;
+#X text 98 795 |;
+#X text 114 795 |;
+#X text 81 795 |;
+#X text 98 793 |;
+#X text 114 793 |;
+#X text 81 793 |;
+#X text 146 795 |;
+#X text 82 801 ----------;
+#X text 82 707 ----------;
+#X text 82 725 ----------;
+#X text 82 744 ----------;
+#X text 82 763 ----------;
+#X text 82 784 ----------;
+#X text 180 755 0;
+#X text 180 736 0;
+#X text 181 774 1;
+#X text 181 794 1;
+#X text 198 736 0;
+#X text 198 794 1;
+#X text 198 755 1;
+#X text 198 774 0;
+#X text 221 736 0;
+#X text 221 794 1;
+#X text 89 754 0;
+#X text 89 735 0;
+#X text 90 773 1;
+#X text 90 793 1;
+#X text 107 735 0;
+#X text 107 793 1;
+#X text 107 754 1;
+#X text 107 773 0;
+#X text 130 754 0;
+#X text 130 735 0;
+#X text 131 793 1;
+#X text 130 773 0;
+#X text 216 717 OR;
+#X text 221 755 1;
+#X text 221 774 1;
+#X msg 426 707 1;
+#X msg 426 735 0;
+#X msg 491 706 1;
+#X msg 492 735 0;
+#X floatatom 453 797 5 0 0 0 - - -;
+#X obj 453 770 ||;
+#X text 66 825 Mějme stále na paměti to \, jak se chová aktivní
+a pasivní vstup! Výsledek je vždy vyhodnocen až po inicializaci
+levého \, tj. aktivního vstupu.;
+#X obj 85 244 bng 15 250 50 0 empty empty empty 17 7 0 10 -262144 -1
+-1;
+#X obj 85 274 f;
+#X obj 124 273 + 1;
+#X obj 124 304 t f f;
+#X msg 157 460 0;
+#X obj 157 409 t b b;
+#X obj 124 361 select 0 1;
+#X text 180 308 a pak teprve provádíme srovnání.;
+#X text 213 349 vypíšeme hlášku a hodnota v [f] zůstává.;
+#X obj 124 333 == 10;
+#X obj 124 489 print != 10;
+#X obj 189 436 print zmackl jsi bang presne 10x;
+#X text 229 399 hlášku o dosažení shody a vynulujeme [f].;
+#X text 219 554 .;
+#X text 367 606 .;
+#X text 190 646 .;
+#X text 66 673 Zjevnější nám výsledek těchto logických operací
+bude _____ z následujících tabulek:;
+#X obj 438 677 cnv 15 100 15 empty empty empty 20 12 0 14 -262144 -66577
+0;
+#X text 66 69 Srovnávací operátory využijeme v řadě situací:
+např. když budeme pořebovat zjistit \, jestli bylo dané tlačítko
+zmáčknuto přesně 10x (k tomu můžeme využít i binární operátor
+[mod]) \, zda jsme myší "ujeli" vzdálenost větší než jeden kilometr
+\, nebo jestli se dva body nacházejí na stejné souřadnici atd.
+Obecně jde o situace \, nad kterými si můžeme položit otázku
+\, na níž odpovídáme ano nebo ne.;
+#X text 180 278 Hodnotu \, kterou počítáme \, posíláme [trigger]em
+;
+#X text 180 293 2x: nejprve ji pošleme do pasivního inletu [f] \,
+;
+#X text 229 385 Pokud je hodnota rovna 10 \, vypíšeme;
+#X text 214 335 Pokud hodnota není rovna 10 \, jen;
+#X text 66 591 Výsledkem logické konjunkce je 1 pouze tehdy \, když
+oba vstupní operandy jsou 1 Jinak je výsledek 0;
+#X text 225 606 .;
+#X text 66 631 Výsledkem logické disjunkce je 1 pouze tehdy \, když
+je aspoň jeden z operandů 1 Jinak je výsledek 0;
+#X text 332 646 .;
+#X text 450 896 .;
+#X text 66 881 Pokud do levého vstupu pošleme jakoukoliv hodnotu
+různou od nuly \, pak ji logické operátory v Pd interpretují jako
+1 Výsledek logické konjunkce bude tedy 1 \, i když do obou vstupů
+pošleme např. 10 a -7;
+#X text 260 927 .;
+#X connect 6 0 11 0;
+#X connect 7 0 6 0;
+#X connect 8 0 6 0;
+#X connect 9 0 6 1;
+#X connect 10 0 6 1;
+#X connect 155 0 160 0;
+#X connect 156 0 160 0;
+#X connect 157 0 160 1;
+#X connect 158 0 160 1;
+#X connect 160 0 159 0;
+#X connect 162 0 163 0;
+#X connect 163 0 164 0;
+#X connect 164 0 165 0;
+#X connect 165 0 171 0;
+#X connect 165 1 163 1;
+#X connect 166 0 163 1;
+#X connect 167 0 166 0;
+#X connect 167 1 173 0;
+#X connect 168 0 172 0;
+#X connect 168 1 167 0;
+#X connect 171 0 168 0;

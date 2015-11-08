@@ -1,0 +1,81 @@
+#N canvas 1 54 718 1017 12;
+#X obj 610 672 tgl 15 0 empty empty empty 17 7 0 10 -262144 -1 -1 0
+1;
+#X obj 354 698 analyzer;
+#X obj 353 880 dac~;
+#X obj 354 672 catch~ signal;
+#X obj 92 670 osc~ 440;
+#X obj 92 731 throw~ signal;
+#X obj 92 701 *~;
+#X obj 124 703 tgl 15 0 empty empty empty 17 7 0 10 -262144 -1 -1 0
+1;
+#X text 493 662 Vizualizaci;
+#X text 493 675 zapnete zde;
+#X text 574 667 --->;
+#X text 70 561 Základním zvukovým generátorem v Pd je objekt [osc~].
+Jeho výstupem je vlna ve tvaru kosinusoidy. Má "měkký" charakter.
+Ve spektru \, kromě základní frekvence \, nevytváří žádné
+další harmonické složky. Levý vstup slouží pro předání frekvence
+a pravý pro nastavení fáze - tak je tomu ostatně i u řady ostatních
+periodických generátorů.;
+#X text 70 764 Poslechněte si oscilátor a zároveň;
+#X text 69 794 tvaru vlny a charakteru spektra.;
+#X text 70 809 Ve spektru uvidíte pouze jeden vrchol \,;
+#X text 70 825 který odpovídá frekvenci 440 Hz. Žádné;
+#X text 69 840 jiné složky v něm nebudou.;
+#X obj 71 73 cnv 15 200 15 empty empty SPEKTRUM 2 8 0 12 -228856 -66577
+0;
+#X obj 502 476 pddplink http://www.sonicvisualiser.org/ -text Sonic
+Visualiser;
+#X obj 527 502 pddplink http://www.baudline.com/ -text Baudline;
+#X obj 71 549 cnv 15 200 15 empty empty [OSC~] 2 8 0 12 -228856 -66577
+0;
+#X text 70 865 Abstrakce [analyzer] má dva vstupy:;
+#X text 71 880 levý je pro signál a pravý zapíná;
+#X text 70 895 nebo vypíná vizualizaci. Výstup je;
+#X text 70 910 stejný jako vstupní signál a můžeme ho zapojit
+do [dac~]. _ V tomto případě do abstrakce posíláme signál "bezdrátově"
+objektem [throw~] a "chytáme" ho objektem [catch~].;
+#X obj 475 918 cnv 15 60 15 empty empty empty 20 12 0 14 -262144 -66577
+0;
+#X text 70 83 Doposud jsme se nezmínili ještě o jedné důležité
+složce zvuku \, kterou je třeba uvést \, a tou je jeho barva (témbr)
+\, neboli spektrální charakteristika.;
+#X text 70 138 Klavír i klarinet mohou hrát stejný tón o stejné
+frekvenci \, a přeci je dokážeme jasně rozlišit - právě díky
+různé charakteristice jejich barvy. Když rozezníme strunu klavíru
+\, výsledný tón není jen jedna frekvence \, ale součet celé řady
+dalších \, tzv. vyšších harmonických frekvencí. Poměr amplitud
+těchto vyšších harmonických frekvencí je pro každý nástroj
+jiný.;
+#X text 70 252 Kdybychom se na signál z klavíru a klarinetu podívali
+_____ s pomocí našeho "osciloskopu" \, který jsme si postavili ____
+v předchozí kapitole \, viděli bychom \, že kmitají stejně rychle
+\, ale průběh vlny mají odlišný. Tvar průběhu vlny určuje zabarvení
+daného tónu a na následujících stranách uvidíme i uslyšíme
+\, že různé generátory signálu vytvářejí různé tvary vln
+a mají různý charakter.;
+#X text 71 366 Z důvodů názornosti budeme používat rozšířenou
+verzi "osciloskopu" \, který kromě průběhu vlny bude v druhém
+poli zobrazovat i zvukové spektrum. Na osu X se vynáší frekvence
+a pokrývá rozsah 20 Hz až 22 kHz. Na osu Y se pak vynáší amplituda
+jednotlivých složek. Abstrakce se jmenuje [analyzer] a je součástí
+zdrojových kódů k rukověti. Její funkce je spíš ilustrativní.
+Čtenářům \, kteří by chtěli spektrum prozkoumávat v detailnějším
+rozlišení \, bych doporučil multiplatformní open-source aplikaci
+SonicVisualiser nebo aplikaci Baudline (pouze Linux ______ a MacOS)
+pro analýzu v reálném čase.;
+#X text 70 779 zapněte vizualizaci. Povšimněte si;
+#X obj 444 255 cnv 15 60 15 empty empty empty 20 12 0 14 -262144 -66577
+0;
+#X obj 453 271 cnv 15 60 15 empty empty empty 20 12 0 14 -262144 -66577
+0;
+#X obj 434 509 cnv 15 60 15 empty empty empty 20 12 0 14 -262144 -66577
+0;
+#X connect 0 0 1 1;
+#X connect 1 0 2 0;
+#X connect 1 0 2 1;
+#X connect 3 0 1 0;
+#X connect 4 0 6 0;
+#X connect 6 0 5 0;
+#X connect 7 0 6 1;

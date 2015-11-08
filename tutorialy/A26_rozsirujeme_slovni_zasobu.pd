@@ -1,0 +1,177 @@
+#N canvas 1 54 718 1017 12;
+#X obj 67 516 cnv 15 200 15 empty empty RANDOM 2 8 0 12 -228856 -66577
+0;
+#X obj 104 259 unpack f f;
+#X floatatom 104 288 5 0 0 0 - - -;
+#X floatatom 171 288 5 0 0 0 - - -;
+#X floatatom 87 91 5 0 0 0 - - -;
+#X obj 87 260 bng 15 250 50 0 empty empty empty 17 7 0 10 -262144 -1
+-1;
+#X floatatom 320 90 5 0 0 0 - - -;
+#X floatatom 244 90 5 0 0 0 - - -;
+#X obj 320 115 t b f;
+#X obj 244 115 t b f;
+#X floatatom 238 290 5 0 0 0 - - -;
+#X floatatom 278 289 5 0 0 0 - - -;
+#X obj 238 262 unpack f f f;
+#X obj 217 264 bng 15 250 50 0 empty empty empty 17 7 0 10 -262144
+-1 -1;
+#X floatatom 319 288 5 0 0 0 - - -;
+#X floatatom 201 90 5 0 0 0 - - -;
+#X obj 87 235 route nota obalka;
+#X msg 201 173 obalka \$1 \$2 \$3;
+#X floatatom 161 90 5 0 0 0 - - -;
+#X obj 87 143 pack f f---;
+#X obj 201 141 pack f f f------------;
+#X msg 87 174 nota \$1 \$2;
+#X text 76 208 -------------------------------------------;
+#X text 218 198 presetová vrstva;
+#X text 218 220 nástrojová vrstva;
+#X text 379 100 a [route] jsou základem něčeho \,;
+#X text 379 114 co bychom mohli pojmenovat jako;
+#X text 379 128 "presetová vrstva" - tedy část;
+#X text 379 143 kódu \, která slouží k vytváření;
+#X text 380 158 a nastavování parametrů \, jež pak;
+#X text 380 172 posíláme např. do syntetizéru.;
+#X floatatom 141 388 5 0 0 0 - - -;
+#X obj 88 418 pack f f;
+#X floatatom 88 480 5 0 0 0 - - -;
+#X floatatom 131 479 5 0 0 0 - - -;
+#X floatatom 174 479 5 0 0 0 - - -;
+#X obj 88 446 route 0 1 2;
+#X obj 88 388 f;
+#X obj 88 356 t b f;
+#X obj 142 358 hradio 15 1 0 3 empty empty empty 0 -8 0 10 -262144
+-1 -1 0;
+#X floatatom 88 325 5 0 0 0 - - -;
+#X obj 468 450 demux 0 1 2;
+#X obj 542 423 hradio 15 1 0 3 empty empty empty 0 -8 0 10 -262144
+-1 -1 0;
+#X floatatom 468 416 5 0 0 0 - - -;
+#X floatatom 468 480 5 0 0 0 - - -;
+#X floatatom 511 479 5 0 0 0 - - -;
+#X floatatom 554 479 5 0 0 0 - - -;
+#X text 211 334 již být s to sestavit "rozbočovač" zpráv.;
+#X text 211 364 zdůvodnit použití objektu [f] a [pack f f].;
+#X text 268 424 z knihovny zexy je to;
+#X text 268 438 trochu jednodušší:;
+#X text 268 411 S využitím objektu [demux];
+#X obj 87 613 random 10;
+#X floatatom 87 644 5 0 0 0 - - -;
+#X obj 87 589 bng 15 250 50 0 empty empty empty 17 7 0 10 -262144 -1
+-1;
+#X msg 187 586 10;
+#X msg 147 586 3;
+#X msg 225 586 100;
+#X text 264 593 do pravého vstupu dynamicky měníme;
+#X text 264 609 horní hranici generovaných hodnot.;
+#X msg 87 685 bang;
+#X obj 87 754 + 60;
+#X floatatom 87 788 5 0 0 0 - - -;
+#X text 167 679 Generátor náhodných;
+#X text 168 694 MIDI not v rozsahu;
+#X text 167 709 jedné oktávy.;
+#X obj 87 720 random 12;
+#X text 171 755 C4 = 60 \, C5 = 72;
+#X text 170 779 Zde máme rozsah;
+#X text 170 795 60..72.;
+#X obj 382 685 tgl 15 0 empty empty empty 17 7 0 10 -262144 -1 -1 0
+1;
+#X obj 382 710 metro 1000;
+#X obj 382 737 random 2000;
+#X obj 382 764 t b f;
+#X obj 382 791 bng 15 250 50 0 empty empty empty 17 7 0 10 -262144
+-1 -1;
+#X text 465 683 Aperiodický;
+#X floatatom 414 787 5 0 0 0 - - -;
+#X obj 483 846 random 2;
+#X obj 483 824 bng 15 250 50 0 empty empty empty 17 7 0 10 -262144
+-1 -1;
+#X obj 483 873 sel 0 1;
+#X msg 529 899 ano;
+#X msg 483 898 ne;
+#X obj 483 923 print věštírna říká;
+#X text 211 319 Se znalostí předchozí látky bychom také měli
+;
+#X text 510 807 Zde zjišťovací;
+#X text 510 819 otázka...;
+#X text 379 86 [pack] spolu s objekty [select];
+#X obj 66 916 pddplink http://cs.wikipedia.org/wiki/Gener%C3%A1tor_n%C3%A1hodn%C3%BDch_%C4%8D%C3%ADsel
+-text sem;
+#X obj 101 916 pddplink http://cs.wikipedia.org/wiki/Gener%C3%A1tor_pseudon%C3%A1hodn%C3%BDch_%C4%8D%C3%ADsel
+-text sem;
+#X obj 143 916 pddplink http://cs.wikipedia.org/wiki/Hardwarov%C3%BD_gener%C3%A1tor_n%C3%A1hodn%C3%BDch_%C4%8D%C3%ADsel
+-text sem;
+#X obj 283 916 pddplink http://mrl.nyu.edu/~perlin/ -text Kena Perlina
+;
+#X text 465 698 časovač.;
+#X text 211 349 Podívejte se na vedlejší patch a pokuste se;
+#X text 66 530 Když objektu [random] na levý aktivní vstup pošleme
+bang \, vygeneruje pseudonáhodnou hodnotu v rozsahu od 0 až do argument-1.
+;
+#X text 264 579 Číselnou hodnotou poslanou do;
+#X text 66 818 Pseudonáhodná čísla využijete \, kdykoliv budete
+potřebovat "ušpinit" příliš čistý proud dat \, nebo v aleatorické
+kompozici. Nebo si s pomocí objektu [random] postavte primitivní
+Pd věštírnu.;
+#X text 66 886 Problematika generování pseudonáhodných čísel
+je velmi zajímavá. Pokud by vás zajímaly podrobnosti \, podívejte
+se sem \, sem a sem \, nebo na stánku Kena Perlina - autora věhlasného
+Perlinova šumu.;
+#X connect 1 0 2 0;
+#X connect 1 1 3 0;
+#X connect 4 0 19 0;
+#X connect 6 0 8 0;
+#X connect 7 0 9 0;
+#X connect 8 0 7 0;
+#X connect 8 1 20 2;
+#X connect 9 0 15 0;
+#X connect 9 1 20 1;
+#X connect 12 0 10 0;
+#X connect 12 1 11 0;
+#X connect 12 2 14 0;
+#X connect 15 0 20 0;
+#X connect 16 0 1 0;
+#X connect 16 0 5 0;
+#X connect 16 1 13 0;
+#X connect 16 1 12 0;
+#X connect 17 0 16 0;
+#X connect 18 0 19 1;
+#X connect 19 0 21 0;
+#X connect 20 0 17 0;
+#X connect 21 0 16 0;
+#X connect 31 0 32 1;
+#X connect 32 0 36 0;
+#X connect 36 0 33 0;
+#X connect 36 1 34 0;
+#X connect 36 2 35 0;
+#X connect 37 0 32 0;
+#X connect 38 0 37 0;
+#X connect 38 1 31 0;
+#X connect 39 0 37 1;
+#X connect 40 0 38 0;
+#X connect 41 0 44 0;
+#X connect 41 1 45 0;
+#X connect 41 2 46 0;
+#X connect 42 0 41 1;
+#X connect 43 0 41 0;
+#X connect 52 0 53 0;
+#X connect 54 0 52 0;
+#X connect 55 0 52 1;
+#X connect 56 0 52 1;
+#X connect 57 0 52 1;
+#X connect 60 0 66 0;
+#X connect 61 0 62 0;
+#X connect 66 0 61 0;
+#X connect 70 0 71 0;
+#X connect 71 0 72 0;
+#X connect 72 0 73 0;
+#X connect 73 0 74 0;
+#X connect 73 1 76 0;
+#X connect 76 0 71 1;
+#X connect 77 0 79 0;
+#X connect 78 0 77 0;
+#X connect 79 0 81 0;
+#X connect 79 1 80 0;
+#X connect 80 0 82 0;
+#X connect 81 0 82 0;

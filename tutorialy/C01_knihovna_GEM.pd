@@ -1,0 +1,108 @@
+#N canvas 1 54 718 1017 12;
+#X obj 67 377 cnv 15 200 15 empty empty VYTVOŘENÍ_ZÁKLADNÍHO_OKNA
+2 8 0 12 -228856 -66577 0;
+#X obj 67 73 cnv 15 567 25 empty empty knihovna_GEM 20 12 0 14 -1 -262144
+0;
+#X obj 549 116 pddplink http://zwizwa.be/pdp/ -text pdp;
+#X obj 531 141 pddplink http://gridflow.ca/ -text gridflow;
+#X obj 548 164 pddplink http://puredata.info/downloads/gem -text GEM
+;
+#X obj 88 945 gemwin;
+#X msg 88 467 create;
+#X msg 106 495 destroy;
+#X msg 191 658 dimen 720 576;
+#X obj 189 586 tgl 15 0 empty empty empty 17 7 0 10 -262144 -1 -1 0
+1;
+#X msg 132 535 1;
+#X msg 189 607 cursor \$1;
+#X obj 191 700 tgl 15 0 empty empty empty 17 7 0 10 -262144 -1 -1 0
+1;
+#X msg 191 721 border \$1;
+#X msg 173 536 0;
+#X text 144 466 Vytvoří základní vykreslovací okno.;
+#X text 169 495 Zavře základní vykreslovací okno.;
+#X text 272 580 Zapne/vypne viditelnost kurzoru;
+#X text 272 594 ve vykreslovacím okně. Velmi užitečné při;
+#X text 272 608 živém hraní - nestane se tak \, že se vám;
+#X text 273 622 kurzor omylem dostane do projekce.;
+#X text 297 645 Nastaví přesné rozměry vykreslovacího;
+#X text 297 671 a opětovném vytvoření okna.;
+#X text 297 658 okna \, změna se ale projeví až po zavření;
+#X text 267 696 Zapne/vypne vykreslování okrajů okna. Opět;
+#X text 267 710 velmi užitečné při živém hraní. Změna se;
+#X text 267 723 projeví až po zavření a opětovném vytvoření
+;
+#X text 267 737 vykreslovacího okna.;
+#X msg 191 767 frame 25;
+#X text 265 759 Nastaví počet vykreslovaných snímků za;
+#X text 265 773 vteřinu. Přednastaveno je 20;
+#X msg 190 922 color \$1 \$2 \$3;
+#X obj 190 898 pack f f f;
+#X obj 190 810 vsl 15 40 0 1 0 0 empty empty empty 0 -9 0 10 -258113
+-1 -1 0 1;
+#X obj 223 809 vsl 15 40 0 1 0 0 empty empty empty 0 -9 0 10 -4034
+-1 -1 0 1;
+#X obj 257 808 vsl 15 40 0 1 0 0 empty empty empty 0 -9 0 10 -4160
+-1 -1 0 1;
+#X obj 202 874 bng 15 250 50 0 empty empty empty 17 7 0 10 -262144
+-1 -1;
+#X text 284 813 Abychom změnu viděli \, nesmíme zapomenout zapnout
+;
+#X text 284 827 vykreslování (rendering) zprávou [1(.;
+#X text 213 543 nebude se v něm nic zobrazovat a neuvidíme;
+#X text 213 557 žádnou změnu.;
+#X text 284 841 Rozsahy všech posuvníků jsou 0..1 a označují;
+#X text 283 856 jednotlivé barevné kanály RGB (červený \, zelený
+\,;
+#X text 284 870 modrý) v aditivním míchání barev.;
+#X text 284 884 Bangem měníme pasivní vstupy objektu [pack];
+#X text 284 897 na aktivní.;
+#X text 66 95 K zacházení s obrazem byly pro Pd vyvinuty knihovny
+pdp \, GridFlow a GEM. Vzhledem k tomu \, že součástí Pd-extended
+_ a multiplatformní (pro Linux \, tak pro MacOS a Windows) je pouze
+knihovna GEM \, budeme se věnovat právě jí.;
+#X obj 464 114 cnv 15 40 15 empty empty empty 20 12 0 14 -262144 -66577
+0;
+#X text 67 167 Původně ji naprogramoval Mark Danks a dnes je rozvíjena
+___ a udržována řadou dalších programátorů. Zkratka GEM znamená
+Graphics Environment for Multimedia a zprostředkovává nám funkce
+jako vytvoření okna \, do něhož vizuální složky vykreslujeme
+\, práci se statickým i pohyblivým obrazem \, částicové systémy
+\, postprodukční pluginy atd.;
+#X text 66 270 V případě Pd-extended se nemusíme starat o instalaci
+této externí knihovy - já automaticky načtena při jejich startu.
+Pokud byste v Pd konzoli zvětšili citlivost výstupu na Log 4 a prošli
+si historii vypsaných zpráv \, narazíte v ní na řádek "GEM: Graphics
+Environment for Multimedia" a pár dalších \, které nás informují
+o verzi a času kompilace.;
+#X text 66 389 K vytvoření základního okna \, do nějž se grafika
+vykresluje \, slouží objekt [gemwin]. Zpráva [create( okno otevře
+______ a zpráva [destroy( je zase zavře. Další zprávy si ukážeme
+na následujícím příkladu:;
+#X text 213 517 Zapne/vypne vykreslování (rendering).;
+#X text 213 530 Pokud do [gemwin] nepošleme zprávu [1( \,;
+#X text 461 773 .;
+#X text 284 799 Zpráva [color \$1 \$2 \$3( nastavuje barvu pozadí.
+;
+#X obj 461 170 cnv 15 40 15 empty empty empty 20 12 0 14 -262144 -66577
+0;
+#X obj 428 407 cnv 15 60 15 empty empty empty 20 12 0 14 -262144 -66577
+0;
+#X connect 6 0 5 0;
+#X connect 7 0 5 0;
+#X connect 8 0 5 0;
+#X connect 9 0 11 0;
+#X connect 10 0 5 0;
+#X connect 11 0 5 0;
+#X connect 12 0 13 0;
+#X connect 13 0 5 0;
+#X connect 14 0 5 0;
+#X connect 28 0 5 0;
+#X connect 31 0 5 0;
+#X connect 32 0 31 0;
+#X connect 33 0 32 0;
+#X connect 34 0 32 1;
+#X connect 34 0 36 0;
+#X connect 35 0 32 2;
+#X connect 35 0 36 0;
+#X connect 36 0 32 0;

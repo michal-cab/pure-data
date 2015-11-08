@@ -1,0 +1,144 @@
+#N canvas 1 54 718 1017 12;
+#X floatatom 94 510 5 0 0 0 - - -;
+#X floatatom 191 510 5 0 0 0 - - -;
+#N canvas 939 874 450 300 rec1 0;
+#X obj 19 -242 outlet;
+#X obj 113 -242 outlet;
+#X obj -66 -290 inlet;
+#X obj -66 -243 s \$0-xyz;
+#X obj 19 -290 r \$0-xyz;
+#X obj 113 -290 r xyz;
+#X obj 195 -266 \$0;
+#X obj 195 -291 inlet;
+#X obj 195 -241 outlet;
+#X connect 2 0 3 0;
+#X connect 4 0 0 0;
+#X connect 5 0 1 0;
+#X connect 6 0 8 0;
+#X connect 7 0 6 0;
+#X restore 88 216 pd rec1;
+#X floatatom 88 251 5 0 0 0 - - -;
+#X floatatom 132 251 5 0 0 0 - - -;
+#X floatatom 89 370 5 0 0 0 - - -;
+#X floatatom 132 370 5 0 0 0 - - -;
+#X floatatom 89 309 5 0 0 0 - - -;
+#X floatatom 88 189 5 0 0 0 - - -;
+#X obj 89 336 rec1;
+#X obj 94 547 s \$0-xyz;
+#X obj 191 546 s xyz;
+#X floatatom 177 252 5 0 0 0 - - -;
+#X obj 134 192 bng 15 250 50 0 empty empty empty 17 7 0 10 -262144
+-1 -1;
+#N canvas 947 874 450 300 rec1 0;
+#X obj 19 -242 outlet;
+#X obj 113 -242 outlet;
+#X obj -66 -290 inlet;
+#X obj -66 -243 s \$0-xyz;
+#X obj 19 -290 r \$0-xyz;
+#X obj 113 -290 r xyz;
+#X obj 195 -266 \$0;
+#X obj 195 -291 inlet;
+#X obj 195 -241 outlet;
+#X connect 2 0 3 0;
+#X connect 4 0 0 0;
+#X connect 5 0 1 0;
+#X connect 6 0 8 0;
+#X connect 7 0 6 0;
+#X restore 224 216 pd rec1;
+#X floatatom 224 251 5 0 0 0 - - -;
+#X floatatom 268 251 5 0 0 0 - - -;
+#X floatatom 224 189 5 0 0 0 - - -;
+#X floatatom 313 252 5 0 0 0 - - -;
+#X obj 270 192 bng 15 250 50 0 empty empty empty 17 7 0 10 -262144
+-1 -1;
+#X floatatom 175 370 5 0 0 0 - - -;
+#X obj 136 314 bng 15 250 50 0 empty empty empty 17 7 0 10 -262144
+-1 -1;
+#X floatatom 223 370 5 0 0 0 - - -;
+#X floatatom 266 370 5 0 0 0 - - -;
+#X floatatom 223 309 5 0 0 0 - - -;
+#X obj 223 336 rec1;
+#X floatatom 309 370 5 0 0 0 - - -;
+#X obj 270 314 bng 15 250 50 0 empty empty empty 17 7 0 10 -262144
+-1 -1;
+#X text 250 503 Pokuste se nyní sami provést "reverzní;
+#X obj 550 643 \$0;
+#X obj 550 621 bng 15 250 50 0 empty empty empty 17 7 0 10 -262144
+-1 -1;
+#X floatatom 550 669 5 0 0 0 - - -;
+#X text 70 788 Zpráva "xyz" bez identifikátoru má globální platnost
+a bude doručena jak do subpatchů \, tak do abstrakcí.;
+#X obj 71 889 cnv 15 200 15 empty empty DOLAR_NULA_ABSTRAKCE_A_POLE
+2 8 0 12 -228856 -66577 0;
+#X text 70 404 Jak v subpatchích \, tak v abstrakcích máme stejný
+kód: první vstup posílá bezdrátově zprávu "\$0-xyz". Na první
+výstup putuje bezdrátově přijatá zpráva "\$0-xyz" a na druhý
+zpráva "xyz". Do třetího výstupu pak hodnota z identifikátoru
+"\$0" \, kterou ven dostaneme bangem. Vložme do hlavního - rodičovského
+patche ještě následující "bezdrátové vysílače".;
+#X text 85 167 Subpatche:;
+#X text 86 287 Abstrakce:;
+#X obj 420 907 cnv 15 120 15 empty empty empty 20 12 0 14 -262144 -66577
+0;
+#X text 70 69 Kód z rámce na předchozí stránce jednou vložíme
+do subpatche [pd rec1] a jednou jej uložíme jako samostatnou abstrakci
+s názvem "rec1.pd". Pak subpatch jednou zduplikujeme a vytvoříme
+dvě instance abstrakce [rec1]. Subpatche i abstrakce doplníme o číselné
+boxy a jeden bang \, takže výsledek bude vypadat takto:;
+#X text 248 518 inženýrský" experiment a pochopit \, jak se;
+#X text 249 534 subpatche a abstrakce chovají. V čem je;
+#X text 248 549 rozdíl?;
+#X text 70 577 Vidíme \, že když posíláme zprávu do subpatche
+- ať už přímo do něj z číselného boxu \, nebo bezdrátově
+z rodičovského patche \, na levý výstup u obou vždy doteče daná
+hodnota. __ U abstrakcí se na výstupu neděje nic. Když inicializujeme
+bangem subpatche i kód s identifikátorem "\$0" napravo \, zjistíme
+\, že hodnota \, kterou identifikátor má \, je stejná. Subpatche
+jsou součástí hlavního rodičovského patche _____ a identifikátor
+je pro ně stejný.;
+#X obj 459 612 cnv 15 60 15 empty empty empty 20 12 0 14 -262144 -66577
+0;
+#X text 70 705 Oproti tomu abstrakce je samostatný soubor a každá
+její instance má jedinečný identifikátor. Proto "přijímač"
+[\$0-xyz] v abstrakcích "neslyší" to \, co posíláme ze subpatchů
+nebo z rodičovského patche. Díky identifikátoru "\$0" v něm názvy
+proměnných mají pouze lokální platnost.;
+#X text 71 827 Na následující případové studii si ukážeme jak
+skloubit to \, co víme o identifikátoru "\$0-" \, abstrakcích a
+polích. Takže se pro nás látka o abstrakcích snad stane méně
+abstraktní.;
+#X text 364 827 \,;
+#X text 70 902 Postavíme si sekvencer \, který ale nebude umístěný
+________ v subpatchi \, jak tomu bylo \, když jsme ho stavěli poprvé.
+Bude to samostatná abstrakce a místo přepínačů v něm ______
+k zadávání hodnot budeme využívat pole.;
+#X obj 441 676 cnv 15 60 15 empty empty empty 20 12 0 14 -262144 -66577
+0;
+#X obj 441 939 cnv 15 60 15 empty empty empty 20 12 0 14 -262144 -66577
+0;
+#X obj 422 906 cnv 15 120 15 empty empty empty 20 12 0 14 -262144 -66577
+0;
+#X connect 0 0 10 0;
+#X connect 1 0 11 0;
+#X connect 2 0 3 0;
+#X connect 2 1 4 0;
+#X connect 2 2 12 0;
+#X connect 7 0 9 0;
+#X connect 8 0 2 0;
+#X connect 9 0 5 0;
+#X connect 9 1 6 0;
+#X connect 9 2 20 0;
+#X connect 13 0 2 1;
+#X connect 14 0 15 0;
+#X connect 14 1 16 0;
+#X connect 14 2 18 0;
+#X connect 17 0 14 0;
+#X connect 19 0 14 1;
+#X connect 21 0 9 1;
+#X connect 24 0 25 0;
+#X connect 25 0 22 0;
+#X connect 25 1 23 0;
+#X connect 25 2 26 0;
+#X connect 27 0 25 1;
+#X connect 29 0 31 0;
+#X connect 30 0 29 0;

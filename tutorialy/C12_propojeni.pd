@@ -1,0 +1,192 @@
+#N canvas 1 54 718 1017 12;
+#X obj 78 180 gemhead;
+#X msg 234 324 draw line;
+#X obj 251 203 gemwin;
+#X msg 331 167 0 \, destroy;
+#X obj 142 305 loadbang;
+#X msg 183 333 0.15;
+#X obj 78 454 newWave 60 60;
+#X msg 142 332 11;
+#X msg 251 167 create \, 1;
+#X obj 78 372 t a b;
+#X obj 78 159 tgl 15 0 empty empty empty 17 7 0 10 -262144 -1 -1 1
+1;
+#X obj 78 206 translateXYZ -10 -9 -9;
+#X obj 246 241 r trig2;
+#X obj 366 235 r trig3;
+#X msg 246 265 force 40 40 20;
+#X msg 125 266 force 20 40 20;
+#X obj 125 242 r trig1;
+#X obj 495 236 r trig4;
+#X msg 366 261 force 30 33 10;
+#X msg 495 263 force 27 20 10;
+#X msg 495 316 force 33 20 10;
+#X msg 366 288 force 30 30 15;
+#X msg 495 290 force 30 20 15;
+#X msg 366 315 force 30 36 10;
+#X text 324 204 Na souřadnice X \, Y působíme danou silou.;
+#N canvas 344 653 782 559 zvuk 0;
+#X obj 71 331 noise~;
+#X obj 72 359 bp~ 3000 10;
+#X obj 194 330 noise~;
+#X obj 195 359 bp~ 6000 10;
+#X obj 71 482 *~;
+#X obj 90 437 bng 15 250 50 0 empty empty empty 17 7 0 10 -262144 -1
+-1;
+#X obj 90 457 ead~ 10 500;
+#X obj 213 437 bng 15 250 50 0 empty empty empty 17 7 0 10 -262144
+-1 -1;
+#X obj 196 482 *~;
+#X obj 457 331 noise~;
+#X obj 457 482 *~;
+#X obj 474 437 bng 15 250 50 0 empty empty empty 17 7 0 10 -262144
+-1 -1;
+#X obj 458 359 bp~ 200 10;
+#X obj 326 331 noise~;
+#X obj 326 482 *~;
+#X obj 343 437 bng 15 250 50 0 empty empty empty 17 7 0 10 -262144
+-1 -1;
+#X obj 343 457 ead~ 10 500;
+#X obj 327 359 bp~ 80 10;
+#X obj 327 383 *~ 20;
+#X obj 72 508 throw~ signal;
+#X obj 196 508 throw~ signal;
+#X obj 325 507 throw~ signal;
+#X obj 456 507 throw~ signal;
+#X obj 90 412 r trig1;
+#X obj 213 412 r trig2;
+#X obj 474 412 r trig4;
+#X obj 343 412 r trig3;
+#X obj 213 456 ead~ 10 500;
+#X obj 474 457 ead~ 10 500;
+#X obj 458 385 *~ 15;
+#X obj 297 95 catch~ signal;
+#X obj 298 268 dac~;
+#X obj 60 196 key;
+#X obj 60 263 s trig1;
+#X obj 90 290 s trig2;
+#X obj 121 260 s trig3;
+#X obj 152 290 s trig4;
+#X obj 106 162 random 4;
+#X obj 106 189 sel 0 1 2 3;
+#X obj 106 108 tgl 15 0 empty empty empty 17 7 0 10 -262144 -1 -1 1
+1;
+#X obj 60 228 sel 111 112 113 97;
+#X obj 106 134 metro 300;
+#X text 196 227 O \, P \, Q \, A;
+#X obj 298 228 *~;
+#X msg 315 173 \$1 20;
+#X obj 137 108 hsl 128 15 0 1 0 0 empty empty empty -2 -8 0 10 -262144
+-1 -1 10300 1;
+#X obj 315 200 line~;
+#X connect 0 0 1 0;
+#X connect 1 0 4 0;
+#X connect 2 0 3 0;
+#X connect 3 0 8 0;
+#X connect 4 0 19 0;
+#X connect 5 0 6 0;
+#X connect 6 0 4 1;
+#X connect 7 0 27 0;
+#X connect 8 0 20 0;
+#X connect 9 0 12 0;
+#X connect 10 0 22 0;
+#X connect 11 0 28 0;
+#X connect 12 0 29 0;
+#X connect 13 0 17 0;
+#X connect 14 0 21 0;
+#X connect 15 0 16 0;
+#X connect 16 0 14 1;
+#X connect 17 0 18 0;
+#X connect 18 0 14 0;
+#X connect 23 0 5 0;
+#X connect 24 0 7 0;
+#X connect 25 0 11 0;
+#X connect 26 0 15 0;
+#X connect 27 0 8 1;
+#X connect 28 0 10 1;
+#X connect 29 0 10 0;
+#X connect 30 0 43 0;
+#X connect 32 0 40 0;
+#X connect 37 0 38 0;
+#X connect 38 0 33 0;
+#X connect 38 1 34 0;
+#X connect 38 2 35 0;
+#X connect 38 3 36 0;
+#X connect 39 0 41 0;
+#X connect 40 0 33 0;
+#X connect 40 1 34 0;
+#X connect 40 2 35 0;
+#X connect 40 3 36 0;
+#X connect 41 0 37 0;
+#X connect 43 0 31 0;
+#X connect 43 0 31 1;
+#X connect 44 0 46 0;
+#X connect 45 0 44 0;
+#X connect 46 0 43 1;
+#X coords 0 -1 1 1 180 30 2 100 100;
+#X restore 398 390 pd zvuk;
+#X text 398 423 Část kódu z předchozí strany;
+#X text 398 436 schovaná do subpatche.;
+#X obj 67 685 cnv 15 200 15 empty empty CVIČENÍ: 2 8 0 12 -204800
+-66577 0;
+#X text 70 702 - pokuste se v závěrečném cvičení zúročit nastudovanou
+;
+#X text 67 69 Nyní přichází na řadu programování vizuální
+složky. Zajistí ji objekt [newWave] \, což je dvourozměrná mřížka
+\, do které můžeme "sahat" a "rozechvívat" ji tím \, že na určité
+souřadnice v ní působíme určitou silou. Detailně popisovat vlastnosti
+[newWave] nebudeme \, ev. je najdete v nápovědě.;
+#X text 67 482 Když nyní vytvoříte vykreslovací okno \, uvidíte
+v něm mřížku a klávesy O \, P \, Q a A (nebo spuštění metra)
+vyvolají událost jak ve zvuku \, tak v obraze. Sestrojili jsme velmi
+jednoduchý audiovizuální nástroj \, na který můžeme klávesami
+hrát.;
+#X text 66 567 Vzájemné propojení obrazu a zvuku se může odehrát
+na sofistikovanější úrovni. Pd-extended obsahují objekty jako
+[fiddle~] \, [bonk~] \, [pix_pix2sig~] a [pix_sig2pix~] \, které jsou
+určeny pro analýzu zvukových i vizuálních dat a jejich prostřednictvím
+lze audiovizuální složky semknout mnohem řízenějším způsobem.
+Tyto techniky však již ponecháme vlastní tvořivé a studijní
+dispozici čtenáře.;
+#X text 83 717 látku a sestrojte si audio-vizuální nástroj \, který
+by odpovídal vašim vlastním představám. Pokud by vaše představa
+nástroje přesahovala oblasti \, kterými jsme se ___ v rukověti
+zabývali \, zkuste si danou látku doplnit samostudiem dokumentace.
+Dobrým pomocníkem vám může být ___ i Pd fórum nebo mailing list.
+Přeji vám v konstrukci _____ a hraní na daný nástroj hodně zdaru!
+;
+#X obj 453 802 cnv 15 100 15 empty empty empty 20 12 0 14 -262144 -66577
+0;
+#X obj 475 786 cnv 15 100 15 empty empty empty 20 12 0 14 -262144 -66577
+0;
+#X obj 475 751 cnv 15 100 15 empty empty empty 20 12 0 14 -262144 -66577
+0;
+#X connect 0 0 11 0;
+#X connect 1 0 6 0;
+#X connect 3 0 2 0;
+#X connect 4 0 7 0;
+#X connect 4 0 5 0;
+#X connect 4 0 1 0;
+#X connect 5 0 6 2;
+#X connect 7 0 6 1;
+#X connect 8 0 2 0;
+#X connect 9 0 6 0;
+#X connect 9 1 6 0;
+#X connect 10 0 0 0;
+#X connect 11 0 9 0;
+#X connect 12 0 14 0;
+#X connect 13 0 18 0;
+#X connect 13 0 21 0;
+#X connect 13 0 23 0;
+#X connect 14 0 6 0;
+#X connect 15 0 6 0;
+#X connect 16 0 15 0;
+#X connect 17 0 19 0;
+#X connect 17 0 22 0;
+#X connect 17 0 20 0;
+#X connect 18 0 6 0;
+#X connect 19 0 6 0;
+#X connect 20 0 6 0;
+#X connect 21 0 6 0;
+#X connect 22 0 6 0;
+#X connect 23 0 6 0;

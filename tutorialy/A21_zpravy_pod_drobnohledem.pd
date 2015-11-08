@@ -1,0 +1,111 @@
+#N canvas 1 54 718 1017 12;
+#X obj 67 477 cnv 15 200 15 empty empty REKAPITULACE 2 8 0 12 -228856
+-66577 0;
+#X obj 442 189 bng 15 250 50 0 empty empty empty 0 -6 0 8 -262144 -1
+-1;
+#X msg 197 117 1 2 3;
+#X msg 87 88 3.14;
+#X msg 177 87 symbol pů;
+#X floatatom 87 299 5 0 0 0 - - -;
+#X symbolatom 135 299 6 0 0 0 - - -;
+#X obj 87 325 bng 15 250 50 0 empty empty empty 17 7 0 10 -262144 -1
+-1;
+#X obj 135 325 bng 15 250 50 0 empty empty empty 17 7 0 10 -262144
+-1 -1;
+#X obj 183 325 bng 15 250 50 0 empty empty empty 17 7 0 10 -262144
+-1 -1;
+#X obj 231 325 bng 15 250 50 0 empty empty empty 17 7 0 10 -262144
+-1 -1;
+#X obj 280 325 bng 15 250 50 0 empty empty empty 17 7 0 10 -262144
+-1 -1;
+#X msg 197 144 5 a t d;
+#X msg 197 173 list ou je;
+#X msg 301 168 je toto seznam?;
+#X msg 301 193 asi ne;
+#X obj 87 271 route float symbol list bang;
+#X text 76 340 float;
+#X text 126 340 symbol;
+#X text 177 340 list;
+#X text 223 339 bang;
+#X text 274 340 něco jiného;
+#X text 441 133 A ano \, bang;
+#X msg 442 208 bang;
+#X msg 442 233 bang bang;
+#X msg 100 112 float 7;
+#X text 441 147 má také vlastní;
+#X text 439 161 implicitní selektor.;
+#X obj 67 373 cnv 15 200 15 empty empty CVIČENÍ: 2 8 0 12 -204800
+-66577 0;
+#X text 69 386 - pakliže máte ještě dost sil a odvahy \, zkuste
+v předchozím;
+#X text 83 401 kódu zdůvodnit \, proč je daná zpráva interpretována
+tak;
+#X text 69 446 - pakliže ne \, doporučuji vydat se na procházku...
+;
+#X text 295 281 o jaký typ selektoru jde. Do posledního;
+#X text 295 294 výstupu směřují ty \, které neumí určit.;
+#X text 83 415 a tak \, kde je a kde není třeba použít explicitní
+selektor \, jaké zprávy mají implicitní selektor atd.;
+#X text 69 511 - v Pd jsou předdefinovány selektory: float \, symbol
+\, list \,;
+#X text 82 557 selektor float a list \, u atomické zprávy typu symbol
+;
+#X text 70 607 - různé objekty umí různě reagovat na uživatelsky
+;
+#X obj 67 685 cnv 15 200 15 empty empty KAPITULACE? 2 8 0 12 -228856
+-66577 0;
+#X obj 331 931 pddplink http://puredata.info/dev/PdDefinitions -text
+zde.;
+#X text 364 931 Teprve pak;
+#X text 66 946 uvidíte \, kolik jsme toho nezmínili.;
+#X text 69 494 - selektor je první nečíselný atom ve zprávě;
+#X text 83 525 bang a pointer;
+#X text 295 267 Argumenty objektu [route] rozlišují \,;
+#X text 71 543 - u čísel a seznamu začínajícího číslem je implicitní
+;
+#X text 82 571 a u seznamu začínajícího symbolem je třeba zprávu
+selektorem symbol a list vždy(!) specifikovat;
+#X text 66 696 Pokud jste se do studia této kapitoly přeci jen pustili
+___ a dočetli až sem \, doufám \, že vás příliš nevystrašila.
+Chtěl bych vás trochu uklidnit \, protože další probírané pasáže
+snad již tak abstraktní nebudou a po rozšíření "slovní zásoby"
+se konečně dostaneme i k praktickým příkladům.;
+#X text 66 796 Uklidnit vás může také fakt \, že k tomu \, abychom
+si v Pd něco naprogramovali tuto látku nemusíme detailě znát.
+Až _ v praxi narazíte na chybu související se selektory \, nebo
+až vám symbol box v konzoli bude hlásit chybu \, třeba si na ni
+vzpomenete. Pokud je mezi čtenáři ale někdo \, komu ________ v
+detailnosti nestačila \, může se podívat do manuálu (Nápověda
+-> Pd Help Browser -> Pure Data -> 1.manual) nebo na dokumentaci all_about_atoms
+a all_about_messages (Nápověda -> Pd Help Browser -> Pure Data ->
+5.reference). K základním definicím se lze dobrat i;
+#X obj 463 815 cnv 15 120 15 empty empty empty 20 12 0 14 -262144 -66577
+0;
+#X obj 448 626 cnv 15 120 15 empty empty empty 20 12 0 14 -262144 -66577
+0;
+#X obj 456 699 cnv 15 120 15 empty empty empty 20 12 0 14 -262144 -66577
+0;
+#X obj 416 860 cnv 15 120 15 empty empty empty 20 12 0 14 -262144 -66577
+0;
+#X text 85 621 definované selektory neboli příkazy - o tom \, jaké
+to v případě toho kterého objektu jsou \, se dočteme v dokumentaci
+;
+#X connect 1 0 16 0;
+#X connect 2 0 16 0;
+#X connect 3 0 16 0;
+#X connect 4 0 16 0;
+#X connect 5 0 7 0;
+#X connect 6 0 8 0;
+#X connect 12 0 16 0;
+#X connect 13 0 16 0;
+#X connect 14 0 16 0;
+#X connect 15 0 16 0;
+#X connect 16 0 5 0;
+#X connect 16 1 6 0;
+#X connect 16 2 9 0;
+#X connect 16 3 10 0;
+#X connect 16 4 11 0;
+#X connect 23 0 16 0;
+#X connect 24 0 16 0;
+#X connect 25 0 16 0;
+#X coords 0 1120 1 1119 85 60 0;

@@ -1,0 +1,82 @@
+#N canvas 1 54 718 1017 12;
+#X obj 71 73 cnv 15 567 25 empty empty interní_zprávy 20 12 0 14
+-1 -262144 0;
+#X msg 91 274 \; pd dsp 1;
+#X msg 178 274 \; pd dsp;
+#X text 70 224 Na některé interní zprávy jsme již narazili \,
+aniž bychom se jimi výslovně zabývali. Jistě si vzpomenete na
+následující:;
+#X text 247 281 počítání zvuku. "Klikají" místo nás na;
+#X text 246 294 vypínač DSP v Pd konzoli.;
+#X obj 91 554 getdir;
+#X obj 91 533 bng 15 250 50 0 empty empty empty 17 7 0 10 -262144 -1
+-1;
+#X msg 91 581 \; pd open abs_seq.pd \$1;
+#X msg 292 581 \; pd-abs_seq.pd menuclose \;;
+#X text 143 559 Otevře abstrakci...;
+#X text 301 559 ... a zase ji zavře.;
+#X msg 92 706 \; pd quit;
+#X text 160 721 dokážete odhadnout.;
+#X obj 71 759 cnv 15 220 15 empty empty GUI_DYNAMICKY 2 8 0 12 -228856
+-66577 0;
+#X msg 91 332 \; poole 0 0.5 -0.5 0.5 -0.5;
+#N canvas 0 0 450 300 (subpatch) 0;
+#X array poole 4 float 3;
+#A 0 0.5 -0.5 0.5 -0.5;
+#X coords 0 1 4 -1 100 65 1 0 0;
+#X restore 325 332 graph;
+#X text 89 366 Touto interní zprávou posíláme;
+#X text 89 380 do pole "poole" hodnoty.;
+#X obj 510 881 bng 39 250 50 0 empty empty empty 17 7 0 10 -44926 -1
+-262144;
+#X obj 510 844 r bng;
+#X obj 93 945 send bng;
+#X msg 93 858 size \$1;
+#X floatatom 93 833 5 0 0 0 - - -;
+#X floatatom 160 832 5 0 0 0 - - -;
+#X msg 160 857 color \$1;
+#X msg 181 913 delta -20 0;
+#X msg 182 887 delta 20 0;
+#X msg 281 890 delta 0 20;
+#X msg 280 914 delta 0 -20;
+#X text 203 831 Velikost a barva.;
+#X text 197 938 Posun po osách X a Y.;
+#X text 70 629 Ve druhé zprávě vidíte \, že za "pd" následuje
+pomlčka _____ a jméno souboru. To znamená \, že zprávu posíláme
+do daného patche. V tomto případě posíláme patchi se jménem
+abs_seq.pd příkaz "menuclose".;
+#X obj 439 632 cnv 15 60 15 empty empty empty 20 12 0 14 -262144 -66577
+0;
+#X text 70 94 Naše seznámení s Pd by nebylo "kompletní" \, kdybychom
+neprobrali tuto \, poněkud obskurní \, kapitolu. Interní zprávy
+(internal messages) jsou totiž zvláštním typem zpráv \, kterými
+můžeme "mluvit" přímo k Pd a "sahat" do kódu _____ z vyšší
+úrovně. S jejich pomocí můžeme dynamicky měnit vlastnosti námi
+napsaného patche \, nebo vytvářet kódy \, které vytvářejí další
+kódy. V té souvislosti se o této programátorské praktice hovoří
+jako o metaprogramování.;
+#X text 247 268 Tyto zprávy "řeknou" Pd \, aby zapnula/vypnula;
+#X text 70 410 Jsou zde ale i další \, kterými můžeme např. otevřít
+Pd patch. Zpráva začíná středníkem \, následovaným znaky "pd"
+- to znamená \, že "říkáme" přímo něco Pd. "open" je příkaz
+\, který po Pd chceme - tedy otevřít soubor. Dva argumenty označují
+jméno souboru a přesnou cestu k němu. V našem případě druhý
+argument "vyplňujeme" zprávou z objektu [getdir] \, jenž vrací
+cestu k aktuálnímu adresáři.;
+#X text 160 706 Co asi udělá tato interní zpráva \, jistě;
+#X text 70 771 Do grafických uživatelských prvků jako bang \, posuvník
+atd. lze posílat předdefinované interní zprávy a měnit tak jejich
+parametry.;
+#X obj 441 143 cnv 15 60 15 empty empty empty 20 12 0 14 -262144 -66577
+0;
+#X connect 6 0 8 0;
+#X connect 7 0 6 0;
+#X connect 20 0 19 0;
+#X connect 22 0 21 0;
+#X connect 23 0 22 0;
+#X connect 24 0 25 0;
+#X connect 25 0 21 0;
+#X connect 26 0 21 0;
+#X connect 27 0 21 0;
+#X connect 28 0 21 0;
+#X connect 29 0 21 0;

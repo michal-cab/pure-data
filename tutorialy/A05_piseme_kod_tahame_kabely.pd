@@ -1,0 +1,55 @@
+#N canvas 1 54 718 1017 12;
+#X obj 67 73 cnv 15 567 25 empty empty píšeme_kód_/_taháme_kabely_/_hallo_world
+20 12 0 14 -1 -262144 0;
+#X obj 87 439 osc~;
+#X obj 87 488 dac~;
+#X obj 87 396 ascseq 100;
+#X msg 87 354 hallo world;
+#X text 171 395 <-- nezapomeňte napsat i mezeru;
+#X obj 208 794 image kurzor_5.gif;
+#X obj 358 793 image kurzor_6.gif;
+#X text 66 537 Nyní vytvoříme vlastní propojení. Objekty mají
+\, jak jsme si řekli \, vstupy (inlet) a výstupy (outlet) \, jež
+jsou situovány na horní a spodní straně objektu. Propojujeme vždy
+výstupy do vstupů \, jinak to nejde.;
+#X text 159 500 levého horního rohu klávesnice. Přepněte klávesnici
+;
+#X text 67 211 Tradiční součástí učebnic programování bývá
+prográmek Hello World \, který vypíše pozdrav. Vzhledem k tomu
+\, že jsou ale Pd jazyk sloužící primárně k procesování signálů
+\, trochu si ho přizpůsobíme.;
+#X text 158 444 Tento znak mají všechny objekty \, které;
+#X text 159 458 mají co do činění se zvukem.;
+#X text 158 431 Objekty osc~ a dac~ obsahují znak vlnovky: "~".;
+#X text 66 608 Přepneme se do editačního módu a kurzorem najedeme
+na výstup zprávy [hallo world( - kurzor by se měl změnit na kolečko
+\, klikneme LTM \, podržíme a přetáhneme kurzor na levý vstup
+objektu acseq - měli bychom vidět kabel \, který vychází ze zprávy
+a sleduje kurzor.;
+#X text 66 693 Když kabel natáhneme na vstup \, měl by se kurzor
+opět změnit na kolečko - v tu chvíli můžeme pustit LTM a propojení
+objektů by mělo být vytvořeno.;
+#X text 66 903 Pokud jsme vytvořili nějaké spojení \, které chceme
+zrušit \, pak v editačním módu klikneme LTM na kabel - měl by
+zmodrat - a pak klávesou BACKSPACE nebo DEL spojení smažeme.;
+#X text 66 95 Zatím jsme si pouze ukázali \, jak vkládat do patche
+základní prvky \, ze kterých kód sestává. Ty ale samy o sobě
+nic nedělají. Ve vizuálním programování \, stejně jako _________
+v nastavení modulárního syntetizátoru \, je důležité to \, jak
+jsou jednotlivé prvky propojeny - to \, kam jaký signál putuje.
+Jak propojení vytvářet si ukážeme na následujícím příkladu.
+;
+#X text 66 280 Nejprve vytvoříme tři objekty (CTRL + 1) \, do prvního
+vepíšeme "ascseq 100" \, do druhého "osc~" a do třetího "dac~".
+Následně vytvoříme ještě jednu zprávu a vepíšeme do ní hallo
+world. Objekty rozmístíme v ploše takto:;
+#X text 160 485 Pokud znak "~" marně hledáte \, podívejte se do
+;
+#X text 160 514 na anglickou \, pak SHIFT + klávesa \, na které je
+vlnovka.;
+#X text 66 833 Zapojení samozřejmě nejsou náhodná \, s postupujícím
+studiem se seznámíme s řadou objektů i s tím \, jaký typ zprávy
+či signálu na tom kterém vstupu očekávají a jaký typ zprávy
+nebo signálu vysílají.;
+#X obj 409 129 cnv 15 120 15 empty empty empty 20 12 0 14 -262144 -66577
+0;

@@ -1,0 +1,119 @@
+#N canvas 1 54 718 1017 12;
+#X obj 67 380 cnv 15 200 15 empty empty ŘÁD_VYKRESLOVÁNÍ 2 8 0
+12 -228856 -66577 0;
+#X obj 860 107 cnv 15 100 60 empty empty empty 20 12 0 14 -262144 -66577
+0;
+#X obj 478 170 gemwin_abs;
+#X obj 73 322 tgl 15 1 empty empty empty 17 7 0 10 -262144 -1 -1 1
+1;
+#X obj 96 345 circle;
+#X obj 96 319 alpha 1;
+#X obj 96 266 translateXYZ 0 0 0;
+#X obj 248 346 circle;
+#X obj 248 320 alpha 1;
+#X obj 248 267 translateXYZ 1 0 0;
+#X obj 401 345 circle;
+#X obj 401 319 alpha 1;
+#X obj 401 266 translateXYZ 0.5 1 0;
+#X obj 96 293 colorRGB 0 0 1;
+#X obj 248 294 colorRGB 1 0 0;
+#X obj 401 293 colorRGB 0 1 0;
+#X obj 224 322 tgl 15 1 empty empty empty 17 7 0 10 -262144 -1 -1 1
+1;
+#X obj 379 322 tgl 15 1 empty empty empty 17 7 0 10 -262144 -1 -1 1
+1;
+#X obj 175 241 hsl 50 15 0 1 0 0 empty empty empty -2 -8 0 10 -262144
+-1 -1 0 1;
+#X obj 325 242 hsl 50 15 0 1 0 0 empty empty empty -2 -8 0 10 -262144
+-1 -1 0 1;
+#X obj 480 240 hsl 50 15 0 1 0 0 empty empty empty -2 -8 0 10 -262144
+-1 -1 0 1;
+#X obj 88 762 square 3;
+#X obj 88 671 tgl 15 1 empty empty empty 17 7 0 10 -262144 -1 -1 0
+1;
+#X obj 88 728 colorRGB 1 0 0;
+#X obj 96 239 gemhead 1;
+#X obj 248 240 gemhead 2;
+#X obj 401 239 gemhead 3;
+#X obj 88 694 gemhead 4;
+#X obj 216 672 tgl 15 1 empty empty empty 17 7 0 10 -262144 -1 -1 0
+1;
+#X obj 216 695 gemhead 5;
+#X obj 216 763 square 2;
+#X obj 216 727 colorRGB 0 1 0;
+#X obj 348 672 tgl 15 1 empty empty empty 17 7 0 10 -262144 -1 -1 0
+1;
+#X obj 348 726 colorRGB 0 0 1;
+#X obj 348 762 square 1;
+#X obj 348 695 gemhead 6;
+#X obj 67 802 cnv 15 200 15 empty empty CVIČENÍ: 2 8 0 12 -204800
+-66577 0;
+#X text 69 814 - postavte si interaktivní patch \, který bude vykreslovat
+;
+#X text 82 843 rotaci i barevnost. Jakou z těchto akcí bude myš
+;
+#X text 83 871 využijete tedy i objekty [key] \, [demux] \, [pack]
+\,;
+#X text 66 578 Následující ukázka vykreslí tři čtverce \, u
+nichž _________ v [gemhead]ech specifikujeme pořadí vykreslování.
+Ve scéně máme již tři objekty \, takže první (červený a největší)
+čtverec bude mít hlavičku s číslem 4 a překryje tak již vykreslené
+kruhy.;
+#X obj 410 582 cnv 15 100 15 empty empty empty 20 12 0 14 -262144 -66577
+0;
+#X text 67 70 Čtvrtým vstupem [colorRGB] nastavujeme jeho průhlednost
+(tzv. alfa kanál) \, a to opět v rozsahu 0..1 \, který odpovídá
+škále od úplné průhlednosti po úplnou viditelnost. Změna se
+ale projeví teprve poté \, co do vykreslovacího řetězce zařadíme
+i objekt [alpha]. Vyzkoušejte si chování alfa kanálu na následujícím
+příkladu. Průhlednost objektů se zapíná/vypíná hodnotami 1/0
+poslanými do levého vstupu objektu [alpha]. Díky průhlednosti jednotlivých
+barevných kruhů vzniknou jejich kombinací další barvy: žlutá
+\, purpurová \, azurová a bílá.;
+#X text 66 392 Pokud jste předchozí příklad prozkoumali a vypnuli
+jste ___ u všech kruhů používání průhlednosti (poslali jste
+nulu vypínačem do objektu [alpha]) \, pak vidíte \, že se kruhy
+překrývají v určitém pořadí. Tím se dostáváme ____________
+k problematice řádu vykreslování.;
+#X text 66 477 Možná jste postřehli \, že u hlaviček jednotlivých
+vykreslovacích řetězců je číslo - to specifikuje pořadí \,
+ve kterém se objekty vykreslují \, a tedy i způsob jejich překrytí.
+Modrý kruh začíná hlavičkou [gemhead 1] a byl vykreslen jako první
+\, takže je ve vrstvách úplně vespod. Červený kruh má hlavičku
+[gemhead 2] a překrývá modrý kruh.;
+#X text 82 857 řídit \, specifikujte stlačením kláves Q \, W \,
+E a R \;;
+#X text 82 886 [unpack] a [expr_scale];
+#X obj 455 395 cnv 15 60 15 empty empty empty 20 12 0 14 -262144 -66577
+0;
+#X obj 387 444 cnv 15 100 15 empty empty empty 20 12 0 14 -262144 -66577
+0;
+#X text 82 829 jeden objekt - pokuste se pomocí objektu [cursor] číst
+;
+#X connect 3 0 5 0;
+#X connect 5 0 4 0;
+#X connect 6 0 13 0;
+#X connect 8 0 7 0;
+#X connect 9 0 14 0;
+#X connect 11 0 10 0;
+#X connect 12 0 15 0;
+#X connect 13 0 5 0;
+#X connect 14 0 8 0;
+#X connect 15 0 11 0;
+#X connect 16 0 8 0;
+#X connect 17 0 11 0;
+#X connect 18 0 13 4;
+#X connect 19 0 14 4;
+#X connect 20 0 15 4;
+#X connect 22 0 27 0;
+#X connect 23 0 21 0;
+#X connect 24 0 6 0;
+#X connect 25 0 9 0;
+#X connect 26 0 12 0;
+#X connect 27 0 23 0;
+#X connect 28 0 29 0;
+#X connect 29 0 31 0;
+#X connect 31 0 30 0;
+#X connect 32 0 35 0;
+#X connect 33 0 34 0;
+#X connect 35 0 33 0;

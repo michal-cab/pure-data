@@ -1,0 +1,83 @@
+#N canvas 1 55 718 1017 12;
+#X obj 89 471 print;
+#X text 134 470 -->;
+#X text 66 499 Pokud do boxu ale napíšeme slovo \, které Pd neznají
+a neví \, jak je interpretovat \, dopadne to takto:;
+#X obj 87 544 abrakadabra;
+#X text 174 543 -->;
+#X obj 520 845 bng 15 250 50 0 empty empty empty 17 7 0 10 -262144
+-1 -1;
+#X obj 520 815 metro 1000;
+#X msg 520 779 bang;
+#X msg 565 779 stop;
+#X obj 154 205 print;
+#X msg 154 150 hallo world;
+#X text 160 178 <-- spojovací kabel;
+#X text 201 543 špatně vytvořený / neznámý objekt;
+#X text 164 470 správně vytvořený objekt;
+#X text 564 873 (((;
+#X msg 526 874 plop;
+#X msg 526 901 stop;
+#X msg 525 927 nop.jpg;
+#X text 563 899 (((;
+#X text 582 926 (((;
+#X text 66 84 V Pd programujeme tím \, že vytváříme vizuální
+struktury sestavené z pospojovaných objektů \, které obvykle mají
+vstupy (inlet) a výstupy (outlet).;
+#X obj 419 194 t b b b b;
+#X obj 420 154 pack f f f;
+#X text 501 173 mají více vstupů;
+#X text 243 149 <-- zpráva / message;
+#X text 202 203 <-- objekt;
+#X obj 67 297 cnv 15 200 15 empty empty OBJEKT 2 8 0 12 -228856 -66577
+0;
+#X obj 67 758 cnv 15 200 15 empty empty ZPRÁVA_/_MESSAGE 2 8 0 12
+-228856 -66577 0;
+#X obj 67 73 cnv 15 200 15 empty empty OBECNÁ_STRUKTURA_KÓDU 2 8
+0 12 -228856 -66577 0;
+#X text 501 157 Některé objekty;
+#X text 501 189 nebo výstupů.;
+#X text 84 138 vstup -->;
+#X text 77 157 výstup -->;
+#X text 84 194 vstup -->;
+#X text 155 586 \,;
+#X text 66 571 O tom \, že si Pd s interpretací výše uvedeného
+slova nevěděla rady jsme navíc informováni i v konzoli. Podívejte
+se do ní. Měl by tam být červený nápis: "abrakadabra ... couldn't
+create". Pokud otevřete cizí patch a Pd konzole vypisuje tuto hlášku
+\, nebo vidíte červeně lemované objekty \, obvykle to znamená
+\, že vám chybí některá z knihoven \, nebo jsou špatně nastavené
+cesty k abstrakcím (viz později).;
+#X text 66 685 Jaká slova do prázdného boxu můžeme psát \, a
+tím jej specifikovat a dát mu funkci \, nyní ještě nevíme. S
+postupem času se seznámíme s celou řadou slov / příkazů \, která
+Pd znají.;
+#X text 66 869 Prázdnou zprávu (message box) do patche vložíme
+s pomocí klávesové zkratky CTRL + 2 (nebo složitěji menu Vložit
+-> Zpráva) a poznáme ji tak \, že na rozdíl od objektu má "vykrojenou"
+pravou stranu. Stejně jako u objektu: první klik message box ukotví
+\, pak můžeme psát a druhý klik mimo zprávu ji definitivě vytvoří.
+;
+#X text 65 308 Když zmáčkneme CTRL + 1 \, objeví se v patchi na
+místě kurzoru prázdný box vykreslený čerchovanou čarou \, který
+myší můžeme libovolně přemisťovat. Pokud jsme byli v performačním
+módu \, vložení objektu nás vždy automaticky přepne do editačního
+módu. Kliknutím LTM se box ukotví \, je v něm viditelný kurzor
+a my do něj můžeme psát. Po druhém kliknutí LTM mimo box se Pd
+pokusí námi napsaný text interpretovat. Pokud Pd dané slovo "znají"
+\, pak vytvoří funkční objekt. Tak je tomu v případě zapsání
+slova print. Správě vytvořený objekt je vykreslený spojitou linkou.
+;
+#X text 66 770 Objekty v Pd obvykle příjmají a posílají dál zprávy.
+Zpráva může být název souboru \, které posíláme do nějakého
+objektu \, od kterého očekáváme že s daným názvem bude umět
+něco udělat. Nebo zprávou může být příkaz \, kterým objektu
+"říkáme" \, co má začít dělat. Např. objekt metro čeká na
+vstupu zprávu [bang( \, která jej zapne.;
+#X text 66 237 Když kliknete LTM v performačním módu na zprávu
+[hallo world( \, tato "doteče" po kabelu až do objektu [print]. Ten
+vytiskne to \, co mu "přiteče" na vstup do Pd konzole.;
+#X connect 6 0 5 0;
+#X connect 7 0 6 0;
+#X connect 8 0 6 0;
+#X connect 10 0 9 0;

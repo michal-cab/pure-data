@@ -1,0 +1,48 @@
+#N canvas 1 54 718 1017 12;
+#X obj 67 73 cnv 15 200 15 empty empty HRADIO_-_PŘEPÍNAČ 2 8 0 12
+-228856 -66577 0;
+#X obj 545 89 vradio 15 1 0 8 empty empty empty 0 -8 0 10 -262144 -1
+-1 0;
+#X floatatom 545 215 5 0 0 0 - - -;
+#X obj 88 186 hradio 15 1 0 8 empty empty empty 0 -8 0 10 -262144 -1
+-1 0;
+#X floatatom 88 213 5 0 0 0 - - -;
+#X obj 67 246 cnv 15 200 15 empty empty PLÁTNO_-_CANVAS 2 8 0 12 -228856
+-66577 0;
+#X obj 491 266 cnv 15 100 60 empty empty empty 20 12 0 14 -233017 -66577
+0;
+#X obj 67 350 cnv 15 200 15 empty empty PŘIZPŮSOBENÍ 2 8 0 12 -228856
+-66577 0;
+#X msg 214 657;
+#X obj 244 717 image properties.gif;
+#X text 388 529 <-- zde jeho číselný rozsah;
+#X text 388 696 <-- můžeme ho pojmenovat;
+#X text 388 792 <-- nebo měnit jeho barvu;
+#X text 386 619 <-- (o tomto později);
+#X text 391 928 <-- po provedení všech úprav;
+#X text 419 941 potvrdíme OK;
+#X text 493 267 plátno;
+#X text 259 129 .;
+#X text 388 490 <-- zde měníme rozměry posuvníku;
+#X text 66 257 Prázdné plátno \, neboli canvas \, se skrývá pod
+klávesovou zkratkou CTRL + SHIFT + C. Využijeme je zejména při
+pokročilejší práci s grafickým uživatelským rozhraním (GUI).
+Později si ukážeme \, jak vytvořit uživatelsky přístupné a
+jednoduché grafické rozhraní.;
+#X text 66 364 Všechny zde vyjmenované grafické prvky je možné
+přizpůsobovat - měnit jejich velikost \, barvu \, číselný rozsah
+atd. Stačí na daný prvek \, např. na posuvník \, kliknout PTM
+a z menu vybrat položku Vlastnosti (Properties). V případě plátna
+je na pravý klik aktivní pouze jeho levý horní roh. Otevřít by
+se mělo toto okno:;
+#X text 66 84 Pod touto záhadnou zkratkou se skrývá horizontální
+přepínač (CTRL + SHIFT + i) \, který má podobně jako posuvník
+_______ i vertikální variantu (a CTRL + SHIFT + d). Na výstupu má
+přednastaveny hodnoty 0 až 7 Využijeme ho např. k přepínání
+presetů - stavů syntetizátoru \, nebo systémů \, které postavíme.
+;
+#X obj 422 102 cnv 15 100 20 empty empty empty 20 12 0 14 -262144 -66577
+0;
+#X connect 1 0 2 0;
+#X connect 3 0 4 0;
+#X coords 0 1120 1 1119 85 60 0;

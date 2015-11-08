@@ -1,0 +1,98 @@
+#N canvas 1 54 718 1017 12;
+#X obj 353 203 soundfiler;
+#N canvas 0 0 450 300 (subpatch) 0;
+#X array amen_loop 308112 float 2;
+#X coords 0 1 308112 -1 120 70 1 0 0;
+#X restore 497 93 graph;
+#X msg 353 179 read -resize amen_loop.wav amen_loop;
+#X obj 84 605 dac~;
+#X obj 89 251 arraysize;
+#X floatatom 89 279 8 0 0 0 - - -;
+#X msg 149 225 symbol amen_loop;
+#X obj 89 199 t b b;
+#X obj 89 176 bng 15 250 50 0 empty empty empty 17 7 0 10 -262144 -1
+-1;
+#X floatatom 89 375 7 0 0 0 - - -;
+#X obj 85 572 tabread4~ amen_loop;
+#X obj 85 531 line~;
+#X msg 85 488 0 \, 308112 6986.67;
+#X obj 171 281 samplerate~;
+#X obj 171 307 / 1000;
+#X obj 171 256 loadbang;
+#X obj 89 335 /;
+#X text 178 328 Potřebujeme hodnotu;
+#X text 178 341 v milisekundách \,;
+#X text 178 354 proto vzorkovací;
+#X text 176 368 frekvenci dělíme;
+#X text 176 381 ještě 1000;
+#X text 142 376 ms;
+#X text 436 201 Načteme soubor do pole.;
+#X text 94 297 vzorky;
+#X text 349 243 Vzhledem k tomu \, že jsme načetli soubor;
+#X text 349 258 amen_loop.wav s parametrem "-resize" \,;
+#X text 350 273 změnila se délka pole dynamicky podle;
+#X text 350 288 délky souboru. Mohli bychom údaje;
+#X text 349 319 objektu [soundfiler] \, ale [arraysize];
+#X text 349 304 o počtu vzorků přebírat i z výstupu;
+#X text 348 334 je výhodnější \, protože umožňuje;
+#X text 70 70 Chcete-li \, využijte k testování vlastností objektu
+[tabread4~] vlastní vysamplovaný vzorek. V našem případě ale
+k demonstraci využijeme asi 7 vteřin z písně "Amen \, Brothers"
+(1960) od skupiny The Winstons. Nejprve vzorek načteme do pole se
+jménem "amen_loop". [arraysize] nám pomůže zjistit délku pole
+ve vzorcích a v milisekundách.;
+#X text 350 350 zjišťovat délku různých polí pouhou;
+#X text 349 365 změnou názvu \, který posíláme do pravého;
+#X text 349 379 vstupu.;
+#X text 230 480 Vynuluj se a pak vytvoř signál \, který;
+#X text 231 496 lineárně vystoupá na hodnotu 308112;
+#X text 229 511 (tedy do konce pole) za 6986.67 ms.;
+#X text 232 539 Pole by šlo cyklicky přehrávat objektem;
+#X text 232 553 metro s argumentem 6986.67 \, který by;
+#X text 232 568 pravidelně posílal bang do zprávy.;
+#X obj 86 874 timestretch/timestretch~;
+#X text 70 904 Vraťme se k našemu příkladu. Nyní by vám již
+mělo být jasné \, jak funguje studie "scratcheru" \, kterou jsme
+uvedli v první části rukověti. V ní jsme do objektu [line~] posílali
+hodnou z posuvníku o rozsahu 0..1 \, kterou jsme;
+#X text 246 381 .;
+#X text 70 406 Vidíme \, že pole "amen_loop" obsahuje 308112 vzorků
+\, což při vzorkovací frekvenci 44100 odpovídá délce 6986.67
+ms. Délka ve vzorcích a milisekundách je důležitá \, protože
+to jsou právě hodnoty \, které budeme předávat objektu [line~].
+;
+#X text 70 635 Pokud bychom nyní do objektu [line~] poslali zprávu
+[308112 \, 0 6986.67( \, vznikl by lineární signál \, jenž by __
+z hodnoty 308112 klesal na nulu - opět za dobu 6986.67 ms _ a my bychom
+uslyšeli zvuk přehrávaný pozpátku. Vyzkoušejte to. A což tak
+změnit hodnotu označující délku přehrávání _ v milisekundách
+na dvojnásobek? Ano \, přehrávání vzorku bude trvat dvakrát tak
+dlouho a dojde ke změně jeho frekvence.;
+#X obj 461 656 cnv 15 120 15 empty empty empty 20 12 0 14 -262144 -66577
+0;
+#X text 70 750 Řešením problému zachování frekvence vzorku při
+změně délky jeho přehrávání (tzv. timestretching) je poněkud
+náročnější DSP praktika a nebudeme se jí zde zabývat. Případně
+prozkoumejte přímo v Puckettově dokumentaci (Nápověda -> Pd Help
+Browser -> Pure Data -> 3.audio examples) soubor I07.phase.vocoder.pd
+nebo abstrakci [timestretch~] \, která je součástí Pd-extended.
+;
+#X obj 473 670 cnv 15 120 15 empty empty empty 20 12 0 14 -262144 -66577
+0;
+#X obj 468 698 cnv 15 120 15 empty empty empty 20 12 0 14 -262144 -66577
+0;
+#X connect 2 0 0 0;
+#X connect 4 0 5 0;
+#X connect 5 0 16 0;
+#X connect 6 0 4 1;
+#X connect 7 0 4 0;
+#X connect 7 1 6 0;
+#X connect 8 0 7 0;
+#X connect 10 0 3 0;
+#X connect 10 0 3 1;
+#X connect 11 0 10 0;
+#X connect 12 0 11 0;
+#X connect 13 0 14 0;
+#X connect 14 0 16 1;
+#X connect 15 0 13 0;
+#X connect 16 0 9 0;

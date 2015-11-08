@@ -1,0 +1,95 @@
+#N canvas 1 54 718 1017 12;
+#X obj 860 107 cnv 15 100 60 empty empty empty 20 12 0 14 -262144 -66577
+0;
+#X obj 67 74 cnv 15 200 15 empty empty CVIČENÍ: 2 8 0 12 -204800
+-66577 0;
+#X text 74 85 - pokuste se vykreslovací řetězec v předchozím příkladu
+;
+#X text 72 151 - výsledný zobrazovací řetězec pak několikrát
+zduplikujte \,;
+#X obj 66 269 cnv 15 567 25 empty empty pohyblivý_obraz 20 12 0 14
+-1 -262144 0;
+#X obj 80 657 gemhead;
+#X msg 116 729 auto \$1;
+#X obj 116 711 tgl 15 0 empty empty empty 0 -6 0 8 -262144 -1 -1 0
+1;
+#X obj 488 599 gemwin_abs;
+#X obj 80 637 tgl 15 0 empty empty empty 17 7 0 10 -262144 -1 -1 0
+1;
+#X obj 80 943 rectangle 0;
+#X floatatom 140 755 5 0 0 0 - - -;
+#X msg 114 682 open video.avi;
+#X obj 140 910 / 200;
+#X obj 181 910 / 200;
+#X floatatom 140 886 5 0 0 0 - - -;
+#X floatatom 181 886 5 0 0 0 - - -;
+#X floatatom 100 887 5 0 0 0 - - -;
+#X obj 163 818 spigot;
+#X obj 202 797 tgl 15 0 empty empty empty 17 7 0 10 -262144 -1 -1 0
+1;
+#X obj 80 803 pix_movie;
+#X msg 120 831 0;
+#X text 66 291 Knihovna GEM obsahuje kromě objektu pro vykreslení
+statické rastrové grafiky i objekty [pix_movie] a [pix_film] \, kterými
+můžeme přehrávat video soubory. Situace je zde trochu komplikována
+množstvím různých formátů a kodeků. Obecně se dá říct \,
+že pod MacOSem GEM umí zpracovat formát MOV (QuickTime) \, ve Windows
+pak soubory typu AVI a pod Linuxem obvykle jakýkoliv formát \, s
+jehož podporou byla daná verze GEMu zkompilována.;
+#X text 225 681 Načteme video soubor.;
+#X text 138 707 Spustíme jeho přehrání.;
+#X text 245 784 Pokud chceme zajistit cyklické přehrávání videa
+\,;
+#X text 244 811 jím zprávu [0( do pravého vstupu [pix_movie]. Tím
+;
+#X text 245 825 nastavíme video opět na počáteční snímek. Aby
+smyčka;
+#X text 247 882 Počet snímků ve videu a jeho rozměry.;
+#X text 247 911 Škálujeme je a nastavujeme podle nich...;
+#X text 247 944 rozměry obdélníku.;
+#X obj 100 859 unpack f f f;
+#X text 87 99 rozšířit o objekty [translateXYZ] \, [rotateXYZ] \,
+[scaleXYZ] a [colorRGB] \; načítání obrázků zkuste zajistit objektem
+[openpanel];
+#X text 85 165 nastavte správně řád vykreslování u hlaviček
+a rozmístěte různě naškálované a rotované obrázky do vykreslovacího
+okna;
+#X text 66 420 Pokud se vám nějaký video soubor nepodaří načíst
+\, zkuste jej zkonvertovat do jiného formátu. Dobře vám k tomu
+poslouží např. aplikace Avidemux. MPEG2 a M-JPEG by měly fungovat
+na všech platformách.;
+#X text 66 491 Video načítáme zprávou [open jméno souboru(. Zpráva
+[auto \$1( v kombinaci s vypínačem spustí přehrávání videa.
+Přehraje ho jen jednou. Pravým vstupem [pix_movie] lze zobrazit ten
+který snímek z načteného videa. Rozbalíme-li seznam z druhého
+výstupu [pix_movie] \, pak obdržíme tři hodnoty: první je délka
+videa ve snímcích \, druhá a třetí jsou pak rozměry videa v pixelech.
+Na třetí výstup [pix_movie] je poslán bang po dosažení posledního
+snímku videa.;
+#X text 186 755 Snímky ve videu můžeme nastavovat ručně.;
+#X text 244 797 využijeme třetí výstup [pix_movie]. Posíláme
+;
+#X text 244 840 fungovala \, nezapomeňte zapnout [spigot].;
+#X text 71 206 - pokuste se vytvořit animovanou koláž - jednotlivé
+;
+#X text 84 220 parametry pro posun \, škálování atd. ovládejte
+kombinací objektů [metro] \, [cxc_counter] a [expr_scale];
+#X connect 5 0 20 0;
+#X connect 6 0 20 0;
+#X connect 7 0 6 0;
+#X connect 9 0 5 0;
+#X connect 11 0 20 1;
+#X connect 12 0 20 0;
+#X connect 13 0 10 1;
+#X connect 14 0 10 2;
+#X connect 15 0 13 0;
+#X connect 16 0 14 0;
+#X connect 18 0 20 1;
+#X connect 19 0 18 1;
+#X connect 20 0 10 0;
+#X connect 20 1 31 0;
+#X connect 20 2 21 0;
+#X connect 21 0 18 0;
+#X connect 31 0 17 0;
+#X connect 31 1 15 0;
+#X connect 31 2 16 0;

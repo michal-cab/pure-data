@@ -1,0 +1,79 @@
+#N canvas 1 54 718 1017 12;
+#X obj 71 73 cnv 15 200 15 empty empty NAČÍTÁME_VZORKY_DO_POLE 2
+8 0 12 -228856 -66577 0;
+#X obj 93 797 soundfiler;
+#N canvas 0 0 450 300 (subpatch) 0;
+#X array zvukovy_vzorek 44100 float 2;
+#X coords 0 1 44100 -1 200 140 1;
+#X restore 423 824 graph;
+#X obj 126 846 samplerate~;
+#X obj 108 893 /;
+#X floatatom 126 870 5 0 0 0 - - -;
+#X obj 108 918 print delka ve vterinach;
+#X obj 126 822 loadbang;
+#X msg 114 762 read -resize \$1 zvukovy_vzorek;
+#X obj 114 738 openpanel;
+#X obj 114 720 bng 15 250 50 0 empty empty empty 17 7 0 10 -262144
+-1 -1;
+#X text 70 185 K načítání zvukových vzorků do pole slouží objekt
+[soundfiler]. Zprávou mu předáváme příkaz read \, následuje
+jméno zvukového souboru a poslední parametr je název pole \, do
+něhož chceme zvukový vzorek načíst. Tedy např:;
+#X msg 93 260 read deska.wav zvukovy_vzorek;
+#X msg 423 768 \; zvukovy_vzorek resize \$1;
+#X msg 423 744 44100;
+#X msg 93 652 read deska.wav zvukovy_vzorek;
+#X text 313 644 Načítáme soubory umístěné přímo v adresáři
+;
+#X text 312 657 s patchem. Neměníme ale velikost pole.;
+#X msg 106 688 read -resize deska.wav zvukovy_vzorek;
+#X text 383 680 Načítáme soubor a přizpůsobujeme;
+#X text 383 693 velikost pole jeho délce.;
+#X text 133 716 Nebo načteme soubor z jiného adresáře.;
+#X obj 423 719 loadbang;
+#X text 468 743 Pole pro jednu vteřinu.;
+#X text 220 810 Podílem celkového počtu;
+#X text 220 823 vzorků s vzorkovací;
+#X text 219 837 frekvencí obdržíme;
+#X text 220 851 délku ve vteřinách.;
+#X obj 93 944 print celkovy pocet vzorku;
+#X text 70 85 Pro velmi základní práci se zvukovými vzorky postačí
+objekt [readsf~]. Z předchozího příkladu ale snad bylo zřejmé
+\, že kromě spuštění a zastavení přehrávání nám nic víc
+nenabízí. Pro práci se zvukem v reálném čase také není vhodné
+načítat data stále z disku \, ale pracovat s nimi v paměti \, protože
+k paměti má počítač rychlejší přístup.;
+#X text 71 290 Před názvem souboru ale ještě může předcházet
+zpráva "-resize" \, která zajistí to \, že se velikost pole nastaví
+přesně podle celkového počtu vzorků ve zvukovém souboru. Jak
+velký soubor Pd dokážou načíst se odvíjí od hardwarových dispozic
+počítače. Na tom mém se mi do pole nepodařilo nahrát soubor delší
+než 15 minut. Pokud jsou dispozice počítače překonány \, upozorní
+vás na to v konzoli. Mně se objevila hláška: "soundfiler_read:
+truncated to 4e+07 elements". 20ti minutových záznam ve formátu
+WAV \, který jsem se [soundfiler]em pokusil do pole načíst \, byl
+redukován na 40 miliónů vzorků \, což odpovídá při vzorkovací
+frekvenci 44100 přibližně 15ti minutám.;
+#X text 71 482 Pokud byste chtěli do pole přesto načíst delší
+soubor \, pak musíte před název soubouru připsat ještě "-maxsize"
+a délku uvedenou ve vzorcích. V případě 20minutového souboru
+to tedy dělá 20 * 60 * 44100 (minuty * vteřiny * počet vzorků
+ve vteřině) \, což vychází na 5.292e+07 vzorků. V tom případě
+ale hrozí \, že při větším množství takto velkých souborů
+se Pd zhroutí. S polem \, jež obsahuje větší množství vzorků
+\, se v editačním módu také velmi obtížně manipuluje. Proto
+se pole v případě velkých souborů schovávají do subpatchů \,
+aby Pd nebyla zaměstnána jejich vykreslováním.;
+#X connect 1 0 4 0;
+#X connect 1 0 28 0;
+#X connect 3 0 5 0;
+#X connect 4 0 6 0;
+#X connect 5 0 4 1;
+#X connect 7 0 3 0;
+#X connect 8 0 1 0;
+#X connect 9 0 8 0;
+#X connect 10 0 9 0;
+#X connect 14 0 13 0;
+#X connect 15 0 1 0;
+#X connect 18 0 1 0;
+#X connect 22 0 14 0;

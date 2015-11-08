@@ -1,0 +1,170 @@
+#N canvas 1 54 718 1017 12;
+#X obj 67 73 cnv 15 200 15 empty empty PŘEHRÁVÁME_ALTERNATIVNĚ
+2 8 0 12 -228856 -66577 0;
+#X obj 860 107 cnv 15 100 60 empty empty empty 20 12 0 14 -262144 -66577
+0;
+#X obj 423 701 gemwin_abs;
+#X obj 283 353 metro 40;
+#X obj 283 329 tgl 15 0 empty empty empty 17 7 0 10 -262144 -1 -1 0
+1;
+#X obj 83 349 gemhead;
+#X obj 83 329 tgl 15 0 empty empty empty 17 7 0 10 -262144 -1 -1 1
+1;
+#X obj 83 662 rectangle 0;
+#X floatatom 143 516 5 0 0 0 - - -;
+#X floatatom 168 607 5 0 0 0 - - -;
+#X floatatom 214 607 5 0 0 0 - - -;
+#X floatatom 103 604 5 0 0 0 - - -;
+#X obj 83 540 pix_movie;
+#X obj 442 349 metro 40;
+#X obj 442 328 tgl 15 0 empty empty empty 17 7 0 10 -262144 -1 -1 0
+1;
+#X obj 492 431 sel 0;
+#X obj 492 459 bng 15 250 50 0 empty empty empty 17 7 0 10 -262144
+-1 -1;
+#X obj 442 504 +;
+#X obj 492 478 f;
+#X obj 442 376 f;
+#X obj 491 377 + 1;
+#X obj 442 552 sel;
+#X msg 442 578 0;
+#X obj 528 478 + 1;
+#X msg 93 377 open robot_monster.avi;
+#X obj 168 631 / 100;
+#X obj 214 631 / 100;
+#X obj 103 631 s snimku;
+#X obj 283 386 cxc_counter 1;
+#X obj 371 353 r snimku;
+#X obj 460 529 r snimku;
+#X obj 442 603 s reset;
+#X obj 553 348 r reset;
+#X msg 553 375 0;
+#X obj 553 402 t f f;
+#X obj 491 404 mod 5;
+#X obj 283 473 metro 40;
+#X obj 283 449 tgl 15 0 empty empty empty 17 7 0 10 -262144 -1 -1 0
+1;
+#X obj 283 502 random;
+#X obj 67 901 cnv 15 200 15 empty empty CVIČENÍ: 2 8 0 12 -204800
+-66577 0;
+#X obj 514 240 pddplink http://www.youtube.com/watch?v=nzMvQtVEXok
+-text Martin Arnold;
+#X obj 84 743 tgl 15 0 empty empty empty 17 7 0 10 -262144 -1 -1 1
+1;
+#X obj 84 765 sel 0;
+#X obj 168 728 r snimku;
+#X obj 168 781 / 2;
+#X obj 167 807 i;
+#X obj 84 813 f;
+#X obj 119 814 + 1;
+#X obj 119 840 mod;
+#X obj 204 837 f;
+#X obj 253 838 - 1;
+#X obj 84 697 tgl 15 0 empty empty empty 17 7 0 10 -262144 -1 -1 1
+1;
+#X obj 116 789 b;
+#X obj 204 703 sel 0;
+#X obj 204 779 f;
+#X obj 283 416 s snimek;
+#X obj 283 529 s snimek;
+#X obj 375 531 s snimek;
+#X obj 143 489 r snimek;
+#X obj 204 868 s snimek;
+#X obj 84 868 s snimek;
+#X msg 98 424 open robot_monster2.avi;
+#X msg 129 764 0;
+#X obj 84 718 metro 100;
+#X text 268 694 Přehrávač \, který;
+#X text 268 708 postupuje od;
+#X text 268 724 od okrajů videa;
+#X text 268 738 k jeho středu.;
+#X obj 103 576 unpack f f f;
+#X text 66 84 Pravý vstup objektu [pix_movie] nabízí přístup ___________
+k jednotlivým snímkům videa a umožňuje alternativy v jejich řazení.
+Konstrukcí různých typů počítadel tak můžeme vytvářet různé
+způsoby interpretace daného videomateriálu.;
+#X text 67 153 Náš videosoubor má 25 snímků ve vteřině. Abychom
+jich ____ v jedné vteřině tolik přehráli \, vydělíme 1000 milisekund
+počtem snímkům a dostaneme čas 40 ms. To je údaj pro metro \,
+které bude pohánět počítadlo přehrávající video.;
+#X text 66 224 Obyčejný přehrávač postavíme na objektu [cxc_counter].
+Náhodný přehrávač pak na objektu [random] \, do kẗerého posíláme
+celkový počet snímků. Pokročilejší přehrávač (jako od Martina
+Arnolda) sestává ze dvou počítadel: jedno přehrává smyčku o
+pěti snímcích a druhé tuto smyčku po jednom snímku posouvá dopředu.
+;
+#X text 66 913 - zkuste navrhnout vlastní přehrávač videa \, využijte
+různých;
+#X text 79 927 typů počítadel \, jejich kombinací a směrů počítání
+(reverzní \, ping-pong);
+#X obj 396 87 cnv 15 100 15 empty empty empty 20 12 0 14 -262144 -66577
+0;
+#X obj 445 157 cnv 15 60 15 empty empty empty 20 12 0 14 -262144 -66577
+0;
+#X connect 3 0 28 0;
+#X connect 4 0 3 0;
+#X connect 5 0 12 0;
+#X connect 6 0 5 0;
+#X connect 8 0 12 1;
+#X connect 9 0 25 0;
+#X connect 10 0 26 0;
+#X connect 11 0 27 0;
+#X connect 12 0 7 0;
+#X connect 12 1 68 0;
+#X connect 13 0 19 0;
+#X connect 14 0 13 0;
+#X connect 15 0 16 0;
+#X connect 16 0 18 0;
+#X connect 17 0 21 0;
+#X connect 17 0 57 0;
+#X connect 18 0 17 1;
+#X connect 18 0 23 0;
+#X connect 19 0 20 0;
+#X connect 19 0 17 0;
+#X connect 20 0 35 0;
+#X connect 21 0 22 0;
+#X connect 22 0 31 0;
+#X connect 23 0 18 1;
+#X connect 24 0 12 0;
+#X connect 25 0 7 1;
+#X connect 26 0 7 2;
+#X connect 28 0 55 0;
+#X connect 29 0 28 3;
+#X connect 29 0 38 1;
+#X connect 30 0 21 1;
+#X connect 32 0 33 0;
+#X connect 33 0 34 0;
+#X connect 34 0 18 1;
+#X connect 34 1 19 1;
+#X connect 35 0 15 0;
+#X connect 35 0 19 1;
+#X connect 36 0 38 0;
+#X connect 37 0 36 0;
+#X connect 38 0 56 0;
+#X connect 41 0 42 0;
+#X connect 42 0 46 0;
+#X connect 42 1 52 0;
+#X connect 43 0 44 0;
+#X connect 43 0 54 0;
+#X connect 43 0 62 0;
+#X connect 44 0 45 0;
+#X connect 45 0 48 1;
+#X connect 46 0 47 0;
+#X connect 46 0 60 0;
+#X connect 47 0 48 0;
+#X connect 48 0 46 1;
+#X connect 48 0 53 0;
+#X connect 49 0 50 0;
+#X connect 49 0 59 0;
+#X connect 50 0 49 1;
+#X connect 51 0 63 0;
+#X connect 52 0 49 0;
+#X connect 53 0 54 0;
+#X connect 54 0 49 0;
+#X connect 58 0 8 0;
+#X connect 61 0 12 0;
+#X connect 62 0 46 1;
+#X connect 63 0 41 0;
+#X connect 68 0 11 0;
+#X connect 68 1 9 0;
+#X connect 68 2 10 0;

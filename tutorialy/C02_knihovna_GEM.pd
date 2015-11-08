@@ -1,0 +1,96 @@
+#N canvas 1 54 718 1017 12;
+#X obj 860 107 cnv 15 100 60 empty empty empty 20 12 0 14 -262144 -66577
+0;
+#X obj 77 360 cnv 15 470 320 empty empty empty 20 12 0 14 -233017 -66577
+0;
+#X text 444 364 gemwin_abs.pd;
+#X text 66 679 Prvním vypínačem budeme vytvářet a zavírat vykreslovací
+okno a zároveň zapínat a vypínat vykreslování - posíláme za
+sebou dvě zprávy: [create \, 1( a [0 \, destroy(. Podle hodnoty tohoto
+vypínače nastavujeme interní zprávou i jeho barvu.;
+#X text 66 289 Z důvodu snadného přístupu k vykreslovacímu oknu
+si postavíme jednoduchou abstrakci na jeho ovládání. Pojmenujeme
+ji jako gemwin_abs.pd \, nastavíme GOP a uložíme ji do adresáře
+s abstrakcemi.;
+#X obj 87 935 gemwin_abs;
+#X obj 86 431 cnv 15 440 30 empty empty empty 20 12 0 14 -191407 -66577
+0;
+#X obj 320 618 gemwin;
+#X msg 95 523 create \, 1;
+#X msg 127 549 0 \, destroy;
+#X obj 95 441 tgl 15 0 empty empty empty 17 7 0 10 -258699 -1 -262144
+0 1;
+#X obj 95 469 sel 1;
+#X floatatom 277 438 5 0 0 0 - - -;
+#X floatatom 320 437 5 0 0 0 - - -;
+#X obj 95 369 r tgl_color;
+#X msg 95 588 \; tgl_color color 16;
+#X msg 127 632 \; tgl_color color 43;
+#X msg 232 521 cursor \$1;
+#X obj 320 494 pack f f;
+#X obj 277 368 loadbang;
+#X msg 320 520 dimen \$1 \$2;
+#X obj 168 439 tgl 15 0 empty empty empty 17 7 0 10 -262144 -1 -1 1
+1;
+#X obj 232 438 tgl 15 0 empty empty empty 17 7 0 10 -262144 -1 -1 1
+1;
+#X msg 277 405 800;
+#X msg 320 406 600;
+#X msg 168 486 border \$1;
+#X msg 210 403 1;
+#X obj 320 467 t b f;
+#X text 362 436 Ovládací prvky pro GOP.;
+#X text 66 891 V našem případě jsme rozměry GOP nastavili na 138
+x 20 pixelů \, takže výsledek vypadá takto:;
+#X text 66 69 Objekt [gemwin] umí přijmout ještě celou řadu parametrů.
+My jsme si ukázali jen ty základní. Pokud by vás zajímaly podrobnosti
+\, podívejte se do nápovědy k tomuto objektu. Mimo jiné tam najdete
+informace \, jak přepnout projekci ____ z dvourozměrného způsobu
+promítání na 3D nebo jak zprovoznit tzv. FSAA vyhlazování.;
+#X text 67 172 Knihovna GEM je založena na standardu OpenGL \, který
+______ k vykreslování grafiky používá výpočetní potenciál
+grafické karty. Závislost na OpenGL souvisí také s tím \, že
+[gemwin]em lze vytvořit pouze jedno jediné okno. Pokud jste pokročilejšími
+programátory a znáte OpenGL nebo umíte vytvářet GLSL shadery \,
+své znalosti můžete uplatnit ______ i při práci s knihovnou GEM.
+;
+#X text 66 749 Další vypínač zapne/vypne vykreslování okrajů.
+Aby se změna projevila \, je třeba vykreslovací okno nejprve zavřít
+a pak znovu vytvořit.;
+#X obj 445 124 cnv 15 40 15 empty empty empty 20 12 0 14 -262144 -66577
+0;
+#X obj 433 175 cnv 15 60 15 empty empty empty 20 12 0 14 -262144 -66577
+0;
+#X obj 430 250 cnv 15 60 15 empty empty empty 20 12 0 14 -262144 -66577
+0;
+#X text 318 836 .;
+#X text 67 806 Třetí vypínač ovládá zobrazování kurzoru. Dva
+číselné boxy slouží pro nastavení rozměrů vykreslovacího okna.
+Přednastaveny jsou hodnoty 800 a 600 Pokud vám toto rozlišení nevyhovuje
+\, hodnoty změňte. Velikost se změní také až po znovuvytvoření
+vykreslovacího okna.;
+#X connect 8 0 15 0;
+#X connect 8 0 7 0;
+#X connect 9 0 7 0;
+#X connect 9 0 16 0;
+#X connect 10 0 11 0;
+#X connect 11 0 8 0;
+#X connect 11 1 9 0;
+#X connect 12 0 18 0;
+#X connect 13 0 27 0;
+#X connect 14 0 10 0;
+#X connect 17 0 7 0;
+#X connect 18 0 20 0;
+#X connect 19 0 23 0;
+#X connect 19 0 24 0;
+#X connect 19 0 26 0;
+#X connect 20 0 7 0;
+#X connect 21 0 25 0;
+#X connect 22 0 17 0;
+#X connect 23 0 12 0;
+#X connect 24 0 13 0;
+#X connect 25 0 7 0;
+#X connect 26 0 21 0;
+#X connect 26 0 22 0;
+#X connect 27 0 18 0;
+#X connect 27 1 18 1;

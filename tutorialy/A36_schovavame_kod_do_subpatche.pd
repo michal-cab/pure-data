@@ -1,0 +1,79 @@
+#N canvas 1 54 718 1017 12;
+#X obj 67 73 cnv 15 200 15 empty empty GRAPH_ON_PARENT 2 8 0 12 -228856
+-66577 0;
+#X text 260 333 ---------->;
+#N canvas 591 749 379 302 BPM_bang 0;
+#X floatatom 136 105 5 0 0 1 BPM - -;
+#X obj 104 168 metro;
+#X obj 104 107 tgl 15 0 empty empty empty 17 7 0 10 -262144 -1 -1 0
+1;
+#X msg 136 79 120;
+#X obj 136 51 loadbang;
+#X obj 104 193 outlet;
+#X obj 136 135 expr 15000 / $f1;
+#X connect 0 0 6 0;
+#X connect 1 0 5 0;
+#X connect 2 0 1 0;
+#X connect 3 0 0 0;
+#X connect 4 0 3 0;
+#X connect 6 0 1 1;
+#X coords 0 302 1 301 90 30 0;
+#X restore 357 335 pd BPM_bang;
+#X obj 76 275 cnv 15 170 150 empty empty empty 20 12 0 14 -233017 -66577
+0;
+#X floatatom 119 308 5 60 300 1 BPM - -;
+#X obj 82 371 metro;
+#X obj 82 283 tgl 15 0 empty empty empty 17 7 0 10 -262144 -1 -1 0
+1;
+#X msg 119 282 120;
+#X obj 160 282 loadbang;
+#X obj 82 396 outlet;
+#X obj 189 569 image gop_1.gif;
+#X obj 267 835 image gop_2.gif;
+#X text 73 432 okno subpatche:;
+#X text 323 445 Subpatch otevřeme LTM a v jeho okně;
+#X text 323 460 klikneme PTM na libovolné bílé místo.;
+#X text 323 473 Z menu vybereme Vlastnosti \, mělo by;
+#X text 323 487 se otevřít okno s názvem "Vlastnosti;
+#X text 323 501 plátna".;
+#X text 324 526 V okně "Vlastnosti plátna" vyškrtneme;
+#X text 323 541 položku "Graph-On-parent" i "Skrýt;
+#X text 66 202 Ukážeme si "jak na to" na kódu z našeho sekvenceru
+- konkrétně na části \, která generuje bangy. Nejprve vytvoříme
+subpatch se jménem BPM_bang a vložíme do něj následující kód:
+;
+#X text 323 555 název objektu...". Dále do políček;
+#X text 322 569 "Velikost" zadáme hodnotu 90;
+#X text 248 814 <---------------------------------;
+#X text 347 835 <-------------------;
+#X text 360 875 <-----------------;
+#X text 360 901 <-----------------;
+#X text 492 876 90;
+#X text 493 901 30;
+#X text 492 824 vyškrtnout;
+#X text 325 606 Tím jsme nastavili subpatch tak \, aby;
+#X text 323 620 v poli o rozměrech 90 x 30 bodů;
+#X text 323 635 zobrazoval grafické ovládací prvky;
+#X text 322 650 jako bang \, posuvník atd.;
+#X text 325 676 Nastavení potvrdíme kliknutím na OK.;
+#X text 255 272 U číselného boxu ještě v jeho;
+#X text 255 286 vlastnostech nastavíme spodní;
+#X text 255 300 a horní limit na 60 a 300;
+#X text 430 300 .;
+#X obj 119 338 expr 60000 / $f1;
+#X text 321 582 (v X rozsahu) a 30 (v Y rozsahu).;
+#X text 66 85 Co když se ale stane to \, že jsou uvnitř subpatche
+prvky \, které chceme mít přístupné? V případě našeho sekvenceru
+by to byly přepínače nebo číselný box k zadávání BPM. Jak
+je zpřístupnit? Kromě řízení subpatche přes vstupy a výstupy
+lze v Pd vytvářet i grafická uživatelská rozhraní přímo __
+v subpatchi. Takové prvky se v Pd terminologii nazývají Graph on
+Parent (GOP).;
+#X obj 460 152 cnv 15 19 15 empty empty empty 20 12 0 14 -262144 -66577
+0;
+#X connect 4 0 39 0;
+#X connect 5 0 9 0;
+#X connect 6 0 5 0;
+#X connect 7 0 4 0;
+#X connect 8 0 7 0;
+#X connect 39 0 5 1;

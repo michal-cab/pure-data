@@ -1,0 +1,181 @@
+#N canvas 1 54 718 1017 12;
+#N canvas 0 0 450 300 (subpatch) 0;
+#X array signal 256 float 1;
+#A 0 -0.213852 -0.244097 -0.272272 -0.29812 -0.321438 -0.34201 -0.359679
+-0.374278 -0.385697 -0.393825 -0.398606 -0.399989 -0.397968 -0.392558
+-0.383806 -0.371787 -0.3566 -0.33838 -0.317275 -0.293473 -0.267167
+-0.238593 -0.20798 -0.175603 -0.141725 -0.106645 -0.0706529 -0.0340619
+0.00282016 0.0396782 0.0761975 0.112069 0.146985 0.180652 0.212778
+0.243094 0.27134 0.297275 0.32068 0.341352 0.359122 0.373829 0.385359
+0.393601 0.3985 0.399996 0.398099 0.392799 0.384168 0.372252 0.357179
+0.339054 0.318052 0.294334 0.268116 0.239611 0.209069 0.176744 0.142916
+0.10787 0.0719063 0.0353303 -0.00154671 -0.0384107 -0.074947 -0.110847
+-0.1458 -0.179516 -0.211698 -0.242084 -0.270401 -0.296425 -0.319915
+-0.340691 -0.358556 -0.373378 -0.385012 -0.393376 -0.398383 -0.400004
+-0.398215 -0.393039 -0.384514 -0.372716 -0.357745 -0.339726 -0.318818
+-0.295191 -0.269055 -0.240623 -0.210148 -0.177879 -0.1441 -0.109089
+-0.0731528 -0.0365914 0.000280199 0.0371495 0.0737033 0.109628 0.144621
+0.178381 0.210624 0.241072 0.269468 0.29557 0.319154 0.340023 0.357994
+0.37292 0.384667 0.393145 0.398267 0.400008 0.398332 0.393277 0.384861
+0.373181 0.35831 0.3404 0.319582 0.296051 0.269993 0.241642 0.211229
+0.17902 0.145285 0.110314 0.0744035 0.0378595 0.000993248 -0.0358814
+-0.072451 -0.108403 -0.143433 -0.17724 -0.209541 -0.240053 -0.268529
+-0.294709 -0.318389 -0.339348 -0.357428 -0.372455 -0.38432 -0.392904
+-0.39815 -0.4 -0.398449 -0.393502 -0.385206 -0.37363 -0.358873 -0.341061
+-0.320343 -0.296901 -0.270927 -0.24265 -0.212303 -0.180153 -0.146464
+-0.111532 -0.0756472 -0.0391207 -0.00225976 0.0346202 0.0712045 0.107184
+0.142249 0.176105 0.208459 0.239041 0.267585 0.293852 0.317617 0.338677
+0.356855 0.371992 0.383965 0.392664 0.398027 0.399992 0.398562 0.393727
+0.385552 0.374081 0.359438 0.341722 0.321108 0.29775 0.271865 0.243659
+0.213383 0.181287 0.147649 0.112753 0.0768977 0.0403874 0.00353321
+-0.0333511 -0.0699511 -0.105956 -0.141058 -0.174961 -0.207371 -0.23802
+-0.266636 -0.29299 -0.31684 -0.338002 -0.356276 -0.371526 -0.383603
+-0.392424 -0.397894 -0.399984 -0.398663 -0.393951 -0.385882 -0.37453
+-0.359988 -0.34238 -0.321859 -0.298595 -0.272792 -0.244662 -0.214453
+-0.182414 -0.148826 -0.113967 -0.0781411 -0.041647 -0.00479972 0.0320886
+0.0687046 0.104734 0.139874 0.17382 0.206289 0.236998 0.265693 0.292123
+0.316067 0.337319 0.355699 0.371052 0.383243 0.392175 0.397762 0.39997
+0.398764 0.394173 0.386214 0.37498 0.360539 0.343041;
+#X coords 0 1 255 -1 200 140 1;
+#X restore 398 566 graph;
+#X obj 86 584 osc~ 440;
+#X obj 86 756 dac~;
+#X obj 71 397 cnv 15 200 15 empty empty VIZUALIZACE_SIGNÁLU 2 8 0
+12 -228856 -66577 0;
+#X obj 157 670 line~;
+#X msg 157 644 \$1 20;
+#X obj 85 700 *~;
+#X obj 157 757 tabwrite~ signal;
+#X obj 157 711 tgl 15 0 empty empty empty 17 7 0 10 -262144 -1 -1 0
+1;
+#X obj 89 560 hsl 128 15 110 1100 0 0 empty empty frekvence -2 8 0
+10 -262144 -1 -1 0 1;
+#X obj 89 193 hsl 128 15 0 1 0 0 empty empty empty -2 -8 0 10 -262144
+-1 -1 0 1;
+#X obj 98 216 knob 32 32 0 1 0 0 empty empty empty 0 -8 0 8 -262144
+-1 -1 0 1;
+#X obj 160 597 hsl 128 15 0 1 0 0 empty empty amplituda -2 8 0 10 -262144
+-1 -1 0 1;
+#X obj 157 618 pow 4;
+#N canvas 0 0 450 300 (subpatch) 0;
+#X array log 100 float 1;
+#A 0 0 1e-08 1.6e-07 8.1e-07 2.56e-06 6.25e-06 1.296e-05 2.401e-05
+4.096e-05 6.561e-05 0.0001 0.00014641 0.00020736 0.00028561 0.00038416
+0.00050625 0.00065536 0.00083521 0.00104976 0.00130321 0.0016 0.00194481
+0.00234256 0.00279841 0.00331776 0.00390625 0.00456976 0.00531441 0.00614656
+0.00707281 0.0081 0.00923521 0.0104858 0.0118592 0.0133634 0.0150062
+0.0167962 0.0187416 0.0208514 0.0231344 0.0256 0.0282576 0.031117 0.034188
+0.037481 0.0410062 0.0447746 0.0487968 0.0530842 0.057648 0.0625 0.067652
+0.0731162 0.0789048 0.0850306 0.0915063 0.098345 0.10556 0.113165 0.121174
+0.1296 0.138458 0.147763 0.15753 0.167772 0.178506 0.189747 0.201511
+0.213814 0.226671 0.2401 0.254117 0.268739 0.283982 0.299866 0.316406
+0.333622 0.35153 0.370151 0.389501 0.4096 0.430467 0.452122 0.474583
+0.497871 0.522006 0.547008 0.572898 0.599695 0.627422 0.6561 0.68575
+0.716393 0.748052 0.780749 0.814506 0.849347 0.885293 0.922368 0.960596
+;
+#X coords 0 1 99 0 100 70 1 0 0;
+#X restore 322 209 graph;
+#X obj 500 153 f;
+#X obj 544 156 + 1;
+#X obj 438 260 tabwrite log;
+#X obj 500 97 t b b;
+#X msg 574 124 0;
+#X obj 438 234 pow 4;
+#X obj 500 76 bng 15 250 50 0 empty empty empty 17 7 0 10 -262144 -1
+-1;
+#X obj 86 306 pow 4;
+#X obj 500 125 uzi 100;
+#X obj 438 208 / 100;
+#X obj 499 178 t f f f f;
+#X obj 539 260 tabwrite lin;
+#X obj 539 232 / 100;
+#N canvas 0 0 450 300 (subpatch) 0;
+#X array lin 100 float 1;
+#A 0 0 0.01 0.02 0.03 0.04 0.05 0.06 0.07 0.08 0.09 0.1 0.11 0.12 0.13
+0.14 0.15 0.16 0.17 0.18 0.19 0.2 0.21 0.22 0.23 0.24 0.25 0.26 0.27
+0.28 0.29 0.3 0.31 0.32 0.33 0.34 0.35 0.36 0.37 0.38 0.39 0.4 0.41
+0.42 0.43 0.44 0.45 0.46 0.47 0.48 0.49 0.5 0.51 0.52 0.53 0.54 0.55
+0.56 0.57 0.58 0.59 0.6 0.61 0.62 0.63 0.64 0.65 0.66 0.67 0.68 0.69
+0.7 0.71 0.72 0.73 0.74 0.75 0.76 0.77 0.78 0.79 0.8 0.81 0.82 0.83
+0.84 0.85 0.86 0.87 0.88 0.89 0.9 0.91 0.92 0.93 0.94 0.95 0.96 0.97
+0.98 0.99;
+#X coords 0 1 99 0 100 70 1 0 0;
+#X restore 321 304 graph;
+#X floatatom 86 359 7 0 0 0 - - -;
+#X text 234 188 0..1;
+#X floatatom 86 262 5 0 0 0 - - -;
+#X text 225 556 110..1100 Hz;
+#X obj 157 731 metro 40;
+#X text 174 707 <- Vizualizaci zapneme zde.;
+#X text 436 286 Patch \, který vykresluje;
+#X text 435 300 rozdíl mezi lineárním;
+#X text 436 315 a logaritmickým průběhem;
+#X text 435 330 funkce do pole.;
+#X text 396 705 Pole o 256 prvcích. Vidíme;
+#X text 396 731 v čase.;
+#X text 396 718 v něm průběh amplitudy signálu;
+#X text 141 358 <- logaritmická škála;
+#X text 131 264 <- lineární škála;
+#X text 483 100 \,;
+#X text 70 69 Hlasitost zvuku \, podobně jako frekvenci \, nevnímá
+lidské ucho lineárně \, ale také logaritmicky. I velké změny
+______ v podnětech způsobují malé změny počitků. Jedním ze
+způsobů jak přimět posuvník o rozsahu 0..1 \, aby se choval podobně
+jako logaritmický tahový potenciometr na mixážním pultu \, je
+"prohnat" ho objektem [pow 4]. Získáme tak lepší kontrolu nad hlasitostí.
+Podobný postup můžeme aplikovat i na knoby.;
+#X text 70 781 Vizualizace signálu je dobrým pomocníkem při odlaďování
+chyb a normalizaci. Poslouží nám ale také k názornému pochopení
+probrané látky týkající se frekvence ___________ a hlasitosti.
+Když budeme zvyšovat posuvníkem frekvenci \, perioda kmitání se
+bude zkracovat - oscilátor kmitá rychleji a uslyšíme vyšší frekvenci.
+Stejně když budeme manipulovat s posuvníkem ovládajícím amplitudu
+\, bezprostředně uvidíme \, jak signál na ose Y roste nebo se zmenšuje.
+Tuto techniku není vhodné využívat při živém hraní nebo když
+potřebujeme plný výkon počítače. Vykreslování signálu do pole
+totiž procesor poměrně zatěžuje. Zkuste si z uvedeného patche
+vytvořit abstrakci.;
+#X obj 434 87 cnv 15 60 15 empty empty empty 20 12 0 14 -262144 -66577
+0;
+#X text 70 408 Ještě před tím \, než se začneme věnovat podrobněji
+jednotlivým generátorům signálů \, ukážeme si \, jak jednoduše
+signál zobrazit v poli. Slouží k tomu objekt [tabwrite~] \, jehož
+argumentem je název pole \, do kterého signál zapisujeme. V tomto
+případě je to pole s názvem "signal". Signál se do pole zapíše
+pouze když do [tabwrite~] posíláme signál a inicializujeme ho bangem.
+Abychom vykreslování viděli kontinuálně \, do [tabwrite~] posíláme
+bangy ________ v intervalu 40 ms z objektu [metro].;
+#X obj 418 520 cnv 15 60 15 empty empty empty 20 12 0 14 -262144 -66577
+0;
+#X obj 399 814 cnv 15 100 15 empty empty empty 20 12 0 14 -262144 -66577
+0;
+#X connect 1 0 6 0;
+#X connect 4 0 6 1;
+#X connect 5 0 4 0;
+#X connect 6 0 2 0;
+#X connect 6 0 2 1;
+#X connect 6 0 7 0;
+#X connect 8 0 33 0;
+#X connect 9 0 1 0;
+#X connect 10 0 31 0;
+#X connect 11 0 31 0;
+#X connect 12 0 13 0;
+#X connect 13 0 5 0;
+#X connect 15 0 16 0;
+#X connect 15 0 25 0;
+#X connect 16 0 15 1;
+#X connect 18 0 23 0;
+#X connect 18 1 19 0;
+#X connect 19 0 15 1;
+#X connect 20 0 17 0;
+#X connect 21 0 18 0;
+#X connect 22 0 29 0;
+#X connect 23 0 15 0;
+#X connect 24 0 20 0;
+#X connect 25 0 24 0;
+#X connect 25 1 17 1;
+#X connect 25 2 27 0;
+#X connect 25 3 26 1;
+#X connect 27 0 26 0;
+#X connect 31 0 22 0;
+#X connect 33 0 7 0;

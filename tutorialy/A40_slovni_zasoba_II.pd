@@ -1,0 +1,80 @@
+#N canvas 1 54 718 1017 12;
+#X obj 67 73 cnv 15 200 15 empty empty GLOBÁLNÍ_A_LOKÁLNÍ 2 8 0
+12 -228856 -66577 0;
+#X floatatom 86 448 5 0 0 0 - - -;
+#X floatatom 281 446 5 0 0 0 - - -;
+#X obj 86 621 \$0;
+#X obj 86 595 bng 15 250 50 0 empty empty empty 17 7 0 10 -262144 -1
+-1;
+#X obj 86 476 send msg;
+#X obj 281 474 send \$0-msg;
+#X text 131 604 tento kód. Poté inicializujte bangy jak v tomto \,
+;
+#X obj 88 796 receive msg;
+#X floatatom 88 826 5 0 0 0 - - -;
+#X floatatom 279 827 5 0 0 0 - - -;
+#X obj 279 795 receive \$0-msg;
+#X floatatom 86 652 5 0 0 0 - - -;
+#X text 132 634 Identifikátor bude mít pro každý patch;
+#X text 131 648 jinou hodnotu.;
+#X text 131 588 Vytvořte nový patch (CTRL + n) a do něj vložte
+;
+#X text 153 464 Globální;
+#X text 153 479 vysílač.;
+#X text 368 465 Lokální;
+#X text 368 480 vysílač.;
+#X text 176 794 Globální;
+#X text 388 791 Lokální;
+#X text 388 805 přijímač.;
+#X text 66 86 Toto téma by si zasloužilo samostatnou velkou kapitolu.
+Nicméně problematika globálního a lokálního posílání určitých
+zpráv s objekty [send] a [receive] bezprostředně souvisí \, takže
+ji uvádíme již nyní. Pojmů jako je "abstrakce" se nelekejte \,
+vysvětlíme si je později. Možná vám zde uvedená látka přijde
+neaplikovatelná \, její význam ale zhodnotíme při konstrukci jakéhokoliv
+nástroje \, který budeme chtít v patchi mít víckrát než jednou
+\, nebo při vytváření systémů sloužících k uchování hodnot
+(presety).;
+#X text 66 233 Vlastností objektu [send] je to \, že umí posílat
+zprávy buď globálně nebo lokálně. Co to znamená? Představme
+si každý aktuálně otevřený patch jako jeden byt v domě. A množinu
+všech patchů jako dům.;
+#X text 66 303 Když používáme např. [send msg] \, pak do jakéhokoliv
+otevřeného patche (a je to případ i subpatchů a abstrakcí) \,
+ve kterém bude přítomný objekt [receive msg] \, tato zpráva doputuje.
+Je to jako bychom ji dávali vědět celému domu.;
+#X text 66 374 Pokud budeme chtít "mluvit pouze v jednom bytě" \,
+tj. poslat zprávu pouze v rámci jednoho patche (a jeho subpatchů)
+___ a nebo v rámci abstrakce \, použijeme před "jménem destinace"
+předponu "\$0-".;
+#X text 66 503 \$0 je zvláštní symbol \, je to vlastně identifikátor
+\, díky kterému Pd dokážou rozlišit např. dva stejné a současně
+otevřené patche. Obvykle nabývá hodnot kolem 1000 a výš. Jakou
+hodnotu má identifikátor aktuálně otevřeného patche \, zjistíme
+následujícím drobným kódem.;
+#X text 131 619 tak v nově vytvořeném patchi \, a porovnejte je.
+;
+#X text 67 675 Nyní zkuste z obou [send]ů nahoře poslat nějakou
+hodnotu. Uvidíte \, že v obou případech dotečou do objektů [receive]
+dole. V prvním případě ale proto \, že je hodnota poslána globálně.
+V druhém pak proto \, že je poslána lokálně ______ a posíláme
+ji v rámci jednoho patche (jednoho bytu) \, takže identifikátor
+\$0 má stejnou hodnotu jak pro [send] \, tak pro [receive].;
+#X text 176 809 příjímač.;
+#X text 67 851 Pakliže objekty [receive msg] a [receive \$0-msg] umístíme
+do nově vytvořeného patche a znovu z obou [send]ů pošleme hodnoty
+\, v novém patchi dotečou jen do [receive msg]. [send msg] posílá
+totiž zprávy globálně - do všech otevřených patchů. V novém
+patchi má identifikátor \$0 jinou hodnotu než v tomto \, proto mu
+zpráva z tohoto patche nebude doručena. Je to úplně jiný byt.
+;
+#X obj 430 723 cnv 15 60 15 empty empty empty 20 12 0 14 -262144 -66577
+0;
+#X obj 449 393 cnv 15 60 15 empty empty empty 20 12 0 14 -262144 -66577
+0;
+#X connect 1 0 5 0;
+#X connect 2 0 6 0;
+#X connect 3 0 12 0;
+#X connect 4 0 3 0;
+#X connect 8 0 9 0;
+#X connect 11 0 10 0;

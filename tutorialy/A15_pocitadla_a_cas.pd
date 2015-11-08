@@ -1,0 +1,106 @@
+#N canvas 1 54 718 1017 12;
+#X obj 67 491 cnv 15 200 15 empty empty NEKONEČNÉ_SMYČKY 2 8 0 12
+-228856 -66577 0;
+#X obj 67 73 cnv 15 567 25 empty empty počítadla_a_čas 20 12 0 14
+-1 -262144 0;
+#X msg 88 175 1;
+#X obj 88 209 +;
+#X floatatom 88 244 5 0 0 0 - - -;
+#X text 151 197 vrátí po kabelu nahoru do jeho pasivního vstupu.
+;
+#X text 151 211 Tím se zároveň změní i atribut \, který se přičítá.
+;
+#X obj 174 352 + 1;
+#X obj 88 321 bng 15 250 50 0 empty empty empty 17 7 0 10 -262144 -1
+-1;
+#X floatatom 174 388 5 0 0 0 - - -;
+#X obj 82 637 bng 15 250 50 0 empty empty empty 17 7 0 10 -262144 -1
+-1;
+#X obj 82 658 f;
+#X obj 126 658 + 1;
+#X floatatom 97 869 5 0 0 0 - - -;
+#X floatatom 164 851 5 0 0 0 - - -;
+#X floatatom 143 895 5 0 0 0 - - -;
+#X obj 386 868 bng 15 250 50 0 empty empty empty 0 -6 0 10 -262144
+-1 -1;
+#X obj 320 851 bng 15 250 50 0 empty empty empty 0 -6 0 10 -262144
+-1 -1;
+#X obj 354 899 bng 15 250 50 0 empty empty empty 0 -6 0 10 -262144
+-1 -1;
+#X text 222 303 Struktura na první pohled nemusí být zcela;
+#X text 222 317 srozumitelná \, přesto však známe již vše \,
+co je;
+#X text 222 331 třeba k jejímu pochopení. Každý bang poslaný
+na;
+#X text 222 346 aktivní vstup objektu float nejprve protlačí;
+#X text 222 360 hodnotu \, která je v něm uložena. Ta doteče do
+;
+#X obj 88 352 float 0;
+#X text 222 388 přičtena jednička \, pak putuje kabelem do;
+#X obj 154 451 + 1;
+#X obj 254 449 + 1;
+#X obj 218 450 f 0;
+#X obj 89 451 float 0;
+#X text 189 451 ==;
+#X obj 351 449 + 1;
+#X obj 315 449 f;
+#X text 290 450 ==;
+#X text 66 504 Počítadlo v Pd je krásným příkladem kódu \, ve
+kterém vyhodnocení jednoho stavu determinuje stav následující.
+Výsledek výpočtu je poslán "zpátky nahoru". Krása autodeterministických
+kódů v sobě ale nese nebezpečí vytvoření nekonečné smyčky
+- bezvýchodného zacyklení kódu.;
+#X text 66 807 Další příklady nebezpečných patchů \, vedoucích
+k zacyklení \, vypadají takto:;
+#X text 151 183 vstupu objektu [+] a výslednou hodnotu z číselného
+boxu;
+#X text 222 374 aktivního vstupu objektu [+ 1] \, kde je k ní;
+#X text 222 402 pasivního vstupu objektu [float] \, kde je uložena
+;
+#X text 222 416 a čeká na další "protlačení" bangem.;
+#X text 390 448 Různé zápisy téhož.;
+#X text 66 589 V případě počítadla k tomu postačí špatně zapojit
+jeden kabel:;
+#X text 174 625 Zde dochází k zacyklení \, jelikož z [+ 1] posíláme
+;
+#X text 175 640 hodnotu do aktivního vstupu objektu [f] \,;
+#X text 175 655 který ji ihned zas předá objektu [+ 1] a ten ihned...
+;
+#X text 175 669 a objekt [f] ihned... a ...;
+#X text 137 929 Zacyklení číselných boxů a bangů.;
+#X text 151 169 Toto počítadlo nejpve pošle jedničku do aktivního
+;
+#X text 66 96 Počítadla v Pd hrají důležitou roli \, stojí např.
+za počítáním pozice v sekvencerech \, díky jejich modifikacím
+je možné vytvářet nevšední způsoby přehrávání videa \, s
+jejich pomocí lze automatizovat určité procesy atd.;
+#X text 66 278 Klasické počítadlo vypadá takto:;
+#X text 66 693 Na chyby související s nešetrným posíláním vstupu
+na výstup jsme vždy upozorněni v Pd konzoli \, kde uvidíme hlášku
+"stack overflow" \, neboli přetečení zásobníku. Pokud toto varování
+uvidíte \, je třeba kód revidovat \, chybu způsobující přetečení
+zásobníku najít a odstranit. Tato chyba totiž vede k chybné funkčnosti
+kódu nebo k uplnému "zamrznutí" programu.;
+#X connect 2 0 3 0;
+#X connect 3 0 4 0;
+#X connect 4 0 3 1;
+#X connect 7 0 24 1;
+#X connect 7 0 9 0;
+#X connect 8 0 24 0;
+#X connect 10 0 11 0;
+#X connect 11 0 12 0;
+#X connect 12 0 11 0;
+#X connect 13 0 15 0;
+#X connect 14 0 13 0;
+#X connect 15 0 14 0;
+#X connect 16 0 17 0;
+#X connect 17 0 18 0;
+#X connect 18 0 16 0;
+#X connect 24 0 7 0;
+#X connect 26 0 29 1;
+#X connect 27 0 28 1;
+#X connect 28 0 27 0;
+#X connect 29 0 26 0;
+#X connect 31 0 32 1;
+#X connect 32 0 31 0;
+#X coords 0 1120 1 1119 85 60 0;

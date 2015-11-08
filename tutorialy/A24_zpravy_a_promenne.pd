@@ -1,0 +1,97 @@
+#N canvas 1 54 718 1017 12;
+#X obj 88 256 soundfiler;
+#X obj 88 204 openpanel;
+#N canvas 0 22 450 300 (subpatch) 0;
+#X array array1 308112 float 2;
+#X coords 0 1 308112 -1 200 60 1 0 0;
+#X restore 85 457 graph;
+#X msg 88 178 bang;
+#X obj 89 535 hsl 195 20 0 308112 0 0 empty rozsah scratch 0 10 0 12
+-262144 -1 -1 0 1;
+#X obj 88 333 pack 0 f;
+#X msg 88 231 read -resize \$1 array1;
+#X obj 86 643 line~;
+#X obj 86 871 dac~;
+#X obj 87 834 *~ 0.5;
+#X obj 87 792 tabread4~ array1;
+#X obj 86 602 pack f 200;
+#X obj 107 759 tabplay~ array1;
+#X obj 107 731 bng 15 250 50 0 empty empty empty 17 7 0 10 -262144
+-1 -1;
+#X obj 156 579 hsl 128 15 100 1000 0 0 empty empty empty -2 -8 0 10
+-262144 -1 -1 0 1;
+#X obj 67 73 cnv 15 200 15 empty empty SCRATCHER 2 8 0 12 -228856 -66577
+0;
+#X text 256 180 [openpanel] po bangnutí otevře okno \, ve kterém
+;
+#X text 258 207 posíláme do zprávy \, kde nahradí \$1. Zpráva
+je dál;
+#X text 258 222 poslána objektu [soundfiler] \, který soubor .wav
+;
+#X text 258 252 velikost.;
+#X text 293 349 Tato zpráva začíná středníkem \, tzn. že posílá
+;
+#X text 293 362 něco do právě otevřeného patche. Zde posíláme
+;
+#X text 292 392 Proměnné \$1 a \$2 reprezentují dolní a horní
+;
+#X text 258 193 vybereme audio soubor s koncovkou .wav. Jeho název
+;
+#X text 292 452 Pole (menu Vložit -> Pole) je datová struktura \,
+;
+#X text 292 465 do které můžeme uložit různá data. V tomto;
+#X text 292 495 do pole array1 nahraje objekt [soundfiler].;
+#X text 292 419 celkový počet vzorků.;
+#X floatatom 88 280 11 0 0 0 - - -;
+#X text 215 785 [tabread4~] přehrává audio soubor v array1;
+#X text 294 535 Podívejte se na jeho vlastnosti (PTM) \,;
+#X msg 88 380 \; rozsah range \$1 \$2;
+#X text 292 405 hodnotu posuvníku - tedy \$1 je vždy 0 a \$2 je;
+#X text 293 522 Tímto posuvníkem "procházíme" po audio souboru.
+;
+#X text 292 576 Druhým posuvníkem měníme rychlost "náběhu".;
+#X text 136 833 Vynásobením audio signálu hodnotou 0.5 jej ztišíme.
+;
+#X text 258 238 načte do pole s názvem "array1" a přizpůsobí jeho
+;
+#X text 293 376 dvě čísla do posuvníku.;
+#X obj 88 303 t b f;
+#X text 293 479 případě to bude audio soubor typu WAV \, jenž;
+#X text 291 550 jaký má rozsah a jaký symbol přijímá?;
+#X text 93 683 <-- Objekt [line~] má vlnovku ("~") \, takže tady
+už teče;
+#X text 121 695 zvukový signál.;
+#X text 66 85 Opustíme teď výklad teorie ve prospěch případové
+studie \, ve které sice nebudeme ještě všemu rozumět \, ale uvidíme
+na ní \, jak se pracuje s proměnnými. Ty v následujícím patchi
+reprezentují název souboru \, který přehráváme \, a délku samplu
+\, která určuje rozsah "scratchovacího" posuvníku.;
+#X text 143 629 [line~] čeká na seznam \, jehož prvním prvkem je
+hodnota \, do které má napočítat a druhý prvek je doba v milisekundach
+\, za kterou má dané hodnoty dosáhnout.;
+#X text 127 722 Když do [tabplay~] pošeme bang \, audio soubor načtený
+;
+#X text 126 737 v poli jménem array1 se normálně přehraje.;
+#X text 216 800 podle hodnot \, které obdrží od objektu [line~].
+;
+#X text 66 900 Ke kompletnímu vysvětlení funkčnosti tohoto patche
+se dostaneme ve druhé části rukověti \, která se věnuje zvuku.
+Konkrétně to bude v kapitole věnované objektu [tabread4~].;
+#X connect 0 0 28 0;
+#X connect 1 0 6 0;
+#X connect 3 0 1 0;
+#X connect 4 0 11 0;
+#X connect 5 0 31 0;
+#X connect 6 0 0 0;
+#X connect 7 0 10 0;
+#X connect 9 0 8 0;
+#X connect 9 0 8 1;
+#X connect 10 0 9 0;
+#X connect 11 0 7 0;
+#X connect 12 0 9 0;
+#X connect 13 0 12 0;
+#X connect 14 0 11 1;
+#X connect 28 0 38 0;
+#X connect 38 0 5 0;
+#X connect 38 1 5 1;
+#X coords 0 1120 1 1119 85 60 0;

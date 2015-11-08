@@ -1,0 +1,65 @@
+#N canvas 1 54 718 1017 12;
+#X obj 548 510 coll;
+#C restore;
+#X text 66 70 Segment 6: Příkazem [print( poslaným do [msgfile]
+se můžeme snadno informovat o jeho aktuálním obsahu a stavu jednotlivých
+presetů.;
+#X obj 67 558 cnv 15 200 15 empty empty PRESETOVÉ_SYSTÉMY_Z_KOMUNITY
+2 8 0 12 -228856 -66577 0;
+#X text 66 683 K pochopení a rozběhnutí Sssad je ale přeci jen
+třeba již určité uživatelské a programátorské zručnosti (patche
+jsou ke stažení pouze za pomoci správce zdrojových kódu svn).
+;
+#X obj 168 918 any;
+#X msg 208 918 set no more presets;
+#X text 66 395 Lepší řešení spočívá v použití abstrakcí
+a indentifikátoru \$0- \, díky kterým bychom zaručili bezchybnou
+funkčnost presetových systémů ve více otevřených sekvencerech.
+Abstrakcím se ještě budeme věnovat později. Navzdory těmto omezením
+je náš příklad snad dobře aplikovatelný ve středně velkých
+projektech.;
+#X text 66 570 Za dobu existence Pd se v komunitě uživatelů přirozeně
+objevila poptávka po presetových systémech. V "dřevních dobách"
+vyvinul Frank Barknecht systém RRADical \, který však již není
+ve vývoji. Frank jej nahradil lepší a uživatelsky přívětivější
+verzí \, která se jmenuje Stupidsupersimplistic State Saving ADVANCED
+\, neboli Sssad. Informace o projektu najdete na uvedené stránce.
+;
+#X obj 545 637 pddplink http://puredata.info/downloads/sssad -text
+Sssad;
+#X obj 528 766 pddplink http://grrrr.org -text grrrr.org;
+#X obj 526 823 pddplink : https://github.com/dotmmb/mmb -text mmb GitHub
+;
+#X text 67 123 Segment 7: Zde bang rozvětvený [trigger]em provádí
+tři akce. Nejprve kompletně smaže obsah \, který si [msgfile] pamatuje
+\, poté příkazem [add 0 0 0 0 0( vytvoří osm řádků \, na kterých
+budou jen nuly a nakonec tento obsah uloží do souboru preset.txt.
+Bang posíláme po drátě části kódu \, který již máme v Segmentu
+4 - nemusíme ho duplikovat.;
+#X text 67 222 Tolik k vysvětlení kódu. Řešení ukládání stavů
+\, jaké jsme předvedli \, má oproti první těžkopádné verzi
+tu výhodu \, že si patch "nezahustíme" řadou objektů [pd save]
+\, a též ____ v tom \, že je možné uložit libovolný počet presetů.
+Problém tohoto řešení pak spočívá v tom \, že kdybychom jej
+implementovali např. do našeho šestnáctistopého sekvenceru \,
+bude fungovat pouze s jeho jednou instancí. To je způsobeno tím
+\, že hodnoty \, které bezdrátově posíláme z/do posuvníků \,
+a také další hodnoty proměnných mají globální platnost. Ve
+více spuštěných instancích sekvenceru by tedy názvy proměnných
+byly ve vzájemném konfliktu.;
+#X obj 445 255 cnv 15 40 15 empty empty empty 20 12 0 14 -262144 -66577
+0;
+#X text 67 496 Pokud máte ještě dost sil k průzkumu \, doporučuji
+se podívat na nápovědu k objektu [coll] z knihovny cyclone \, kterým
+by šel presetový systém také pojednat.;
+#X text 66 738 Dalším pokusem o řešení problémů s presety je
+externí knihovna jménem pool od Thomase Grilla \, která je ke stažení
+na jeho domovské stránce. Pool není součástí Pd-extended.;
+#X text 66 796 Asi posledním pokusem o jednoduchý a relativně přívětivý
+presetový systém je kolekce patchů \, jejímž autorem je Mike Moser-Booth
+(id Maelstorm na Pd Fóru). Ke stažení je \, spolu s řadou dalších
+užitečných patchů \, na GitHubu. Po rozbalení se ev. podívejte
+na soubor s názvem my.hero.mmb-help.pd \, ve kterém je popis tohoto
+systému včetně ukázek.;
+#X connect 4 0 5 0;
+#X connect 5 0 4 0;

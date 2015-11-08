@@ -1,0 +1,108 @@
+#N canvas 1 54 718 1017 12;
+#X text 934 1121 From the Pd manual 2.3.1"The selector is a symbol
+\, which appears in the patch as a non-numeric string with no white
+space \, semicolons \, or commas." "bang" \, "float" \, "symbol" \,
+and "list" are all pre-defined selectors with a built-in meaning in
+Pd. Any series that has a numeric first element has an implied selector
+of "list". For all other messages \, the selector is free to be interpreted
+by the object.;
+#X obj 209 289 print;
+#X symbolatom 88 290 15 0 0 0 - - -;
+#X floatatom 88 223 5 0 0 0 - - -;
+#X obj 88 257 makefilename %d;
+#X symbolatom 295 227 15 0 0 0 - - -;
+#X obj 343 289 print;
+#X obj 67 365 cnv 15 200 15 empty empty SEZNAMY 2 8 0 12 -228856 -66577
+0;
+#X msg 87 491 list rock and roll;
+#X msg 510 430 list pů sova 2;
+#X text 520 412 |;
+#X text 520 418 v;
+#X text 500 383 selektor;
+#X text 510 396 list;
+#X text 575 412 |;
+#X text 575 418 v;
+#X text 570 386 tři;
+#X text 564 396 atomy;
+#X msg 250 522 list a;
+#X msg 249 554 list 3;
+#X msg 248 586 3 5 7 11;
+#X msg 248 621 get 8;
+#X msg 248 654 list get 8;
+#X msg 250 491 list 1 1 2 3 5 8 13 21;
+#X obj 87 723 route list;
+#X obj 87 762 bng 15 250 50 0 empty empty empty 17 7 0 10 -262144 -1
+-1;
+#X obj 154 762 bng 15 250 50 0 empty empty empty 17 7 0 10 -262144
+-1 -1;
+#X obj 109 758 print;
+#X obj 295 258 s2l;
+#X floatatom 295 289 5 0 0 0 - - -;
+#X msg 248 691 1 bu 2 hu;
+#X text 66 69 Když budeme chtít někam poslat atomickou zprávu typu
+symbol \, pak ji budeme muset vždy selektorem symbol specifikovat!
+Jinak si Pd "myslí" \, že první nečíselná zpráva je selektor.
+;
+#X obj 67 147 cnv 15 200 15 empty empty KONVERZE_SELEKTORŮ 2 8 0 12
+-228856 -66577 0;
+#X text 67 160 Pokud bychom náhodou potřebovali v nějakém speciálním
+případě změnit selektor float na symbol a naopak \, je to možné
+provést následujícím způsobem:;
+#X text 411 218 Do symbol boxu;
+#X text 410 231 zadáme jen číslo!;
+#X text 66 317 Rozborem objektů [makefilename] a [s2l] se zde nebudeme
+zabývat \, ale můžete si zkusit projít jejich dokumentaci.;
+#X text 75 773 Je to;
+#X text 72 787 seznam.;
+#X text 140 776 Není to;
+#X text 142 788 seznam.;
+#X text 417 496 explicitním selektorem list.;
+#X text 417 484 Seznam začínající;
+#X text 300 522 List bude konvertován na symbol.;
+#X text 301 553 List bude konvertován na float.;
+#X text 317 579 Seznam začínající číslem;
+#X text 317 591 má implicitní selektor list.;
+#X text 294 615 Toto není seznam \, Pd si "myslí" \, že;
+#X text 295 626 get je selektor.;
+#X text 332 646 Toto je seznam \, má explicitní;
+#X text 333 658 selektor list.;
+#X text 321 683 Seznam s implicitním selektorem \, začíná;
+#X text 321 696 totiž číslem a pak následují další atomy.;
+#X text 66 811 V tomto příkladu jsme použili objekt [route] \, se
+kterým se seznámíme později. Funguje zde jako detektor seznamu
+(tj. zprávy s implicitním nebo explicitním selektorem list). Když
+jde o list \, pak pošle bang do levého výstupu \, jinak pošle bang
+do pravého výstupu.;
+#X text 66 378 Zprávy obsahující více než jeden atom jsou seznamy.
+______ V případě \, že začínají číslem \, mají implicitní
+selektor list. Jinak je třeba je selektorem specifikovat (Pd opět
+interpretují první nečíselnou zprávu jako selektor)! Pokud za
+list selektorem následuje pouze jeden atom \, je list převeden na
+float nebo symbol.;
+#X text 66 900 Abychom si předchozí informace o zprávách \, implicitních
+__ a explicitních selektorech i o atomech shrnuli \, v rozšířené
+podobě jej použijeme na následující straně ještě jednou...
+;
+#X obj 428 382 cnv 15 60 15 empty empty empty 20 12 0 14 -262144 -66577
+0;
+#X obj 458 905 cnv 15 60 15 empty empty empty 20 12 0 14 -262144 -66577
+0;
+#X connect 3 0 4 0;
+#X connect 4 0 1 0;
+#X connect 4 0 2 0;
+#X connect 5 0 28 0;
+#X connect 8 0 24 0;
+#X connect 18 0 24 0;
+#X connect 19 0 24 0;
+#X connect 20 0 24 0;
+#X connect 21 0 24 0;
+#X connect 22 0 24 0;
+#X connect 23 0 24 0;
+#X connect 24 0 25 0;
+#X connect 24 0 27 0;
+#X connect 24 1 26 0;
+#X connect 24 1 27 0;
+#X connect 28 0 6 0;
+#X connect 28 0 29 0;
+#X connect 30 0 24 0;
+#X coords 0 1120 1 1119 85 60 0;

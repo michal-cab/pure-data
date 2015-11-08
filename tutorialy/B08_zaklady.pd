@@ -1,0 +1,117 @@
+#N canvas 1 54 718 1017 12;
+#X obj 92 108 line;
+#X obj 92 141 print;
+#X msg 92 75 0 \, 500 100;
+#X text 179 71 Do objektu [line] posíláme dvě zprávy \, nejprve
+;
+#X text 180 86 ho nastavíme na nulu a pak mu řekneme \, ať od;
+#X text 180 114 pak uvidíme hodnoty 0 \, 100 \, 200..500 \, což;
+#X text 180 129 odpovídá rychlosti "tiku" 20 ms.;
+#X obj 71 179 cnv 15 200 15 empty empty FREKVENCE 2 8 0 12 -228856
+-66577 0;
+#X obj 90 357 line;
+#X obj 89 469 dac~;
+#X floatatom 90 383 5 0 0 0 - - -;
+#X obj 90 409 phasor~;
+#X msg 90 331 0 \, 220 60000;
+#X text 191 323 Nejprve se vynuluj a pak počítej do 220 za;
+#X text 191 337 60000 ms.;
+#X text 156 415 což je generátor vlny tvaru "pila".;
+#X msg 522 363 \; pd dsp \$1;
+#X obj 522 341 tgl 15 0 empty empty empty 17 7 0 10 -262144 -1 -1 0
+1;
+#X obj 90 438 *~;
+#X obj 123 439 tgl 15 0 empty empty empty 17 7 0 10 -262144 -1 -1 0
+1;
+#X text 149 437 Vynásobením signálu 1/0 jej zapneme/vypneme.;
+#X obj 87 729 dac~;
+#X obj 88 698 *~;
+#X obj 121 699 tgl 15 0 empty empty empty 17 7 0 10 -262144 -1 -1 0
+1;
+#X obj 88 669 osc~;
+#X msg 209 630 1760;
+#X msg 88 629 220;
+#X msg 131 629 440;
+#X msg 169 629 880;
+#X obj 209 665 f2note;
+#X symbolatom 208 691 6 0 0 0 - - -;
+#X msg 259 630 3520;
+#X text 304 628 Řada nestoupá lineárně.;
+#X text 156 402 Hodnotu předáváme jako frekvenci objektu [phasor~]
+\,;
+#X text 264 665 Převádíme frekvenci na jméno noty.;
+#X text 260 691 Vidíme \, že jde o oktávy mezi tóny A.;
+#X obj 90 932 dac~;
+#X obj 91 898 *~;
+#X obj 124 899 tgl 15 0 empty empty empty 17 7 0 10 -262144 -1 -1 0
+1;
+#X obj 91 869 osc~;
+#X obj 238 895 f2note;
+#X symbolatom 237 921 6 0 0 0 - - -;
+#X msg 91 834 100;
+#X msg 189 833 200;
+#X msg 281 833 300;
+#X msg 376 833 400;
+#X text 128 833 oktáva;
+#X text 224 832 kvinta;
+#X text 323 832 kvarta;
+#X text 70 550 Zvláštností našeho ucha je to \, že není "vyladěno"
+lineárně \, ale logaritmicky. V následujícím příkladu uslyšíme
+frekvence \, které odpovídají intervalu oktávy. Další oktáva
+je vždy dvojnásobkem předchozí hodnoty.;
+#X text 409 832 ...;
+#X text 179 100 této hodnoty počítá do 500 za 100 ms. V konzoli
+;
+#X text 70 191 Frekvence \, jakou nějaká soustava kmitá \, má vztah
+k tónové výšce. Kmitá-li např. oscilátor rychlostí 440 Hz \,
+odpovídá to tónu komorního A \, podle kterého se ladí orchestr.
+Tón C2 odpovídá frekvenci 523 Hz. Rychlejší frekvence odpovídá
+vyšším tónům. Provedeme nyní půlminutový poslechový experiment
+\, jehož předmětem bude přechod z infrazvukové oblasti \, kdy
+soustava kmitá pomaleji než 20 Hz \, do slyšitelné části zvukového
+spektra.;
+#X text 71 495 Ve fázi \, kdy objekt [line] počítá hodnoty od 0
+do 20 \, slyšíme pouze rytmus \, při vyšších frekvencích se
+ale rytmus promění v tónovou výšku.;
+#X text 70 757 Když do oscilátoru budeme posílat hodnoty v lineární
+posloupnosti \, dostaneme tím další intervaly: kvintu \, kvartu
+atd. Řada stoupá lineárně \, ale naše ucho interpretuje rozdíly
+mezi jednotlivými frekvencemi jako čím dál menší.;
+#X connect 0 0 1 0;
+#X connect 2 0 0 0;
+#X connect 8 0 10 0;
+#X connect 10 0 11 0;
+#X connect 11 0 18 0;
+#X connect 12 0 8 0;
+#X connect 17 0 16 0;
+#X connect 18 0 9 0;
+#X connect 18 0 9 1;
+#X connect 19 0 18 1;
+#X connect 22 0 21 0;
+#X connect 22 0 21 1;
+#X connect 23 0 22 1;
+#X connect 24 0 22 0;
+#X connect 25 0 24 0;
+#X connect 25 0 29 0;
+#X connect 26 0 24 0;
+#X connect 26 0 29 0;
+#X connect 27 0 24 0;
+#X connect 27 0 29 0;
+#X connect 28 0 24 0;
+#X connect 28 0 29 0;
+#X connect 29 1 30 0;
+#X connect 31 0 24 0;
+#X connect 31 0 29 0;
+#X connect 37 0 36 0;
+#X connect 37 0 36 1;
+#X connect 38 0 37 1;
+#X connect 39 0 37 0;
+#X connect 40 1 41 0;
+#X connect 42 0 39 0;
+#X connect 42 0 40 0;
+#X connect 43 0 39 0;
+#X connect 43 0 40 0;
+#X connect 44 0 39 0;
+#X connect 44 0 40 0;
+#X connect 45 0 40 0;
+#X connect 45 0 39 0;

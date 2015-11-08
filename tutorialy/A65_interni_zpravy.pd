@@ -1,0 +1,95 @@
+#N canvas 1 54 718 1017 12;
+#X obj 366 304 catch~ signal;
+#X obj 365 346 dac~;
+#X obj 90 500 s pd-osc_cloud;
+#X obj 90 302 bng 15 250 50 0 empty empty empty 17 7 0 10 -262144 -1
+-1;
+#X msg 176 461 clear;
+#X msg 178 356 0;
+#X obj 113 391 f;
+#X text 269 129 <- klik sem a zde se objeví:;
+#X msg 92 130 obj 470 130 pd osc_cloud;
+#X text 70 69 V rodičovském patchi \, jenž se v tomto případě
+jmenuje ramec61.pd \, vytvoříme na souřadnici 470 130 interní zprávou
+subpatch [pd osc_cloud]:;
+#X text 470 311 ze zvukové sběrnice.;
+#X text 470 298 Zde chytáme signál;
+#X text 427 377 Abychom slyšeli výsledek \,;
+#X msg 366 409 \; pd dsp \$1;
+#X obj 366 388 tgl 15 0 empty empty empty 17 7 0 10 -262144 -1 -1 0
+1;
+#X text 388 383 <---;
+#X text 226 461 Smaže všechny vytvořené abstrakce.;
+#X obj 175 391 + 50;
+#X msg 175 423 obj 10 10 Osc_RndLFO \$1;
+#X msg 90 421 loadbang;
+#X obj 90 324 t b b b;
+#X text 211 356 Vždy od nuly.;
+#X obj 113 356 uzi 100;
+#X text 70 883 - pokuste se patch vylepšit tak \, aby abstrakce v
+subpatchi;
+#X obj 71 873 cnv 15 200 15 empty empty CVIČENÍ: 2 8 0 12 -204800
+-66577 0;
+#X obj 70 701 pddplink http://lists.puredata.info/pipermail/pd-list/2011-02/086471.html
+-text najdete zde.;
+#X text 114 299 <-- Vygeneruj mrak oscilátorů.;
+#X text 83 932 které jí předáváte - lze tak dosáhnout široké
+škály různých;
+#X text 71 189 A nyní do subpatche pošleme 100x zprávu \, která
+vygeneruje 100 instancí předchozí zvukové abstrakce. Na výstupu
+počítadla z objektu [+ 50] dostaneme řadu čísel v rozsahu 50..5000
+- ty posíláme jako proměnnou zprávě \, jež ________ v subpatchi
+[pd osc_cloud] vytváří jednotlivé instance abstrakce [Osc_RndLFO].
+Proměnná je tedy zároveň argumentem abstrakce.;
+#X obj 419 238 cnv 15 120 15 empty empty empty 20 12 0 14 -262144 -66577
+0;
+#X text 427 390 nezapomeneme zapnout DSP.;
+#X text 70 528 Když se podíváte dovnitř subpatche [pd osc_cloud]
+\, _ uvidíte jen jeden objekt s názvem [Osc_RndLFO 5000] - ___ to
+je poslední vytvořená abstrakce a všech 99 ostatních _ se schovává
+pod ní. Příčinou překrývání jsou "na pevno" definované souřadnice
+10 10 ve zprávě.;
+#X obj 427 532 cnv 15 120 15 empty empty empty 20 12 0 14 -262144 -66577
+0;
+#X obj 447 547 cnv 15 120 15 empty empty empty 20 12 0 14 -262144 -66577
+0;
+#X obj 461 564 cnv 15 120 15 empty empty empty 20 12 0 14 -262144 -66577
+0;
+#X text 70 611 K tomu \, aby se všechny abstrakce v subpatchi rozezněly
+\, je třeba do něj \, po jejich vygenerování \, poslat ještě
+jeden loadbang - nestačí jen ten \, který je v abstrakci. Řešení
+problému s inicializací abstrakcí vytvářených interními zprávami
+je k dohledání na Pd Mailing Listu \, který je také velmi dobrým
+zdrojem informací. Link s touto problematikou;
+#X text 70 724 Po kliknutí na bang a zapnutí DSP by měla být slyšitelná
+ostrá a spektrálně bohatá plocha ze sta oscilátorů. Daný postup
+nemusí být aplikován jen k vytváření masivních zvukových ploch
+\, ale lze ho využít i při generování rozlehlých vizuálních
+struktur - podívejte se na některé __ z příkladů ke knihovně
+pmpd (Nápověda -> Pd Help Browser -> pmpd -> examples -> 19_vertex.pd).
+Stejně dobře ho ale využijete při vytváření větších grafických
+uživatelských rozhraní.;
+#X text 83 897 rozmisťoval do přehledné mřížky;
+#X text 83 945 zvukových ploch;
+#X text 69 918 - experimentujte s počtem vytvářných abstrakcí
+i s hodnotami;
+#X text 488 918 \,;
+#X obj 466 789 cnv 15 120 15 empty empty empty 20 12 0 14 -262144 -66577
+0;
+#X obj 92 158 s pd-A65_interni_zpravy.pd;
+#X connect 0 0 1 0;
+#X connect 0 0 1 1;
+#X connect 3 0 20 0;
+#X connect 4 0 2 0;
+#X connect 5 0 6 1;
+#X connect 6 0 17 0;
+#X connect 8 0 42 0;
+#X connect 14 0 13 0;
+#X connect 17 0 6 1;
+#X connect 17 0 18 0;
+#X connect 18 0 2 0;
+#X connect 19 0 2 0;
+#X connect 20 0 19 0;
+#X connect 20 1 22 0;
+#X connect 20 2 5 0;
+#X connect 22 0 6 0;

@@ -1,0 +1,72 @@
+#N canvas 1 54 718 1017 12;
+#X text 449 218 .;
+#X text 160 524 .;
+#X text 244 724 .;
+#X text 217 285 .;
+#X text 70 69 Nyní si naši abstrakci detailněji "přečteme". V
+levém bloku abstrakce vidíme kód z předchozí verze sekvenceru.
+Jde ___ o počítadlo \, jež je rozšířeno o řadu objeků [r] \,
+kterými do něj posíláme zprávy jak lokálního \, tak globálního
+charakteru. Sekvencer bude číst data z globálního generátoru BMP
+\, ale zároveň má jeden [inlet] \, kterým ho budeme moci řídit
+individuálně. Stejně tak ho budeme moci lokálně nebo globálně
+vynulovat a nastavovat délku sekvence. Rozdíl od první verze spočívá
+v tom \, že sekvenci počítáme od nuly - odebíráme ji z objektu
+[f] a ne z [+ 1]. To kvůli indexování pole \, které začíná právě
+indexem 0;
+#X obj 452 88 cnv 15 60 15 empty empty empty 20 12 0 14 -262144 -66577
+0;
+#X text 71 854 K tomu \, abychom do zprávy nastavující pole "\$0-sekvence"
+dostali toto specifické číslo \, jsme použili malého triku: _
+z objektu [\$0] dostaneme námi požadovanou hodnotu identifikátoru
+a tu pak předáváme zprávě \, která ji čte jako obyčejnou proměnnou
+- ve zprávě je tedy znak "\$1".;
+#X obj 475 876 cnv 15 60 15 empty empty empty 20 12 0 14 -262144 -66577
+0;
+#X text 70 241 Lokálně číslo sekvence posíláme [s \$0-seq_position]
+do posuvníku. Tomu jsme nastavili ve vlastnostech stejnou délku v
+pixelech \, jakou má pole "\$0-sekvence" \, a hodnoty vlevo: 0 a vpravo:
+15 Posuvník tedy využijeme jako grafický prvek informující nás
+o tom \, kde se právě v sekvenci nalézáme. Bylo by možné v jeho
+vlastnostech přímo zadat do kolonky "Přijmout symbol" \$0-seq_position
+\, ale v našem případě to kvůli názornosti a čitelnosti děláme
+s pomocí objektu [r \$0-seq_position]. To je ostatně případ i dalších
+grafických prvků.;
+#X text 70 404 [tabread \$0-sekvence] čte hodnoty z indexů pole s
+názvem "\$0-sekvence". Díky předponě "\$0-" je pole vytvořeno
+_____ s jedinečným identifikátorem \, a proto nebude v konfliktu
+__ s jinými poli \, když vytvoříme více instancí naší abstrakce.
+Hodnotu z pole \, která je typu float \, zaokrouhlujeme objektem [i]
+\, abychom měli na výstupu pouze celá čísla \, __ a ještě k
+ní přičítáme hodnoty \, abychom se dostali do rozumné škály
+not v MIDI. [loadbang] vždy po vytvoření abstrakce nastaví tuto
+hodnotu na 60;
+#X obj 458 484 cnv 15 120 15 empty empty empty 20 12 0 14 -262144 -66577
+0;
+#X text 70 548 V prostředním bloku vidíme prvky tvořící grafické
+uživatelské rozhraní. Pole se jmenuje "\$0-sekvence". Má 16 prvků
+(16 dob) \, grafické rozměry 130x70 pixelů. Rozsah na ose X je 0..16
+(doby) \, na ose Y pak 12..0 (noty). Bangy ___ a přepínače posílají
+pouze lokálně platné zprávy \, takže budou mít dopad pouze v
+hranicích jedné vytvořené abstrakce. "Mluvíme" jimi v jednom bytě
+\, ne v celém domě.;
+#X text 70 664 V pravém bloku jsou pak již jen dva malé "kousky
+kódu". Jeden generuje 16 náhodných hodnot v rozsahu 0..11 _______
+a zapisuje je do pole "\$0-sekvence". A konečně poslední [loadbang]
+vždy po vytvoření abstrakce nastaví všechny prvky v poli na hodnotu
+6 Mohli jste se nad jeho podivností pozastavit: proč jsme nezapsali
+"\$0-" rovnou do zprávy? Znak "\$0" zapsaný ve zprávě je selektor
+zprávy (jde tedy buď o symbol \, float \, list \, nebo any). "\$0"
+zapsaný _______ v objektu je identifikátor patche. Stačí \, když
+si zapamatujeme \, že "\$0" v objektu je specifické číslo \, jedinečné
+pro každý patch. Na "\$0" ve zprávě můžeme zapomenout.;
+#X obj 439 424 cnv 15 60 15 empty empty empty 20 12 0 14 -262144 -66577
+0;
+#X obj 466 440 cnv 15 60 15 empty empty empty 20 12 0 14 -262144 -66577
+0;
+#X obj 460 597 cnv 15 60 15 empty empty empty 20 12 0 14 -262144 -66577
+0;
+#X obj 426 683 cnv 15 120 15 empty empty empty 20 12 0 14 -262144 -66577
+0;
+#X obj 425 776 cnv 15 120 15 empty empty empty 20 12 0 14 -262144 -66577
+0;

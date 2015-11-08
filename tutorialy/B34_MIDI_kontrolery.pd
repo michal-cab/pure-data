@@ -1,0 +1,103 @@
+#N canvas 1 54 718 1017 12;
+#X obj 86 468 stripnote;
+#X obj 67 147 cnv 15 200 15 empty empty [STRIPENOTE] 2 8 0 12 -228856
+-66577 0;
+#X text 66 160 V případě jednohlasých (monofonních) syntetizérů
+najde uplatnění objekt [stripenote]. [notein] totiž funguje tak
+\, že posílá dvě zprávy. První ve chvíli stlačení klávesy
+(Note On) a druhou v momentě jejího uvolnění (Note Off). Druhá
+zpráva má stejné číslo pro MIDI notu a kanál \, pouze hodnota
+síly je nulová.;
+#X obj 88 266 notein;
+#X obj 88 293 pack f f f;
+#X text 193 258 Zmáčkněte klávesu na klaviatuře \, pak ji;
+#X text 193 272 uvolněte a podívejte se do konzole. Uvidíte;
+#X text 193 287 dvě zprávy. Ve druhé bude na druhé pozici nula
+;
+#X text 194 316 uvolnění klávesy.;
+#X obj 86 440 notein;
+#X obj 86 496 pack f f;
+#X text 66 380 Objektem [stripenote] tuto druhou zprávu odfiltrujeme
+\, takže hlas monofonního syntetizéru nebude inicializován dvakrát.
+;
+#X obj 67 593 cnv 15 200 15 empty empty POLYFONIE 2 8 0 12 -228856
+-66577 0;
+#X obj 522 829 notein;
+#X obj 522 881 pack f f f;
+#X obj 522 934 print poly;
+#X obj 86 553 print stripenote;
+#X obj 88 346 print notein;
+#X text 164 467 Odfiltruje zprávu Note Off.;
+#X obj 522 856 poly 4 1;
+#X obj 86 525 spigot;
+#X obj 144 527 tgl 15 0 empty empty empty 17 7 0 10 -262144 -1 -1 0
+1;
+#X obj 88 319 spigot;
+#X obj 146 323 tgl 15 0 empty empty empty 17 7 0 10 -262144 -1 -1 0
+1;
+#X text 166 516 Zapínáme/vypínáme výpis do konzole;
+#X text 167 530 kvůli přehlednosti.;
+#X obj 522 908 spigot;
+#X obj 580 910 tgl 15 0 empty empty empty 17 7 0 10 -262144 -1 -1 0
+1;
+#X text 67 69 části patche \, zaopatřující vytvoření tónu o
+dané výšce. Objekt [ctlin] pak často využijete často v kombinaci
+______ s abstrakcí [expr_scale] \, jímž lze jeho výstup škálovat
+na požadovaný rozsah.;
+#X text 194 302 - je to zpráva \, kterou [notein] vysílá ve chvíli
+;
+#X text 67 703 Při stisknutí klávesy pro ni objekt [poly] nejprve
+vytvoří jedinečné pořadové číslo a přidá k ní hodnotu MIDI
+noty ___ a její síly. První agrument označuje \, jaký maximální
+počet zmáčknutých kláves si má [poly] pamatovat - je to tedy
+číslo určující \, kolikahlasý syntetizér je. Když zmáčkneme
+_ a držíme tři klávesy současně \, vytvoříme tím tři zprávy
+__ s jedinečným číslem. Když pak jednu uvolníme \, pošle [poly]
+zprávu s jedinečným číslem \, jež odpovídá dané klávese.
+Objektem [route] tato jedinečná pořadová čísla "odchytáváme"
+a posíláme je ke zpracování jednotlivým hlasům syntetizéru.
+;
+#X text 66 880 Druhý argument [poly] je 1/0 a zapíná/vypíná tzv.
+přebírání hlasů. To znamená \, že když v případě vedlejšího
+příkladu zmáčkneme 4 klávesy \, držíme je a přimáčkneme k
+nim ještě pátou \, pátý hlas přebere ten \, který jsme vytvořili
+ve chvíli zmáčknutí první klávesy.;
+#X obj 431 88 cnv 15 120 15 empty empty empty 20 12 0 14 -262144 -66577
+0;
+#X text 66 604 V případě vícehlasých (polyfonních) syntetizérů
+je situace trochu složitější. Musíme zajistit inicializaci jednotlivých
+hlasů syntetizéru - jejich zesilování _______ a ztišování. Počet
+hlasů se odvíjí od počtu stisknutých ___ a uvolněných kláves.
+K řešení této složitější situace nám poslouží objekt [poly]
+v kombinaci s objektem [route].;
+#X obj 424 637 cnv 15 120 15 empty empty empty 20 12 0 14 -262144 -66577
+0;
+#X obj 458 654 cnv 15 120 15 empty empty empty 20 12 0 14 -262144 -66577
+0;
+#X obj 460 722 cnv 15 120 15 empty empty empty 20 12 0 14 -262144 -66577
+0;
+#X obj 472 771 cnv 15 120 15 empty empty empty 20 12 0 14 -262144 -66577
+0;
+#X obj 460 783 cnv 15 120 15 empty empty empty 20 12 0 14 -262144 -66577
+0;
+#X connect 0 0 10 0;
+#X connect 0 1 10 1;
+#X connect 3 0 4 0;
+#X connect 3 1 4 1;
+#X connect 3 2 4 2;
+#X connect 4 0 22 0;
+#X connect 9 0 0 0;
+#X connect 9 1 0 1;
+#X connect 10 0 20 0;
+#X connect 13 0 19 0;
+#X connect 13 1 19 1;
+#X connect 14 0 26 0;
+#X connect 19 0 14 0;
+#X connect 19 1 14 1;
+#X connect 19 2 14 2;
+#X connect 20 0 16 0;
+#X connect 21 0 20 1;
+#X connect 22 0 17 0;
+#X connect 23 0 22 1;
+#X connect 26 0 15 0;
+#X connect 27 0 26 1;

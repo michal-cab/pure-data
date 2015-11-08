@@ -1,0 +1,98 @@
+#N canvas 1 54 718 1017 12;
+#X obj 67 73 cnv 15 567 25 empty empty pole 20 12 0 14 -1 -262144 0
+;
+#X obj 67 712 cnv 15 200 15 empty empty ČTENÍ_A_ZÁPIS_HODNOT 2 8
+0 12 -228856 -66577 0;
+#N canvas 4 44 450 300 (subpatch) 0;
+#X array array1 5 float 3;
+#A 0 0.8 0.585715 0.428571 0.185711 -0.0142907;
+#X coords 0 -1 5 1 200 140 1 0 0;
+#X restore 86 276 graph;
+#X text 71 343 o;
+#X text 71 356 s;
+#X text 71 369 a;
+#X text 71 327 |;
+#X text 71 320 |;
+#X text 71 312 |;
+#X text 71 302 |;
+#X text 71 295 ^;
+#X text 306 252 Vedlejší pole má pět prvků \, které se;
+#X text 305 328 počtu bezprostředně vidíme. Jakou mají;
+#X text 305 359 určit nedokážeme. Když klikneme do pole;
+#X text 305 375 PTM a vybereme Vlastnosti \, otevřou se dvě;
+#X text 305 267 indexují od nuly. Hodnotu indexu;
+#X text 305 298 hodnota jednotlivých prvků se vynáší;
+#X text 305 390 okna: jedno \, které již známe - s názvem;
+#X text 305 405 "Vlastnosti pole" - v něm nastavujeme jméno;
+#X text 305 421 atd. Druhé okno má titulek "Vlastnosti plátna";
+#X text 305 436 a nastavujeme v něm jednak grafický rozměr;
+#N canvas 0 0 450 300 (subpatch) 0;
+#X array spatne_pole 8 float 3;
+#A 0 0.499996 -0.599995 0.549996 -3.72529e-08 -0.299998 -0.599995 0.0999993
+0.799994;
+#X coords 0 1 6 -1 100 80 1 0 0;
+#X restore 496 488 graph;
+#X text 613 498 !!;
+#N canvas 0 0 450 300 (subpatch) 0;
+#X array 10prvku 10 float 3;
+#A 0 1 3 5 6 7 7 6 5 3 1;
+#X coords 0 10 10 0 100 100 1 0 0;
+#X restore 515 747 graph;
+#X floatatom 195 832 5 0 9 0 - - -;
+#X floatatom 86 831 5 0 10 0 - - -;
+#X text 500 836 0;
+#X text 492 741 10;
+#X text 499 789 5;
+#X text 242 821 Ve vlastnostech číselných;
+#X text 242 835 boxů jsme nastavili spodní;
+#X text 242 849 a horní limit podle vlastností;
+#X text 242 863 pole s názvem "10prvku".;
+#X text 85 417 osa X ----> index 0 \, 1 \, 2 ...;
+#X text 71 389 Y;
+#X text 305 282 představují sloupce (osa X) a číselná;
+#X text 114 769 .;
+#X obj 86 854 tabwrite 10prvku;
+#X text 66 95 Pole je datová struktura určitého počtu prvků \,
+které jsou označeny indexem. Může v něm být zapsána notová
+partitura \, zvukový soubor \, či jakýkoliv jiný typ dat. Pole
+je v Pd zároveň grafický a interaktivní prvek. V performativním
+módu můžeme kliknout LTM na levý okraj libovolného prvku _ a měnit
+jeho polohu na ose Y. Do patche pole vložíme přes menu Vložit/Put
+-> Pole/Array. V nově otevřeném okně zadáváme unikátní jméno
+pole \, počet jeho prvků \, typ zobrazení a to \, jestli si má
+pole pamatovat svůj obsah i po zavření patche.;
+#X text 305 314 na osu Y. Indexy při takto nízkém;
+#X text 305 343 prvky ale hodnotu na ose Y \, s přesností;
+#X text 66 452 pole (položka Velikost) a dále rozsah \, ve kterém
+se budou pohybovat hodnoty na ose X a Y. Pro osu Y je přednastaven
+rozsah -1..1. Pokud počet prvků pole \, jenž jsme zadali ___ v okně
+"Vlastnosti pole" \, není totožný s rozsahem pole na ose X v okně
+"Vlastnosti plátna" \, pak budou prvky buď ____ z grafického ohraničení
+přetékat \, nebo v něm bude "bílé místo". Rozsah na ose X by
+měl odpovídat počtu prvků.;
+#X obj 446 516 cnv 15 40 15 empty empty empty 20 12 0 14 -262144 -66577
+0;
+#X text 66 568 Bez pole bychom v Pd nemohli dost dobře pracovat se
+zvukovými vzorky \, nepostavili bychom sampler ani tzv. wavetable
+syntetizér nebo "analogový" sekvencer.;
+#X text 66 622 Dodejme ještě \, že v Pd musí mít každé pole
+jedinečný název! Pokud bychom náhodou otevřeli tento patch dvakrát
+\, nevěděla by Pd \, ze kterého pole jménem "array1" mají číst
+nebo zapisovat. V konzoli bychom na tuto chybu byli upozorněni hláškou:
+"warning: array1: multiply defined.;
+#X text 66 724 Pokud budeme do pole chtít zadat sekvenci prvků přísněji
+než myší \, pak využijeme objektu [tabwrite]. Na pravý vstup zadáváme
+číslo indexu (poloha na ose X). První prvek má index 0 Na pravý
+vstup pak zadáváme samotnou hodnotu prvku. U [tabwrite] nesmíme
+zapomenout specifikovat argument \, jímž je jméno pole \, do kterého
+zapisujeme.;
+#X text 67 890 Nejprve nastavíme pasivní vstup na požadovaný index
+\, a poté do aktivního vstupu pošleme hodnotu - prvek na indexu
+se na ni nastaví. Pole "10prvku" má \, jak napovídá jeho název
+\, 10 prvků. Na ose Y má zadán rozsah 10..0 a na ose X 0..10.;
+#X obj 449 487 cnv 15 30 15 empty empty empty 20 12 0 14 -262144 -66577
+0;
+#X obj 462 159 cnv 15 60 15 empty empty empty 20 12 0 14 -262144 -66577
+0;
+#X connect 24 0 37 1;
+#X connect 25 0 37 0;

@@ -1,0 +1,158 @@
+#N canvas 1 54 718 1017 12;
+#X obj 71 73 cnv 15 200 15 empty empty DOLARY_V_ABSTRAKCI 2 8 0 12
+-228856 -66577 0;
+#X obj 85 189 cnv 15 130 150 empty empty empty 20 12 0 14 -233017 -66577
+0;
+#X obj 99 199 inlet;
+#X obj 99 313 outlet;
+#X obj 150 314 outlet;
+#X text 150 194 abs01.pd;
+#X obj 382 208 bng 15 250 50 0 empty empty empty 17 7 0 10 -262144
+-1 -1;
+#X floatatom 382 264 5 0 0 0 - - -;
+#X text 247 249 ------------>;
+#X text 234 266 když ji vytvoříme;
+#X symbolatom 414 292 10 0 0 0 - - -;
+#X text 425 264 číselný box;
+#X text 494 291 a symbol box.;
+#X obj 131 260 symbol \$2;
+#X obj 99 286 float \$1;
+#X text 416 204 Doplníme bang \,;
+#X obj 88 432 abs01 33 let;
+#X floatatom 88 459 5 0 0 0 - - -;
+#X symbolatom 169 459 10 0 0 0 - - -;
+#X obj 88 407 bng 15 250 50 0 empty empty empty 17 7 0 10 -262144 -1
+-1;
+#X obj 382 236 abs01;
+#X text 261 423 a symbol boxu se objeví číslo 33 a symbol;
+#X text 261 438 "let" - tedy agrumenty \, které jsme předali;
+#X text 261 452 abstrakci.;
+#X obj 80 581 cnv 15 220 170 empty empty empty 20 12 0 14 -233017 -66577
+0;
+#X obj 96 725 outlet;
+#X obj 157 725 outlet;
+#X obj 96 690 f \$1;
+#X obj 157 691 f \$2;
+#X obj 219 690 f \$3;
+#X obj 96 628 inlet;
+#X obj 219 726 outlet;
+#X obj 139 629 inlet;
+#X obj 182 629 inlet;
+#X obj 244 629 inlet;
+#X obj 96 662 t b b b-----------;
+#X text 98 608 bang;
+#X text 148 609 red;
+#X text 183 608 green;
+#X text 248 610 blue;
+#X floatatom 84 932 5 0 0 0 - - -;
+#X floatatom 142 931 5 0 0 0 - - -;
+#X floatatom 200 931 5 0 0 0 - - -;
+#X obj 84 883 bng 15 250 50 0 empty empty empty 17 7 0 10 -262144 -1
+-1;
+#X floatatom 122 881 4 0 0 0 - - -;
+#X floatatom 161 882 4 0 0 0 - - -;
+#X floatatom 200 882 4 0 0 0 - - -;
+#X text 314 573 Podívejte se na vedlejší kód a zkuste;
+#X obj 99 225 t b b;
+#X text 313 645 argumenty typu float: [$f1] \, [$f2] \, [$f3].;
+#X text 313 660 Když do prvního vstupu pošleme bang;
+#X text 313 705 z abstrakce "protlačíme" ven tři čísla \,;
+#X text 313 720 která jsme jí předali jako argumenty.;
+#X text 314 587 popsat \, jaké má abstrakce argumenty \, vstupy \,
+;
+#X text 314 601 a jak bude asi fungovat.;
+#X text 313 629 Abstrakce má čtyři vstupy \, ale jen tři;
+#X obj 84 905 RGBabs 255 100 60;
+#X floatatom 270 932 5 0 0 0 - - -;
+#X floatatom 328 931 5 0 0 0 - - -;
+#X floatatom 386 931 5 0 0 0 - - -;
+#X obj 270 883 bng 15 250 50 0 empty empty empty 17 7 0 10 -262144
+-1 -1;
+#X floatatom 308 881 4 0 0 0 - - -;
+#X floatatom 347 882 4 0 0 0 - - -;
+#X floatatom 386 882 4 0 0 0 - - -;
+#X floatatom 459 932 5 0 0 0 - - -;
+#X floatatom 517 931 5 0 0 0 - - -;
+#X floatatom 575 931 5 0 0 0 - - -;
+#X obj 459 883 bng 15 250 50 0 empty empty empty 17 7 0 10 -262144
+-1 -1;
+#X floatatom 497 881 4 0 0 0 - - -;
+#X floatatom 536 882 4 0 0 0 - - -;
+#X floatatom 575 882 4 0 0 0 - - -;
+#X obj 270 905 RGBabs 100 200 50;
+#X text 225 585 RGBabs.pd;
+#X obj 459 905 RGBabs 30 150;
+#X text 70 346 Když klikneme na bang vedoucí do abstrakce \, nic
+se nestane \, zkusme ale abstrakci doplnit o dva argumenty - první
+bude číslo a druhý bude symbol. Zapíšeme např: [abs01 33 let].
+;
+#X text 70 758 Druhý až čtvrtý vstup slouží pro vložení hodnoty
+_________ z číselných boxů \, které do vytvořené abstrakce zapojíme.
+Vidíme ale \, že kabely z inletů vedou do pasivních vstupů objeků
+[$f1] \, [$f2] a [$f3]. Můžeme jimi posléze argumenty \, které
+jsme abstrakci předali při vytváření \, změnit. Na výstup se
+ale pošlou až poté \, co do levého vstupu abstrakce pošleme bang.
+;
+#X obj 409 761 cnv 15 120 15 empty empty empty 20 12 0 14 -262144 -66577
+0;
+#X text 248 217 A takto bude;
+#X text 233 232 abstrakce vypadat \,;
+#X text 239 282 v hlavním patchi.;
+#X text 71 85 Až doposud jsme pracovali se znakem "$" převážně
+ve zprávách \, kde "\$1".. "$n" označují proměnné. Nyní se detailněji
+podíváme na to \, jak s nimi můžeme pracovat \, když je zapíšeme
+do objektu \, a jakou funkci plní v abstrakcích. Přepište následující
+kód v rámci do samostatného patche a uložte ho pod názvem "abs01.pd"
+do adresáře s abstrakcemi.;
+#X text 262 408 Když nyní klikneme na bang \, v číselném;
+#X text 70 487 Pokud v abstrakci vytvoříme objekt typu float nebo
+symbol _ a doplníme je o \$1 \, \$2..$n \, vytvoříme tak rozhraní
+abstrakce - pomyslný prostor pro předávání argumentů \, se kterými
+pak abstrakce pracuje. "\$1" odpovídá prvnímu argumentu abstrakce
+\, "\$2" druhému atd.;
+#X text 312 676 (nebo i cokoliv jiného \, protože [t b b b];
+#X text 313 691 konvertuje jakoukoliv zprávu na bang) \,;
+#X obj 472 493 cnv 15 60 15 empty empty empty 20 12 0 14 -262144 -66577
+0;
+#X connect 2 0 48 0;
+#X connect 6 0 20 0;
+#X connect 13 0 4 0;
+#X connect 14 0 3 0;
+#X connect 16 0 17 0;
+#X connect 16 1 18 0;
+#X connect 19 0 16 0;
+#X connect 20 0 7 0;
+#X connect 20 1 10 0;
+#X connect 27 0 25 0;
+#X connect 28 0 26 0;
+#X connect 29 0 31 0;
+#X connect 30 0 35 0;
+#X connect 32 0 27 1;
+#X connect 33 0 28 1;
+#X connect 34 0 29 1;
+#X connect 35 0 27 0;
+#X connect 35 1 28 0;
+#X connect 35 2 29 0;
+#X connect 43 0 56 0;
+#X connect 44 0 56 1;
+#X connect 45 0 56 2;
+#X connect 46 0 56 3;
+#X connect 48 0 14 0;
+#X connect 48 1 13 0;
+#X connect 56 0 40 0;
+#X connect 56 1 41 0;
+#X connect 56 2 42 0;
+#X connect 60 0 71 0;
+#X connect 61 0 71 1;
+#X connect 62 0 71 2;
+#X connect 63 0 71 3;
+#X connect 67 0 73 0;
+#X connect 68 0 73 1;
+#X connect 69 0 73 2;
+#X connect 70 0 73 3;
+#X connect 71 0 57 0;
+#X connect 71 1 58 0;
+#X connect 71 2 59 0;
+#X connect 73 0 64 0;
+#X connect 73 1 65 0;
+#X connect 73 2 66 0;

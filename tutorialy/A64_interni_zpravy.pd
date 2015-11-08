@@ -1,0 +1,81 @@
+#N canvas 1 54 718 1017 12;
+#X msg 91 289 clear;
+#X msg 92 231 editmode 0 \, mouse 15 15 0 0;
+#X msg 91 260 editmode 0 \, mouse 115 15 0 0;
+#X text 307 225 První dvě zprávy klikají do patche;
+#X text 307 239 na danou souřadnici \, takže pohání;
+#X obj 80 696 cnv 15 550 270 empty empty empty 20 12 0 14 -233017 -66577
+0;
+#X obj 88 706 loadbang;
+#X obj 88 794 float \$1;
+#X obj 88 833 osc~;
+#X obj 88 865 *~;
+#X obj 155 831 osc~;
+#X obj 155 733 random 5000;
+#X obj 155 760 / 5000;
+#X obj 90 937 throw~ signal;
+#X text 529 699 Osc_RndLFO.pd;
+#X text 306 268 konzole. Zpráva [clear( subpatch vymaže.;
+#X text 245 727 Po vytvoření abstrakce [loadbang] "protlačí";
+#X text 244 770 frekvenci.;
+#X text 162 794 Abstrakce přebírá jeden argument typu float.;
+#X text 197 831 Generátory sinusové funkce.;
+#X text 131 865 Modulujeme amplitudu \,;
+#X text 147 898 ztišíme signál;
+#X text 192 938 a posíláme ho na zvukovou sběrnici.;
+#X obj 89 898 *~ 0.05;
+#X text 70 70 Při testování předchozí ukázky je důležité dodržet
+pořadí \, ve kterém objekty v subpatchi vytváříme \, a "naklikávat"
+zprávy postupně shora dolů \, jinak propojení nevytvoří funkční
+patch. Též je třeba každou akci provést pouze jednou. Pokud bychom
+např. subatch nebo některá spojení vytvořili víckrát \, může
+to vést ke zhroucení Pd.;
+#X text 70 167 Poté \, co jste v subpatchi vytvořili interními zprávami
+funkční kód \, zkuste do objektu [s pd-dyn_subpatch] napojit ještě
+následující zprávy a vyzkoušejte co dělají.;
+#X text 306 253 počítadlo \, nebo se vytiskne zpráva do;
+#X text 70 316 Přehled interních zpráv najdete přes menu Nápověda
+-> Pd Help Browser -> Manuals -> pd-msg. Dokumentace je ale ____ v
+některých případech ne zrovna aktuální. Například od interní
+zprávy [click( \, uvedené v této dokumentaci \, bychom se kliknutí
+do subpatche nedočkali.;
+#X text 70 396 Praktické využití metaprogramování spočívá např.
+_________ v automatizaci při vytváření rozsáhlých kódů \, jejichž
+zápis by nám jinak trval velmi dlouho. Na následující případové
+studii si ukážeme \, jak napsat kód \, který vytvoří stovku instancí
+jedné zvukové abstrakce.;
+#X text 70 480 Z důvodu názornosti studie trochu předběhneme ____________
+k problematice zvuku. Níže uvedená abstrakce obsahuje dva oscilátory
+\, z nichž levý bude přebírat argument typu float při jejím vytvoření.
+Tento argument je frekvence \, kterou bude oscilátor hrát. Funkce
+pravého oscilátoru spočívá ___ v modulaci amplitudy levého oscilátoru
+- jinými slovy: bude modulovat jeho hlasitost \, a to náhodně generovanými
+nízkými frekvencemi o rozsahu 0..5 Hz. Výsledný signál ještě
+musíme ztišit vynásobením hodnotou 0.05 \, protože abstrakci budeme
+mnohokrát duplikovat. Kdybychom signál neztišili \, byl by výsledný
+zvuk značně zkreslený. Výstup posíláme bezdrátově na zvukovou
+sběrnici jménem signal. Patch opět samostatně uložíme pod názvem
+"Osc_RndLFO.pd" do adresáře ___________ s abstrakcemi.;
+#X text 245 742 hodnotu \, kterou jsme jí předali v argumentu do
+;
+#X text 244 756 levého oscilátoru a do pravého pošle náhodnou
+;
+#X obj 446 335 cnv 15 60 15 empty empty empty 20 12 0 14 -262144 -66577
+0;
+#X obj 412 400 cnv 15 120 15 empty empty empty 20 12 0 14 -262144 -66577
+0;
+#X obj 392 484 cnv 15 120 15 empty empty empty 20 12 0 14 -262144 -66577
+0;
+#X obj 455 544 cnv 15 60 15 empty empty empty 20 12 0 14 -262144 -66577
+0;
+#X obj 397 670 cnv 15 120 15 empty empty empty 20 12 0 14 -262144 -66577
+0;
+#X connect 6 0 7 0;
+#X connect 6 0 11 0;
+#X connect 7 0 8 0;
+#X connect 8 0 9 0;
+#X connect 9 0 23 0;
+#X connect 10 0 9 1;
+#X connect 11 0 12 0;
+#X connect 12 0 10 0;
+#X connect 23 0 13 0;

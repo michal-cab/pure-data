@@ -1,0 +1,88 @@
+#N canvas 1 54 718 1017 12;
+#X obj 860 107 cnv 15 100 60 empty empty empty 20 12 0 14 -262144 -66577
+0;
+#X obj 67 73 cnv 15 567 25 empty empty rastrová_grafika 20 12 0 14
+-1 -262144 0;
+#X obj 83 719 pix_image;
+#X obj 470 261 gemwin_abs;
+#X msg 183 668 open lhc.jpg;
+#X obj 83 856 pix_texture;
+#X obj 180 748 pix_info;
+#X floatatom 187 779 5 0 0 0 - - -;
+#X floatatom 229 779 5 0 0 0 - - -;
+#X obj 187 811 / 100;
+#X obj 229 811 / 100;
+#X msg 182 693 open lhc2.jpg;
+#X obj 187 849 *;
+#X obj 229 847 *;
+#X obj 83 655 tgl 15 0 empty empty empty 17 7 0 10 -262144 -1 -1 0
+1;
+#X obj 87 338 pix_texture;
+#X obj 87 248 tgl 15 0 empty empty empty 17 7 0 10 -262144 -1 -1 0
+1;
+#X text 120 243 Zapneme vykreslovací řetězec.;
+#X obj 87 305 pix_image;
+#X msg 179 274 open lhc.jpg;
+#X text 177 304 Načteme obrázek do objektu [pix_image].;
+#X text 178 337 A nanášíme texturu...;
+#X text 178 371 ...na čtverec.;
+#X obj 277 774 vsl 15 60 0.2 1 0 0 empty empty empty 0 -9 0 10 -262144
+-1 -1 3600 1;
+#X obj 87 373 square 3;
+#X obj 87 269 gemhead 1;
+#X obj 83 677 gemhead 2;
+#X text 284 666 Načteme některý z obrázků.;
+#X text 110 774 Rozměry;
+#X text 103 786 v pixelech.;
+#X obj 83 889 rectangle;
+#X text 67 95 K načítání rastrové grafiky slouží v Pd objekt
+[pix_image] \, do jeho pravého vstupu posíláme zprávu [open název
+souboru(. GEM podporuje zobrazování souborů ve formátu JPEG a TIFF.
+V zobrazovacím řetězci za [pix_image] musí následovat objekt [pix_texture]
+\, jenž se stará o namapování textury na objekt na konci řetězce.
+V případě rastrové grafiky obvykle budeme chtít namapovat obrázek
+na dvourozměrnou plochu - tedy na čtverec [square] nebo obdélník
+[rectangle].;
+#X text 66 404 Ve vykreslovacím okně bychom měli vidět fotografii
+- je zde ale problém týkající se jejího horizontálního zkreslení.
+Načtenou fotografii totiž nanášíme jako texturu na čtverec a
+přitom rozlišení fotografie čtvercové není.;
+#X text 66 473 Abychom fotografii viděli v odpovídajících dimenzích
+\, bude třeba ji namapovat na objekt [rectangle]. S ním ale budeme
+mít obdobnou potíž. Jak zajistit to \, aby měl obdélník rozměry
+odpovídající rozlišení načítané fotografie? Pomůže nám k
+tomu objekt [pix_info] \, který čte informace z objektu [pix_image]
+a na druhém a třetím výstupu dává rozměry grafiky v pixelech.
+Tato čísla pak škálujeme podělením hodnotou 100 a posíláme
+je do vstupů objektu [rectrangle]. Celkovou velikost obrázku pak
+můžeme doladit posuvníkem \, který hodnoty pro vertikální a horizontální
+dimenzi násobí hodnotou v rozsahu 0.2..1.;
+#X text 67 913 Tento patch se chová dynamicky - kdykoliv načteme
+obrázek \, dimenze obdélníku se přizpůsobí jeho rozlišení.
+;
+#X msg 277 747 0.7;
+#X obj 277 723 loadbang;
+#X connect 2 0 6 0;
+#X connect 2 0 5 0;
+#X connect 4 0 2 0;
+#X connect 5 0 30 0;
+#X connect 6 1 7 0;
+#X connect 6 2 8 0;
+#X connect 7 0 9 0;
+#X connect 8 0 10 0;
+#X connect 9 0 12 0;
+#X connect 10 0 13 0;
+#X connect 11 0 2 0;
+#X connect 12 0 30 1;
+#X connect 13 0 30 2;
+#X connect 14 0 26 0;
+#X connect 15 0 24 0;
+#X connect 16 0 25 0;
+#X connect 18 0 15 0;
+#X connect 19 0 18 0;
+#X connect 23 0 13 1;
+#X connect 23 0 12 1;
+#X connect 25 0 18 0;
+#X connect 26 0 2 0;
+#X connect 35 0 23 0;
+#X connect 36 0 35 0;

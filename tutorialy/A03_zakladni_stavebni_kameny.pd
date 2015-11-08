@@ -1,0 +1,95 @@
+#N canvas 1 54 718 1017 12;
+#X msg 87 101 dur;
+#X obj 87 132 print;
+#X obj 230 134 print;
+#X msg 230 103 dur moll;
+#X text 136 114 s jedním;
+#X obj 87 270 print;
+#X text 66 69 Zprávy mohou nést jeden nebo více prvků \, oddělených
+mezerou:;
+#X msg 85 538 toto do konzole nedoteče;
+#X msg 85 575 ani toto;
+#X msg 85 613 ejhle;
+#X obj 85 652 print;
+#X msg 148 615 42;
+#X floatatom 148 654 5 0 0 0 - - -;
+#X floatatom 90 901 5 0 0 0 - - -;
+#X obj 93 925 hsl 128 15 0 127 0 0 empty empty empty -2 -8 0 10 -262144
+-1 -1 0 1;
+#X floatatom 90 945 5 0 0 0 - - -;
+#X floatatom 286 935 5 0 0 0 - - -;
+#X msg 286 906 360;
+#X msg 331 906 24;
+#X msg 550 722 2;
+#X floatatom 550 749 5 0 0 0 - - -;
+#X msg 550 775 4;
+#X floatatom 550 802 5 0 0 0 - - -;
+#X floatatom 550 856 5 0 0 0 - - -;
+#X msg 550 829 8;
+#X floatatom 550 910 5 0 0 0 - - -;
+#X msg 550 883 16;
+#X floatatom 382 905 5 0 0 0 - - -;
+#X obj 67 688 cnv 15 200 15 empty empty ČÍSELNÝ_BOX_-_NUMBER_BOX
+2 8 0 12 -228856 -66577 0;
+#X msg 87 239 dur \, moll;
+#X msg 253 239 dur 0 4 7 \, moll -3 0 4;
+#X text 135 99 Zpráva;
+#X text 136 128 prvkem.;
+#X text 300 101 A se dvěma prvky.;
+#X text 300 117 Pořád jde ale o jednu zprávu.;
+#X text 163 238 Dvě zprávy.;
+#X text 424 233 Dvě zprávy;
+#X text 424 247 se čtyřmi prvky.;
+#X text 188 645 <-- Číselný box má seříznutý pravý horní roh.
+;
+#X text 66 829 Klikněte přímo do číselného boxu LTM \, podržte
+je a hýbejte myší nahoru/dolů. Nastavíte tím jeho hodnotu - výstupem
+jsou vždy celá čísla. Pokud držíte navíc SHIFT \, škála je
+jemnější a výstupem jsou čísla s desetinnou čárkou.;
+#X text 66 163 V jednom message boxu ale také můžeme mít více
+zpráv \, pak jsou jednotlivé prvky odděleny čárkou. Ve zprávě
+lze kombinovat čísla se symboly. Do vstupu jednoho objektu lze směřovat
+více zpráv:;
+#X text 66 299 Podívejte se na rozdíl výstupu v konzoli. Zatímco
+pokud zpráva obsahuje jeden a více prvků neoddělených čárkou
+\, tiskne se vše na jeden řádek - pořád jde o jednu zprávu. Pokud
+jsou ale odděleny čárkou \, pak je na výstupu každá zpráva na
+novém řádku - jsou to dvě zprávy. Vidíme také \, že prvky jsou
+v konzoli vytišteny ve stejném pořadí jako ve zprávě - tj. zleva
+doprava.;
+#X text 66 413 K vlastnosti zpráv patří to \, že uchovávají svůj
+obsah \, můžeme do nich uložit informace o frekvenci tónu \, barvě
+RGB kanálu atd. Zpráva je prostředek komunikace objektů mezi sebou.
+Kliknutím na zprávu v performačním módu zprávu inicializujeme
+- "posíláme ji po kabelu". Další vlastnost zpráv spočívá v
+tom \, že pokud na svém vstupu něco obdrží \, předchozí zprávu
+pozastaví a dál pošle jen svůj obsah:;
+#X text 66 700 Další stavební prvek \, který patche obvykle obsahují
+\, je tzv. číselný box (klávesová zkratka CTRL + 3). Již jsme
+se s ním seznámili při prvním spuštění Pd. Jeho funkce spočívá
+buď v zobrazení nějakého čísla nebo v možnosti vložení hodnoty.
+Pokud číselnému boxu na vstup doteče nějaké číslo \, zobrazí
+je a pošle dál. Na rozdíl od zprávy si číselný box neuchováva
+svůj obsah - po zavření a otevření patche budou všechny hodnoty
+\, co jsme v nich nastavili \, ztraceny.;
+#X connect 0 0 1 0;
+#X connect 3 0 2 0;
+#X connect 7 0 8 0;
+#X connect 8 0 9 0;
+#X connect 8 0 11 0;
+#X connect 9 0 10 0;
+#X connect 11 0 12 0;
+#X connect 13 0 14 0;
+#X connect 14 0 15 0;
+#X connect 17 0 16 0;
+#X connect 18 0 16 0;
+#X connect 19 0 20 0;
+#X connect 20 0 21 0;
+#X connect 21 0 22 0;
+#X connect 22 0 24 0;
+#X connect 23 0 26 0;
+#X connect 24 0 23 0;
+#X connect 26 0 25 0;
+#X connect 27 0 16 0;
+#X connect 29 0 5 0;
+#X connect 30 0 5 0;

@@ -1,0 +1,119 @@
+#N canvas 1 54 718 1017 12;
+#X obj 534 672 expr_scale;
+#X symbolatom 93 324 37 0 0 0 - - -;
+#X msg 127 227 Heidegger;
+#X msg 138 254 Hegel;
+#X symbolatom 115 201 10 0 0 0 - - -;
+#X msg 252 230 Levinas;
+#X msg 269 256 Buber;
+#X symbolatom 244 202 10 0 0 0 - - -;
+#X obj 93 202 bng 15 250 50 0 empty empty empty 17 7 0 10 -262144 -1
+-1;
+#X text 367 194 Bang funguje tak \, že pokud;
+#X text 367 209 byly vstupní podmínky pro délku;
+#X obj 511 150 kdo_keca Zajíc;
+#X text 368 290 a podívejte se dovnitř \, je;
+#X text 368 304 v ní ještě trochu vylepšena;
+#X text 368 317 pravá větev patche.;
+#X text 366 238 znovu pošle do konzole i do;
+#X text 367 253 symbol boxu.;
+#X text 543 709 dovniř;
+#X obj 71 749 cnv 15 200 15 empty empty ABSTRAKCE_A_DOLAR_NULA 2 8
+0 12 -228856 -66577 0;
+#X obj 93 289 kdo_keca Profesor Máma;
+#X obj 532 114 kdo_keca;
+#X obj 548 635 rev3~;
+#N canvas 934 673 449 300 rec1 0;
+#X obj 154 -346 outlet;
+#X obj 254 -346 outlet;
+#X obj 57 -381 inlet;
+#X obj 57 -347 s \$0-xyz;
+#X obj 154 -380 r \$0-xyz;
+#X obj 254 -380 r xyz;
+#X connect 2 0 3 0;
+#X connect 4 0 0 0;
+#X connect 5 0 1 0;
+#X restore 515 897 pd rec1;
+#X obj 524 936 rec1;
+#X obj 77 881 cnv 15 330 80 empty empty empty 20 12 0 14 -233017 -66577
+0;
+#X obj 175 936 outlet;
+#X obj 269 936 outlet;
+#X obj 90 888 inlet;
+#X text 412 892 -------->;
+#X text 412 935 -------->;
+#X obj 90 935 s \$0-xyz;
+#X obj 175 888 r \$0-xyz;
+#X obj 269 888 r xyz;
+#X obj 351 912 \$0;
+#X obj 351 887 inlet;
+#X obj 351 937 outlet;
+#X text 70 642 Bez abstrakcí se neobejdeme v řešení některých
+situací. Nebo bychom místo nich museli použít mnohem méně elegantní
+a "tvrdé" řešení - vzpomeneme si na to při vytváření sampleru.
+S abstrakcemi jsme ostatně již také pracovali ___ a Pd-extended
+jich obsahuje celou řadu. Vzpomeňte si např. na objekt [expr_scale]
+- to je také abstrakce.;
+#X obj 462 692 cnv 15 60 15 empty empty empty 20 12 0 14 -262144 -66577
+0;
+#X text 526 695 Podívejte se;
+#X text 522 722 kliknutím LTM.;
+#X text 70 69 Kód opět samostatně uložíme pod názvem "kdo_keca.pd"
+do adresáře s abstrakcemi \, a pak zkusíme abstrakci vytvořit.
+;
+#X text 71 109 Když abstrakci při vytvoření nepředáme žádné
+\, nebo krátké \, vstupní argumenty \, upozorní nás na to Pd v
+konzoli. Pokud jí zadáme dva argumenty delší než dva znaky \,
+vypíše hlášku do konzole. Naši abstrakci navíc můžeme doplnit
+o vstupní zprávy/symbol boxy \, bang a výstupní symbol box:;
+#X text 367 224 argumentů splněny \, zprávu;
+#X text 367 276 Abstrakci si rozklikněte LTM;
+#X text 71 354 Uvedená abstrakce je sice prakticky nepoužitelná
+\, ale jako případová studie na jednoduché ošetřování vstupů
+_________ a vyhodnocování podmínek snad postačí. Použili jsme
+v ní nový objekt [jasch_lib/strlen] \, který umí zjistit délku
+symbolu \, a ukázali jsme si v ní dvojí možný zápis znaku "\$1"
+a "\$2". V jednom případě to bylo při specifikování argumentů
+v abstrakci a ve druhém to byl zápis proměnných do zprávy. Pokud
+vám v patchi nebyla srozumitelná levá větev s popiskem "selektorové
+abrakadabra" \, doporučuji vrátit se ke studiu této problematiky.
+;
+#X text 70 513 Pokud si v programátorské praxi zvyknete vytvářet
+________ a používat abstrakce \, hodně vám to ulehčí práci.
+Určitě je jednodušší si s postupem času založit sbírku jasně
+pojmenovaných abstrakcí a ty vkládat do projektu \, na kterém pracujete
+\, než dohledávat kousky kódů v patchích _________ a subpatchích.
+Již teď bychom se mohli vrátit např. _______ k počítadlům \,
+BPM tempu a sekvenceru a vytvořit si z nich abstrakce.;
+#X text 70 762 V kapitole o "bezdrátovém" posílání zpráv jsme
+se zmínili _ o indentifikátoru "\$0-". Když bychom se ještě vrátili
+____ k analogii o mluvení v celém domě a jednom bytě \, pak jsou
+abastrakce v kombinaci s identifikátorem "\$0-" způsobem \, jak "mluvit
+v jednom bytě" \, neboli prostředkem k zaručení lokální platnosti
+jmen proměnných. Vysvětlíme si toto enigmatické tvrzení na konkrétním
+případě.;
+#X obj 412 373 cnv 15 120 15 empty empty empty 20 12 0 14 -262144 -66577
+0;
+#X obj 420 516 cnv 15 120 15 empty empty empty 20 12 0 14 -262144 -66577
+0;
+#X obj 412 578 cnv 15 120 15 empty empty empty 20 12 0 14 -262144 -66577
+0;
+#X obj 432 592 cnv 15 120 15 empty empty empty 20 12 0 14 -262144 -66577
+0;
+#X obj 444 781 cnv 15 60 15 empty empty empty 20 12 0 14 -262144 -66577
+0;
+#X obj 476 767 cnv 15 60 15 empty empty empty 20 12 0 14 -262144 -66577
+0;
+#X connect 2 0 19 0;
+#X connect 3 0 19 0;
+#X connect 4 0 19 0;
+#X connect 5 0 19 1;
+#X connect 6 0 19 1;
+#X connect 7 0 19 1;
+#X connect 8 0 19 0;
+#X connect 19 0 1 0;
+#X connect 27 0 30 0;
+#X connect 31 0 25 0;
+#X connect 32 0 26 0;
+#X connect 33 0 35 0;
+#X connect 34 0 33 0;

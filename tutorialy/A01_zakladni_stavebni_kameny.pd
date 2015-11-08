@@ -1,0 +1,80 @@
+#N canvas 1 55 718 1017 12;
+#X obj 67 73 cnv 15 567 25 empty empty zakladní_stavební_kameny 20
+12 0 14 -1 -262144 0;
+#X msg 516 126 hallo world;
+#X obj 516 175 print;
+#X obj 569 273 image kurzor_2.gif;
+#X obj 68 216 cnv 15 200 15 empty empty EDITAČNÍ_/_PERFORMAČNÍ_MÓD
+2 8 0 12 -228856 -66577 0;
+#X floatatom 511 521 5 0 0 0 - - -;
+#X obj 514 488 hsl 100 15 0 127 0 0 empty empty empty -2 -8 0 10 -262144
+-1 -1 0 1;
+#X obj 519 273 image kurzor_1.gif;
+#X text 530 261 -->;
+#X obj 548 351 image kurzor_3.gif;
+#X obj 555 664 image kurzor_4.gif;
+#X text 514 566 označení více;
+#X text 514 581 objektů;
+#X text 514 596 najednou:;
+#X obj 533 406 bng 15 250 50 0 empty empty empty 17 7 0 10 -262144
+-1 -1;
+#X obj 533 443 bng 15 250 50 0 empty empty empty 17 7 0 10 -262144
+-1 -1;
+#X text 508 470 posuvník;
+#X text 529 387 tlačítko;
+#X text 550 512 číselný;
+#X text 562 525 box;
+#X text 550 440 bang;
+#X text 83 686 CTRL + c - zkopíruje označený objekt do schránky
+C;
+#X text 83 702 CTRL + v - vloží objekt/y ze schránky;
+#X text 83 718 CTRL + x - vyjme objekt/y a uloží do schránky;
+#X text 83 734 CTRL + d - zduplikuje označený/é objekt/y;
+#X text 82 760 CTRL + z - undo - pozor \, Pd si pamatují jen jeden
+krok zpět!;
+#X text 82 776 CTRL + SHIFT + z - redo;
+#X text 66 325 V editačním módu se odehrává vlastní proces programování:
+vkládání \, mazání \, přesouvání a propojování objektů.
+Objekt \, který chceme editovat \, naklikneme levým tlačítkem myši
+(dále jen LTM) - měl by být poté zvýrazněný modře.;
+#X text 67 802 Samotné objekty vkládáme přes menu Vložit (Put)
+nebo klávesovou zkratkou CTRL + 1..5. Doporučuji přepnout na anglickou
+klávesnici - vyhnete se tak krkolomné kombinaci CTRL + SHIFT + číslo.
+Také pozor na CAPSLOCK. Pokud se nemůžete přepnout do editačního
+módu \, může za to obvykle tato klávesa.;
+#X text 66 571 Znovu se přepneme do editačního módu (CTRL + e)
+a klikneme na posuvník. Když držíme LTM \, je možné s objektem
+po patchi pohybovat. Pokud v editačním módu kamkoliv klikneme a
+držíme LTM \, pak můžeme tahem vytvořit obdélník \, kterým
+označíme více objektů najednou. Klávesa BACKSPACE nebo DEL označený/é
+objekt/y smaže. Dále fungují klasické klávesové zkratky:;
+#X text 67 902 Základních stavebních kamenů \, když nepočítáme
+grafické prvky \, je v Pd pět: objekty \, zprávy \, čísla \, symboly
+a komentáře.;
+#X text 67 94 Nejprve vytvoříme nový projekt: CTRL + n \, nebo v
+menu Soubor -> Nový. Ejhle \, máme před sebou "prázdné plátno"
+\, neboli patch. Pojmy program \, kód a patch budeme v rámci programování
+v Pd považovat za totožné. Program v Pd sestává z navzájem propojených
+objektů \, které vykonávají specifickou funkci. Ta je obvykle patrná
+již z jejich názvu. Např. objekt [print] vypisuje zprávy do Pd
+konzole.;
+#X text 66 227 Abychom praxi programování v Pd porozuměli \, je
+třeba se hned ze začátku naučit rozlišovat dva základní módy
+\, ve kterých Pd pracují: editační mód a performační mód. Do
+editačního módu se přepneme pomocí klávesové zkratky CTRL +
+e (Cmd + e na Mac OSu) \, nebo v menu Upravit (Edit) vybereme položku
+Edit Mode. Kurzor by se měl ze šipky změnit na ruku.;
+#X text 66 393 Do performačního módu se přepneme opětovým stiskem
+CTRL + e a kurzor se opět změní na šipku. V performačním módu
+nelze psát kód \, objekty jsou "zamčené" a není možné s nimi
+manipulovat. V performačním módu můžeme na určité části kódu
+(číselný box \, posuvník \, bang \, vypínač atd.) "hrát". Zkuste
+v performačním módu kliknout LTM na posuvník \, držte LTM a pohněte
+myší doleva nebo doprava - uvidíte \, jak se mění číselná hodnota.
+S objektem \, který obsahuje číslo \, to funguje stejně \, jen
+myší hýbeme nahoru a dolů. Pokud držíme SHIFT \, pak se pohybujeme
+v jemnější škále. Zkuste kliknout také na tlačítko \, kterému
+se v Pd říká bang.;
+#X connect 1 0 2 0;
+#X connect 6 0 5 0;
+#X connect 14 0 15 0;

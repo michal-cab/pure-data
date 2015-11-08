@@ -1,0 +1,106 @@
+#N canvas 1 54 718 1017 12;
+#X obj 71 73 cnv 15 200 15 empty empty MODULACE_AMPLITUDY_S_LFO 2 8
+0 12 -228856 -66577 0;
+#X obj 186 260 osc~ 0.5;
+#X obj 471 260 LFO_noise~ 8;
+#X obj 96 411 *~;
+#X obj 95 315 osc~ 440;
+#X obj 95 443 dac~;
+#X obj 187 368 *~;
+#X obj 205 345 tgl 15 0 empty empty empty 17 7 0 10 -262144 -1 -1 0
+1;
+#X obj 345 368 *~;
+#X obj 363 345 tgl 15 0 empty empty empty 17 7 0 10 -262144 -1 -1 0
+1;
+#X obj 470 368 *~;
+#X obj 488 345 tgl 15 0 empty empty empty 17 7 0 10 -262144 -1 -1 0
+1;
+#X text 70 185 LFO generátor vytvoříme prostě tak \, že objektům
+\, které již známe \, předáme jako argument nízkou frekvenci.
+Objekt LFO_noise~ je součástí knihovny iemlib a generuje nízkofrekvenční
+šum.;
+#X obj 344 321 -~;
+#X obj 344 293 sig~ 1;
+#X obj 360 260 phasor~ 3;
+#X text 387 328 signálu.;
+#X text 377 313 Doplněk LFO;
+#X obj 264 368 *~;
+#X obj 282 345 tgl 15 0 empty empty empty 17 7 0 10 -262144 -1 -1 0
+1;
+#X obj 265 260 phasor~ 1;
+#X obj 71 498 cnv 15 200 15 empty empty CVIČENÍ: 2 8 0 12 -204800
+-66577 0;
+#X text 70 547 - prozkoumejte Nápovědu k [fade~] \, který je součástí
+;
+#X text 70 600 - a do třetice: prozkoumejte Nápovědu k signálové
+variantě;
+#X obj 568 625 cnv 15 5 5 empty empty 3 -400 12 0 9 -262144 -66577
+0;
+#X text 69 654 - zkuste pomocí jednoduchých operací (škálování
+\, inverze \,;
+#X obj 524 505 vline~;
+#X obj 530 609 expr~;
+#X text 72 799 - a konečně: pokuste se váš syntetizér propojit
+;
+#X text 86 812 s šestnáctidobým krokovým sekvencerem \, jehož
+konstrukcí;
+#X text 96 523 se liší od objektu [line~]?;
+#X obj 530 535 ead~;
+#X text 71 84 LFO je anglická zkratka \, která znamená Low-frequency
+oscillation. Generátory s tímto označením vytvářejí signál
+oscilující obvykle v rozsahu do 20 Hz. Jde tedy __________ o neslyšitelné
+frekvence \, jež jsou ale dobře využitelné pro modulaci amplitudy
+nebo řízení jiných DSP prvků jako filtry a efekty.;
+#X text 180 414 Různé LFO generátory modulující amplitudu signálu
+440 Hz. Podívejte se \, jak je vlna modulovaná v [analyzer]u. Zkuste
+hodnoty specifikující LFO měnit a poslouchejte \, jak se ____ s
+nimi mění charakter signálu.;
+#X text 83 681 použijte právě objekt [expr~];
+#X text 83 668 ořez \, doplněk) sestrojit vlastní vlny nebo pro
+ten účel;
+#X text 70 706 - vytvořte si z uvedených příkladů obálek abstrakce
+;
+#X text 71 731 - pokuste se sestrojit jednoduchý monofonní (tzn.
+;
+#X text 85 759 zadávejte z klávesnice - využijte objekty [key] a
+[select] \;;
+#X text 84 825 jsme se zabývali v první části rukověti;
+#X text 70 852 Známe zatím jen pár základních kamenů z celé
+široké oblasti DSP problematiky - a to ještě v poměrně zjednodušujícím
+podání. I tak málo ale již stačí k tomu \, abyste podnikli svá
+vlastní sonická dobrodružství a pokusili se __________ o konstrukci
+prvních jednoduchých nástrojů.;
+#X obj 563 448 cnv 15 60 15 empty empty empty 20 12 0 14 -262144 -66577
+0;
+#X obj 407 118 cnv 15 120 15 empty empty empty 20 12 0 14 -262144 -66577
+0;
+#X text 85 773 zmáčknutou klávesou ovládejte zároveň obálku
+;
+#X text 72 508 - prozkoumejte Nápovědu k objektu [vline~] a [ead~]
+- čím;
+#X text 84 563 knihovny iemlib - v čem se liší jeho charakteristika
+od objeků [line~] a [vline~]?;
+#X text 83 615 objektu [expr] - tedy [expr~] - pokuste se v něm zapsat
+;
+#X text 84 630 polynom -18x + 23x - 5x - jaký má vlna tvar?;
+#X text 83 745 jednohlasý) syntetizér s obálkou - výšku frekvence
+;
+#X obj 408 904 cnv 15 120 15 empty empty empty 20 12 0 14 -262144 -66577
+0;
+#X connect 1 0 6 0;
+#X connect 2 0 10 0;
+#X connect 3 0 5 0;
+#X connect 3 0 5 1;
+#X connect 4 0 3 0;
+#X connect 6 0 3 1;
+#X connect 7 0 6 1;
+#X connect 8 0 3 1;
+#X connect 9 0 8 1;
+#X connect 10 0 3 1;
+#X connect 11 0 10 1;
+#X connect 13 0 8 0;
+#X connect 14 0 13 0;
+#X connect 15 0 13 1;
+#X connect 18 0 3 1;
+#X connect 19 0 18 1;
+#X connect 20 0 18 0;

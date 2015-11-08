@@ -1,0 +1,119 @@
+#N canvas 1 54 718 1017 12;
+#X obj 71 73 cnv 15 200 15 empty empty FM_SYNTÉZA 2 8 0 12 -228856
+-66577 0;
+#X obj 358 767 analyzer;
+#X obj 614 746 tgl 15 0 empty empty empty 17 7 0 10 -262144 -1 -1 0
+1;
+#X obj 93 610 dac~;
+#X obj 94 580 *~;
+#X obj 572 229 osc~;
+#X obj 572 198 sig~ 100;
+#X obj 512 230 osc~;
+#X msg 512 198 100;
+#X obj 93 536 osc~;
+#X obj 129 584 tgl 15 0 empty empty empty 17 7 0 10 -262144 -1 -1 0
+1;
+#X obj 191 610 dac~;
+#X obj 192 580 *~;
+#X obj 191 548 osc~;
+#X obj 231 584 tgl 15 0 empty empty empty 17 7 0 10 -262144 -1 -1 0
+1;
+#X obj 192 516 +~;
+#X obj 193 487 sig~ 220;
+#X obj 266 487 sig~ 220;
+#X obj 92 490 sig~ 440;
+#X obj 364 610 dac~;
+#X obj 365 580 *~;
+#X obj 364 550 osc~;
+#X obj 404 584 tgl 15 0 empty empty empty 17 7 0 10 -262144 -1 -1 0
+1;
+#X obj 365 520 +~;
+#X obj 438 486 osc~ 2;
+#X obj 365 486 sig~ 220;
+#X obj 80 909 *~;
+#X obj 79 879 osc~;
+#X obj 119 912 tgl 15 0 empty empty empty 17 7 0 10 -262144 -1 -1 0
+1;
+#X obj 80 851 +~;
+#X obj 81 936 throw~ signal;
+#X obj 358 744 catch~ signal;
+#X obj 98 785 osc~ 1;
+#X obj 80 746 sig~ 1000;
+#X obj 99 823 *~ 500;
+#X text 155 745 Nosná frekvence 1000 Hz.;
+#X text 156 783 Vibrato o frekvenci 1 Hz \,;
+#X text 156 827 kmitá v rozsahu +- 500 Hz.;
+#X obj 358 945 dac~;
+#X text 70 84 Vynález frekvenčně modulované syntézy zvuku Johnem
+Chowningem \, jenž byla patentována v roce 1975 \, spolu s její
+implementací v syntetizéru Yamaha DX7 \, znamenal určitý průlom
+na poli elektronické hudby. Tato technika syntézy totiž umožnila
+vytvářet nové zvukové barvy a řada autorů začala její dispozice
+ve velkém využívat.;
+#X text 70 181 Ukážeme si v několika stupních \, jak jádro FM
+syntetizéru _ v Pd postavit. Do levého vstupu objektu [osc~] lze
+poslat buď číslo nebo signál - obojí určuje jeho frekvenci \,
+budeme ji nazývat nosnou frekvencí. Když mezi objekt [sig~] _____
+a [osc~] vložíme objekt [+~] \, můžeme po cestě ještě ______
+k signálu přičítat. Když sečteme výstupy ze dvou [sig~ 220]
+a výsledný signál pošleme do [osc~] \, uslyšíme frekvenci 440
+Hz. Co kdybychom ale místo konstantního [sig~ 100] použili nějaký
+periodicky oscilující generátor?;
+#X text 70 324 Záměnou [sig~ 220] za [osc~ 2] vytvoříme již jednoduchý
+FM syntetizér. Co se se signálem děje? Ke konstantní hodnotě 220
+permanentně přičítáme hodnoty z [osc~] \, které jsou ___ v rozsahu
+-1..1. Ve zvuku při 220 Hz skoro žádnou změnu neuslyšíme \, ale
+pokud hodnotu v [sig~ 220] snížíme na 80 \, pak bychom měli slyšet
+velmi jemné vibrato mezi 79 a 81 Hz. Ve vibratu jde o modulaci frekvence
+- v našem případě má vibrato frekvenci 2 Hz a kolem nosné frekvence
+osciluje nahoru a dolů v rozsahu -1..1 \, což je dáno amplitudou
+[osc~].;
+#X text 70 636 Nyní jde o to \, jak amplitudu z modulačního oscilátoru
+rozšířit tak \, aby byl záběr vibrata větší. Poslouží nám
+__ k tomu dobře objekt [*~] \, kterým velikost amplitudy modulačního
+oscilátoru zvětšíme. Z ilustrativních důvodů nyní hodnoty pozměníme
+tak \, aby bylo v abstrakci [analyzer] dobře viditelné \, co se se
+signálem při FM syntéze děje.;
+#X text 156 814 které kolem nosné frekvence;
+#X obj 437 229 cnv 15 40 15 empty empty empty 20 12 0 14 -262144 -66577
+0;
+#X obj 436 245 cnv 15 50 15 empty empty empty 20 12 0 14 -262144 -66577
+0;
+#X obj 451 360 cnv 15 120 15 empty empty empty 20 12 0 14 -262144 -66577
+0;
+#X obj 461 660 cnv 15 120 15 empty empty empty 20 12 0 14 -262144 -66577
+0;
+#X obj 467 186 cnv 15 40 15 empty empty empty 20 12 0 14 -262144 -66577
+0;
+#X connect 1 0 38 0;
+#X connect 1 0 38 1;
+#X connect 2 0 1 1;
+#X connect 4 0 3 0;
+#X connect 4 0 3 1;
+#X connect 6 0 5 0;
+#X connect 8 0 7 0;
+#X connect 9 0 4 0;
+#X connect 10 0 4 1;
+#X connect 12 0 11 0;
+#X connect 12 0 11 1;
+#X connect 13 0 12 0;
+#X connect 14 0 12 1;
+#X connect 15 0 13 0;
+#X connect 16 0 15 0;
+#X connect 17 0 15 1;
+#X connect 18 0 9 0;
+#X connect 20 0 19 0;
+#X connect 20 0 19 1;
+#X connect 21 0 20 0;
+#X connect 22 0 20 1;
+#X connect 23 0 21 0;
+#X connect 24 0 23 1;
+#X connect 25 0 23 0;
+#X connect 26 0 30 0;
+#X connect 27 0 26 0;
+#X connect 28 0 26 1;
+#X connect 29 0 27 0;
+#X connect 31 0 1 0;
+#X connect 32 0 34 0;
+#X connect 33 0 29 0;
+#X connect 34 0 29 1;

@@ -1,0 +1,91 @@
+#N canvas 1 54 718 1017 12;
+#X obj 90 291 dac~;
+#X msg 87 428 \; pd dsp 1;
+#X msg 182 428 \; pd dsp 0;
+#X obj 89 156 ascseq 100;
+#X obj 89 222 osc~;
+#X obj 67 562 cnv 15 200 15 empty empty ARGUMENTY_OBJEKTŮ 2 8 0 12
+-228856 -66577 0;
+#X obj 500 664 ascseq 100;
+#X floatatom 567 600 5 0 0 0 - - -;
+#X msg 522 599 500;
+#X msg 547 569 1000;
+#X obj 508 775 metro 500;
+#X obj 508 803 bng 15 250 50 0 empty empty empty 17 7 0 10 -262144
+-1 -1;
+#X obj 508 753 bng 15 250 50 0 empty empty empty 17 7 0 10 -262144
+-1 -1;
+#X text 67 746 Podobně tak objekt metro \, který posílá bang (viz
+později) \, lze specifikovat jedním argumentem. Ten určuje délku
+prodlevy intervalů.;
+#X obj 67 843 cnv 15 200 15 empty empty CVIČENÍ: 2 8 0 12 -204800
+-66577 0;
+#X text 180 297 k interpretaci zvukové kartě.;
+#X text 180 112 Ve zprávě posíláme nějaké znaky.;
+#X text 66 323 Vytvoříme také ještě dvě zprávy \, do kterých
+vepíšeme text;
+#X text 73 338 \;;
+#X text 171 338 \;;
+#X text 66 338 " pd dsp 1" a " pd dsp 0". Jde o tzv. interní zprávy
+;
+#X text 258 431 <-- Tyto zprávy zapnou / vypnou zvuk.;
+#X text 287 444 Nemusíme klikat na DSP v konzoli.;
+#X text 66 801 Některé objekty nemají žádné argumenty a některé
+jich mohou mít víc (např. zvuková obálka \, posun po osách X
+\, Y \, Z atd.);
+#X msg 89 113 hello world;
+#X text 179 283 "Digitálně analogový konvertor" pošle zvukový
+signál;
+#X text 67 474 Pakliže jste vytvořili a propojili správně všechny
+objekty \, zapněte DSP a klikněte na zprávu [hello world(. Měli
+byste slyšet krátký kolísavý zvuk a pak jednolitou frekvenci (je
+to 100 Hz \, protože poslední znak zprávy je písmeno "h" a to má
+v dekadické soustavě ASCII hodnotu 100).;
+#X text 505 818 Metro(nom);
+#X text 504 831 tikající 2x;
+#X text 505 843 za vteřinu.;
+#X text 66 574 Objekt [ascseq] má tzv. argument - číslo \, které
+jej specifikuje a inicializuje. Podobně jsme to viděli již ____
+u objektu metro. V případě objektu [ascseq] je možné zadat jeden
+argument \, který specifikuje to \, jak rychle budou ___ z jeho výstupu
+vysílány ASCII hodnoty. 100 znamená 100 milisekund \, takže 1000
+je jedna vteřina.;
+#X obj 449 627 cnv 15 50 15 empty empty empty 20 12 0 14 -262144 -66577
+0;
+#X obj 452 595 cnv 15 50 15 empty empty empty 20 12 0 14 -262144 -66577
+0;
+#X text 66 69 Propojíme i zbytek objektů \, abychom obdrželi následující
+strukturu:;
+#X text 180 140 Objekt [ascseq] je součástí knihovny cxc \, která
+je již součástí Pd-extended a převádí znaky \, které přijme
+na ASCII hodnotu \, ty pak vysílá jediným výstupem dál v intervalech
+100 ms.;
+#X text 179 213 Oscilátor na levém vstupu očekává číselnou hodnotu
+\, ta odpovídá frekvenci \, kterou pak hraje.;
+#X text 109 255 <-------- Kabely \, které vedou zvukový signál \,
+jsou silnější.;
+#X text 66 352 a poznáme je tak \, že začínají středníkem. Prozatím
+nám bude stačit \, když si zapamatujeme \, že jsou to zprávy \,
+které "hovoří" přímo k Pd. S jejich pomocí lze psát metaprogramy
+(programy \, které vytvářejí programy) - o tom ale později.;
+#X text 66 673 Když bychom do pravého vstupu objektu [ascseq] připojili
+výstup z číselného boxu nebo zprávy s předdefinovanými hodnotami
+v milisekundách \, pak bychom mohli rychlost výstupu dynamicky měnit.
+;
+#X text 71 857 - změňte argument objektu [ascsq] na 500;
+#X text 71 876 - změňte objekt [osc~] na [phasor~];
+#X text 71 894 - připojte na výstup objektu [ascseq] číselný box
+;
+#X text 71 913 - zprávu [hello world( změňte na nějakou vlastní
+;
+#X text 71 932 - klikněte v performačním módu na změněnou zprávu
+;
+#X connect 3 0 4 0;
+#X connect 4 0 0 0;
+#X connect 4 0 0 1;
+#X connect 7 0 6 1;
+#X connect 8 0 6 1;
+#X connect 9 0 6 1;
+#X connect 10 0 11 0;
+#X connect 12 0 10 0;
+#X connect 24 0 3 0;

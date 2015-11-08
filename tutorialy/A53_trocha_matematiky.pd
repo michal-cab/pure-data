@@ -1,0 +1,194 @@
+#N canvas 1 54 718 1017 12;
+#X obj 92 256 &;
+#X floatatom 92 287 5 0 0 0 - - -;
+#X msg 110 228 13;
+#X msg 92 200 13;
+#X obj 271 738 tgl 15 0 empty empty empty 0 -6 0 8 -233017 -1 -1 0
+8;
+#X obj 317 738 tgl 15 0 empty empty empty 0 -6 0 8 -262144 -1 -1 0
+4;
+#X obj 362 738 tgl 15 0 empty empty empty 0 -6 0 8 -262144 -1 -1 0
+2;
+#X obj 407 738 tgl 15 0 empty empty empty 0 -6 0 8 -262144 -1 -1 0
+1;
+#X obj 407 710 & 1;
+#X obj 362 710 & 2;
+#X obj 317 710 & 4;
+#X obj 271 710 & 8;
+#X obj 91 738 tgl 15 0 empty empty empty 0 -6 0 8 -233017 -1 -1 0 128
+;
+#X obj 136 738 tgl 15 0 empty empty empty 0 -6 0 8 -262144 -1 -1 0
+64;
+#X obj 181 738 tgl 15 0 empty empty empty 0 -6 0 8 -262144 -1 -1 0
+32;
+#X obj 226 738 tgl 15 0 empty empty empty 0 -6 0 8 -262144 -1 -1 0
+16;
+#X obj 226 710 & 16;
+#X obj 181 710 & 32;
+#X obj 136 710 & 64;
+#X obj 91 710 & 128;
+#X floatatom 197 646 5 0 255 0 - - -;
+#X obj 197 673 t f f f f f f f f;
+#X text 518 108 bitový AND;
+#X obj 537 89 &;
+#X text 519 161 bitový OR;
+#X obj 539 140 |;
+#X text 145 201 == 1 1 0 1;
+#X text 145 224 == 1 1 0 1;
+#X text 145 285 == 1 1 0 1;
+#X obj 268 256 &;
+#X floatatom 268 287 5 0 0 0 - - -;
+#X msg 268 200 13;
+#X text 321 201 == 1 1 0 1;
+#X msg 286 228 9;
+#X text 321 224 == 1 0 0 1;
+#X text 321 286 == 1 0 0 1;
+#X floatatom 438 286 5 0 0 0 - - -;
+#X msg 438 199 13;
+#X msg 456 227 9;
+#X obj 438 255 &&;
+#X text 470 262 ale o logický operátor.;
+#X text 184 250 |;
+#X text 188 250 |;
+#X text 186 261 v;
+#X text 360 251 |;
+#X text 364 251 |;
+#X text 362 262 v;
+#X floatatom 90 435 5 0 0 0 - - -;
+#X msg 108 376 13;
+#X msg 90 348 13;
+#X text 143 348 == 1 1 0 1;
+#X text 143 372 == 1 1 0 1;
+#X text 143 433 == 1 1 0 1;
+#X floatatom 266 435 5 0 0 0 - - -;
+#X msg 266 348 13;
+#X text 319 348 == 1 1 0 1;
+#X msg 284 376 9;
+#X text 319 372 == 1 0 0 1;
+#X text 182 398 |;
+#X text 186 398 |;
+#X text 184 409 v;
+#X text 358 399 |;
+#X text 362 399 |;
+#X text 360 410 v;
+#X text 71 169 Bitový AND nám tedy dá tento výsledek:;
+#X text 74 315 A bitový OR tento:;
+#X obj 90 404 |;
+#X obj 266 404 |;
+#X text 319 434 == 1 1 0 1;
+#X floatatom 437 435 5 0 0 0 - - -;
+#X msg 437 348 13;
+#X msg 455 376 9;
+#X obj 437 404 &&;
+#X text 467 401 !;
+#X text 240 646 0..255;
+#X obj 633 505 cnv 15 1 1 empty empty 0 -500 20 0 9 -262144 -66577
+0;
+#X text 189 545 1 + 2 + 4 + 8 + 16 + 32 + 64 + 128 = 255;
+#X text 95 521 1 * 2;
+#X text 148 521 + 1 * 2;
+#X text 213 521 + 1 * 2;
+#X text 278 521 + 1 * 2;
+#X text 345 521 + 1 * 2;
+#X text 410 521 + 1 * 2;
+#X text 477 521 + 1 * 2;
+#X text 542 521 + 1 * 2;
+#X text 504 474 jednotka informace;
+#X text 539 487 1 / 0;
+#X text 517 461 bit = nejmenší;
+#X text 461 636 Nebo je to generátor;
+#X text 461 651 všech možných pozic;
+#X text 461 666 v jednostopém bicím;
+#X text 461 697 dobách?;
+#X text 461 681 automatu o osmi;
+#X obj 514 784 <<;
+#X obj 553 784 >>;
+#X obj 289 859 pddplink http://www.root.cz/clanky/v-pocitaci-jsou-jen-jednicky-a-nuly/
+-text V počítači jsou jen jedničky a nuly.;
+#X obj 157 929 pddplink http://countercomplex.blogspot.cz/2011/10/
+-text Jeden a;
+#X obj 213 929 pddplink http://countercomplex.blogspot.cz/2011/10/algorithmic-symphonies-from-one-line-of.html
+-text druhý.;
+#X text 70 69 Uvedeme si pouze dva bitové operátory \, které si
+snadno můžete splést s logickými operátory! Půjde o bitový AND
+__ a bitový OR. Oba dva se řídí podle stejných pravidel jako logické
+operátory (AND je 1 \, jen pokud jsou oba vstupy 1 \, OR je 1 \, pokud
+je aspoň jeden 1) \, jen "uvnitř" pracují ___ s dvojkovým zápisem
+\, takže výsledek bude jiný!;
+#X text 470 249 Pozor! Nejde o bitový \,;
+#X text 448 492 .;
+#X text 70 462 Čísla se v dvojkové soustavě zapisují obvykle v
+8 \, 16 \, 32 \, 64 \, atd. -bitových číslech. Maximum \, které
+na osmi bitech dokážeme vyjádřit je 1.11111e+07 \, což je dekadicky
+255;
+#X obj 700 506 cnv 15 1 1 empty empty 1 -500 20 0 9 -262144 -66577
+0;
+#X obj 764 506 cnv 15 1 1 empty empty 2 -500 20 0 9 -262144 -66577
+0;
+#X obj 829 506 cnv 15 1 1 empty empty 3 -500 20 0 9 -262144 -66577
+0;
+#X obj 896 506 cnv 15 1 1 empty empty 4 -500 20 0 9 -262144 -66577
+0;
+#X obj 961 506 cnv 15 1 1 empty empty 5 -500 20 0 9 -262144 -66577
+0;
+#X obj 1027 506 cnv 15 1 1 empty empty 6 -500 20 0 9 -262144 -66577
+0;
+#X obj 1092 506 cnv 15 1 1 empty empty 7 -500 20 0 9 -262144 -66577
+0;
+#X text 70 568 Když k bitovému operátoru [&] přidáme argument
+označující \, jakou hodnotu má číslo dekadicky \, když je jednička
+v daném řádu dvojkově zapsaného čísla \, pak si můžeme postavit
+dekadicko-dvojkový převodník.;
+#X text 71 769 Kromě bitového operátoru [&] a [|] jsou v Pd ještě
+operátory pro bitový posun: [<<] a [>>]. Vzhledem k tomu \, že tato
+poslední podkapitola je ale spíš pro nadšence ____ a zvědavce
+\, necháme jejich průzkum na individuálním zvážení. Pokud by
+vás ale problematika zajímala hlouběji _ a tato kapitolka vám připadala
+málo podrobná a nesrozumitelná podívejte se na:;
+#X obj 469 838 cnv 15 60 15 empty empty empty 20 12 0 14 -262144 -66577
+0;
+#X text 71 883 K základnímu programování v Pd bitové operátory
+nutně znát nepotřebujeme \, přesto by ale měly patřit do výbavy
+každého skutečného programátora. Dají se s nimi totiž dělat
+moc pěkné triky:;
+#X obj 459 89 cnv 15 60 15 empty empty empty 20 12 0 14 -262144 -66577
+0;
+#X obj 453 136 cnv 15 60 15 empty empty empty 20 12 0 14 -262144 -66577
+0;
+#X obj 449 806 cnv 15 60 15 empty empty empty 20 12 0 14 -262144 -66577
+0;
+#X connect 0 0 1 0;
+#X connect 2 0 0 1;
+#X connect 3 0 0 0;
+#X connect 8 0 7 0;
+#X connect 9 0 6 0;
+#X connect 10 0 5 0;
+#X connect 11 0 4 0;
+#X connect 16 0 15 0;
+#X connect 17 0 14 0;
+#X connect 18 0 13 0;
+#X connect 19 0 12 0;
+#X connect 20 0 21 0;
+#X connect 21 0 19 0;
+#X connect 21 1 18 0;
+#X connect 21 2 17 0;
+#X connect 21 3 16 0;
+#X connect 21 4 11 0;
+#X connect 21 5 10 0;
+#X connect 21 6 9 0;
+#X connect 21 7 8 0;
+#X connect 29 0 30 0;
+#X connect 31 0 29 0;
+#X connect 33 0 29 1;
+#X connect 37 0 39 0;
+#X connect 38 0 39 1;
+#X connect 39 0 36 0;
+#X connect 48 0 66 1;
+#X connect 49 0 66 0;
+#X connect 54 0 67 0;
+#X connect 56 0 67 1;
+#X connect 66 0 47 0;
+#X connect 67 0 53 0;
+#X connect 70 0 72 0;
+#X connect 71 0 72 1;
+#X connect 72 0 69 0;

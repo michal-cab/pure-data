@@ -1,0 +1,75 @@
+#N canvas 1 54 718 1017 12;
+#X obj 67 73 cnv 15 567 25 empty empty MIDI_kontrolery 20 12 0 14 -1
+-262144 0;
+#X obj 541 812 ctlin;
+#X obj 80 710 notein;
+#X obj 67 601 cnv 15 200 15 empty empty [NOTEIN]_A_[CTLIN] 2 8 0 12
+-228856 -66577 0;
+#X floatatom 80 736 5 0 0 0 - - -;
+#X floatatom 99 761 5 0 0 0 - - -;
+#X floatatom 119 787 5 0 0 0 - - -;
+#X text 132 735 nota;
+#X text 144 761 síla;
+#X text 163 789 MIDI kanál;
+#X text 237 703 Pokud chceme číst noty pouze z určitého;
+#X text 237 731 argument [notein].;
+#X obj 427 756 notein 10;
+#X text 237 755 Pouze MIDI kanál č. 10 ->;
+#X floatatom 541 839 5 0 0 0 - - -;
+#X floatatom 557 865 5 0 0 0 - - -;
+#X floatatom 573 891 5 0 0 0 - - -;
+#X text 66 815 Objekt [ctlin] čte MIDI zprávy označované zkratkou
+CC (Control Change). Obvykle jde tedy o posuvníky \, pitch-wheel \,
+knoby \, tlačítka atd. Podobně jako u [notein] je prvním výstupem
+aktuální hodnota daného kontrolního prvku \, na druhém je jeho
+specifické číslo a třetí výstup je číslo MIDI kanálu.;
+#X text 66 264 Propojení MIDI kontrolerů s Pd se liší podle toho
+\, v jakém operačním systému pracujeme. Pod Linuxem jsou ovladače
+pro řadu MIDI kontrolerů většinou již součástí jádra systému
+_ a nemusíme se tedy obtěžovat s jejich instalací. Pod Windows
+a MacOSem je třeba nejprve patřičné ovladače doinstalovat.;
+#X obj 464 302 cnv 15 120 15 empty empty empty 20 12 0 14 -262144 -66577
+0;
+#X text 66 94 Již v kapitole věnující se HID (Human Interface Device)
+jsme naznačili \, že v přístupu k nástrojům a systémům \, které
+jsme v Pd vytvořili \, nejsme odkázáni pouze na klávesnici __ a
+myš. V této kapitole se blíž podíváme na možnosti \, které
+Pd nabízejí v komunikaci s MIDI kontrolery.;
+#X text 66 180 Pojmem MIDI kontroler označujeme celou širokou škálu
+hardwarových zařízení: standardně jde o MIDI klaviatury doplněné
+o další ovládací prvky \, jako jsou tahové a otočné potenciometry
+- ty v grafických uživatelských prvcích Pd odpovídají posuvníkům
+a objektu [knob].;
+#X text 66 363 Dalším krokem je zprovoznění MIDI v samotných Pd.
+Vstupní _ a výstupní MIDI porty nastavujeme v menu Media. K vlastnímu
+propojení kontroleru je v Linuxu vhodné použít aplikaci QJackCtl
+nebo Aconnectgui. V MacOSu použijte aplikace Audio MIDI Setup. Ve
+Windows postačí \, když v menu Media -> Nastavení MIDI vyberete
+v položce vstupní a výstupní zařízení \, které odpovídá vašemu
+kontroleru.;
+#X text 66 478 Jestliže máte kontroler připojen k počítači \,
+nainstalovali jste ovladače \, nastavili MIDI v menu Media a propojili
+jste kontroler s Pd \, pak by komunikace kontroleru s Pd měla fungovat.
+Otevřete si test audia a MIDI (přes menu Meida). Objekty [notein]
+a [ctlin] by měly \, po zmáčknutí klávesy na klaviatuře nebo
+použití kontrolního prvku (posuvník \, knob) \, na výstup posílat
+číselné hodnoty.;
+#X text 67 612 Objekt [notein] čte noty příchozí z klaviatury.
+Při stisku klávesy se vyšle MIDI zpráva "Note On" (klávesa stisknuta).
+Zpráva obsahuje informaci o čísle zahrané noty \, její síle (velocity)
+a tzv. MIDI kanálu. [notein] má tedy tři výstupy: pro notu \, její
+sílu a MIDI kanál.;
+#X text 237 717 MIDI kanálu \, specifikujeme ho jako;
+#X text 66 917 Klaviaturou i kontrolními prvky lze v Pd řídit části
+patche \, které můžou dynamicky přijímat nějakou hodnotu. Klasicky
+objekt [notein] použijete k posílání MIDI not do;
+#X obj 465 128 cnv 15 120 15 empty empty empty 20 12 0 14 -262144 -66577
+0;
+#X obj 470 369 cnv 15 120 15 empty empty empty 20 12 0 14 -262144 -66577
+0;
+#X connect 1 0 14 0;
+#X connect 1 1 15 0;
+#X connect 1 2 16 0;
+#X connect 2 0 4 0;
+#X connect 2 1 5 0;
+#X connect 2 2 6 0;

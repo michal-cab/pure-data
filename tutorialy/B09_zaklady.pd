@@ -1,0 +1,96 @@
+#N canvas 1 54 718 1017 12;
+#X obj 87 614 *~;
+#X obj 108 569 hsl 128 15 0 1 0 0 empty empty empty -2 -8 0 10 -262144
+-1 -1 0 1;
+#X obj 88 541 osc~ 261.6;
+#X obj 86 644 dac~;
+#X floatatom 105 588 5 0 0 0 - - -;
+#X text 168 539 Oscilátor \, frekvence odpovídá tónu C.;
+#X text 246 566 Posuvník s rozsahem 0..1.;
+#X text 125 645 Abychom signál slyšeli \, musíme ho poslat do [dac~].
+;
+#X obj 92 915 *~;
+#X obj 113 814 hsl 128 15 0 1 0 0 empty empty empty -2 -8 0 10 -262144
+-1 -1 0 1;
+#X obj 92 789 osc~ 261.6;
+#X obj 91 942 dac~;
+#X obj 110 877 line~;
+#X obj 91 313 dac~;
+#X obj 92 279 *~;
+#X obj 125 280 tgl 15 0 empty empty empty 17 7 0 10 -262144 -1 -1 0
+1;
+#X obj 92 250 osc~;
+#X obj 92 221 mtof;
+#X msg 92 179 60;
+#X msg 128 179 62;
+#X msg 163 179 64;
+#X msg 201 178 65;
+#X msg 238 178 67;
+#X msg 277 178 69;
+#X msg 315 178 71;
+#X msg 353 179 72;
+#X obj 156 252 f2note;
+#X symbolatom 156 278 6 0 0 0 - - -;
+#X text 391 171 Stupnice C dur;
+#X text 390 185 v MIDI hodnotách.;
+#X text 142 222 Převede MIDI noty na frekvenci.;
+#X obj 71 350 cnv 15 200 15 empty empty HLASITOST 2 8 0 12 -228856
+-66577 0;
+#X msg 110 836 \$1 20;
+#X text 119 855 <- zde jsou čísla;
+#X text 117 896 <- a zde už signál;
+#X text 158 834 Náběh na hodnotu z posuvníku za 20 ms.;
+#X text 251 810 Posuvník \, co "nekliká".;
+#X text 70 70 Pokud budete v Pd chtít používat klasickou tónovou
+řadu \, nemusíte si pamatovat jednotlivé frekvence tónů \, ale
+můžete využít objekt [mtof] \, který převádí hodnoty MIDI not
+na frekvenci. Pd MIDI normu samozřejmě podporují \, takže syntetizéry
+postavené v Pd lze řídit MIDI kontrolerem nebo hardwarovým MIDI
+sekvencerem.;
+#X text 70 361 Hlasitost zvuku \, což je subjektivní veličina \,
+souvisí ____ s amplitudou \, která je objektivně měřitelná. V
+předchozích příkladech je vždy před objektem [dac~] předřazen
+objekt [*~] \, jímž signál násobíme. Když signál vynásobíme
+nulou \, bude jeho amplituda nulová a nic neuslyšíme. Když jej
+vynásobíme jedničkou \, bude jeho amplituda mít rozsah -1..1. Pokud
+bychom jej násobili vyšší hodnotou \, amplituda "vyskočí" nad
+hranici -1..1 a uslyšíme zkreslení. Vypínač posílá hodnoty 0
+a 1 \, takže signál vždy úplně ztiší nebo zesílí. V následujících
+příkladech nahradíme vypínač posuvníkem.;
+#X text 71 673 Signál bychom ale neměli míchat s číselnými zprávami
+\, _____ i když to Pd umožňují. Když posuvníkem totiž manipulujeme
+příliš rychle \, uslyšíme charakteristické a nežádoucí kliknutí.
+Abychom se této chybě vyhnuli \, budeme amplitudu ovlivňovat objektem
+[line~]. Ten se chová podobně jako [line] \, jen jeho výstupem není
+číslo \, ale signál. Podrobněji si ho popíšeme v kapitole o obálkách.
+;
+#X obj 448 677 cnv 15 60 15 empty empty empty 20 12 0 14 -262144 -66577
+0;
+#X obj 448 365 cnv 15 60 15 empty empty empty 20 12 0 14 -262144 -66577
+0;
+#X connect 0 0 3 0;
+#X connect 0 0 3 1;
+#X connect 1 0 4 0;
+#X connect 2 0 0 0;
+#X connect 4 0 0 1;
+#X connect 8 0 11 0;
+#X connect 8 0 11 1;
+#X connect 9 0 32 0;
+#X connect 10 0 8 0;
+#X connect 12 0 8 1;
+#X connect 14 0 13 0;
+#X connect 14 0 13 1;
+#X connect 15 0 14 1;
+#X connect 16 0 14 0;
+#X connect 17 0 16 0;
+#X connect 17 0 26 0;
+#X connect 18 0 17 0;
+#X connect 19 0 17 0;
+#X connect 20 0 17 0;
+#X connect 21 0 17 0;
+#X connect 22 0 17 0;
+#X connect 23 0 17 0;
+#X connect 24 0 17 0;
+#X connect 25 0 17 0;
+#X connect 26 1 27 0;
+#X connect 32 0 12 0;

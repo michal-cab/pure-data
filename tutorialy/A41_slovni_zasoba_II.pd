@@ -1,0 +1,131 @@
+#N canvas 1 54 718 1017 12;
+#X obj 67 639 cnv 15 200 15 empty empty [SEND]_[RECEIVE]_A_GUI 2 8
+0 12 -228856 -66577 0;
+#X obj 67 73 cnv 15 200 15 empty empty [SEND]_[RECEIVE]_A_SEZNAMY 2
+8 0 12 -228856 -66577 0;
+#X msg 89 195 1 6 1 8 8 0 3 3;
+#X obj 282 224 route list;
+#X obj 89 224 send seznam;
+#X obj 282 194 receive seznam;
+#X obj 282 246 bng 15 250 50 0 empty empty empty 17 7 0 10 -262144
+-1 -1;
+#X obj 306 253 unpack f f f f f f f f;
+#X floatatom 306 284 2 0 0 0 - - -;
+#X floatatom 327 284 2 0 0 0 - - -;
+#X floatatom 349 284 2 0 0 0 - - -;
+#X floatatom 370 284 2 0 0 0 - - -;
+#X floatatom 392 284 2 0 0 0 - - -;
+#X floatatom 413 284 2 0 0 0 - - -;
+#X floatatom 435 284 2 0 0 0 - - -;
+#X floatatom 457 284 2 0 0 0 - - -;
+#X obj 89 254 receive seznam;
+#X floatatom 89 284 5 0 0 0 - - -;
+#X obj 67 324 cnv 15 200 15 empty empty [LIST2SYMBOL]_-_[SYMBOL2LIST]
+2 8 0 12 -228856 -66577 0;
+#X msg 482 428 1 2 3 4 5 6 7 8;
+#X obj 482 453 list2symbol;
+#X msg 83 458 set \$1;
+#X msg 83 429 1 2 3 4 5 6 7 8;
+#X msg 234 428 1 2 3 4 5 6 7 8;
+#X msg 234 457 set \$1 \$2 \$3 \$4 \$5 \$6 \$7 \$8;
+#X msg 482 479 set \$1;
+#X msg 234 486;
+#X obj 482 530 list;
+#X obj 482 608 bng 15 250 50 0 empty empty empty 17 7 0 10 -262144
+-1 -1;
+#X obj 482 582 route list;
+#X text 574 593 už zase;
+#X text 524 605 <----;
+#X obj 482 556 symbol2list;
+#X text 67 515 Třetí příklad nám sice vyplní celou zprávu;
+#X text 595 504 <--;
+#X text 611 489 |;
+#X text 611 499 |;
+#X obj 401 555 bng 15 250 50 0 empty empty empty 17 7 0 10 -262144
+-1 -1;
+#X obj 401 529 route list;
+#X text 65 531 "jakoby" seznamem \, když ale na vyplněnou;
+#X text 66 577 Abychom nedefinovaný selektor opět změnili;
+#X text 66 591 na seznam \, proženeme zprávu objektem [list];
+#X msg 83 487;
+#X obj 91 714 hsl 128 15 0 127 0 0 empty empty empty -2 -8 0 10 -262144
+-1 -1 0 1;
+#X obj 88 734 s posuvnikX;
+#X obj 261 711 r posuvnikX;
+#X floatatom 261 734 5 0 0 0 - - -;
+#X text 66 561 zjistíme \, že o žádný seznam nejde!!;
+#X text 67 651 Grafické uživatelské prvky jako tlačítko \, vypínač
+\, posuvník aj. můžou také vysílat a přijímat zprávy bezdrátově.
+Přitom ale není potřeba to dělat takto:;
+#X obj 579 758 vsl 15 128 0 127 0 0 kuk bng empty 0 -9 0 10 -262144
+-1 -1 0 1;
+#X floatatom 504 837 5 0 0 0 - - -;
+#X obj 504 812 r kuk;
+#X msg 499 758 \; bng 10;
+#X obj 579 900 bng 15 250 50 0 empty empty empty 17 7 0 10 -262144
+-1 -1;
+#X text 66 605 a [symbol2list].;
+#X msg 482 504;
+#X text 568 451 Pozor!;
+#X text 574 579 A tady;
+#X text 130 284 Jen první atom.;
+#X text 361 477 U..f..f..f;
+#X text 567 480 symbol.;
+#X text 574 606 seznam.;
+#X text 66 86 Objekty [send] a [receive] nejsou omezeny jen na posílání
+atomických zpráv \, ale umí posílat i seznamy. Pouze si musíme
+dát pozor na to \, že když seznam vede do objektu \, který čeká
+na atom (číselný box \, symbol box \, [f] atd.) \, je přijata pouze
+první hodnota a ostatní jsou ignorovány. To ostatně platí ale
+i pro obyčejné posílání seznamu po drátě.;
+#X text 66 337 [list2symbol] a [symbol2list] slouží ke konverzi selektorů
+\, jak naznačují již názvy objektů. Oba jsou součástí knihovny
+zexy. První využijeme v situaci \, kdy si budeme chtít ulehčit
+práci se psaním proměnných ve zprávách. Zjevnější to snad
+bude po vyzkoušení následujících příkladů.;
+#X text 113 487 Jen první atom.;
+#X text 566 466 Tady bude;
+#X text 66 546 zprávu klikneme \, objektem [route list];
+#X text 67 762 Stačí na ně kliknout PTM (z menu zvolíme Vlastnosti)
+a do kolonek "Poslat/Přijmout symbol" zadat patřičné názvy. Grafické
+uživatelské prvky \, které vysílají nebo přijímají zprávy
+\, poznáme podle toho \, že nemají zvýrazněný vstup ____ a výstup.
+V nastavení posuvníku vpravo jsme do kolonky "Poslat symbol" zadali
+"kuk" a do "Přijmout symbol" "bng".;
+#X text 66 861 Do těchto kolonek lze samozřejmě též před název
+"místa doručení" zadat identifikátor \$0-. Daný grafický uživatelský
+prvek pak bude posílat zprávu dostupnou pouze lokálně. Této vlastnosti
+využijeme zejména při tvorbě presetů a abstrakcí s grafickým
+uživatelským rozhraním.;
+#X obj 451 813 cnv 15 40 15 empty empty empty 20 12 0 14 -262144 -66577
+0;
+#X connect 2 0 4 0;
+#X connect 3 0 6 0;
+#X connect 5 0 3 0;
+#X connect 5 0 7 0;
+#X connect 7 0 8 0;
+#X connect 7 1 9 0;
+#X connect 7 2 10 0;
+#X connect 7 3 11 0;
+#X connect 7 4 12 0;
+#X connect 7 5 13 0;
+#X connect 7 6 14 0;
+#X connect 7 7 15 0;
+#X connect 16 0 17 0;
+#X connect 19 0 20 0;
+#X connect 20 0 25 0;
+#X connect 21 0 42 0;
+#X connect 22 0 21 0;
+#X connect 23 0 24 0;
+#X connect 24 0 26 0;
+#X connect 25 0 55 0;
+#X connect 27 0 32 0;
+#X connect 29 0 28 0;
+#X connect 32 0 29 0;
+#X connect 38 0 37 0;
+#X connect 43 0 44 0;
+#X connect 45 0 46 0;
+#X connect 49 0 53 0;
+#X connect 51 0 50 0;
+#X connect 55 0 27 0;
+#X connect 55 0 38 0;

@@ -1,0 +1,185 @@
+#N canvas 1 54 718 1017 12;
+#N canvas 1188 603 243 220 BPM_bang 0;
+#X floatatom 127 105 5 60 300 1 BPM - -;
+#X obj 81 166 metro;
+#X obj 104 107 tgl 15 0 empty empty empty 17 7 0 10 -262144 -1 -1 0
+1;
+#X msg 127 79 120;
+#X obj 127 51 loadbang;
+#X obj 81 191 outlet;
+#X obj 113 138 expr 60000 / $f1;
+#X connect 0 0 6 0;
+#X connect 1 0 5 0;
+#X connect 2 0 1 0;
+#X connect 3 0 0 0;
+#X connect 4 0 3 0;
+#X connect 6 0 1 1;
+#X coords 0 -1 1 1 90 30 2 100 100;
+#X restore 247 197 pd BPM_bang;
+#X obj 247 235 s global_BPM;
+#X obj 85 124 s global_reset;
+#X obj 85 80 bng 15 250 50 0 empty empty empty 17 7 0 10 -262144 -1
+-1;
+#X obj 78 195 abs_seq;
+#X floatatom 78 305 5 0 0 0 - - -;
+#X obj 203 123 s global_seq;
+#X obj 203 81 hradio 15 1 0 3 empty empty empty 0 -8 0 10 -262144 -1
+-1 0;
+#N canvas 845 260 504 529 primitive_synth 0;
+#X obj 210 216 mtof;
+#X obj 210 256 osc~;
+#X obj 210 43 inlet;
+#X obj 256 252 line~;
+#X obj 209 300 *~;
+#X obj 210 85 t f b b;
+#X obj 3 3 cnv 15 264 24 empty empty synth_0.1a 200 12 0 10 -233017
+-66577 0;
+#X obj 17 8 tgl 15 0 empty empty DSP 17 7 0 10 -262144 -1 -1 0 1;
+#X obj 17 57 sel 0 1;
+#X msg 40 152 \; pd dsp 1;
+#X msg 17 106 \; pd dsp 0;
+#X obj 66 8 hsl 128 15 0 1 0 0 empty empty HLASITOST 5 7 0 10 -262144
+-1 -1 0 1;
+#X obj 216 412 dac~;
+#X obj 210 342 *~;
+#X obj 151 300 line~;
+#X msg 151 263 \$1 20;
+#X obj 233 141 delay 100;
+#X msg 233 173 0 200;
+#X msg 256 113 0.8 100;
+#X connect 0 0 1 0;
+#X connect 1 0 4 0;
+#X connect 2 0 5 0;
+#X connect 3 0 4 1;
+#X connect 4 0 13 0;
+#X connect 5 0 0 0;
+#X connect 5 1 16 0;
+#X connect 5 2 18 0;
+#X connect 7 0 8 0;
+#X connect 8 0 10 0;
+#X connect 8 1 9 0;
+#X connect 11 0 15 0;
+#X connect 13 0 12 0;
+#X connect 13 0 12 1;
+#X connect 14 0 13 1;
+#X connect 15 0 14 0;
+#X connect 16 0 17 0;
+#X connect 17 0 3 0;
+#X connect 18 0 3 0;
+#X coords 0 -1 1 1 270 30 2 0 0;
+#X restore 78 344 pd primitive_synth;
+#N canvas 1052 546 504 529 primitive_synth 0;
+#X obj 210 216 mtof;
+#X obj 210 256 osc~;
+#X obj 210 43 inlet;
+#X obj 256 252 line~;
+#X obj 209 300 *~;
+#X obj 210 85 t f b b;
+#X obj 233 141 delay 10;
+#X msg 256 113 0.8 20;
+#X msg 233 173 0 70;
+#X obj 3 3 cnv 15 264 24 empty empty synth_0.1a 200 12 0 10 -233017
+-66577 0;
+#X obj 17 8 tgl 15 0 empty empty DSP 17 7 0 10 -262144 -1 -1 0 1;
+#X obj 17 57 sel 0 1;
+#X msg 40 152 \; pd dsp 1;
+#X msg 17 106 \; pd dsp 0;
+#X obj 66 8 hsl 128 15 0 1 0 0 empty empty HLASITOST 5 7 0 10 -262144
+-1 -1 0 1;
+#X obj 216 412 dac~;
+#X obj 210 342 *~;
+#X obj 151 300 line~;
+#X msg 151 263 \$1 20;
+#X connect 0 0 1 0;
+#X connect 1 0 4 0;
+#X connect 2 0 5 0;
+#X connect 3 0 4 1;
+#X connect 4 0 16 0;
+#X connect 5 0 0 0;
+#X connect 5 1 6 0;
+#X connect 5 2 7 0;
+#X connect 6 0 8 0;
+#X connect 7 0 3 0;
+#X connect 8 0 3 0;
+#X connect 10 0 11 0;
+#X connect 11 0 13 0;
+#X connect 11 1 12 0;
+#X connect 14 0 18 0;
+#X connect 16 0 15 0;
+#X connect 16 0 15 1;
+#X connect 17 0 16 1;
+#X connect 18 0 17 0;
+#X coords 0 -1 1 1 270 30 2 0 0;
+#X restore 359 343 pd primitive_synth;
+#X obj 359 193 abs_seq;
+#X floatatom 359 303 5 0 0 0 - - -;
+#X text 514 190 <- reset sekvence;
+#X text 514 209 <- rnd sekvence;
+#X text 493 272 <---- oktáva;
+#X text 258 265 sekvence;
+#X text 262 279 4/8/16;
+#X text 310 273 ---->;
+#X text 116 323 Nezapomeňte zapnout DSP...;
+#X text 304 74 Vyzkoušejte si naživo platnost globálních;
+#X text 305 119 a rozšířit.;
+#X text 305 156 projevily \, je třeba ji vždy znovu uložit!;
+#X text 305 141 Nezapomeňte: Aby se změny v abstrakci trvale;
+#X obj 70 761 pddplink http://puredata.hurleur.com/sujet-1982-diy2-effects-sample-players-synths-sound-synthesis
+-text Balík abstrakcí k samostudiu je po registraci dostupný zde.
+;
+#X text 70 929 K průzkumu lze doporučit i další hardoffovy patche
+\, prohlídku lze začít otevřením souboru "000-introduction.pd".
+;
+#X obj 435 442 cnv 15 60 15 empty empty empty 20 12 0 14 -262144 -66577
+0;
+#X text 70 578 Uvedená případová studie opravdu nereprezentuje
+nějaký velkolepý projekt \, ale posloužila nám jako dobrý příklad
+__ k vysvětlení lokální a globální platnosti proměnných _____
+v rodičovském patchi a abstrakcích.;
+#X obj 440 617 cnv 15 60 15 empty empty empty 20 12 0 14 -262144 -66577
+0;
+#X text 70 646 Mohli bychom nyní pokračovat opět problematikou implementace
+presetů \, které by uměly spolupracovat _______ s abstrakcemi. Šlo
+by ale už o poměrně robustní a detailní projekt \, přesahující
+hranice našeho zájmu. Nicméně pro zvídavé a odolné bych ke samostudiu
+doporučil sbírku abstrakcí s názvem DIY2 vytvořených id hardoff.
+Najdete je na Pd Fóru \, kde jsou po registraci volně ke stažení.
+;
+#X obj 428 665 cnv 15 60 15 empty empty empty 20 12 0 14 -262144 -66577
+0;
+#X obj 474 804 cnv 15 60 15 empty empty empty 20 12 0 14 -262144 -66577
+0;
+#X obj 467 600 cnv 15 60 15 empty empty empty 20 12 0 14 -262144 -66577
+0;
+#X text 304 89 i lokálních ovládacích prvků. Abstrakce si;
+#X text 304 104 prohlédněte zevnitř a zkuste je modifikovat;
+#X text 390 322 ... a vytáhnout hlasitost.;
+#X text 70 379 Asi vám bude chvíli trvat \, než používání abstrakcí
+dostanete "pod kůži" \, ale ze své vlastní praxe vám jejich používání
+můžu jen doporučit. Vaše projekty díky nim budou srozumitelnější
+a strukturovanější. Určitě je jednodušší používat sbírku
+abstrakcí \, které si s postupem času vytvoříte \, než "lepit"
+patch vždy od začátku.;
+#X text 70 479 Možná si také říkáte \, že po takové spoustě
+probrané látky stále neumíte vytvořit nic \, co by odpovídalo
+vašim představám. Jednak jde o potíž související s překonáním
+nesnadné fáze v učení se nového jazyka a jednak se již pomalu
+blížíme k "praktičtějším" kapitolám \, kde se budeme konkrétně
+zabývat zvukem a obrazem.;
+#X text 70 785 Pokud se na hardoffovy abstrakce chcete podívat a zjistit
+\, jak problematiku ukládání stavu abstrakcí vyřešil \, otevřete
+si v Pd soubor s názvem "readme-state-saving.pd". Jde ____ v podstatě
+o modifikovanou verzi systému Sssad \, o němž jsme se již zmiňovali.
+Pokud jste programátorsky trošku zběhlí \, jistě vám nebude dělat
+problémy z jeho sbírky tento kód vypreparovat a ev. ho implementovat
+do vašeho projektu. Nebo se jím můžete inspirovat a vytvořit ještě
+lepší a jednodušší verzi.;
+#X obj 448 819 cnv 15 60 15 empty empty empty 20 12 0 14 -262144 -66577
+0;
+#X connect 0 0 1 0;
+#X connect 3 0 2 0;
+#X connect 4 0 5 0;
+#X connect 5 0 8 0;
+#X connect 7 0 6 0;
+#X connect 10 0 11 0;
+#X connect 11 0 9 0;

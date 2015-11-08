@@ -1,0 +1,98 @@
+#N canvas 1 54 718 1017 12;
+#X obj 67 426 cnv 15 567 25 empty empty trocha_matematiky 20 12 0 14
+-1 -262144 0;
+#X obj 85 163 table;
+#X obj 142 163 soundfiler;
+#X obj 235 163 arraysize;
+#X obj 407 162 tabplay~;
+#X obj 322 163 tabwrite~;
+#X text 67 191 Nebo lze k samostudiu doporučit opět referenční
+soubory (Nápověda -> Pd Help Browser -> Pure Data -> 5.reference)
+\, tentokrát se jménem all_about_arrays.pd.;
+#X obj 67 324 cnv 15 200 15 empty empty CVIČENÍ: 2 8 0 12 -204800
+-66577 0;
+#X text 71 337 - pokuste se o sestrojení sekvenceru \, který by četl
+;
+#X text 71 375 - pokuste se o sestrojení jednoduchého presetového
+;
+#X text 67 448 Se základními matematickými operacemi jsme se v Pd
+již seznámili. Nyní si znalosti z této oblasti trochu rozšíříme
+o ty \, které v běžné programátorské praxi s velkou pravděpodobností
+budete potřebovat.;
+#X obj 505 529 +;
+#X obj 546 529 -;
+#X obj 505 566 *;
+#X obj 546 566 /;
+#X obj 67 623 cnv 15 200 15 empty empty SROVNÁVÁME 2 8 0 12 -228856
+-66577 0;
+#X floatatom 144 857 5 0 0 0 - - -;
+#X obj 326 920 == 7;
+#X obj 387 921 != 7;
+#X obj 86 917 > 7;
+#X obj 144 918 < 7;
+#X obj 202 918 >= 7;
+#X obj 262 919 <= 7;
+#X floatatom 86 946 5 0 0 0 - - -;
+#X floatatom 144 946 5 0 0 0 - - -;
+#X floatatom 202 946 5 0 0 0 - - -;
+#X floatatom 262 946 5 0 0 0 - - -;
+#X floatatom 326 946 5 0 0 0 - - -;
+#X floatatom 387 946 5 0 0 0 - - -;
+#X text 439 883 V číselných boxech;
+#X text 439 898 uvidíme 1 nebo 0;
+#X text 439 942 nepravdivý.;
+#X text 439 913 podle toho \, zda je;
+#X obj 87 757 >;
+#X obj 131 756 <;
+#X obj 86 789 >=;
+#X obj 130 788 <=;
+#X obj 86 822 ==;
+#X obj 130 821 !=;
+#X text 206 855 druhý je specifikován přímo;
+#X text 206 868 v objektech.;
+#X text 171 755 Větší než / menší než.;
+#X text 170 787 Větší nebo rovno než / menší nebo rovno než.
+;
+#X text 169 818 Je rovno / není rovno.;
+#X text 66 70 Problematiku polí bychom ještě mohli dalekosáhle
+prozkoumávat. Bude ale lepší \, když se k ní vrátíme _______
+v souvislosti s nějakým konkrétním příkladem. Pokud byste chtěli
+provádět detailnější průzkum již nyní \, podívejte se na nápovědu
+k následujícím objektům.;
+#X text 85 352 údaje objektem [tabread] z pole;
+#X text 85 390 systému \, který by uchovával hodnoty v polích;
+#X text 67 517 Nejprve něco málo k terminologii: zápisu "a + b"
+říkáme výraz. "a" a "b" jsou operandy a "+" je operátor - tedy
+to \, co s operandy něco dělá. Operátory se dělí podle počtu
+operandů \, se kterými pracují. Operátory [+] \, [-] \, [*] \,
+[/] a [mod] patří mezi tzv. binární operátory \, protože pracují
+se dvěma operandy.;
+#X text 66 635 Mezi další binární operátory patří ty \, se kterými
+můžeme dva operandy porovnat a zjistit \, jaký je mezi nimi vztah.
+Na rozdíl od operátorů [+] \, [-] atd. jsou jejich výstupem pouze
+hodnoty 1 nebo 0 \, neboli "true" a "false". Ty označují \, jestli
+je daný výraz pravdivý nebo nepravdivý.;
+#X text 66 724 Mezi srovnávací neboli relační operátory patří
+tyto:;
+#X text 207 843 První operand je z číselného boxu \,;
+#X text 438 927 výraz pravdivý nebo;
+#X obj 423 89 cnv 15 60 15 empty empty empty 20 12 0 14 -262144 -66577
+0;
+#X text 66 245 Až probereme látku týkající se vytváření abstrakcí
+\, vrátíme se k polím a spojíme naše znalosti s tím \, co víme
+________ o identifikátoru \$0-. Bude se nám to hodit při stavbě
+sampleru.;
+#X obj 416 264 cnv 15 60 15 empty empty empty 20 12 0 14 -262144 -66577
+0;
+#X connect 16 0 19 0;
+#X connect 16 0 20 0;
+#X connect 16 0 21 0;
+#X connect 16 0 22 0;
+#X connect 16 0 17 0;
+#X connect 16 0 18 0;
+#X connect 17 0 27 0;
+#X connect 18 0 28 0;
+#X connect 19 0 23 0;
+#X connect 20 0 24 0;
+#X connect 21 0 25 0;
+#X connect 22 0 26 0;

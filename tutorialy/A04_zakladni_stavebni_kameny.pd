@@ -1,0 +1,96 @@
+#N canvas 1 54 718 1017 12;
+#X floatatom 234 244 20 0 0 2 - - -;
+#X floatatom 88 243 5 0 0 2 Přednastavený... - -;
+#X msg 88 284 set 32;
+#X floatatom 88 318 5 0 0 0 - - -;
+#X obj 88 349 print;
+#X msg 175 284 32;
+#X text 214 331 do konzole.;
+#X text 66 375 Poznámka pro programátory: Pd uchovávají všechny
+hodnoty jako float \, takže i když 1 vypadá jako integer \, ve skutečnosti
+je to 1.0000000.;
+#X symbolatom 423 443 10 0 0 0 - - -;
+#X text 215 299 ale nepošle ji ven z jeho výstupu. Kdežto zpráva
+;
+#X text 67 654 Patří k dobré programátorské praxi \, že se kód
+komentuje. Jednak je to užitečné pro jiné programátory \, kteří
+váš patch díky komentářům rychleji pochopí a jednak pro vás
+samotné - často se prostě stává \, že pokud se ke svému neokomentovanému
+patchi vrátíte po delší době \, tak již nebudete vědět \, co
+která část kódu dělá.;
+#X obj 67 588 cnv 15 200 15 empty empty KOMENTÁŘ 2 8 0 12 -228856
+-66577 0;
+#X obj 67 433 cnv 15 200 15 empty empty SYMBOL_BOX 2 8 0 12 -228856
+-66577 0;
+#X obj 67 756 cnv 15 200 15 empty empty CVIČENÍ: 2 8 0 12 -204800
+-66577 0;
+#X obj 510 501 shell;
+#X msg 510 439 who;
+#X msg 545 438 hostname;
+#X obj 510 528 symbol;
+#X msg 568 465 pwd;
+#X text 69 792 - označte objekty \, které jste vytvořili \, zduplikujte
+je;
+#X msg 526 133 pi;
+#X msg 569 133 jedna;
+#X floatatom 526 172 5 0 0 0 - - -;
+#X text 66 445 CTRL + 4 do patche vloží symbol box. Vypadá takto:
+;
+#X text 214 283 Zpráva [set 32( pouze nastaví hodnotu číselného
+boxu \,;
+#X text 66 460 Jeho funkce je podobná jako u číselného boxu \,
+jen slouží pro zobrazení a vkládání libovolného textu (včetně
+čísel). S jeho pomocí můžeme dynamicky zadávat jména souborů
+\, atd.;
+#X text 66 600 Posledním základním kamenem a velmi užitečným
+prvkem \, kterým je ostatně psán i tento text je komentář. Vložíme
+jej klávesovou zkratkou CTRL + 5;
+#X text 66 69 Číselný box lze inicializovat také přesným vložením
+hodnoty z klávesnice: klikneme do něj LTM \, napíšeme hodnotu _______
+a potvrdíme klávesou Enter.;
+#X text 230 222 a širší číselný box.;
+#X text 524 111 Chyba:;
+#X text 523 191 Text není;
+#X text 523 205 číslo.;
+#X text 214 315 32 jím "proteče" hned ven. Klikněte a podívejte
+se;
+#X text 290 631 .;
+#X text 70 869 - zkuste patch uložit (menu Soubor -> Uložit \, nebo
+CTRL + s);
+#X text 488 871 \,;
+#X obj 429 91 cnv 15 120 15 empty empty empty 20 12 0 14 -262144 -66577
+0;
+#X text 149 139 .;
+#X text 66 124 Přednastavený číselný box umí zobrazit hodnoty
+v rozmezí -9999 a 9999 Pokud chceme vidět vyšší hodnoty \, pak
+na něj klikneme pravým tlačítkem myši (dále jen PTM) a v nově
+otevřeném menu vybereme Vlastnosti (Properties). _________ V otevřeném
+okně pak změníme jeho šířku \, ev. ho můžeme pojmenovat. Potvrdíme
+OK.;
+#X obj 411 172 cnv 15 80 15 empty empty empty 20 12 0 14 -262144 -66577
+0;
+#X text 67 515 Pod Linuxem (a MacOSem) je např. možné s pomocí
+objektu [shell] \, kterému posíláme zprávou systémové příkazy
+\, do symbol boxu dostat jméno uživatele \, počítače \, aktuální
+adresář atd.;
+#X symbolatom 510 555 0 0 0 0 - - -;
+#X text 69 771 - zkuste v patchi vytvořit objekty print \, metro \,
+float;
+#X text 83 807 a přemisťte je;
+#X text 69 827 - vytvořte číselný box a zkuste v něm měnit hodnotu
+;
+#X text 69 849 - vytvořte zprávu a vložte do ní číselnou hodnotu
+;
+#X text 83 899 Co se stalo s obsahem číselného boxu a zprávy?;
+#X text 83 884 zavřete ho a znovu otevřte (Soubor -> Otevřít \,
+CTRL + o);
+#X connect 2 0 3 0;
+#X connect 3 0 4 0;
+#X connect 5 0 3 0;
+#X connect 14 0 17 0;
+#X connect 15 0 14 0;
+#X connect 16 0 14 0;
+#X connect 17 0 41 0;
+#X connect 18 0 14 0;
+#X connect 20 0 22 0;
+#X connect 21 0 22 0;

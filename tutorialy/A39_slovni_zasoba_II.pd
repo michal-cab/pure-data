@@ -1,0 +1,145 @@
+#N canvas 1 54 718 1017 12;
+#X obj 67 73 cnv 15 200 15 empty empty [SEND]_A_[RECEIVE] 2 8 0 12
+-228856 -66577 0;
+#X text 566 104 ==;
+#X obj 514 104 send x;
+#X obj 594 104 s x;
+#X obj 499 156 receive x;
+#X obj 594 156 r x;
+#X text 570 154 ==;
+#X floatatom 87 206 5 0 0 0 - - -;
+#X obj 306 205 + 1;
+#X floatatom 583 206 5 0 0 0 - - -;
+#X floatatom 86 239 5 0 0 0 - - -;
+#X text 541 269 -----------;
+#X text 613 275 |;
+#X text 613 291 |;
+#X text 613 307 |;
+#X text 613 323 |;
+#X text 613 339 |;
+#X text 613 356 |;
+#X text 613 373 |;
+#X text 613 390 |;
+#X text 613 406 |;
+#X text 613 422 |;
+#X text 613 438 |;
+#X text 613 454 |;
+#X text 613 471 |;
+#X text 613 488 |;
+#X text 613 505 |;
+#X text 613 521 |;
+#X text 613 537 |;
+#X text 613 553 |;
+#X text 613 569 |;
+#X text 613 586 |;
+#X text 613 603 |;
+#X text 613 619 |;
+#X text 613 635 |;
+#X text 613 651 |;
+#X text 613 667 |;
+#X text 613 683 |;
+#X text 613 700 |;
+#X text 613 717 |;
+#X text 613 733 |;
+#X text 613 749 |;
+#X text 613 765 |;
+#X text 613 781 |;
+#X text 613 797 |;
+#X text 613 814 |;
+#X text 613 831 |;
+#X text 613 844 v;
+#X text 142 269 -----------------------------------------------------------
+;
+#X obj 488 408 print a;
+#X obj 555 409 print b;
+#X floatatom 488 367 5 0 0 0 - - -;
+#X floatatom 555 364 5 0 0 0 - - -;
+#X obj 86 267 s numX;
+#X floatatom 578 918 5 0 0 0 - - -;
+#X obj 578 891 + 1;
+#X obj 578 945 print a;
+#X obj 578 863 r numX;
+#X floatatom 70 921 5 0 0 0 - - -;
+#X obj 70 945 print b;
+#X obj 70 894 r numX;
+#X text 66 522 Tomuto zmatení v pořadí posílání zpráv se vyhneme
+opět objektem [trigger]. Pokud vám to situace umožní \, doporučuji
+použít jeden [receive] a ten pak rozvětvit s pomocí objektu [trigger]
+\, takže v pořadí provádění událostí bude jasno.;
+#X obj 86 600 receive numX;
+#X obj 86 627 trigger f f f f;
+#X obj 355 669 print prvni;
+#X obj 268 670 print druha;
+#X obj 181 670 print treti;
+#X obj 86 670 print ctvrta;
+#X text 282 595 Pokud budete potřebovat mít;
+#X text 282 637 o tom \, v jakém pořadí jste je vytvořili.;
+#X text 575 842 první;
+#X text 67 872 druhý;
+#X text 175 598 třetí;
+#X obj 68 709 cnv 15 200 15 empty empty SEND_ZE_ZPRÁVY 2 8 0 12 -228856
+-66577 0;
+#X obj 387 840 receive numY;
+#X floatatom 387 912 5 0 0 0 - - -;
+#X msg 161 840 \; numY 1234;
+#X obj 271 840 receive name;
+#X symbolatom 271 912 10 0 0 0 - - -;
+#X msg 161 895 \; name pu;
+#X obj 271 876 symbol;
+#X text 66 85 Když se nám stane \, že budeme potřebovat poslat
+nějakou zprávu ve větším patchi z "jednoho konce na druhý" \,
+nemusíme nutně použít kabel \, ale "bezdrátový" způsob přenosu.
+Doceníme ho také v situacích \, kdy se nám patche rozrostou a budou
+vizuálně husté - přidáváním kabelů bychom čitelnost patche
+zhoršili. K bezdrátovému přenosu zpráv slouží objekty [send]
+a [receive].;
+#X text 67 790 Podobného druhu je i zpráva \, kterou již známe:
+;
+#X text 396 790 [ \;;
+#X text 414 790 pd dsp 1(.;
+#X text 66 299 V prvním případě jde o nehezkou ukázku toho \,
+jak zprávu posílat "na dálku" po kabelu. Ve druhém případě posíláme
+hodnotu z číselného boxu do objektu [s numX] \, který ji přeposílá
+do objektu [r numX]. Vidíme \, že [send] _________ i [receive] mají
+stejný argument. To zaručuje \, že zpráva doteče tam \, kam má.
+Číst ji můžeme na více místech \, což je ale často příčinou
+problému nejasného chování kódu. Vzpomeňte si na případ \,
+kdy z jednoho objektu vede více kabelů do různých míst (místo
+takového zápisu používáme objekt [trigger]!) - zpráva doteče
+nejprve na to místo \, kam jsme jako první zapojili kabel. Objekt
+[receive] se ale chová opačně - první zpráva bezdrátově doteče
+na objekt [receive] \, jenž jsme vytvořili v patchi jako poslední.
+___ V našem případě je to [r numX] opatřený komentářem "třetí".
+;
+#X text 281 609 [receive] na více místech v patchi \,;
+#X text 282 623 opatřete je aspoň komentářem;
+#X text 66 720 Alternativním způsobem \, jak poslat číslo nebo
+symbol bezdrátově \, je zapsat je do zprávy \, která začíná
+středníkem \, pak následuje jméno "místa doručení" \, a třetí
+je samotný obsah \, který chceme poslat.;
+#X text 67 805 Neposílá ale zprávu na nějaký [receive] \, ale
+přímo do Pd.;
+#X obj 408 349 cnv 15 120 15 empty empty empty 20 12 0 14 -262144 -66577
+0;
+#X obj 452 483 cnv 15 60 15 empty empty empty 20 12 0 14 -262144 -66577
+0;
+#X connect 7 0 8 0;
+#X connect 8 0 9 0;
+#X connect 10 0 53 0;
+#X connect 51 0 49 0;
+#X connect 51 0 50 0;
+#X connect 52 0 50 0;
+#X connect 52 0 49 0;
+#X connect 54 0 56 0;
+#X connect 55 0 54 0;
+#X connect 57 0 55 0;
+#X connect 58 0 59 0;
+#X connect 60 0 58 0;
+#X connect 62 0 63 0;
+#X connect 63 0 67 0;
+#X connect 63 1 66 0;
+#X connect 63 2 65 0;
+#X connect 63 3 64 0;
+#X connect 74 0 75 0;
+#X connect 77 0 80 0;
+#X connect 80 0 78 0;

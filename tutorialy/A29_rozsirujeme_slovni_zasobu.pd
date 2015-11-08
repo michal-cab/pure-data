@@ -1,0 +1,97 @@
+#N canvas 1 54 718 1017 12;
+#X obj 67 73 cnv 15 200 15 empty empty [EXPR_SCALE] 2 8 0 12 -228856
+-66577 0;
+#X floatatom 132 379 5 0 0 0 - - -;
+#X obj 85 308 hsl 128 15 0 127 0 0 empty empty empty -2 -8 0 10 -262144
+-1 -1 0 1;
+#X obj 132 350 expr_scale 0 127 0 1;
+#X obj 82 349 / 127;
+#X floatatom 82 379 5 0 0 0 - - -;
+#X obj 348 348 expr_scale 0 127 880 220;
+#X floatatom 348 377 5 0 0 0 - - -;
+#X obj 289 349 / 127;
+#X obj 289 377 * 660;
+#X obj 289 405 - 880;
+#X obj 289 432 abs;
+#X floatatom 289 457 5 0 0 0 - - -;
+#X text 79 405 V tomto případě je;
+#X text 79 420 pohodlnější použít;
+#X text 79 435 jednoduchou aritmetickou;
+#X text 79 450 operaci.;
+#X text 347 406 V tomto složitějším;
+#X text 347 418 případě je jednodušší;
+#X text 347 430 použít [expr_scale].;
+#X text 178 380 0..1;
+#X text 394 378 880..220;
+#X obj 67 576 cnv 15 200 15 empty empty [CXC_COUNTER] 2 8 0 12 -228856
+-66577 0;
+#X floatatom 87 789 5 0 0 0 - - -;
+#X obj 87 730 bng 15 250 50 0 empty empty empty 17 7 0 10 -262144 -1
+-1;
+#X obj 87 758 cxc_counter 6;
+#X floatatom 232 788 5 0 0 0 - - -;
+#X obj 232 729 bng 15 250 50 0 empty empty empty 17 7 0 10 -262144
+-1 -1;
+#X obj 232 757 cxc_counter 4 8 3;
+#X floatatom 395 787 5 0 0 0 - - -;
+#X obj 395 728 bng 15 250 50 0 empty empty empty 17 7 0 10 -262144
+-1 -1;
+#X obj 395 756 cxc_counter 10 20 2;
+#X text 67 932 První argument nesmí být nikdy větší než druhý
+\, jinak nebude [cxc_counter] fungovat správně.;
+#X text 222 306 Posuvník o rozsahu 0..127.;
+#X text 66 85 [expr_scale] je velmi užitečný objekt (přesněji:
+jde _____ o abstrakci z knihovny jmmmp \, která je součástí Pd-extended
+\, můžete ji LTM otevřít a podívat se dovnitř. _ O abstrakcích
+pojednáme později) \, který umí lineárně přeškálovat hodnotu
+v daném rozsahu na hodnotu z jiného rozsahu. Lze to provést i pomocí
+jednoduchých aritmetických operací (např. posuvník o rozsahu 0..127
+přeškálujeme na rozsah 0..1 pouhým dělením hodnoty číslem 127).
+S objektem [expr_scale] je to ale velmi jednoduché i ve složitějších
+situacích.;
+#X text 66 246 První dva argumenty jsou spodní a horní rozsah příchozí
+hodnoty \, třetí a čtvrtý argument pak spodní a horní hodnota
+rozsahu \, na který chceme vstup přeškálovat.;
+#X text 66 485 Pozor: nepleťme si objekt [expr_scale] a [scale]. Druhý
+jmenovaný je součástí knihvny GEM a slouží ke škálování vykreslované
+scény. Když bychom do něj poslali nějaké číslo \, upozornila
+by nás na to konzole upozornila hláškou: "scale: no method for 'float'".
+;
+#X text 66 586 Podobně jako nám [expr_scale] umožňuje obejít konstrukci
+aritmetických formulí při škálování \, pomůže nám bjekt [cxc_counter]
+při navrhování složitějších počítadel. Toto počítadlo je
+součástí Pd-extended a pochází z knihovny cxc.;
+#X text 66 654 Pokud chceme počítat od jedničky výš \, můžeme
+[cxc_counter] specifikovat až třemi argumenty: první je minimum
+\, druhý maximum a třetí je způsob počítání (1 = nahoru \,
+2 = dolů \, _ 3 = ping-pong).;
+#X obj 471 692 cnv 15 120 15 empty empty empty 20 12 0 14 -262144 -66577
+0;
+#X text 66 819 V prvním případě jde o modulo počítadlo \, jehož
+výstupem bude vzestupně se opakující řada 1..6. Druhý [cxc_counter]
+bude počítat od čtyř do osmi \, a protože jsme třetím argumentem
+specifikovali i způsob počítání (v tomto případě ping-pong)
+\, bude výstupem vzestupně a sestupně se opakující řada v rozsau
+4..8. Výstupem třetího příkladu bude klesající řada o rozsahu
+20..10.;
+#X obj 435 90 cnv 15 60 15 empty empty empty 20 12 0 14 -262144 -66577
+0;
+#X obj 462 123 cnv 15 60 15 empty empty empty 20 12 0 14 -262144 -66577
+0;
+#X connect 2 0 3 0;
+#X connect 2 0 4 0;
+#X connect 2 0 6 0;
+#X connect 2 0 8 0;
+#X connect 3 0 1 0;
+#X connect 4 0 5 0;
+#X connect 6 0 7 0;
+#X connect 8 0 9 0;
+#X connect 9 0 10 0;
+#X connect 10 0 11 0;
+#X connect 11 0 12 0;
+#X connect 24 0 25 0;
+#X connect 25 0 23 0;
+#X connect 27 0 28 0;
+#X connect 28 0 26 0;
+#X connect 30 0 31 0;
+#X connect 31 0 29 0;

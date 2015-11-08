@@ -1,0 +1,89 @@
+#N canvas 1 54 718 1017 12;
+#X declare;
+#X declare -path /home/gabriel/pd/abstrakce;
+#X declare -path C:/Users/n00b/pd/abstrakce;
+#X declare -path /User/jabko/pd/abstrakce;
+#X obj 71 73 cnv 15 567 25 empty empty abstrakce 20 12 0 14 -1 -262144
+0;
+#X obj 534 415 path;
+#X obj 92 489 path /home/gabriel/pd/abstrakce;
+#X text 321 488 Linux;
+#X text 322 522 Windows;
+#X obj 93 521 path C:/Users/n00b/pd/abstrakce;
+#X obj 93 554 path /User/jabko/pd/abstrakce;
+#X text 397 493 Pd mají v objektech problém;
+#X text 396 523 ukládejte abstrakce do adresářů \,;
+#X text 395 538 jež v názvu nemají mezeru!;
+#X obj 71 679 cnv 15 200 15 empty empty PRVNÍ_ABSTRAKCE 2 8 0 12 -228856
+-66577 0;
+#X obj 530 801 pozdrav;
+#X obj 532 906 pozdrav;
+#X obj 532 877 bng 15 250 50 0 empty empty empty 17 7 0 10 -262144
+-1 -1;
+#X text 305 554 MacOS;
+#X text 71 691 Napište do nového patche (CTRL + n) vedlejší kód
+a uložte jej pod názvem "pozdrav.pd" do adresáře s abstrakcemi.
+Patch pozdrav.pd pak můžete s klidem zavřít. Dále nastavte v Pd
+jedním ze tří možných způsobů cestu k adresáři ______ s abstrakcemi.
+;
+#X obj 433 745 cnv 15 60 15 empty empty empty 20 12 0 14 -262144 -66577
+0;
+#X obj 507 305 cnv 15 60 15 empty empty empty 20 12 0 14 -262144 -66577
+0;
+#X obj 481 589 cnv 15 60 15 empty empty empty 20 12 0 14 -262144 -66577
+0;
+#X obj 509 655 cnv 15 110 110 empty empty empty 20 12 0 14 -233017
+-66577 0;
+#X obj 526 686 inlet;
+#X obj 526 734 print ahoj;
+#X text 542 656 pozdrav.pd;
+#X text 70 96 Až se v Pd pokusíte vytvořit několik menších projektů
+\, jistě narazíte na to \, že se vám některé části kódu budou
+opakovat. V takovém případě si můžete vytvořit sbírku subpatchů
+\, které do svých nových projektů budete vkládat. Kdybychom si
+takto ale naprogramovali např. sampler \, který by v sobě měl pole
+s názvem "sample_1" a pak bychom ho ____ v patchi duplikovali \, museli
+bychom pokaždé název pole změnit \, aby pole nebyla navzájem v
+konfliktu. Neexistuje nějaká jednodušší cesta? Samozřejmě...
+;
+#X text 71 239 Samostatné části kódu \, jež plní určitou funkci
+\, nemusíme uzavírat jen do subpatchů \, ale také do tzv. abstrakcí.
+Co to abstrakce je? Rozdíl mezi subpatchem a abstrakcí spočívá
+v tom \, že subpatch je vždy součástí aktuálního otevřeného
+patche. Když provedeme změnu v jednom subpatchi \, v dalších se
+neprojeví. Oproti tomu abstrakce je oddělený ___________ a samostatně
+uložený Pd patch \, který do aktuálně otevřeného patche můžeme
+importovat. Pokud provedeme změnu v abstrakci a uložíme ji \, projeví
+se ve všech ostatních abstrakcích.;
+#X text 70 381 Aby Pd "věděla" \, kde mají abstrakce hledat \, musíme
+je mít uloženy ve stejném adresáři \, v němž máme aktuálně
+otevřený patch \, nebo na ně "ukážeme" pomocí objektu [path].
+Ten má jeden parametr \, a tím je cesta k adresáři s abstrakcemi
+nebo externími knihovnami. Zápis cesty se liší podle operačního
+systému \, který máme na počítači nainstalovaný.;
+#X text 397 508 s interpretací mezer \, proto vždy;
+#X text 71 586 Existuje ještě třetí způsob \, jak zadat cestu
+k abstrakcím: v menu Upravit vybereme Předvolby. Otevře se nové
+okno ___ a v tom lze zadat cesty (tlačítko New) \, které Pd vždy
+prohledají v případě \, že mají vytvořit abstrakci nebo objekt
+z externí knihovny.;
+#X text 70 775 Pokud jste vše udělali správně \, pak v jakémkoliv
+novém patchi \, který otevřete a vytvoříte v něm objekt (CTRL
++ 1) \, do něhož napíšete "pozdrav" \, vytvoří abstrakci s tímto
+názvem. Měla by vypadat tak \, jak vidíte vpravo:;
+#X obj 453 176 cnv 15 60 15 empty empty empty 20 12 0 14 -262144 -66577
+0;
+#X obj 407 318 cnv 15 80 15 empty empty empty 20 12 0 14 -262144 -66577
+0;
+#X obj 453 610 cnv 15 60 15 empty empty empty 20 12 0 14 -262144 -66577
+0;
+#X text 71 844 Na první pohled se vůbec nijak neliší od obyčejného
+Pd objektu. Kliknutím LTM jej ale můžeme otevřít a uvnitř uvidíme
+náš kód. V tomto se abstrakce podobá subpatchi \, ale na rozdíl
+od něj nezačíná předponou "pd". Když do vstupu abstrakce zapojíme
+bang a klikneme na něj \, pak abstrakce vypíše do konzole zprávu
+ahoj.;
+#X text 71 943 Výborně \, máme za sebou programování naší první
+abstrakce.;
+#X connect 13 0 12 0;
+#X connect 20 0 21 0;

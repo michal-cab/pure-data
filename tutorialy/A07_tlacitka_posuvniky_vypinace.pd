@@ -1,0 +1,126 @@
+#N canvas 1 54 718 1017 12;
+#X obj 67 73 cnv 15 567 25 empty empty tlačítka_posuvníky_vypínače
+20 12 0 14 -1 -262144 0;
+#X obj 67 214 cnv 15 200 15 empty empty BANG 2 8 0 12 -228856 -66577
+0;
+#X obj 88 298 bng 15 250 50 0 empty empty empty 17 7 0 10 -262144 -1
+-1;
+#X msg 133 295 bang;
+#X obj 88 332 print;
+#X obj 230 293 bng 15 250 50 0 empty empty empty 17 7 0 10 -262144
+-1 -1;
+#X obj 273 293 bng 15 250 50 0 empty empty empty 17 7 0 10 -262144
+-1 -1;
+#X obj 318 293 bng 15 250 50 0 empty empty empty 17 7 0 10 -262144
+-1 -1;
+#X msg 230 317 220;
+#X msg 273 316 440;
+#X msg 318 316 660;
+#X floatatom 230 348 5 0 0 0 - - -;
+#X obj 67 379 cnv 15 200 15 empty empty TOGGLE_-_VYPÍNAČ 2 8 0 12
+-228856 -66577 0;
+#X floatatom 87 487 5 0 0 0 - - -;
+#X obj 87 454 tgl 15 0 empty empty empty 17 7 0 10 -262144 -1 -1 0
+1;
+#X text 134 485 1 / 0;
+#X obj 282 458 bng 15 250 50 0 empty empty empty 17 7 0 10 -262144
+-1 -1;
+#X obj 282 489 tgl 15 0 empty empty empty 17 7 0 10 -262144 -1 -1 0
+1;
+#X obj 85 564 tgl 15 0 empty empty empty 17 7 0 10 -262144 -1 -1 0
+1;
+#X obj 85 637 bng 15 250 50 0 empty empty empty 17 7 0 10 -262144 -1
+-1;
+#X text 109 293 ==;
+#X text 107 561 ==;
+#X msg 139 564 bang;
+#X msg 186 564 stop;
+#X obj 114 634 print;
+#X obj 67 671 cnv 15 200 15 empty empty VSLIDER_-_POSUVNÍK 2 8 0 12
+-228856 -66577 0;
+#X obj 313 902 knob 32 32 0 127 0 0 empty empty empty 0 -8 0 8 -1 -1
+-4032 0 1;
+#X obj 90 892 hsl 128 15 0 127 0 0 empty empty empty -2 -8 0 10 -262144
+-1 -1 0 1;
+#X obj 546 754 vsl 15 128 0 127 0 0 empty empty empty 0 -9 0 10 -262144
+-1 -1 0 1;
+#X floatatom 87 915 5 0 0 0 - - -;
+#X floatatom 313 946 5 0 0 0 - - -;
+#X msg 87 867 64;
+#X obj 162 843 bng 15 250 50 0 empty empty empty 17 7 0 10 -262144
+-1 -1;
+#X msg 313 871 100;
+#X text 352 894 knob;
+#X text 531 765 e;
+#X text 531 754 v;
+#X text 531 776 r;
+#X text 531 788 t;
+#X text 531 801 i;
+#X text 532 815 k;
+#X text 532 828 á;
+#X text 532 842 l;
+#X text 532 853 n;
+#X text 532 867 í;
+#X text 231 561 ==;
+#X msg 259 564 1;
+#X msg 308 564 0;
+#X obj 85 607 metro 1000;
+#X text 66 767 Pd-extended obsahují knihovnu flatgui \, jejíž součástí
+je objekt knob. Ten nenajdeme v menu Vložit \, ale vytvoříme jej
+tak \, že do objektu (CTRL + 1) vepíšeme text "knob". Jeho rozsah
+je také přednastaven na hodnoty 0..127.;
+#X text 531 883 posuvník;
+#X text 145 917 posuvník;
+#X text 356 284 Inicializuje číselný box na;
+#X text 355 298 danou hodnotu ze zprávy.;
+#X text 106 451 Zapnuto / vypnuto.;
+#X text 302 453 Bang přepíná stav vypínače.;
+#X text 479 531 .;
+#X text 162 633 Metro na výstupu dává bang.;
+#X text 66 95 Pd patch netvoří jen prvky \, které jsme si ukázali.
+Představa \, že v Pd např. postavíme nějaký nástroj a jeho rozhraní
+by byla změť objektů \, zpráv a kabelů \, je poněkud odstrašující.
+Proto Pd disponují sadou grafických ovládacích prvků jako tlačítko
+(Bang) \, vypínač (Toggle) \, posuvník (Hslider) \, přepínač
+(Hradio) atd. Najdeme je opět v menu Vložit (Put).;
+#X text 66 226 CTRL + SHIFT + b vloží do patche bang \, což je prosté
+tlačítko. Jeho funkcí je inicializovat zprávy nebo objekty. Kliknutím
+na bang jako bychom poslali impuls nebo řekli "udělej to a to".;
+#X text 65 391 Toggle je vypínač (klávesová zkratka CTRL + SHIFT
++ t). Na výstupu dává hodnotu 1 nebo 0 a pokud do něj pošleme
+bang \, přepne ho do druhého stavu.;
+#X text 66 516 Vypínačem lze ovládat např. objekt [metro] \, který
+na levém vstupu čeká na zprávu [bang( / [stop( nebo na hodnotu
+1 / 0;
+#X text 66 683 Ovládací prvek \, který znáte např. z audio mixpultu
+\, je posuvník. V Pd máme k dispozici dvě varianty: horizontální
+(CTRL + SHIFT + h) a vertikální (CTRL + SHIFT + v). Na výstupu má
+přednastaveny hodnoty 0 až 127 \, což vychází ___ z MIDI normy.
+;
+#X text 137 906 horizontální;
+#X obj 451 734 cnv 15 50 15 empty empty empty 20 12 0 14 -262144 -66577
+0;
+#X connect 2 0 4 0;
+#X connect 3 0 4 0;
+#X connect 5 0 8 0;
+#X connect 6 0 9 0;
+#X connect 7 0 10 0;
+#X connect 8 0 11 0;
+#X connect 9 0 11 0;
+#X connect 10 0 11 0;
+#X connect 14 0 13 0;
+#X connect 16 0 17 0;
+#X connect 18 0 48 0;
+#X connect 22 0 48 0;
+#X connect 23 0 48 0;
+#X connect 26 0 30 0;
+#X connect 27 0 29 0;
+#X connect 28 0 26 0;
+#X connect 31 0 27 0;
+#X connect 32 0 31 0;
+#X connect 32 0 33 0;
+#X connect 33 0 26 0;
+#X connect 46 0 48 0;
+#X connect 47 0 48 0;
+#X connect 48 0 19 0;
+#X connect 48 0 24 0;

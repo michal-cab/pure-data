@@ -1,0 +1,13 @@
+#N canvas 430 183 450 300 10;
+#X obj 97 71 inlet;
+#X obj 97 97 t b b;
+#X obj 97 186 outlet;
+#X obj 150 186 outlet;
+#X text 144 70 abs01.pd;
+#X obj 97 159 float \$1;
+#X obj 129 129 symbol \$2;
+#X connect 0 0 1 0;
+#X connect 1 0 5 0;
+#X connect 1 1 6 0;
+#X connect 5 0 2 0;
+#X connect 6 0 3 0;

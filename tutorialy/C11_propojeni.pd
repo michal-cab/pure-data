@@ -1,0 +1,136 @@
+#N canvas 1 54 718 1017 12;
+#X obj 67 274 cnv 15 567 25 empty empty propojení 20 12 0 14 -1 -262144
+0;
+#X obj 82 472 noise~;
+#X obj 83 500 bp~ 3000 10;
+#X obj 205 471 noise~;
+#X obj 206 500 bp~ 6000 10;
+#X obj 82 623 *~;
+#X obj 101 578 bng 15 250 50 0 empty empty empty 17 7 0 10 -262144
+-1 -1;
+#X obj 101 598 ead~ 10 500;
+#X obj 224 578 bng 15 250 50 0 empty empty empty 17 7 0 10 -262144
+-1 -1;
+#X obj 207 623 *~;
+#X obj 468 472 noise~;
+#X obj 468 623 *~;
+#X obj 485 578 bng 15 250 50 0 empty empty empty 17 7 0 10 -262144
+-1 -1;
+#X obj 469 500 bp~ 200 10;
+#X obj 337 472 noise~;
+#X obj 337 623 *~;
+#X obj 354 578 bng 15 250 50 0 empty empty empty 17 7 0 10 -262144
+-1 -1;
+#X obj 354 598 ead~ 10 500;
+#X obj 338 500 bp~ 80 10;
+#X obj 338 524 *~ 20;
+#X obj 83 649 throw~ signal;
+#X obj 207 649 throw~ signal;
+#X obj 336 648 throw~ signal;
+#X obj 467 648 throw~ signal;
+#X obj 101 553 r trig1;
+#X obj 224 553 r trig2;
+#X obj 485 553 r trig4;
+#X obj 354 553 r trig3;
+#X obj 320 746 catch~ signal;
+#X obj 321 919 dac~;
+#X obj 224 597 ead~ 10 500;
+#X obj 86 828 key;
+#X obj 86 895 s trig1;
+#X obj 116 922 s trig2;
+#X obj 147 892 s trig3;
+#X obj 178 922 s trig4;
+#X obj 485 598 ead~ 10 500;
+#X obj 469 526 *~ 15;
+#X obj 132 794 random 4;
+#X obj 132 821 sel 0 1 2 3;
+#X obj 132 745 tgl 15 0 empty empty empty 17 7 0 10 -262144 -1 -1 1
+1;
+#X obj 86 860 sel 111 112 113 97;
+#X obj 132 766 metro 300;
+#X obj 321 879 *~;
+#X msg 338 824 \$1 20;
+#X obj 341 801 hsl 128 15 0 1 0 0 empty empty empty -2 -8 0 10 -262144
+-1 -1 8200 1;
+#X obj 338 851 line~;
+#X text 373 877 Signál ze zvukové sběrnice;
+#X text 373 890 signal chytáme objektem [catch~];
+#X text 373 903 a ovládáme jeho hlasitost.;
+#X text 66 409 Nejprve si postavíme čtyři jednoduché syntetizátory.
+_____ Z bílého šumu pásmovou propustí vyfiltrováváme určité
+frekvence a s pomocí [ead~] vytváříme jednoduchou obálku.;
+#X obj 437 414 cnv 15 100 15 empty empty empty 20 12 0 14 -262144 -66577
+0;
+#X text 66 679 Nyní si postavíme "řídící" jednotku. Jednotlivé
+obálky budeme inicializovat "bezdrátově" jednak klávesami "o" \,
+"p" \, "q" \, "a" a jednak náhodně v pravidelných intervalech objektem
+[metro].;
+#X text 222 859 o \, p \, q \, a;
+#X text 67 69 Probrali jsme jen některé z oblastí knihovny GEM a
+mohli bychom v průzkumu dále pokračovat. Nabízela by se témata
+jako zpětná vazba v obrazu \, GLSL shadery \, analýza videa pomocí
+implementace OpenCV pro GEM \, import 3D modelů \, spolupráce GEMu
+s knihovnou pmpd \, videomapping atd. Náš výklad zde ale nyní přerušíme.
+V základech jsme probrali možnosti práce se statickým i pohyblivým
+obrazem _________ a zacházení s ním \, což poskytuje snad dostatečnou
+škálu možností pro započetí vlastních experimentů a pokusů
+_____ o stavbu vizuálních nástrojů. Budete-li chtít ve studiu
+pokračovat \, můžete nahlédnout do oficiální dokumentace (Nápověda
+-> Pd Help Browser -> GEM).;
+#X text 67 296 Poslední kapitola věnující se knihovně GEM nebude
+vlastně _ o ní \, ale spíš o specifickém přístupu k tvorbě
+audiovizuálních nástrojů. Obraz \, zvuk i jednotlivé události
+jsou v Pd reprezentovány digitálně \, což umožňuje jejich vzájemné
+propojení. Na následující jednoduché případové studii konstrukce
+audiovizuálního nástroje si možnosti tohoto propojení ukážeme.
+;
+#X obj 408 163 cnv 15 100 15 empty empty empty 20 12 0 14 -262144 -66577
+0;
+#X obj 437 193 cnv 15 100 15 empty empty empty 20 12 0 14 -262144 -66577
+0;
+#X obj 470 306 cnv 15 100 15 empty empty empty 20 12 0 14 -262144 -66577
+0;
+#X connect 1 0 2 0;
+#X connect 2 0 5 0;
+#X connect 3 0 4 0;
+#X connect 4 0 9 0;
+#X connect 5 0 20 0;
+#X connect 6 0 7 0;
+#X connect 7 0 5 1;
+#X connect 8 0 30 0;
+#X connect 9 0 21 0;
+#X connect 10 0 13 0;
+#X connect 11 0 23 0;
+#X connect 12 0 36 0;
+#X connect 13 0 37 0;
+#X connect 14 0 18 0;
+#X connect 15 0 22 0;
+#X connect 16 0 17 0;
+#X connect 17 0 15 1;
+#X connect 18 0 19 0;
+#X connect 19 0 15 0;
+#X connect 24 0 6 0;
+#X connect 25 0 8 0;
+#X connect 26 0 12 0;
+#X connect 27 0 16 0;
+#X connect 28 0 43 0;
+#X connect 30 0 9 1;
+#X connect 31 0 41 0;
+#X connect 36 0 11 1;
+#X connect 37 0 11 0;
+#X connect 38 0 39 0;
+#X connect 39 0 32 0;
+#X connect 39 1 33 0;
+#X connect 39 2 34 0;
+#X connect 39 3 35 0;
+#X connect 40 0 42 0;
+#X connect 41 0 32 0;
+#X connect 41 1 33 0;
+#X connect 41 2 34 0;
+#X connect 41 3 35 0;
+#X connect 42 0 38 0;
+#X connect 43 0 29 0;
+#X connect 43 0 29 1;
+#X connect 44 0 46 0;
+#X connect 45 0 44 0;
+#X connect 46 0 43 1;

@@ -1,0 +1,104 @@
+#N canvas 1 54 718 1017 12;
+#X obj 67 73 cnv 15 567 25 empty empty zprávy_a_proměnné 20 12 0
+14 -1 -262144 0;
+#X msg 548 112 0 0 0;
+#X msg 535 166 255 255 255;
+#X text 554 135 ...;
+#X obj 67 347 cnv 15 200 15 empty empty PROMĚNNÉ_VE_ZPRÁVÁCH 2
+8 0 12 -228856 -66577 0;
+#X obj 87 447 print;
+#X msg 87 381 hodnota: 1;
+#X msg 178 382 hodnota: 2;
+#X floatatom 282 359 5 0 0 0 - - -;
+#X msg 282 382 hodnota: \$1;
+#X obj 378 357 f;
+#X floatatom 396 335 5 0 0 0 - - -;
+#X obj 378 338 bng 15 250 50 0 empty empty empty 17 7 0 10 -262144
+-1 -1;
+#X msg 537 517 hu;
+#X msg 521 488 symbol pů;
+#X obj 521 579 print;
+#X msg 521 548 slovo: \$1;
+#X msg 378 381 hodnota: \$1 \$1 \$1;
+#X msg 77 776 open \$1.wav;
+#X obj 77 870 print;
+#X obj 77 724 hradio 15 1 0 6 empty empty empty 0 -8 0 10 -262144 -1
+-1 0;
+#X text 66 560 Ve čtvrté zprávě je proměnná třikrát zopakována
+a výsledkem je zpráva \, kterou uvidíme v konzoli po inicializaci
+bangem - bude v ní třikrát tatáž hodnota \, kterou jsme zadali
+do číselného boxu.;
+#X text 306 776 Na vedlejším příkladu je;
+#X text 305 791 demonstrováno \, že proměnné;
+#X floatatom 249 850 5 0 0 0 - - -;
+#X msg 249 823 \$1;
+#X obj 77 746 t f f f------------------;
+#X text 263 750 aby byl patch čitelnější.;
+#X text 306 805 nemusí být odděleny mezerou.;
+#X msg 512 917 nota \$1 \$2;
+#X obj 524 702 print;
+#X msg 524 671 seznam: \$1 \$2;
+#X msg 524 615 list hu pů;
+#X msg 545 642 hu pů;
+#X text 594 487 OK;
+#X text 605 615 OK;
+#X text 567 516 Chyba!;
+#X text 590 642 Chyba!;
+#X msg 163 805 ddd\$1\$1bbb;
+#X text 66 94 V praxi se nám často přihodí \, že budeme ve zprávě
+chtít měnit dynamicky její obsah. Představte si \, jak nepraktické
+by bylo mít "natvrdo" definovaných 3 x 256 tlačítek jen proto \,
+abychom mohli měnit barevnost v červeném \, zeleném __ a modrém
+8bitovém kanále. Praktičtější řešení vede ke třem posuvníkům
+\, které dynamicky mění hodnotu v seznamu o třech atomech.;
+#X obj 464 142 cnv 15 50 15 empty empty empty 20 12 0 14 -262144 -66577
+0;
+#X text 66 209 Nebo si představte situaci \, kdy budeme chtít měnit
+noty ___ v MIDI sekvenceru \, nastavovat obálku \, která ovládá
+hlasitost zvuku v syntetizátoru \, otevírat různé soubory atd.
+Zkrátka: v programování se bez možnosti \, jak nahradit něco něčím
+jiným \, neobejdeme. K tomu \, abychom tyto změny mohli efektivně
+provádět \, slouží proměnné. Ty se v Pd značí jako \$1..$n.
+O proměnné \$0 si něco řekneme až později. Zatím pro nás budou
+existovat jen proměnné od \$1 a výš.;
+#X text 66 474 V prvních dvou případech je hodnota ve zprávách
+"natvrdo" zapsána. Dynamicky ji můžeme měnit ve třetí a čtvrté
+zprávě \, kde vidíme znak "\$1". Kdykoliv narazíme na znaky \$1
+\, \$2..$n \, můžeme si místo nich představit prázdná místa
+\, která čekají na zaplnění nějakou zprávou (číslem \, symbolem).
+;
+#X text 66 631 Pokud jste studovali předchozí kapitolu \, dodejme
+\, že zpráva pro proměnnou je ve tvaru selektor atom. Čísla fungují
+automaticky díky implicitnímu selektoru \, ale u symbolu ____ a seznamu
+\, který nezačíná číslem \, selektor musíme specifikovat.;
+#X text 262 736 [trigger] si můžeme nadstavit znakem "-" \,;
+#X text 66 900 Asi jste si již položili otázku \, jak předávat
+v jedné zprávě více různých proměnných. Jednak musíme ve zprávě
+vytvořit více proměnných - v případě noty a její hlasitosti
+to budou dvě proměnné \$1 a \$2.;
+#X obj 458 216 cnv 15 50 15 empty empty empty 20 12 0 14 -262144 -66577
+0;
+#X obj 452 665 cnv 15 60 15 empty empty empty 20 12 0 14 -262144 -66577
+0;
+#X connect 6 0 5 0;
+#X connect 7 0 5 0;
+#X connect 8 0 9 0;
+#X connect 9 0 5 0;
+#X connect 10 0 17 0;
+#X connect 11 0 10 1;
+#X connect 12 0 10 0;
+#X connect 13 0 16 0;
+#X connect 14 0 16 0;
+#X connect 16 0 15 0;
+#X connect 17 0 5 0;
+#X connect 18 0 19 0;
+#X connect 20 0 26 0;
+#X connect 25 0 24 0;
+#X connect 26 0 18 0;
+#X connect 26 1 38 0;
+#X connect 26 2 25 0;
+#X connect 31 0 30 0;
+#X connect 32 0 31 0;
+#X connect 33 0 31 0;
+#X connect 38 0 19 0;
+#X coords 0 1120 1 1119 85 60 0;

@@ -1,0 +1,126 @@
+#N canvas 1 54 718 1017 12;
+#X obj 67 73 cnv 15 567 25 empty empty slovní_zásoba_II 20 12 0 14
+-1 -262144 0;
+#X obj 67 170 cnv 15 200 15 empty empty [UZI] 2 8 0 12 -228856 -66577
+0;
+#X obj 84 261 bng 15 250 50 0 empty empty empty 17 7 0 10 -262144 -1
+-1;
+#X obj 84 338 print;
+#X obj 84 295 uzi 5;
+#X obj 327 279 uzi 8;
+#X obj 327 259 bng 15 250 50 0 empty empty empty 17 7 0 10 -262144
+-1 -1;
+#X obj 327 304 cxc_counter 8;
+#X msg 327 330 zprava_cislo_\$1;
+#X obj 327 356 print;
+#X text 137 256 Pošle do;
+#X text 137 270 konzole pět;
+#X text 137 285 bangů.;
+#X text 436 278 jedinečných;
+#X text 438 294 zpráv.;
+#X text 437 263 Vytvoří osm;
+#X obj 67 374 cnv 15 200 15 empty empty VYTVÁŘENÍ_ZPRÁV 2 8 0 12
+-228856 -66577 0;
+#X obj 67 583 cnv 15 200 15 empty empty [MSGFILE] 2 8 0 12 -228856
+-66577 0;
+#X msg 86 548 95;
+#X msg 86 492 set pd;
+#X msg 187 492 set 60 127;
+#X msg 271 519 set \$1;
+#X floatatom 271 493 5 0 0 0 - - -;
+#X msg 372 517 add \$1;
+#X msg 372 543;
+#X floatatom 475 491 5 0 0 0 - - -;
+#X msg 475 516 add2 \$1;
+#X floatatom 372 491 5 0 0 0 - - -;
+#X obj 454 543 bng 15 250 50 0 empty empty empty 17 7 0 10 -262144
+-1 -1;
+#X msg 475 542;
+#X obj 350 546 bng 15 250 50 0 empty empty empty 17 7 0 10 -262144
+-1 -1;
+#X obj 144 551 bng 15 250 50 0 empty empty empty 17 7 0 10 -262144
+-1 -1;
+#X msg 147 492 set;
+#X text 66 385 Zpráva [set ...( nastaví obsah zprávy podle argumentu.
+Jenom [set( ji vymaže. [add ...( přidá argument do zprávy jako
+další zprávu (je oddělena středníkem) a [add2 ...( přidá argument
+jako nový atom. Vyzkoušejte si následující příklady. Všiměte
+si \, že [set( \, [add( \, ani [add2( negenerují bang. Šlo by toho
+nějak využít?;
+#X msg 134 674 print;
+#X obj 84 920 msgfile;
+#X msg 150 837 replace nahrad;
+#X msg 139 702 read file.txt;
+#X obj 84 945 print;
+#X obj 130 949 bng 15 250 50 0 empty empty empty 17 7 0 10 -262144
+-1 -1;
+#X obj 84 653 bng 15 250 50 0 empty empty empty 17 7 0 10 -262144 -1
+-1;
+#X obj 149 751 getdir;
+#X obj 149 731 bng 15 250 50 0 empty empty empty 17 7 0 10 -262144
+-1 -1;
+#X msg 152 896 clear;
+#X msg 149 776 write /\$1/file.txt;
+#X msg 150 867 goto 2;
+#X text 449 736 [msgfile] jde řídit;
+#X text 451 750 spoustou dalších;
+#X text 451 765 příkazů. Nám ale budou;
+#X text 451 779 stačit tyto. Pokud;
+#X msg 150 806 add cislo 111;
+#X text 451 793 by vás zajímaly další \,;
+#X text 450 808 tak se podívejte na;
+#X text 449 845 (PTM -> Nápověda);
+#X text 449 822 jeho nápovědu.;
+#X text 66 595 [msgfile] je objekt \, který umí číst/zapisovat
+zprávy z/do souboru. Je rozšířenou verzí objektu [textfile] a
+obdobou objektu [coll] z Max/MSP.;
+#X text 102 648 Vypíše jednu řádku a posune se na další.;
+#X text 181 674 Vytiskne celý obsah objektu do konzole.;
+#X text 239 700 Načte soubor file.txt.;
+#X text 202 726 Zapíše soubor file.txt;
+#X text 201 740 do aktuálního adresáře.;
+#X text 252 797 Přidá zprávu na;
+#X text 252 811 konec souboru.;
+#X text 259 829 Nahradí zprávu na;
+#X text 259 841 aktuální pozici.;
+#X text 206 865 Jdi na řádku 3 (počítá od 0).;
+#X text 197 895 Všechno smaž.;
+#X text 149 946 Bang \, když jsme na konci souboru.;
+#X text 66 96 Ještě před tím než se pustíme do následující
+kapitoly \, jež se bude týkat stavby systému \, který by si pamatoval
+nastavení sekvenceru \, budeme si muset rozšířit slovní zásobu
+o objekty a postupy \, které k tomu budeme potřebovat.;
+#X text 65 181 [Uzi] je objekt \, který pošle sérii bangů rychle
+za sebou. Počet bangů se odvíjí od argumentu. Budeme jím generovat
+řadu čísel pomocí počítadla a tyto hodnoty pak používat jako
+proměnné pro vytváření jedinečných zpráv.;
+#X connect 2 0 4 0;
+#X connect 4 0 3 0;
+#X connect 5 0 7 0;
+#X connect 6 0 5 0;
+#X connect 7 0 8 0;
+#X connect 8 0 9 0;
+#X connect 18 0 31 0;
+#X connect 19 0 18 0;
+#X connect 20 0 18 0;
+#X connect 21 0 18 0;
+#X connect 22 0 21 0;
+#X connect 23 0 24 0;
+#X connect 24 0 30 0;
+#X connect 25 0 26 0;
+#X connect 26 0 29 0;
+#X connect 27 0 23 0;
+#X connect 29 0 28 0;
+#X connect 32 0 18 0;
+#X connect 34 0 35 0;
+#X connect 35 0 38 0;
+#X connect 35 1 39 0;
+#X connect 36 0 35 0;
+#X connect 37 0 35 0;
+#X connect 40 0 35 0;
+#X connect 41 0 44 0;
+#X connect 42 0 41 0;
+#X connect 43 0 35 0;
+#X connect 44 0 35 0;
+#X connect 45 0 35 0;
+#X connect 50 0 35 0;

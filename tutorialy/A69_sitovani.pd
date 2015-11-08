@@ -1,0 +1,93 @@
+#N canvas 1 54 718 1017 12;
+#X text 70 313 Hezkým příkladem rozsáhleho CRNMME systému (Collaborative
+Realtime Networked Music Making Environment) sloužícího pro hudební
+improvizaci je projekt netpd. V jednodušší verzi jsem podobných
+principů využil při konstrukci nástroje pro hudební těleso Ty
+& Ra. O obou projektech se ještě zmíníme.;
+#X text 70 69 Komunikace patchů mezi sebou \, ev. komunikace různých
+aplikací \, v sobě nese řadu zajímavých přesahů. Samotná možnost
+poslat někomu zprávu po síti vypadá poněkud banálně \, ale představte
+si \, že se svými spoluhráči sdílíte stejné grafické rozhraní
+nástroje a všichni na něj v danou chvíli hrajete - zároveň v
+rozhraní vidíte akce vašich spoluhráčů. V případě reálného
+piána opravdu nejde o nic revolučního \, ale pokud jde o hraní
+na software \, tak zde posun je. Společného hraní se může účastnit
+velký počet hudebníků a můžou na určitý prvek nástroje sáhnout
+ve stejný moment - "přetahování" se o pozici posuvníku se tak
+může stát kompozičním prvkem.;
+#X obj 514 335 pddplink www.netpd.org -text Link na netpd;
+#N canvas 1 54 1585 1120 bng 0;
+#X obj 102 102 bng 300 250 50 0 empty bng_col empty 17 7 0 10 -261681
+-1 -262144;
+#X obj 130 127 bng 250 250 50 0 empty bng_col empty 17 7 0 10 -261681
+-1 -262144;
+#X obj 155 152 bng 200 250 50 0 empty bng_col empty 17 7 0 10 -261681
+-1 -262144;
+#X obj 177 178 bng 150 250 50 0 empty bng_col empty 17 7 0 10 -261681
+-1 -262144;
+#X obj 201 203 bng 100 250 50 0 empty bng_col empty 17 7 0 10 -261681
+-1 -262144;
+#X obj 227 229 bng 50 250 50 0 empty bng_col empty 17 7 0 10 -261681
+-1 -262144;
+#X obj 158 40 delay;
+#X obj 590 28 loadbang;
+#X obj 590 91 s del;
+#X obj 190 7 r del;
+#X obj 221 47 delay;
+#X obj 253 14 r del;
+#X obj 278 50 delay;
+#X obj 310 15 r del;
+#X obj 27 40 delay;
+#X obj 59 3 r del;
+#X obj 87 42 delay;
+#X obj 119 7 r del;
+#X obj 379 35 delay;
+#X obj 410 8 r del;
+#X msg 590 61 100;
+#X obj 379 63 t b b;
+#X obj 412 118 s del;
+#X obj 412 92 random 300;
+#X obj 471 160 s bng_col;
+#X msg 471 126 color \$1;
+#X msg 544 127 color 0;
+#X connect 0 0 18 0;
+#X connect 1 0 16 0;
+#X connect 2 0 14 0;
+#X connect 3 0 12 0;
+#X connect 4 0 10 0;
+#X connect 5 0 6 0;
+#X connect 6 0 4 0;
+#X connect 7 0 20 0;
+#X connect 7 0 26 0;
+#X connect 9 0 6 1;
+#X connect 10 0 3 0;
+#X connect 11 0 10 1;
+#X connect 12 0 2 0;
+#X connect 13 0 12 1;
+#X connect 14 0 1 0;
+#X connect 15 0 14 1;
+#X connect 16 0 0 0;
+#X connect 17 0 16 1;
+#X connect 18 0 21 0;
+#X connect 19 0 18 1;
+#X connect 20 0 8 0;
+#X connect 21 0 5 0;
+#X connect 21 1 23 0;
+#X connect 23 0 22 0;
+#X connect 23 0 25 0;
+#X connect 25 0 24 0;
+#X connect 26 0 24 0;
+#X coords 0 -1 1 1 304 304 2 100 100;
+#X restore 139 592 pd bng;
+#X text 70 400 V tuto chvíli za sebou máme průzkum základní "gramatiky"
+__ a "slovní zásoby" vizuálního programovacího jazyka Pure Data.
+Doufám \, že se vám podařilo probíraná témata rámcově uchopit.
+Pokud vám ve své obecnosti přišla látka nejasná \, nebo obtížně
+aplikovatelná \, pak vězte \, že před sebou máme kapitoly týkající
+se zvuku a obrazu \, na kterých obecnost předchozí kapitoly "usadíme"
+kontaktem s konkrétními problémy.;
+#X obj 468 407 cnv 15 60 15 empty empty empty 20 12 0 14 -262144 -66577
+0;
+#X text 70 257 V tomto ohledu Pd a další software nástroje zprostředkovávají
+návaznost na hudební praxi takových skupin \, jako byli např. The
+Hub.;

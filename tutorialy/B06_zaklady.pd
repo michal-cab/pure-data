@@ -1,0 +1,88 @@
+#N canvas 1 54 718 1017 12;
+#X obj 71 73 cnv 15 567 25 empty empty základy 20 12 0 14 -1 -262144
+0;
+#X obj 92 201 osc~;
+#X obj 92 239 phasor~;
+#X obj 177 239 moog~;
+#X obj 177 201 vcf~;
+#X obj 377 239 rev3~;
+#X obj 266 239 freeverb~;
+#X floatatom 385 469 5 0 0 0 - - -;
+#X obj 385 516 print;
+#X text 104 492 < - zde je zvukový signál;
+#X text 396 490 < - tady "teče" zpráva;
+#X text 441 196 Prozkoumejte nápovědu;
+#X obj 378 200 dac~;
+#X text 441 210 k těmto objektům.;
+#X text 439 224 (PTM -> Nápověda);
+#X obj 71 654 cnv 15 200 15 empty empty BLOKY 2 8 0 12 -228856 -66577
+0;
+#X obj 93 518 *~;
+#X obj 90 908 +~;
+#X obj 246 852 bng 15 250 50 0 empty empty empty 17 7 0 10 -262144
+-1 -1;
+#X obj 246 872 t b b b;
+#X obj 267 200 sig~;
+#X obj 89 852 osc~ 220;
+#X obj 158 851 osc~ 110;
+#X text 70 547 Pokud byste se pokusili zapojit kabel z výstupu objektu
+[osc~ 2] do vstupu objektu [print] \, tak se vám to nepodaří. V
+Pd konzoli by se objevila hláška: "can't connect signal outlet to
+control inlet". Objekt [print] totiž slouží ke zpracování zpráv
+a ne signálů. Signál budeme posílat pouze objektům \, které si
+s ním umí poradit. Že by [print~]?;
+#X text 317 851 Dva oscilátory na různých frekvencích \,;
+#X text 316 865 sčítáme je objektem [+~] (všiměte si \,;
+#X text 316 879 vlnovky) a signály z obou oscilátorů;
+#X text 316 892 i jejich součet posíláme do objektů [print~].;
+#X obj 194 941 print~ prvni_osc;
+#X obj 316 941 print~ druhy_osc;
+#X obj 91 941 print~ soucet;
+#X obj 92 468 osc~ 1;
+#X text 71 766 Když zapneme DSP \, začnou Pd "počítat zvuk". Víme
+již \, že za jednu vteřinu Pd zvládnou standardně zpracovat 44100
+vzorků. Nedělají to "po jednom" \, ale seskupují vzorky do tzv.
+bloků. Podívejme se podrobně \, jak to vypadá \, když např. chceme
+sečíst dva audiosignály.;
+#X text 70 95 Doposud jsme používali převážně objekty \, které
+na vstupech a výstupech pracují se zprávami typu číslo \, symbol
+_______ a seznam. Zvukové objekty se od těchto liší tím \, že
+nepracují se zprávami \, ale se zvukovým signálem. Poznáme je
+snadno podle toho \, že jsou v názvu doplněny vlnovkou. Jsou to
+např. tyto:;
+#X obj 424 116 cnv 15 60 15 empty empty empty 20 12 0 14 -262144 -66577
+0;
+#X text 70 271 Objekty pracující se zprávami a zvukové objekty
+se liší také charakterem kabelu - zvuk "teče" po těch silnějších.
+_ V Pd-extended od verze 0.44 a výš najdeme v menu Upravit nový
+nástroj Magic Glass \, kterým můžeme sledovat \, jaký signál
+nebo zpráva po kabelech zrovna putuje. Když zapneme DSP i Magic Glass
+(CTRL + ALT + g) \, přepneme se do editačního módu a pak najedeme
+kurzorem na zvukový kabel \, uvidíme aktuální amplitudu signálu.
+V menu Upravit můžete zapnout také nástroj Automatické Tipy (CTRL
++ ALt + g). Ten nás zase v editačním módu informuje o objektech
+__________ a charakteru jejich vstupů a výstupů. Informace se zobrazují
+v levém dolním rohu patche.;
+#X text 70 666 Již jednou jsme se zmínili o tom \, že název Pure
+Data odkazuje k tomu \, že vše \, s čím v počítači zacházíme
+\, je reprezentovatelné nějakým číslem - platí to samozřejmě
+____ i pro zvukový signál. Ten je ve skutečnosti velmi rychlým
+tokem vzorků (tj. číselných hodnot) \, se kterými lze provádět
+různé matematické operace.;
+#X obj 452 701 cnv 15 60 15 empty empty empty 20 12 0 14 -262144 -66577
+0;
+#X obj 408 411 cnv 15 80 15 empty empty empty 20 12 0 14 -262144 -66577
+0;
+#X obj 475 294 cnv 15 60 15 empty empty empty 20 12 0 14 -262144 -66577
+0;
+#X connect 7 0 8 0;
+#X connect 17 0 30 0;
+#X connect 18 0 19 0;
+#X connect 19 0 30 0;
+#X connect 19 1 28 0;
+#X connect 19 2 29 0;
+#X connect 21 0 17 0;
+#X connect 21 0 28 0;
+#X connect 22 0 17 1;
+#X connect 22 0 29 0;
+#X connect 31 0 16 0;

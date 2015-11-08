@@ -1,0 +1,173 @@
+#N canvas 1 54 718 1017 12;
+#X obj 67 73 cnv 15 567 25 empty empty rozšiřujeme_slovní_zásobu
+20 12 0 14 -1 -262144 0;
+#X obj 67 171 cnv 15 200 15 empty empty [SELECT] 2 8 0 12 -228856 -66577
+0;
+#X obj 86 358 bng 15 250 50 0 empty empty empty 17 7 0 10 -262144 -1
+-1;
+#X obj 109 358 bng 15 250 50 0 empty empty empty 17 7 0 10 -262144
+-1 -1;
+#X obj 133 358 bng 15 250 50 0 empty empty empty 17 7 0 10 -262144
+-1 -1;
+#X obj 157 358 bng 15 250 50 0 empty empty empty 17 7 0 10 -262144
+-1 -1;
+#X floatatom 181 355 5 0 0 0 - - -;
+#X obj 279 375 bng 15 250 50 0 empty empty empty 17 7 0 10 -262144
+-1 -1;
+#X obj 331 376 bng 15 250 50 0 empty empty empty 17 7 0 10 -262144
+-1 -1;
+#X obj 384 376 bng 15 250 50 0 empty empty empty 17 7 0 10 -262144
+-1 -1;
+#X symbolatom 437 374 10 0 0 0 - - -;
+#X obj 279 320 symbol;
+#X msg 279 290 medved;
+#X msg 342 291 sova;
+#X msg 389 290 osel;
+#X msg 435 289 klokanice;
+#X obj 497 212 select;
+#X obj 582 212 sel;
+#X text 555 212 ==;
+#X obj 126 485 + 1;
+#X obj 87 456 metro 500;
+#X obj 105 567 bng 15 250 50 0 empty empty empty 17 7 0 10 -262144
+-1 -1;
+#X obj 124 567 bng 15 250 50 0 empty empty empty 17 7 0 10 -262144
+-1 -1;
+#X obj 87 567 bng 15 250 50 0 empty empty empty 17 7 0 10 -262144 -1
+-1;
+#X obj 142 567 bng 15 250 50 0 empty empty empty 17 7 0 10 -262144
+-1 -1;
+#X obj 87 434 tgl 15 0 empty empty empty 17 7 0 10 -262144 -1 -1 0
+1;
+#X obj 87 486 f 0;
+#X obj 126 514 mod 4;
+#X text 208 496 Kód známý z předchozích stránek.;
+#X obj 67 599 cnv 15 200 15 empty empty [ROUTE] 2 8 0 12 -228856 -66577
+0;
+#X floatatom 82 756 5 0 0 0 - - -;
+#X obj 133 786 pack f f;
+#X floatatom 186 757 5 0 0 0 - - -;
+#X floatatom 133 758 5 0 0 0 - - -;
+#X msg 133 812 2 \$1 \$2;
+#X floatatom 82 868 5 0 0 0 - - -;
+#X obj 109 892 unpack f f;
+#X floatatom 109 920 5 0 0 0 - - -;
+#X floatatom 176 919 5 0 0 0 - - -;
+#X floatatom 225 940 5 0 0 0 - - -;
+#X floatatom 270 940 5 0 0 0 - - -;
+#X floatatom 312 940 5 0 0 0 - - -;
+#X floatatom 356 940 5 0 0 0 - - -;
+#X obj 225 912 unpack f f f f;
+#X msg 237 756 3 10 20 30 111;
+#X obj 237 807 t l;
+#X msg 281 784 666 666 666;
+#X obj 205 875 print neshoduje se:;
+#X obj 281 812 t l;
+#X text 380 749 Když změníme hodnotu v prvním;
+#X text 379 763 číselném boxu \, vytvoříme tím;
+#X text 379 779 zároveň seznam \, který bude vždy;
+#X text 379 809 [route] \, který detekuje shodu;
+#X obj 279 349 select sova osel medved;
+#X text 207 536 Těmito bangy pak můžeme spouštět nějaké;
+#X text 208 565 v sekvenceru atd.;
+#X obj 119 410 bng 15 250 50 0 empty empty empty 17 7 0 10 -262144
+-1 -1;
+#X obj 142 410 bng 15 250 50 0 empty empty empty 17 7 0 10 -262144
+-1 -1;
+#X obj 166 410 bng 15 250 50 0 empty empty empty 17 7 0 10 -262144
+-1 -1;
+#X obj 190 410 bng 15 250 50 0 empty empty empty 17 7 0 10 -262144
+-1 -1;
+#X floatatom 214 407 5 0 0 0 - - -;
+#X text 207 450 a objektem [metro] tvoří [select];
+#X text 207 464 základ sekvenceru.;
+#X obj 86 289 hradio 15 1 0 4 empty empty empty 0 -8 0 10 -262144 -1
+-1 0;
+#X obj 86 332 select 0 1 2 3;
+#X obj 119 381 select 4 2 0 1;
+#X floatatom 86 308 5 0 0 0 - - -;
+#X text 379 794 začínat číslem 42 Ten doteče do;
+#X msg 82 812 42 \$1;
+#X obj 82 843 route 42 2 3;
+#X text 380 823 s prvním atomem v tomto seznamu;
+#X text 380 836 a na prvním výstupu (protože 42;
+#X text 379 850 je první argument [route]) pošle;
+#X text 380 865 zbytek seznamu (v tomto případě;
+#X text 379 879 jen jedno číslo).;
+#X text 67 96 Základní principy programování v Pd máme již za
+sebou. Předmětem této kapitoly bude rozšíření "slovní zásoby".
+Seznámíme se s objekty \, které ve své programátorské praxi budete
+jistě často potřebovat. Je dobré je aktivně znát.;
+#X obj 87 540 sel 0 1 2 3;
+#X text 335 320 Vloží selektor symbol.;
+#X text 66 183 Objekt [select] je "detektor shody". Čeká na vstupu
+na atomickou zprávu \, a pokud tato zpráva odpovídá některému
+__ z jeho argumentů \, pak na daný výstup pošle bang. [select]
+má vždy o jeden výstup víc \, než je počet argumentů - do posledního
+výstupu totiž "zahazuje" vše \, s čím se neshodne. V jakém pořadí
+atributy napíšeme \, je lhostejné.;
+#X text 207 436 V kombinaci s modulárním počítadlem;
+#X text 208 551 akce \, nebo jimi inicializovat pozice;
+#X text 66 611 Objekt [route] se chová podobně jako [select] \, jen
+s tím rozdílem \, že pracuje se seznamy a ne s atomickými zprávami.
+Již jsme ho jednou použili jako detektor typů dat \, které jsou
+ve zprávě - pak jsou jeho argumenty: float \, symbol \, bang a list.
+Jeho argumentem může být ale i číslo nebo libovolný symbol. Na
+vstupu [route] čeká na seznam \, jehož první atom porovnává se
+svými agrumenty. Pokud detekuje shodu \, pak zbytek seznamu za shodným
+atomem pošle na daný výstup.;
+#X text 497 794 .;
+#X obj 464 203 cnv 15 20 15 empty empty empty 20 12 0 14 -262144 -66577
+0;
+#X connect 11 0 53 0;
+#X connect 12 0 11 0;
+#X connect 13 0 11 0;
+#X connect 14 0 11 0;
+#X connect 15 0 11 0;
+#X connect 19 0 27 0;
+#X connect 20 0 26 0;
+#X connect 25 0 20 0;
+#X connect 26 0 19 0;
+#X connect 26 0 76 0;
+#X connect 27 0 26 1;
+#X connect 30 0 68 0;
+#X connect 31 0 34 0;
+#X connect 32 0 31 1;
+#X connect 33 0 31 0;
+#X connect 34 0 69 0;
+#X connect 36 0 37 0;
+#X connect 36 1 38 0;
+#X connect 43 0 39 0;
+#X connect 43 1 40 0;
+#X connect 43 2 41 0;
+#X connect 43 3 42 0;
+#X connect 44 0 45 0;
+#X connect 45 0 69 0;
+#X connect 46 0 48 0;
+#X connect 48 0 69 0;
+#X connect 53 0 7 0;
+#X connect 53 1 8 0;
+#X connect 53 2 9 0;
+#X connect 53 3 10 0;
+#X connect 63 0 66 0;
+#X connect 64 0 2 0;
+#X connect 64 1 3 0;
+#X connect 64 2 4 0;
+#X connect 64 3 5 0;
+#X connect 64 4 6 0;
+#X connect 65 0 56 0;
+#X connect 65 1 57 0;
+#X connect 65 2 58 0;
+#X connect 65 3 59 0;
+#X connect 65 4 60 0;
+#X connect 66 0 64 0;
+#X connect 66 0 65 0;
+#X connect 68 0 69 0;
+#X connect 69 0 35 0;
+#X connect 69 1 36 0;
+#X connect 69 2 43 0;
+#X connect 69 3 47 0;
+#X connect 76 0 23 0;
+#X connect 76 1 21 0;
+#X connect 76 2 22 0;
+#X connect 76 3 24 0;

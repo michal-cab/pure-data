@@ -1,0 +1,366 @@
+#N canvas 1 54 718 1017 12;
+#X obj 67 724 cnv 15 200 15 empty empty KRYTÍ_PLÁTEN_-_Z_ORDER 2
+8 0 12 -228856 -66577 0;
+#N canvas 536 100 470 320 asdasd 0;
+#X obj 103 103 cnv 15 119 76 empty empty empty 20 12 0 14 -228856 -66577
+0;
+#X obj 113 112 hsl 70 15 0 127 0 0 empty empty empty -2 -6 0 10 -262144
+-258113 -1 0 1;
+#X obj 135 156 bng 18 250 50 0 empty empty empty 0 -6 0 10 -262144
+-258113 -1;
+#X obj 111 156 tgl 18 0 empty empty empty 17 7 0 10 -262144 -258113
+-1 0 1;
+#X obj 110 134 hradio 15 1 0 5 empty empty empty 0 -8 0 10 -262144
+-258113 -1 0;
+#X symbolatom 160 156 6 0 0 0 - - -;
+#X floatatom 189 110 4 0 0 0 - - -;
+#X floatatom 189 132 4 0 0 0 - - -;
+#X msg 135 192 kuk;
+#X obj 135 296 symbol;
+#X obj 67 191 sel 1;
+#X msg 67 223 zapnut;
+#X msg 100 251 vypnut;
+#X connect 1 0 6 0;
+#X connect 2 0 8 0;
+#X connect 3 0 10 0;
+#X connect 4 0 7 0;
+#X connect 8 0 9 0;
+#X connect 9 0 5 0;
+#X connect 10 0 11 0;
+#X connect 10 1 12 0;
+#X connect 11 0 9 0;
+#X connect 12 0 9 0;
+#X coords 0 -1 1 1 125 82 2 100 100;
+#X restore 497 390 pd asdasd;
+#X obj 199 237 image gop_3.gif;
+#X text 75 68 okno subpatche:;
+#X text 340 81 Po kliknutí na OK by se v okně subpatche;
+#X text 340 97 BPM_bang měl zobrazit červený obdélník \,;
+#X text 340 173 Když pak toto okno zavřeme \, uvidíme;
+#N canvas 1188 603 243 220 BPM_bang 0;
+#X floatatom 127 105 5 60 300 1 BPM - -;
+#X obj 81 166 metro;
+#X obj 104 107 tgl 15 0 empty empty empty 17 7 0 10 -262144 -1 -1 0
+1;
+#X msg 127 79 120;
+#X obj 127 51 loadbang;
+#X obj 81 191 outlet;
+#X obj 113 138 expr 60000 / $f1;
+#X connect 0 0 6 0;
+#X connect 1 0 5 0;
+#X connect 2 0 1 0;
+#X connect 3 0 0 0;
+#X connect 4 0 3 0;
+#X connect 6 0 1 1;
+#X coords 0 -1 1 1 90 30 2 100 100;
+#X restore 412 316 pd BPM_bang;
+#X text 327 320 ---------->;
+#X obj 412 354 bng 15 250 50 0 empty empty empty 17 7 0 10 -262144
+-1 -1;
+#X text 519 301 Vyzkoušejte;
+#X text 519 316 funkčnost;
+#X text 519 332 kliknutím;
+#X text 519 347 na vypínač.;
+#X text 339 113 do kterého přemístíme grafické;
+#X text 339 128 uživatelské prvky tak \, jak vidíme na;
+#X text 66 399 Do plochy vyznačené červeným rámem je v subpatchi
+možné vkládat posuvníky \, přepínače \, vypínače \, bangy
+\, číselné boxy \, symbol boxy \, knoby \, komentáře \, plátno
+a ještě některé další grafické prvky \, které jsme zatím nezmínili.
+;
+#N canvas 1 54 1585 1120 16_seq 0;
+#X obj 103 103 cnv 15 264 179 empty empty empty 20 12 0 14 -233017
+-66577 0;
+#X obj -36 384 f;
+#X obj 109 109 bng 12 155 88 0 empty empty empty 17 7 0 10 -262144
+-1 -1;
+#X obj 109 120 vradio 12 1 0 13 empty empty empty 0 -8 0 10 -191407
+-1 -1 0;
+#X obj 53 58 sel 1 2 3 4 5 6 7 8 9 10 11 12 13 14 15 16;
+#X obj -2 384 f;
+#X obj 123 109 bng 8 88 88 0 empty empty empty 17 7 0 10 -262144 -128992
+-1;
+#X obj 121 120 vradio 12 1 0 13 empty empty empty 0 -8 0 10 -262144
+-1 -1 0;
+#X obj 32 384 f;
+#X obj 134 109 bng 8 88 88 0 empty empty empty 17 7 0 10 -262144 -162280
+-1;
+#X obj 132 120 vradio 12 1 0 13 empty empty empty 0 -8 0 10 -262144
+-1 -1 0;
+#X obj 66 384 f;
+#X obj 145 109 bng 8 88 88 0 empty empty empty 17 7 0 10 -262144 -162280
+-1;
+#X obj 144 120 vradio 12 1 0 13 empty empty empty 0 -8 0 10 -262144
+-1 -1 0;
+#X obj 101 384 f;
+#X obj 156 109 bng 12 155 88 0 empty empty empty 17 7 0 10 -262144
+-1 -1;
+#X obj 156 120 vradio 12 1 0 13 empty empty empty 0 -8 0 10 -191407
+-1 -1 0;
+#X obj 135 384 f;
+#X obj 170 109 bng 8 88 88 0 empty empty empty 17 7 0 10 -262144 -162280
+-1;
+#X obj 168 120 vradio 12 1 0 13 empty empty empty 0 -8 0 10 -262144
+-1 -1 0;
+#X obj 169 384 f;
+#X obj 182 109 bng 8 88 88 0 empty empty empty 17 7 0 10 -262144 -162280
+-1;
+#X obj 180 120 vradio 12 1 0 13 empty empty empty 0 -8 0 10 -262144
+-1 -1 0;
+#X obj 203 384 f;
+#X obj 194 109 bng 8 88 88 0 empty empty empty 17 7 0 10 -262144 -162280
+-1;
+#X obj 192 120 vradio 12 1 0 13 empty empty empty 0 -8 0 10 -262144
+-1 -1 0;
+#X obj 239 384 f;
+#X obj 204 109 bng 12 155 88 0 empty empty empty 17 7 0 10 -262144
+-1 -1;
+#X obj 204 120 vradio 12 1 0 13 empty empty empty 0 -8 0 10 -191407
+-1 -1 0;
+#X obj 273 384 f;
+#X obj 218 109 bng 8 88 88 0 empty empty empty 17 7 0 10 -262144 -162280
+-1;
+#X obj 216 120 vradio 12 1 0 13 empty empty empty 0 -8 0 10 -262144
+-1 -1 0;
+#X obj 307 384 f;
+#X obj 230 109 bng 8 88 88 0 empty empty empty 17 7 0 10 -262144 -162280
+-1;
+#X obj 228 120 vradio 12 1 0 13 empty empty empty 0 -8 0 10 -262144
+-1 -1 0;
+#X obj 341 384 f;
+#X obj 242 109 bng 8 88 88 0 empty empty empty 17 7 0 10 -262144 -162280
+-1;
+#X obj 240 120 vradio 12 1 0 13 empty empty empty 0 -8 0 10 -262144
+-1 -1 0;
+#X obj 376 384 f;
+#X obj 252 109 bng 12 155 50 0 empty empty empty 17 7 0 10 -262144
+-1 -1;
+#X obj 252 120 vradio 12 1 0 13 empty empty empty 0 -8 0 10 -191407
+-1 -1 0;
+#X obj 410 384 f;
+#X obj 266 109 bng 8 88 88 0 empty empty empty 17 7 0 10 -262144 -162280
+-1;
+#X obj 264 120 vradio 12 1 0 13 empty empty empty 0 -8 0 10 -262144
+-1 -1 0;
+#X obj 444 384 f;
+#X obj 278 109 bng 8 88 88 0 empty empty empty 17 7 0 10 -262144 -162280
+-1;
+#X obj 276 120 vradio 12 1 0 13 empty empty empty 0 -8 0 10 -262144
+-1 -1 0;
+#X obj 478 384 f;
+#X obj 290 109 bng 8 88 88 0 empty empty empty 17 7 0 10 -262144 -162280
+-1;
+#X obj 288 120 vradio 12 1 0 13 empty empty empty 0 -8 0 10 -262144
+-1 -1 0;
+#X obj 312 457 expr_scale 12 0 60 72;
+#X obj 61 0 f;
+#X obj 104 0 + 1;
+#X obj 104 30 mod 16;
+#X floatatom 61 30 5 0 0 0 - - -;
+#X msg 143 0 4;
+#X msg 182 0 8;
+#X msg 222 0 16;
+#X obj 61 -30 inlet;
+#X obj 312 120 hradio 15 1 0 3 empty empty 4/8/16 6 -8 0 10 -262144
+-1 -1 2;
+#X obj 313 503 outlet;
+#X obj 143 -29 sel 0 1 2;
+#X obj 313 154 nbx 4 14 -1e+37 1e+37 0 0 empty empty MIDI 0 -8 0 10
+-262144 -1 -1 0 256;
+#X floatatom 370 504 5 0 0 0 - - -;
+#X obj 373 8 loadbang;
+#X msg 373 42 2;
+#X obj 313 181 bng 15 250 50 0 empty empty reset 17 7 0 10 -262144
+-1 -1;
+#X msg 107 -27 0;
+#X connect 1 0 50 0;
+#X connect 2 0 1 0;
+#X connect 3 0 1 1;
+#X connect 4 0 2 0;
+#X connect 4 1 6 0;
+#X connect 4 2 9 0;
+#X connect 4 3 12 0;
+#X connect 4 4 15 0;
+#X connect 4 5 18 0;
+#X connect 4 6 21 0;
+#X connect 4 7 24 0;
+#X connect 4 8 27 0;
+#X connect 4 9 30 0;
+#X connect 4 10 33 0;
+#X connect 4 11 36 0;
+#X connect 4 12 39 0;
+#X connect 4 13 42 0;
+#X connect 4 14 45 0;
+#X connect 4 15 48 0;
+#X connect 5 0 50 0;
+#X connect 6 0 5 0;
+#X connect 7 0 5 1;
+#X connect 8 0 50 0;
+#X connect 9 0 8 0;
+#X connect 10 0 8 1;
+#X connect 11 0 50 0;
+#X connect 12 0 11 0;
+#X connect 13 0 11 1;
+#X connect 14 0 50 0;
+#X connect 15 0 14 0;
+#X connect 16 0 14 1;
+#X connect 17 0 50 0;
+#X connect 18 0 17 0;
+#X connect 19 0 17 1;
+#X connect 20 0 50 0;
+#X connect 21 0 20 0;
+#X connect 22 0 20 1;
+#X connect 23 0 50 0;
+#X connect 24 0 23 0;
+#X connect 25 0 23 1;
+#X connect 26 0 50 0;
+#X connect 27 0 26 0;
+#X connect 28 0 26 1;
+#X connect 29 0 50 0;
+#X connect 30 0 29 0;
+#X connect 31 0 29 1;
+#X connect 32 0 50 0;
+#X connect 33 0 32 0;
+#X connect 34 0 32 1;
+#X connect 35 0 50 0;
+#X connect 36 0 35 0;
+#X connect 37 0 35 1;
+#X connect 38 0 50 0;
+#X connect 39 0 38 0;
+#X connect 40 0 38 1;
+#X connect 41 0 50 0;
+#X connect 42 0 41 0;
+#X connect 43 0 41 1;
+#X connect 44 0 50 0;
+#X connect 45 0 44 0;
+#X connect 46 0 44 1;
+#X connect 47 0 50 0;
+#X connect 48 0 47 0;
+#X connect 49 0 47 1;
+#X connect 50 0 60 0;
+#X connect 50 0 62 0;
+#X connect 50 0 63 0;
+#X connect 51 0 52 0;
+#X connect 52 0 53 0;
+#X connect 52 0 54 0;
+#X connect 53 0 51 1;
+#X connect 54 0 4 0;
+#X connect 55 0 53 1;
+#X connect 56 0 53 1;
+#X connect 57 0 53 1;
+#X connect 58 0 51 0;
+#X connect 59 0 61 0;
+#X connect 61 0 55 0;
+#X connect 61 1 56 0;
+#X connect 61 2 57 0;
+#X connect 64 0 65 0;
+#X connect 65 0 59 0;
+#X connect 66 0 67 0;
+#X connect 67 0 51 1;
+#X coords 0 -1 1 1 270 185 2 100 100;
+#X restore 337 511 pd 16_seq;
+#N canvas 1190 574 243 220 BPM_bang 0;
+#X floatatom 127 105 5 60 300 1 BPM - -;
+#X obj 81 166 metro;
+#X obj 104 107 tgl 15 0 empty empty empty 17 7 0 10 -262144 -1 -1 0
+1;
+#X msg 127 79 120;
+#X obj 127 51 loadbang;
+#X obj 81 191 outlet;
+#X obj 113 138 expr 60000 / $f1;
+#X connect 0 0 6 0;
+#X connect 1 0 5 0;
+#X connect 2 0 1 0;
+#X connect 3 0 0 0;
+#X connect 4 0 3 0;
+#X connect 6 0 1 1;
+#X coords 0 -1 1 1 90 30 2 100 100;
+#X restore 337 476 pd BPM_bang;
+#N canvas 1052 546 504 529 primitive_synth 0;
+#X obj 210 216 mtof;
+#X obj 210 256 osc~;
+#X obj 210 43 inlet;
+#X obj 256 252 line~;
+#X obj 209 300 *~;
+#X obj 210 85 t f b b;
+#X obj 233 141 delay 10;
+#X msg 256 113 0.8 20;
+#X msg 233 173 0 70;
+#X obj 3 3 cnv 15 264 24 empty empty synth_0.1a 200 12 0 10 -233017
+-66577 0;
+#X obj 17 8 tgl 15 0 empty empty DSP 17 7 0 10 -262144 -1 -1 0 1;
+#X obj 17 57 sel 0 1;
+#X msg 40 152 \; pd dsp 1;
+#X msg 17 106 \; pd dsp 0;
+#X obj 66 8 hsl 128 15 0 1 0 0 empty empty HLASITOST 5 7 0 10 -262144
+-1 -1 0 1;
+#X obj 216 412 dac~;
+#X obj 210 342 *~;
+#X obj 151 300 line~;
+#X msg 151 263 \$1 20;
+#X connect 0 0 1 0;
+#X connect 1 0 4 0;
+#X connect 2 0 5 0;
+#X connect 3 0 4 1;
+#X connect 4 0 16 0;
+#X connect 5 0 0 0;
+#X connect 5 1 6 0;
+#X connect 5 2 7 0;
+#X connect 6 0 8 0;
+#X connect 7 0 3 0;
+#X connect 8 0 3 0;
+#X connect 10 0 11 0;
+#X connect 11 0 13 0;
+#X connect 11 1 12 0;
+#X connect 14 0 18 0;
+#X connect 16 0 15 0;
+#X connect 16 0 15 1;
+#X connect 17 0 16 1;
+#X connect 18 0 17 0;
+#X coords 0 -1 1 1 270 30 2 0 0;
+#X restore 337 705 pd primitive_synth;
+#X text 66 470 Nebudeme zde opakovat celý proces;
+#X text 65 515 výsledek. Vidíte \, že se nám;
+#X text 65 544 a uživatelské rozhraní vylepšit.;
+#X text 66 611 Další výhodou \, o níž jsme se zatím;
+#X text 66 625 nezmínili \, je to \, že subpatche jde;
+#X text 66 640 lehce duplikovat. Vytvořit komplexní;
+#X text 66 655 systém o několika sekvencerech je;
+#X text 66 670 teď již otázkou zmáčknutí několika;
+#X text 66 686 málo kláves.;
+#X obj 481 820 cnv 15 100 60 empty empty empty 20 12 0 14 -233017 -66577
+0;
+#X obj 497 835 cnv 15 100 60 empty empty empty 20 12 0 14 -191407 -66577
+0;
+#X obj 513 850 cnv 15 100 60 empty empty empty 20 12 0 14 -99865 -66577
+0;
+#X text 66 570 Nahlédněte prosím do subpatchů;
+#X text 66 584 ve zdrojových kódech k této rukověti.;
+#X text 65 530 rozlehlost kódu podařilo zmenšit;
+#X obj 134 858 hsl 128 15 0 127 0 0 empty empty empty -2 -8 0 10 -262144
+-1 -1 0 1;
+#X obj 163 836 cnv 15 100 60 empty empty empty 20 12 0 14 -233017 -66577
+0;
+#X obj 203 858 hsl 128 15 0 127 0 0 empty empty empty -2 -8 0 10 -262144
+-1 -1 0 1;
+#X text 340 220 a číselným boxem. Sláva \, máme za sebou;
+#X text 339 235 základy tvorby grafického uživatelského;
+#X text 340 250 rozhraní v subpatchi.;
+#X text 477 473 Podívejte se dovnitř.;
+#X text 340 188 v rodičovském patchi místo objektu;
+#X text 340 204 [BPM_bang] obdélník s vypínačem;
+#X text 339 144 vedlejším obrázku.;
+#X text 66 737 Možná jste při práci s objektem plátno (Canvas)
+narazili na situaci \, kdy vytvořené plátno překrývalo jiné grafické
+prvky. Pd si totiž pamatují \, v jakém pořadí byly objekty vytvořeny
+\, a v tom pořadí je i překrývá. Proto je třeba \, abychom plátno
+vytvořili vždy dříve než další ovládací prvky.;
+#X text 66 901 Nebo lze dané prvky jako posuvník aj. označit \,
+vyjmout (CTRL + X) a následně opět vložit (CTRL + v). Budou tak
+"novější" než naposled vytvořné plátno - tzn. že budou viditelné.
+;
+#X text 66 485 vytváření GOP pro sekvencer;
+#X text 65 500 a syntetizér. Jen na ukázku je zde;
+#X connect 7 0 9 0;
+#X connect 17 0 19 0;
+#X connect 18 0 17 0;

@@ -1,0 +1,63 @@
+#N canvas 1 54 718 1017 12;
+#X obj 71 425 cnv 15 200 15 empty empty DIGITÁL_JE_DISKRÉTNÍ 2 8
+0 12 -228856 -66577 0;
+#X text 70 822 Pro naši potřebu postačí \, když pojmu digitalizace
+porozumíme jako převodu spojitého (analogového) signálu do nespojité
+posloupnosti čísel. Jako bychom 44100x za vteřinu změřili vychýlení
+membrány reproduktoru a pak tyto hodnoty nanesli na osu X do našeho
+grafu.;
+#X text 70 69 Na předchozí straně vidíme graf \, ve kterém je
+na ose _____ X vyneseno celkem 4410 hodnot \, což představuje 1/10
+vteřiny při standardní vzorkovací frekvenci (44100 vzorků za vteřinu).
+Zobrazený signál je pravidelné harmonické kmitání o frekvenci
+110 Hz.;
+#X obj 440 72 cnv 15 60 15 empty empty empty 20 12 0 14 -262144 -66577
+0;
+#X text 70 436 Název této podkapitoly neodkazuje na to \, že by
+byl digitální signál nějak ohleduplný \, ale na to \, že jde
+_____ o signál nespojitý. Dostáváme se tak k zásadnímu tématu
+reprezentace signálů v počítači a potažmo též k zajímavé
+filozofické otázce.;
+#X obj 439 456 cnv 15 60 15 empty empty empty 20 12 0 14 -262144 -66577
+0;
+#X text 70 153 Počet kmitů neboli period za jednu vteřinu se nazývá
+frekvence. Jednotkou frekvence je Hz (hertz). V případě našeho
+grafu jsme periody označili střídáním šedých ______ a bílých
+částí \, takže snadněji vidíme \, že do 1/10 vteřiny se jich
+při frekvenci 110 Hz vejde právě jedenáct.;
+#X text 70 237 V případě slyšitelného signálu \, co se dispozice
+lidského ucha týče \, se pohybujeme v rozmezí přibližně od 20
+Hz do 20 kHz. Netopýři slyší ve škále 3 kHz až 120 kHz a delfíni
+dokonce 1 kHz až 130 kHz. S věkem se rozsah zmenšuje.;
+#X text 70 305 Jednoduchou analogií k modelovému zobrazení zvuku
+v grafu je kmitání membrány reproduktoru. Když bychom do reproduktoru
+ze zesilovače poslali signál o frekvenci 110 Hz \, pak by jeho membrána
+za 1/10 vteřiny kmitala nahoru a dolů přesně tak \, jak je zaznamenáno
+v grafu. Osa Y \, neboli amplituda \, zobrazuje míru vychýlení membrány
+v daném čase - ta souvisí s hlasitostí signálu.;
+#X text 70 520 Prostor a čas se nám jeví jako kontinuum \, jako
+cosi nepřetržitého a spojitého. Otázkou \, zda to tak opravdu
+je \, se zde nebudeme zabývat. V digitálním počítači dokážeme
+ale reprezentovat pouze omezené množství diskrétních \, tj. počitatelných
+hodnot. Jak pak tedy něco takového jako spojitý pohyb v prostoru
+a čase (např. kmitání membrány) převést do počítače?;
+#X text 70 906 Digitální signál je tedy "pouze" aproximací analogového
+signálu - digitalizací vždy dochází ke ztrátě informace. Míra
+ztráty ale může být téměř libovolně malá.;
+#X obj 432 186 cnv 15 60 15 empty empty empty 20 12 0 14 -262144 -66577
+0;
+#X text 70 634 Víme \, že jsme bytosti \, které se nechají snadno
+ošálit. ___ K tomu \, abychom začali vnímat statický obraz jako
+pohyb \, nám stačí rychle vystřídat 24 nepohyblivých obrázků
+do vteřiny \, a k tomu \, abychom uslyšeli zvuk \, který může
+obsahovat všechny frekvence odpovídající možnostem našeho ucha
+\, potřebujeme na jednu vteřinu 44100 hodnot neboli vzorků. Toto
+číslo má své odůvodnění a vychází z Nyquist-Shannonova teorému
+\, ze kterého vyplývá \, že vzorkovací frekvence musí být 2x
+větší než maximální frekvence \, již chceme reprezentovat. 100
+navíc souvisí ___ s tzv. aliasingem a nedokonalostí filtrů \, ale
+to bychom zabíhali již příliš do detailů.;
+#X obj 454 640 cnv 15 60 15 empty empty empty 20 12 0 14 -262144 -66577
+0;
+#X obj 456 776 cnv 15 60 15 empty empty empty 20 12 0 14 -262144 -66577
+0;

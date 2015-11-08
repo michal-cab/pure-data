@@ -1,0 +1,123 @@
+#N canvas 1 54 718 1017 12;
+#X obj 67 73 cnv 15 200 15 empty empty [LOADBANG] 2 8 0 12 -228856
+-66577 0;
+#X obj 86 216 loadbang;
+#X msg 86 374 440;
+#X obj 148 347 metro 1000;
+#X obj 148 325 tgl 15 0 empty empty empty 17 7 0 10 -262144 -1 -1 1
+1;
+#X obj 86 405 osc~;
+#X obj 86 244 t b b b;
+#X obj 85 470 dac~;
+#X obj 85 436 *~;
+#X obj 148 412 tgl 15 0 empty empty empty 17 7 0 10 -262144 -1 -1 1
+1;
+#X msg 175 274 \; pd dsp 1;
+#X text 246 379 oscilátor na 440 Hz.;
+#X obj 67 507 cnv 15 200 15 empty empty [CHANGE] 2 8 0 12 -228856 -66577
+0;
+#X text 150 216 Po otevření patche pošli bang \,;
+#X text 149 243 rozvětvi ho a ...;
+#X text 245 281 Nejprve zapni DSP \,;
+#X text 246 326 pak spusť metro \,;
+#X text 246 365 a nakonec inicializuj;
+#X msg 86 612 1;
+#X msg 114 612 1;
+#X msg 143 612 1;
+#X msg 176 611 0;
+#X obj 86 643 change;
+#X obj 86 671 print;
+#X text 426 208 Zkuste si tento patch;
+#X text 426 237 jako samostatný soubor.;
+#X text 426 222 přepsat a uložte ho;
+#X text 426 252 Pak ho zkuste zavřít;
+#X text 426 266 a znovu otevřít...;
+#X msg 212 611 0;
+#X text 155 643 [change] na výstup pošle hodnotu teprve;
+#X text 156 659 tehdy \, pokud je odlišná od té předchozí.;
+#X msg 252 611 42;
+#X text 199 715 První část patche simuluje;
+#X text 198 730 "roztěkaný" proud dat.;
+#X text 250 821 Objektem [int] zaokrouhlíme;
+#X text 250 877 A [change] ho pošle ven teprve;
+#X text 426 735 Dvě počítadla jsou;
+#X text 426 749 zde proto \, abychom;
+#X text 427 763 viděli rozdílný;
+#X text 426 777 počet operací před;
+#X text 426 791 a po [change].;
+#X text 249 836 číslo s desetinnou čárkou na;
+#X text 249 849 celé číslo.;
+#X text 249 891 tehdy \, když je odlišné od předchozího;
+#X text 249 905 čísla.;
+#X obj 90 876 change;
+#X obj 90 733 metro 50;
+#X obj 90 712 tgl 15 0 empty empty empty 17 7 0 10 -262144 -1 -1 0
+1;
+#X obj 90 841 int;
+#X floatatom 90 904 5 0 0 0 - - -;
+#X obj 90 757 random 1000;
+#X obj 169 803 bng 15 250 50 0 empty empty empty 17 7 0 10 -262144
+-1 -1;
+#X obj 169 823 f;
+#X obj 207 822 + 1;
+#X floatatom 169 849 5 0 0 0 - - -;
+#X obj 169 888 bng 15 250 50 0 empty empty empty 17 7 0 10 -262144
+-1 -1;
+#X obj 169 911 f;
+#X obj 210 911 + 1;
+#X floatatom 169 938 5 0 0 0 - - -;
+#X floatatom 90 807 5 0 0 0 - - -;
+#X obj 90 781 / 500;
+#X text 171 424 a ztišit zvukový signál.);
+#X text 283 610 Klikejte postupně zleva doprava.;
+#X text 66 85 Až v Pd naprogramujete svůj první projekt \, např.
+nějaký audio-vizuální nástroj \, pak narazíte na problém týkající
+se jeho inicializace a přednastavení. Inicializovat hodnoty ručně
+vždy po otevření patche by nás zbytečně obtěžovalo. Řešením
+je použití objektu [loadbang] \, který pokaždé \, když otevřeme
+patch \, pošle bang. Ten obvykle vede do zpráv _____ s přednastavenými
+hodnotami \, nebo spouští jiné akce související s inicializací
+systému.;
+#X text 168 410 (Nehezký způsob \, jak zesílit;
+#X text 66 520 Objekt [change] najde využití v situacích \, kdy
+budeme potřebovat provést nějakou akci pouze při změně přijaté
+hodnoty. Takovou situací je např. filtrování proudu čísel \,
+jaký obdržíme při čtení dat z analogových senzorů (fotorezistor
+\, potenciometr \, joystick atd.).;
+#X obj 442 167 cnv 15 100 15 empty empty empty 20 12 0 14 -262144 -66577
+0;
+#X connect 1 0 6 0;
+#X connect 2 0 5 0;
+#X connect 3 0 9 0;
+#X connect 4 0 3 0;
+#X connect 5 0 8 0;
+#X connect 6 0 2 0;
+#X connect 6 1 4 0;
+#X connect 6 2 10 0;
+#X connect 8 0 7 0;
+#X connect 8 0 7 1;
+#X connect 9 0 8 1;
+#X connect 18 0 22 0;
+#X connect 19 0 22 0;
+#X connect 20 0 22 0;
+#X connect 21 0 22 0;
+#X connect 22 0 23 0;
+#X connect 29 0 22 0;
+#X connect 32 0 22 0;
+#X connect 46 0 50 0;
+#X connect 47 0 51 0;
+#X connect 48 0 47 0;
+#X connect 49 0 46 0;
+#X connect 50 0 56 0;
+#X connect 51 0 61 0;
+#X connect 52 0 53 0;
+#X connect 53 0 54 0;
+#X connect 53 0 55 0;
+#X connect 54 0 53 1;
+#X connect 56 0 57 0;
+#X connect 57 0 58 0;
+#X connect 57 0 59 0;
+#X connect 58 0 57 1;
+#X connect 60 0 52 0;
+#X connect 60 0 49 0;
+#X connect 61 0 60 0;

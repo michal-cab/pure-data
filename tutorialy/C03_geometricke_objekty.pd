@@ -1,0 +1,155 @@
+#N canvas 1 54 718 1017 12;
+#X obj 67 73 cnv 15 567 25 empty empty geometrické_objekty_a_operace_s_nimi
+20 12 0 14 -1 -262144 0;
+#X obj 860 107 cnv 15 100 60 empty empty empty 20 12 0 14 -262144 -66577
+0;
+#X obj 89 187 gemwin_abs;
+#X obj 88 323 gemhead;
+#X obj 88 280 tgl 15 1 empty empty empty 0 -6 0 8 -262144 -1 -1 0 1
+;
+#X obj 88 381 square;
+#X text 155 322 Hlavička řetězce.;
+#X text 154 373 Vykreslovaný objekt - v tomto případě čtverec.
+;
+#X floatatom 127 352 5 0 0 0 - - -;
+#X text 154 387 Pravým vstupem měníme jeho velikost.;
+#X obj 87 556 square;
+#X obj 146 556 rectangle;
+#X obj 221 556 circle;
+#X obj 284 556 triangle;
+#X obj 87 526 gemhead;
+#X obj 87 505 tgl 15 1 empty empty empty 0 -6 0 8 -262144 -1 -1 0 1
+;
+#X obj 146 527 gemhead;
+#X obj 146 505 tgl 15 1 empty empty empty 0 -6 0 8 -262144 -1 -1 0
+1;
+#X obj 221 527 gemhead;
+#X obj 221 505 tgl 15 1 empty empty empty 0 -6 0 8 -262144 -1 -1 0
+1;
+#X obj 284 527 gemhead;
+#X obj 284 505 tgl 15 1 empty empty empty 0 -6 0 8 -262144 -1 -1 0
+1;
+#X obj 498 476 gemhead;
+#X obj 498 455 tgl 15 1 empty empty empty 0 -6 0 8 -262144 -1 -1 0
+1;
+#X obj 498 556 curve 5;
+#X obj 354 527 gemhead;
+#X obj 354 505 tgl 15 1 empty empty empty 0 -6 0 8 -262144 -1 -1 0
+1;
+#X obj 354 556 text2d;
+#X msg 415 526 text gem;
+#X msg 507 504 1 1 0;
+#X msg 516 529 1 -1 0;
+#X obj 88 653 gemhead;
+#X obj 88 632 tgl 15 1 empty empty empty 0 -6 0 8 -262144 -1 -1 0 1
+;
+#X obj 147 654 gemhead;
+#X obj 147 632 tgl 15 1 empty empty empty 0 -6 0 8 -262144 -1 -1 0
+1;
+#X obj 208 654 gemhead;
+#X obj 208 632 tgl 15 1 empty empty empty 0 -6 0 8 -262144 -1 -1 0
+1;
+#X obj 452 655 gemhead;
+#X obj 452 633 tgl 15 1 empty empty empty 0 -6 0 8 -262144 -1 -1 0
+1;
+#X obj 270 654 gemhead;
+#X obj 270 632 tgl 15 1 empty empty empty 0 -6 0 8 -262144 -1 -1 0
+1;
+#X obj 88 683 cube;
+#X obj 147 683 sphere;
+#X obj 208 683 cone;
+#X obj 270 683 teapot;
+#X obj 330 655 gemhead;
+#X obj 330 633 tgl 15 1 empty empty empty 0 -6 0 8 -262144 -1 -1 0
+1;
+#X obj 392 655 gemhead;
+#X obj 392 633 tgl 15 1 empty empty empty 0 -6 0 8 -262144 -1 -1 0
+1;
+#X obj 330 684 torus;
+#X obj 392 684 cuboid;
+#X obj 535 636 gemhead;
+#X obj 535 607 tgl 15 1 empty empty empty 0 -6 0 8 -262144 -1 -1 0
+1;
+#X msg 546 662 text gem;
+#X obj 535 686 text3d;
+#X obj 452 685 tube 1 1 1;
+#X msg 88 932 draw line;
+#X msg 173 931 draw point;
+#X msg 270 931 draw fill;
+#X text 67 857 Struktura některých objektů vám bude zjevnější
+\, když do jejich aktivního vstupu ještě zapojíte zprávu \, která
+určuje způsob vykreslení - celkem jsou tři: vyplněné plochy \,
+hrany a body.;
+#X obj 506 826 gemhead;
+#X obj 506 805 tgl 15 1 empty empty empty 0 -6 0 8 -262144 -1 -1 0
+1;
+#X obj 506 932 cube;
+#X msg 527 856 draw line;
+#X msg 526 888 draw fill;
+#X text 66 95 Nyní se budeme zabývat tím \, jak do okna vykreslit
+základní geometrické objekty \, řádem ve vykreslování \, a také
+operacemi jako posun \, rotace a škálování. Vložíme do patche
+abstrakci [gemwin_abs] a kliknutím na červený vypínač vytvoříme
+vykreslovací okno.;
+#X text 66 218 Pokud chceme v okně něco zobrazit \, musíme vytvořit
+tzv. vykreslovací řetězec. Ten sestává vždy z hlavičky - objektu
+[gemhead] a je ukončen objektem \, který vykreslujeme.;
+#X text 109 272 Vypínačem zapojeným do [gemheadu] celý řetězec
+zapneme/vypneme.;
+#X text 67 413 Mezi základní geometrické objekty \, které umisťujeme
+obvykle na konec řetězce \, patří šest následujících: čtverec
+\, obdélník \, kruh \, trojúhelník \, text a křivka. Objekt uvidíte
+\, když zapnete daný vykreslovací řetězec. Nezapínejte ale víc
+než jeden \, jinak by se objekty překrývaly.;
+#X text 66 587 V případě trojrozměrných objektů pak jde o krychli
+\, kouli \, kužel \, konvičku \, prstenec \, kvádr \, text a válec.
+;
+#X text 66 713 Zkuste do pasivních vstupů jednotlivých objektů
+zapojit číselný box \, stejně jako v případě prvního uvedeného
+příkladu můžete měnit jejich velikost. Objekt [rectangle] má
+pochopitelně dva vstupy \, jimiž měníme rozměry na ose __ X a
+Y. U 3D objektu [sphere] pravý vstup určuje množství segmentů
+\, ze kterých je objekt vykreslen. Pro bližší seznámení se se
+vstupy objektů jako je [curve] \, [cone] \, [torus] \, [cuboid] a
+[tube] se podívejte do nápovědy k těmto objektům.;
+#X obj 459 765 cnv 15 60 15 empty empty empty 20 12 0 14 -262144 -66577
+0;
+#X connect 3 0 5 0;
+#X connect 4 0 3 0;
+#X connect 8 0 5 1;
+#X connect 14 0 10 0;
+#X connect 15 0 14 0;
+#X connect 16 0 11 0;
+#X connect 17 0 16 0;
+#X connect 18 0 12 0;
+#X connect 19 0 18 0;
+#X connect 20 0 13 0;
+#X connect 21 0 20 0;
+#X connect 22 0 24 0;
+#X connect 23 0 22 0;
+#X connect 25 0 27 0;
+#X connect 26 0 25 0;
+#X connect 28 0 27 0;
+#X connect 29 0 24 1;
+#X connect 30 0 24 2;
+#X connect 31 0 41 0;
+#X connect 32 0 31 0;
+#X connect 33 0 42 0;
+#X connect 34 0 33 0;
+#X connect 35 0 43 0;
+#X connect 36 0 35 0;
+#X connect 37 0 55 0;
+#X connect 38 0 37 0;
+#X connect 39 0 44 0;
+#X connect 40 0 39 0;
+#X connect 45 0 49 0;
+#X connect 46 0 45 0;
+#X connect 47 0 50 0;
+#X connect 48 0 47 0;
+#X connect 51 0 54 0;
+#X connect 52 0 51 0;
+#X connect 53 0 54 0;
+#X connect 60 0 62 0;
+#X connect 61 0 60 0;
+#X connect 63 0 62 0;
+#X connect 64 0 62 0;

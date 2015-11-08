@@ -1,0 +1,128 @@
+#N canvas 1 54 718 1017 12;
+#X obj 71 73 cnv 15 200 15 empty empty MOCNINA_ODMOCNINA_LOGARITMUS
+2 8 0 12 -228856 -66577 0;
+#X obj 90 193 pow 2;
+#X floatatom 90 161 5 0 0 0 - - -;
+#X floatatom 90 231 5 0 0 0 - - -;
+#X floatatom 167 162 5 0 0 0 - - -;
+#X floatatom 167 232 5 0 0 0 - - -;
+#X floatatom 247 161 5 0 0 0 - - -;
+#X floatatom 247 231 5 0 0 0 - - -;
+#X obj 247 195 log;
+#X obj 322 199 purepd/log10;
+#X floatatom 322 163 5 0 0 0 - - -;
+#X floatatom 322 232 5 0 0 0 - - -;
+#X obj 167 196 sqrt;
+#X obj 71 272 cnv 15 200 15 empty empty TRIGONOMETRIE 2 8 0 12 -228856
+-66577 0;
+#X obj 87 478 sin;
+#X obj 128 478 cos;
+#X obj 171 477 tan;
+#X obj 214 476 atan;
+#X floatatom 87 344 5 0 0 0 - - -;
+#X obj 87 399 * 6.28319;
+#X obj 87 370 / 360;
+#X obj 87 506 print sin;
+#X obj 128 531 print cos;
+#X obj 171 504 print tan;
+#X obj 214 530 print atan;
+#X text 306 313 o;
+#X text 311 313 o;
+#X text 326 314 a [atan] -pi/2..pi/2.;
+#X text 70 284 V Pd nechybí ani trigonometrické funkce. Na vstupu
+čekají na hodnotu v radiánech. [sin] a [cos] mají na výstupu hodnoty
+o rozsahu -1..1 \, [tan] 0..;
+#X floatatom 87 429 5 0 0 0 - - -;
+#X msg 136 342 90;
+#X obj 71 568 cnv 15 200 15 empty empty BITOVÉ_OPERÁTORY 2 8 0 12
+-228856 -66577 0;
+#X obj 632 690 cnv 15 1 1 empty empty 0 -500 20 0 9 -262144 -66577
+0;
+#X text 87 703 6 * 10;
+#X text 140 703 = 6 * 1 = 6;
+#X obj 632 710 cnv 15 1 1 empty empty 1 -500 20 0 9 -262144 -66577
+0;
+#X text 87 723 5 * 10;
+#X text 140 723 = 5 * 10 = 50;
+#X text 87 742 2 * 10;
+#X obj 632 729 cnv 15 1 1 empty empty 2 -500 20 0 9 -262144 -66577
+0;
+#X text 140 742 = 2 * 100 = 200;
+#X text 268 692 Bereme tedy postupně jednotky \, desítky \,;
+#X text 70 763 Jak ale zjistit hodnotu čísla \, které je zapsáno
+ve dvojkové soustavě? Jak převést binární číslo na dekadické?
+Podobně jako v předchozím případě \, jen změníme základ z
+10 na 2 Vezměme si např. binární číslo 1101;
+#X obj 628 819 cnv 15 1 1 empty empty 0 -500 20 0 9 -262144 -66577
+0;
+#X obj 628 839 cnv 15 1 1 empty empty 1 -500 20 0 9 -262144 -66577
+0;
+#X obj 628 858 cnv 15 1 1 empty empty 2 -500 20 0 9 -262144 -66577
+0;
+#X text 90 832 1 * 2;
+#X text 138 832 = 1 * 1 = 1;
+#X text 268 720 podle řádu \, kde se číslo nachází. Výsledky
+pak;
+#X text 268 734 sečteme a máme hodnotu 256;
+#X obj 628 877 cnv 15 1 1 empty empty 3 -500 20 0 9 -262144 -66577
+0;
+#X text 90 890 1 * 2;
+#X text 138 890 = 1 * 8 = 8;
+#X text 271 837 Součet jednotlivých výsledků nám dohromady dá
+;
+#X text 90 852 0 * 2;
+#X text 90 871 1 * 2;
+#X text 138 871 = 1 * 4 = 4;
+#X text 270 852 13 Hodnota binárního čísla 1101 je \, vyjádřeno
+;
+#X text 70 913 Dvojková soustava se základem 2 je v programování
+důležitá proto \, že odpovídá reprezentaci čísel v počítači.
+Počítač "nevidí" číslo 13 \, ale 1101 a místo 9 "vidí" 1001
+;
+#X text 450 734 .;
+#X text 456 794 .;
+#X text 437 866 .;
+#X text 314 808 .;
+#X text 138 852 = 0 * 2 = 0;
+#X text 412 943 .;
+#X text 283 852 .;
+#X text 270 866 v dekadické soustavě \, 13;
+#X text 132 665 .;
+#X text 71 580 Pozor \, bitový operátor není binární operátor.
+Termín "bitový" zde znamená \, že "v sobě" operace s čísly vyhodnocuje
+tak \, jako kdyby byly zapsány ve dvojkové soustavě (číselná
+soustava \, která používá pouze 0 a 1).;
+#X text 70 650 Přirozeně jsme zvyklí počítat v desítkové soustavě.
+Ta má základ 10 Číslo 256 v ní s pomocí tohoto základu dokážeme
+vyjádřit také takto:;
+#X text 173 344 Stupně.;
+#X text 133 370 Rozdělíme kruh na 360 dílů.;
+#X text 128 428 Radiány.;
+#X text 162 398 2 * "Pí".;
+#X text 367 352 Pí * rad = půl kruhu;
+#X text 360 368 2pí * rad = celý kruh;
+#X text 71 85 Pokud budete potřebovat některé z těchto matematických
+operací \, pak použijete objekty [pow] - mocnina \, [sqrt] - druhá
+odmocnina a [log] nebo [purepd/log10] \, což je přirozený a dekadický
+logaritmus.;
+#X text 268 706 stovky atd. a násobíme je základem umocněným;
+#X connect 1 0 3 0;
+#X connect 2 0 1 0;
+#X connect 4 0 12 0;
+#X connect 6 0 8 0;
+#X connect 8 0 7 0;
+#X connect 9 0 11 0;
+#X connect 10 0 9 0;
+#X connect 12 0 5 0;
+#X connect 14 0 21 0;
+#X connect 15 0 22 0;
+#X connect 16 0 23 0;
+#X connect 17 0 24 0;
+#X connect 18 0 20 0;
+#X connect 19 0 29 0;
+#X connect 20 0 19 0;
+#X connect 29 0 14 0;
+#X connect 29 0 15 0;
+#X connect 29 0 16 0;
+#X connect 29 0 17 0;
+#X connect 30 0 20 0;

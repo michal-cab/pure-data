@@ -1,0 +1,100 @@
+#N canvas 1 54 718 1017 12;
+#X obj 67 569 cnv 15 200 15 empty empty ŽIVÉ_VIDEO 2 8 0 12 -228856
+-66577 0;
+#X obj 88 75 pix_refraction;
+#X obj 306 75 pix_kaleidoscope;
+#X obj 204 76 pix_contrast;
+#X text 437 75 Atd.;
+#X obj 506 163 pddplink http://www.youtube.com/watch?v=8qh6jRzjmcY
+-text Dan Sandin a IP;
+#X obj 97 372 pix_film video.avi;
+#X msg 237 371 0;
+#X obj 97 411 pix_aging;
+#X obj 97 454 pix_blur;
+#X obj 475 335 gemwin_abs;
+#X msg 174 344 auto \$1;
+#X obj 174 321 tgl 15 0 empty empty empty 17 7 0 10 -262144 -1 -1 1
+1;
+#X obj 97 493 pix_texture;
+#X obj 75 412 tgl 15 1 empty empty empty 17 7 0 10 -262144 -1 -1 1
+1;
+#X obj 74 457 tgl 15 1 empty empty empty 17 7 0 10 -262144 -1 -1 1
+1;
+#X obj 179 452 hsl 128 15 0 1 0 0 empty empty empty -2 -8 0 10 -262144
+-1 -1 0 1;
+#X text 273 362 Načtení daného video souboru lze specifikovat;
+#X text 273 375 přímo v objektu [pix_film]. Přehráváme ve smyčce.
+;
+#X text 169 409 "Starý film".;
+#X text 319 448 Rozmazání.;
+#X text 185 491 Nezapomeneme na texturování.;
+#X obj 97 530 rectangle 4 3;
+#X text 202 529 Video je ve formátu 4x3.;
+#X obj 90 941 rectangle 4 3;
+#X obj 90 917 pix_texture;
+#X msg 115 718 enumerate;
+#X msg 116 793 dialog;
+#X msg 115 743 device 0;
+#X obj 150 892 print info;
+#X obj 90 868 pix_video;
+#X obj 116 824 tgl 15 0 empty empty empty 17 7 0 10 -262144 -1 -1 0
+1;
+#X msg 116 842 driver \$1;
+#X msg 115 767 device /dev/video0;
+#X text 191 712 Vypíše dostupná video zařízení do Pd konzole.
+Zařízení mají určité pořadové číslo \, které zadáme do
+zprávy [device číslo(.;
+#X text 253 766 Pod Linuxem lze zadat absolutní cestu k zařízení.
+;
+#X text 169 793 Otevře okno s nastavením kamery (Windows \, MacOs).
+;
+#X text 169 819 Přepíná různé typy ovladačů pro video zařízení.
+;
+#X msg 202 842 driver dv;
+#X text 278 841 (eventuelně prozkoumejte v dokumentaci).;
+#X obj 97 344 gemhead 1;
+#X obj 90 691 gemhead 2;
+#X obj 90 673 tgl 15 1 empty empty empty 17 7 0 10 -262144 -1 -1 0
+1;
+#X text 109 669 Zapneme tento zobrazovací řetězec.;
+#X text 66 103 Umístěním těchto a dalších pix_ objektů v zobrazovacím
+řetězci mezi [pix_movie] dosáhneme různých modulací videosignálu.
+Podívejte se na legendární záznam Dana Sandina \, ve kterém představuje
+svůj analogový Image Processor. S pomocí pix_ objektů můžeme
+obraz ohýbat podobně.;
+#X text 67 202 Jednotlivé pix_ objekty mají různý počet vstupů
+\, kterými lze řídit jejich parametry. Nebudeme se jim zde věnovat
+jednotlivě - jistě sami dokážete na základě studia dokumentace
+a vlastního experimentování zjistit \, co který dělá. Pix_ objekty
+lze v řetězci zapínat a vypínat posláním zprávy [1( nebo [0(
+do jejich levého vstupu. Záleží také na tom \, v jakém pořadí
+za sebe jednotlivé pix_ objekty zapojíte.;
+#X text 66 580 Pokud máte k dispozici web kameru nebo v počítači
+máte firewire rozhraní \, do kterého lze zapojit kameru \, pak v
+Pd můžete pracovat i s živým videem. Kameru nejprve připojíme
+k počítači \, a pak teprve zapneme Pd. Signál z kamery zprostředkovává
+objekt [pix_video].;
+#X connect 6 0 8 0;
+#X connect 6 2 7 0;
+#X connect 7 0 6 1;
+#X connect 8 0 9 0;
+#X connect 9 0 13 0;
+#X connect 11 0 6 0;
+#X connect 12 0 11 0;
+#X connect 13 0 22 0;
+#X connect 14 0 8 0;
+#X connect 15 0 9 0;
+#X connect 16 0 9 1;
+#X connect 25 0 24 0;
+#X connect 26 0 30 0;
+#X connect 27 0 30 0;
+#X connect 28 0 30 0;
+#X connect 30 0 25 0;
+#X connect 30 1 29 0;
+#X connect 31 0 32 0;
+#X connect 32 0 30 0;
+#X connect 33 0 30 0;
+#X connect 38 0 30 0;
+#X connect 40 0 6 0;
+#X connect 41 0 30 0;
+#X connect 42 0 41 0;

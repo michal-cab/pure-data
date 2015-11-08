@@ -1,0 +1,66 @@
+#N canvas 1 54 718 1017 12;
+#X obj 71 812 cnv 15 200 15 empty empty VZORKOVACÍ_FREKVENCE 2 8 0
+12 -228856 -66577 0;
+#X obj 97 684 adc~;
+#X obj 97 775 dac~;
+#X obj 280 305 image adc_dac.gif;
+#X text 285 225 ADC;
+#X text 285 369 DAC;
+#X text 413 287 DSP;
+#X text 406 302 jádro;
+#X text 275 286 zvuková;
+#X text 280 300 karta;
+#X text 98 417 analogový signál;
+#X text 305 417 digitální signál;
+#N canvas 521 541 450 300 dsp 0;
+#X obj 35 50 inlet~;
+#X obj 102 50 inlet~;
+#X obj 36 129 outlet~;
+#X obj 101 129 outlet~;
+#X text 131 81 no teď tady ještě nic není;
+#X text 129 98 jsme se studiem teprve na začátku :);
+#X connect 0 0 2 0;
+#X connect 1 0 3 0;
+#X restore 90 729 pd dsp;
+#X obj 92 540 adc~ 1 2 3 4;
+#X obj 91 580 dac~ 1 2 3 4;
+#X text 356 216 ... 0.1 \, 0.45 ...;
+#X text 357 381 ... 0.6 \, 0.73 ...;
+#X text 186 540 Vícekanálová zvuková karta se čtyřmi vstupy;
+#X text 188 579 a čtyřmi výstupy.;
+#X text 70 608 Když bychom se rozhodli v Pd naprogramovat systém
+\, jehož funkcí by byla změna vstupního signálu v reálném čase
+(např. kytarový efekt) \, pak by v zásadě patch měl tuto podobu:
+;
+#X text 152 675 Z objektu [adc~] čteme vstupní digitalizovaný signál
+;
+#X text 149 690 (hlas \, kytara) a posíláme ho do subpatche \, kde
+dochází;
+#X text 153 705 k samotné manipulaci signálu.;
+#X text 153 751 A posíláme ho zpět zvukové kartě \, která digitální
+;
+#X text 70 823 O vzorkovací frekvenci jsme se již zmínili. Je to
+číslo informující nás o tom \, kolik "měření" při převádění
+analogového signálu na digitální za jednu vteřinu pořizujeme.
+Standardně je to 44100 vzorků za vteřinu. Od hodnoty vzorkovací
+frekvence se odvíjí maximální reprezentovatelná frekvence v daném
+vzorku. V případě 44100 je to 22050 Hz \, což dostatečně pokrývá
+námi slyšitelnou škálu.;
+#X text 70 69 V počítači se o převod analogového signálu na digitální
+__ a vice versa starají dva typy konvertorů \, které jsou součástí
+zvukové karty. První se označuje jako ADC (Analog Digital Convertor)
+a zajišťuje převod analogových signálů na digitální. DAC (Digital
+Analog Convertor) se \, překvapivě \, stará o opačný proces. Schematicky
+si funkci obou převodníků můžeme znázornit tako:;
+#X obj 462 78 cnv 15 60 15 empty empty empty 20 12 0 14 -262144 -66577
+0;
+#X text 70 448 V Pd existují objekty [adc~] a [dac~]. Nejsou to přímo
+převodníky \, ale zprostředkovávají nám vstupy a výstupy \,
+které máme k dispozici díky zvukové kartě. Pokud je naše karta
+vícekanálová \, pak tyto objekty můžeme specifikovat argumenty
+\, jež označují jednotlivé vstupy a výstupy.;
+#X text 153 766 signál převede zpátky na analogový.;
+#X connect 1 0 12 0;
+#X connect 1 1 12 1;
+#X connect 12 0 2 0;
+#X connect 12 1 2 1;

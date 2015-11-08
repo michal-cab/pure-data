@@ -1,0 +1,158 @@
+#N canvas 1 54 718 1017 12;
+#X obj 77 243 cnv 15 150 150 empty empty 1 4 10 0 14 -233017 -66577
+0;
+#X obj 240 243 cnv 15 150 150 empty empty 2 4 10 0 14 -233017 -66577
+0;
+#X obj 405 476 cnv 15 220 180 empty empty 5 4 10 0 14 -233017 -66577
+0;
+#X obj 405 669 cnv 15 220 60 empty empty 6 4 10 0 14 -233017 -66577
+0;
+#X obj 405 242 cnv 15 220 220 empty empty 3 4 10 0 14 -233017 -66577
+0;
+#X obj 404 743 cnv 15 220 145 empty empty 7 4 10 0 14 -233017 -66577
+0;
+#X obj 77 408 cnv 15 313 480 empty empty 4 4 10 0 14 -233017 -66577
+0;
+#X obj 67 73 cnv 15 200 15 empty empty UKLÁDÁME_STAVY_DO_SOUBORU
+2 8 0 12 -228856 -66577 0;
+#X obj 285 915 msgfile;
+#X msg 527 691 print;
+#X msg 538 801 clear;
+#X obj 92 833 getdir;
+#X obj 92 810 bng 15 250 50 0 empty empty empty 17 7 0 10 -203904 -1
+-1;
+#X obj 492 752 bng 15 250 50 0 empty empty empty 17 7 0 10 -262144
+-1 -1;
+#X obj 99 251 vsl 15 128 0 127 0 0 sld1 sld_rec_1 empty 0 -9 0 10 -262144
+-1 -1 0 1;
+#X obj 122 251 vsl 15 128 0 127 0 0 sld2 sld_rec_2 empty 0 -9 0 10
+-262144 -1 -1 0 1;
+#X obj 145 252 vsl 15 128 0 127 0 0 sld3 sld_rec_3 empty 0 -9 0 10
+-262144 -1 -1 0 1;
+#X obj 167 252 vsl 15 128 0 127 0 0 sld4 sld_rec_4 empty 0 -9 0 10
+-262144 -1 -1 0 1;
+#X obj 190 252 vsl 15 128 0 127 0 0 sld5 sld_rec_5 empty 0 -9 0 10
+-262144 -1 -1 0 1;
+#X obj 220 557 t b b;
+#X obj 220 532 bng 15 250 50 0 empty empty empty 17 7 0 10 -262144
+-1 -1;
+#X obj 220 585 uzi 5;
+#X msg 266 585 6;
+#X obj 220 618 f;
+#X obj 256 617 - 1;
+#X obj 244 266 r sld1;
+#X obj 267 292 r sld2;
+#X obj 244 324 pack f f f f f;
+#X obj 292 266 r sld3;
+#X obj 315 292 r sld4;
+#X obj 340 266 r sld5;
+#X msg 256 648 \; sld_rec_\$1 bang;
+#X obj 110 427 hradio 15 1 1 8 empty empty empty 0 -8 0 10 -262144
+-1 -1 0;
+#X obj 92 427 bng 15 250 50 0 empty empty empty 17 7 0 10 -258113 -1
+-1;
+#X obj 92 456 f;
+#X msg 285 511 goto \$1;
+#X msg 156 799 replace 127\ 107\ 82\ 61\ 34;
+#X obj 179 744 list2symbol;
+#X msg 179 769 set replace \$1;
+#X obj 92 483 t b b b f-------------------;
+#X obj 443 496 hradio 15 1 1 8 empty empty empty 0 -8 0 10 -262144
+-1 -1 0;
+#X obj 425 497 bng 15 250 50 0 empty empty empty 17 7 0 10 -4034 -1
+-1;
+#X obj 425 526 f;
+#X msg 448 622 goto \$1;
+#X obj 417 296 unpack f f f f f;
+#X obj 417 321 s sld_rec_1;
+#X obj 445 346 s sld_rec_2;
+#X obj 471 370 s sld_rec_3;
+#X obj 497 396 s sld_rec_4;
+#X obj 526 420 s sld_rec_5;
+#X obj 500 555 loadbang;
+#X obj 515 826 uzi 8;
+#X obj 425 554 t b f b;
+#X obj 417 269 r ulozeny_stav;
+#X obj 285 943 s ulozeny_stav;
+#X msg 92 858 write \$1/preset.txt;
+#X msg 471 597 read preset.txt;
+#X obj 244 354 s aktualni_stav;
+#X obj 179 718 r aktualni_stav;
+#X msg 515 851 add 0 0 0 0 0;
+#X obj 492 775 t b b b;
+#X obj 116 795 bng 15 250 50 0 empty empty empty 17 7 0 10 -262144
+-1 -1;
+#X text 125 442 Ulož preset č.;
+#X text 453 510 Nahraj preset č.;
+#X text 436 680 Ukaž všechny;
+#X text 512 747 Všechno smaž.;
+#X text 436 692 presety.;
+#X text 66 85 Na této stránce vidíme trochu míň těžkopádný
+\, ale přesto ne zcela optimální patch \, jenž ukládá nastavení
+do souboru preset.txt. Pokuste se sami analyzovat \, pochopit _________
+a vysvětlit jednotlivě očíslované segmenty kódu. Pokud vám něco
+nebude jasné \, zkuste se vrátit k předchozím kapitolám nebo nahédnout
+do nápovědy k jednotlivým objektům. _______ K důkladnému prozkoumání
+a ověření funkčnosti patche je samozřejmě nutné se podívat
+přímo na jeho zdrojový kód ___ a otestovat ho za běhu v Pd. Jsou
+v něm nějaké chyby? Šel by kód ještě optimalizovat?;
+#X obj 407 120 cnv 15 120 15 empty empty empty 20 12 0 14 -262144 -66577
+0;
+#X obj 419 164 cnv 15 120 15 empty empty empty 20 12 0 14 -262144 -66577
+0;
+#X obj 451 193 cnv 15 60 15 empty empty empty 20 12 0 14 -262144 -66577
+0;
+#X connect 8 0 54 0;
+#X connect 9 0 8 0;
+#X connect 10 0 8 0;
+#X connect 11 0 55 0;
+#X connect 12 0 11 0;
+#X connect 13 0 60 0;
+#X connect 19 0 21 0;
+#X connect 19 1 22 0;
+#X connect 20 0 19 0;
+#X connect 21 0 23 0;
+#X connect 22 0 23 1;
+#X connect 23 0 24 0;
+#X connect 24 0 23 1;
+#X connect 24 0 31 0;
+#X connect 25 0 27 0;
+#X connect 26 0 27 1;
+#X connect 27 0 57 0;
+#X connect 28 0 27 2;
+#X connect 29 0 27 3;
+#X connect 30 0 27 4;
+#X connect 32 0 34 1;
+#X connect 33 0 34 0;
+#X connect 34 0 39 0;
+#X connect 35 0 8 0;
+#X connect 36 0 8 0;
+#X connect 37 0 38 0;
+#X connect 38 0 36 0;
+#X connect 39 0 12 0;
+#X connect 39 1 36 0;
+#X connect 39 2 20 0;
+#X connect 39 3 35 0;
+#X connect 40 0 42 1;
+#X connect 41 0 42 0;
+#X connect 42 0 52 0;
+#X connect 43 0 8 0;
+#X connect 44 0 45 0;
+#X connect 44 1 46 0;
+#X connect 44 2 47 0;
+#X connect 44 3 48 0;
+#X connect 44 4 49 0;
+#X connect 50 0 56 0;
+#X connect 51 0 59 0;
+#X connect 52 0 8 0;
+#X connect 52 1 43 0;
+#X connect 52 2 56 0;
+#X connect 53 0 44 0;
+#X connect 55 0 8 0;
+#X connect 56 0 8 0;
+#X connect 58 0 37 0;
+#X connect 59 0 8 0;
+#X connect 60 0 61 0;
+#X connect 60 1 51 0;
+#X connect 60 2 10 0;
+#X connect 61 0 12 0;

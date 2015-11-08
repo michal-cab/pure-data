@@ -1,0 +1,93 @@
+#N canvas 1 54 718 1017 12;
+#X obj 67 197 cnv 15 200 15 empty empty ATOMICKÁ_ZPRÁVA 2 8 0 12
+-228856 -66577 0;
+#X msg 87 289 pů;
+#X msg 127 289 Symbol pů;
+#X symbolatom 87 358 10 0 0 0 - - -;
+#X obj 87 384 print;
+#X msg 129 321 symbol pů;
+#X text 221 284 Symbol box (CTRL + 4) čeká na zprávu;
+#X text 66 411 Jediný správný tvar zprávy pro symbol box má dva
+prvky: první je selektor "symbol" a druhý je nečíselný atom. Jakékoliv
+další atomy oddělené ve zprávě mezerou budou ignorovány.;
+#X msg 503 199 1;
+#X floatatom 503 255 5 0 0 0 - - -;
+#X msg 554 198 symbol pů;
+#X symbolatom 554 254 10 0 0 0 - - -;
+#X text 221 298 začínající explicitním selektorem "symbol".;
+#X text 220 354 se na chybová hlášení do konzole.;
+#X msg 525 700 symbol stop;
+#X text 524 582 definovaný;
+#X text 524 594 selektor/;
+#X text 524 606 příkaz stop:;
+#X msg 543 632 stop;
+#X obj 67 559 cnv 15 200 15 empty empty ZPRÁVA_-_PŘÍKAZ 2 8 0 12
+-228856 -66577 0;
+#X msg 74 732 symbol clear;
+#X msg 114 794 clear;
+#X symbolatom 74 864 10 0 0 0 - - -;
+#X text 178 729 Objekt [pipe] umí přijmout atomickou;
+#X text 178 758 vteřinách ji poslat dál.;
+#X text 178 786 Ale příkaz [clear( objekt [pipe] vyčistí.;
+#X obj 74 837 pipe s 5000;
+#X text 178 744 zprávu typu symbol jako tuto a po pěti;
+#X text 179 802 Když na něj kliknete do pěti vteřin od poslání
+;
+#X msg 509 390 pů;
+#X obj 541 447 symbol;
+#X symbolatom 541 477 10 0 0 0 - - -;
+#X text 506 368 nebo:;
+#X obj 509 514 print;
+#X obj 509 417 t a a;
+#X text 221 312 Proto neumí interpretovat zprávu [pů( ani;
+#X text 219 326 [Symbol pů(. Pd jsou tzv. Case Sensitive -;
+#X text 220 340 rozlišují malá a veká písmena. Podívejte;
+#X text 524 569 Uživatelsky;
+#X text 522 678 Symbol stop:;
+#X text 66 656 Rozlišovat mezi uživatelsky definovaným selektorem
+_______ a atomickou zprávou obsahující symbol je důležité \,
+protože některé objekty jinak reagují na symbol a jinak na selektor.
+Jako příklad nám poslouží objekt [pipe]:;
+#X obj 423 660 cnv 15 50 15 empty empty empty 20 12 0 14 -262144 -66577
+0;
+#X text 66 69 Doposud jsme se v Pd obešli bez použití selektorů
+a vše zdá se fungovalo \, to ostatně proto \, že jsme pracovali
+převážně s čísly \, která selektor float nebo list implicitně
+mají.;
+#X text 66 121 Právě proto \, že v Pd se často zachází s čísly
+\, jsou selektory pro jedno číslo a seznam začínající číslem
+implicitní. Psát před každým číslem float by bylo trochu únavné.
+;
+#X text 66 209 Atomická zpráva obsahuje jeden atom: buď číslo
+nebo symbol - takže se akorát "vejde" do číselného nebo symbol
+boxu. Již jsme viděli \, že u atomické číselné zprávy není
+třeba selektor explicitně uvádět \, u symbolu ale ano!;
+#X text 66 482 Symbol box "schovává" selektor symbol \, ve výstupu
+na konzoli ho ale vidíme. Stejně tak když do symbol boxu něco napíšeme
+a potvrdíme enterem - v konzoli uvidíme nejprve selektor symbol a
+pak zadaný text.;
+#X text 66 571 A co zprávy jako [stop( \, jež nespadají do selektorů
+\, které jsou v Pd předdefinovány (tedy float \, symbol \, list
+\, bang \, pointer)? Můžeme o nich uvažovat jako o uživatelsky
+definovaných selektorech nebo jako o příkazech pro daný objekt.
+;
+#X text 179 816 symbolu clear \, na výstupu nebude nic.;
+#X text 66 894 Zdůvodnění tohoto rozlišování si můžeme přiblížit
+ještě takto: Kdyby Pd nerozlišovala mezi "clear" a "symbol clear"
+\, jak by pak objekt [pipe] mohl "vědět" \, zda chceme poslat dál
+"zbržděnou" zprávu nebo jej vyčistit?;
+#X connect 1 0 3 0;
+#X connect 2 0 3 0;
+#X connect 3 0 4 0;
+#X connect 5 0 3 0;
+#X connect 8 0 9 0;
+#X connect 10 0 11 0;
+#X connect 20 0 26 0;
+#X connect 21 0 26 0;
+#X connect 26 0 22 0;
+#X connect 29 0 34 0;
+#X connect 30 0 31 0;
+#X connect 31 0 33 0;
+#X connect 34 0 33 0;
+#X connect 34 1 30 0;
+#X coords 0 1120 1 1119 85 60 0;

@@ -1,0 +1,135 @@
+#N canvas 1 54 718 1017 12;
+#X floatatom 325 521 5 0 0 0 - - -;
+#X obj 325 348 bng 15 250 50 0 empty empty empty 17 7 0 10 -262144
+-1 -1;
+#X obj 356 435 t b f;
+#X msg 356 461 clear;
+#X obj 349 347 hradio 15 1 1 3 empty empty empty 0 -8 0 10 -262144
+-1 -1 0;
+#X obj 349 368 + 1;
+#X floatatom 87 209 5 0 0 0 - - -;
+#X obj 87 163 bng 15 250 50 0 empty empty empty 17 7 0 10 -262144 -1
+-1;
+#X floatatom 274 210 5 0 0 0 - - -;
+#X obj 274 163 bng 15 250 50 0 empty empty empty 17 7 0 10 -262144
+-1 -1;
+#X msg 305 161 clear;
+#X obj 87 185 cxc_counter 0 5;
+#X obj 274 186 cxc_counter 0 5;
+#X text 126 209 počítá od jedné;
+#X text 350 160 nejprve klik na |clear(;
+#X text 313 210 počítá od nuly;
+#X obj 325 490 cxc_counter;
+#X floatatom 399 407 5 0 0 0 - - -;
+#X floatatom 356 407 5 0 0 0 - - -;
+#X floatatom 85 483 5 0 0 0 - - -;
+#X floatatom 167 414 5 0 0 0 - - -;
+#X floatatom 208 414 5 0 0 0 - - -;
+#X obj 126 362 hradio 15 1 1 3 empty empty empty 0 -8 0 10 -262144
+-1 -1 0;
+#X obj 126 383 + 1;
+#X floatatom 126 414 5 0 0 0 - - -;
+#X obj 85 450 cxc_counter -5 5 1;
+#X obj 85 412 bng 15 250 50 0 empty empty empty 17 7 0 10 -262144 -1
+-1;
+#X text 165 396 min;
+#X text 206 396 max;
+#X text 354 389 min;
+#X text 397 389 max;
+#X text 454 365 aby maximum bylo vždy;
+#X text 454 379 větší než minimum a;
+#X text 454 394 aby minimum bylo vždy;
+#X text 455 408 menší než maximum.;
+#X text 454 432 Dokázali byste pomocí;
+#X text 454 446 objektů [<] \, [>] a;
+#X text 452 461 [spigot] tento problém;
+#X text 454 476 vyřešit?;
+#X obj 67 546 cnv 15 200 15 empty empty [EXPR] 2 8 0 12 -228856 -66577
+0;
+#X floatatom 87 754 5 0 0 0 - - -;
+#X obj 87 700 bng 15 250 50 0 empty empty empty 17 7 0 10 -262144 -1
+-1;
+#X text 386 815 a + b;
+#X text 381 826 -------;
+#X text 387 840 a - b;
+#X text 436 828 *;
+#X text 451 826 c;
+#X text 66 782 Počet vstupů objektu [expr] se odvíjí od počtu
+proměnných:;
+#X floatatom 227 753 5 0 0 0 - - -;
+#X obj 227 726 expr $f1 * 2;
+#X floatatom 227 700 5 0 0 0 - - -;
+#X obj 483 597 cnv 15 30 10 empty empty 2 -80 12 0 8 -262144 -66577
+0;
+#X text 330 708 Pozor: na rozdíl od zpráv \, do kterých;
+#X text 330 723 se proměnné zapisují jako \$1 \, musíme;
+#X text 330 737 v [expr] proměnnou psát jako $f1..$fn \,;
+#X text 330 751 což značí proměnnou typu float!;
+#X floatatom 87 808 5 0 0 0 - - -;
+#X floatatom 211 808 5 0 0 0 - - -;
+#X floatatom 336 808 5 0 0 0 - - -;
+#X floatatom 87 856 5 0 0 0 - - -;
+#X obj 87 832 expr ($f1 + $f2) / ($f1 - $f2) * $f3;
+#X obj 87 727 expr (6 + 9) * 2;
+#X text 489 801 Výraz bude;
+#X text 489 815 vyhodnocen;
+#X text 489 829 při poslání;
+#X text 489 843 hodnoty na;
+#X text 489 856 aktivní vstup.;
+#X text 67 656 "Na tvrdo" zapsaný výraz do [expr] je vyhodnocen bangem.
+Vyhodnocovat jde samozřejmě i výrazy s proměnnými.;
+#X text 66 70 Když budeme chtít z objektu [cxc_counter] dostat řadu
+začínající nulou nebo zápornou hodnotou \, pak minimum sice také
+můžeme specifikovat argumentem \, ale ještě před tím \, než
+pošleme do levého vstupu bang \, je třeba do něj poslat zprávu
+|clear( - jinak bude [cxc_counter] počítat od jedné.;
+#X text 66 242 Způsob počítání \, maximum i minimum lze dynamicky
+měnit posíláním hodnot na vstupy. Druhý vstup určuje způsob
+počítání (1 = nahoru \, 2 = dolů \, 3 = ping-pong) \, třetí
+je minimum a poslední je maximum. Pokud ovšem chceme \, aby bylo
+počítadlo vždy inicializováno na minimum \, pošleme do levého
+vstupu pomocí [t b f] ještě zprávu [clear( \, jak ukazuje druhý
+příklad.;
+#X text 454 351 Zde nemáme ošetřeno \,;
+#X text 66 558 Objekt [expr] vám bude dobrým pomocníkem vždy \,
+když budete potřebovat zapsat jednoduše matematický výraz. Jde
+to samozřejmě i v dataflow zápisu \, ale ti z vás \, kteří se
+pokusili vypracovat cvičení týkající se výrazu a + 2ab + b \,
+snad potvrdí \, že by byli vděční za jednodušší způsob \,
+jak jej vyjádřit.;
+#X text 66 885 Do objektu [expr] lze zapisovat i mocniny \, odmocniny
+\, logaritmy \, goniometrické funkce \, podmínky atd. Podrobnější
+informace najdete ev. v dokumentaci (Nápověda -> PD Help Browser
+-> Pure Data -> 5.reference -> all_about_expr...). Později se také
+seznámíme s audio dvojčetem [expr~].;
+#X obj 553 597 cnv 15 30 30 empty empty 2 -80 12 0 8 -262144 -66577
+0;
+#X connect 1 0 16 0;
+#X connect 2 0 3 0;
+#X connect 2 1 16 2;
+#X connect 3 0 16 0;
+#X connect 4 0 5 0;
+#X connect 5 0 16 1;
+#X connect 7 0 11 0;
+#X connect 9 0 12 0;
+#X connect 10 0 12 0;
+#X connect 11 0 6 0;
+#X connect 12 0 8 0;
+#X connect 16 0 0 0;
+#X connect 17 0 16 3;
+#X connect 18 0 2 0;
+#X connect 20 0 25 2;
+#X connect 21 0 25 3;
+#X connect 22 0 23 0;
+#X connect 23 0 24 0;
+#X connect 24 0 25 1;
+#X connect 25 0 19 0;
+#X connect 26 0 25 0;
+#X connect 41 0 61 0;
+#X connect 49 0 48 0;
+#X connect 50 0 49 0;
+#X connect 56 0 60 0;
+#X connect 57 0 60 1;
+#X connect 58 0 60 2;
+#X connect 60 0 59 0;
+#X connect 61 0 40 0;

@@ -1,0 +1,143 @@
+#N canvas 1 54 718 1017 12;
+#X obj 67 73 cnv 15 567 25 empty empty vstupy_a_interaktivita 20 12
+0 14 -1 -262144 0;
+#X obj 67 313 cnv 15 200 15 empty empty KLÁVESNICE 2 8 0 12 -228856
+-66577 0;
+#X obj 87 397 key;
+#X obj 67 691 cnv 15 200 15 empty empty MYŠ 2 8 0 12 -228856 -66577
+0;
+#X obj 85 513 keyname;
+#X symbolatom 131 540 10 0 0 0 - - -;
+#X floatatom 85 541 5 0 0 0 - - -;
+#X floatatom 87 422 5 0 0 0 - - -;
+#X obj 307 399 keyup;
+#X floatatom 307 422 5 0 0 0 - - -;
+#X obj 131 589 bng 15 250 50 0 empty empty empty 17 7 0 10 -262144
+-1 -1;
+#X obj 168 589 bng 15 250 50 0 empty empty empty 17 7 0 10 -262144
+-1 -1;
+#X obj 131 564 sel Left Right Up Down;
+#X obj 206 589 bng 15 250 50 0 empty empty empty 17 7 0 10 -262144
+-1 -1;
+#X obj 244 589 bng 15 250 50 0 empty empty empty 17 7 0 10 -262144
+-1 -1;
+#X obj 329 513 key;
+#X obj 329 563 select 113 119 101 114;
+#X text 130 423 q = 113 \, w = 119 \, atd.;
+#X obj 329 589 bng 15 250 50 0 empty empty empty 17 7 0 10 -262144
+-1 -1;
+#X obj 366 589 bng 15 250 50 0 empty empty empty 17 7 0 10 -262144
+-1 -1;
+#X obj 404 589 bng 15 250 50 0 empty empty empty 17 7 0 10 -262144
+-1 -1;
+#X obj 442 589 bng 15 250 50 0 empty empty empty 17 7 0 10 -262144
+-1 -1;
+#X obj 86 836 cursor;
+#X obj 86 886 route x y;
+#X floatatom 86 925 5 0 0 0 - - -;
+#X floatatom 127 926 5 0 0 1 - - -;
+#X obj 86 817 tgl 15 0 empty empty empty 17 7 0 10 -262144 -1 -1 0
+1;
+#X floatatom 169 927 5 0 0 1 - - -;
+#X obj 86 861 route motion mousewheel button;
+#X obj 224 885 route 1 2 3;
+#X obj 224 909 tgl 15 0 empty empty empty 17 7 0 10 -262144 -1 -1 0
+1;
+#X obj 248 909 tgl 15 0 empty empty empty 17 7 0 10 -262144 -1 -1 0
+1;
+#X obj 273 909 tgl 15 0 empty empty empty 17 7 0 10 -262144 -1 -1 0
+1;
+#X obj 420 880 MouseState;
+#X msg 420 826 poll;
+#X msg 435 853 nopoll;
+#X floatatom 436 919 5 0 0 0 - - -;
+#X floatatom 478 919 5 0 0 0 - - -;
+#X floatatom 522 919 5 0 0 0 - - -;
+#X floatatom 565 919 5 0 0 0 - - -;
+#X obj 409 923 tgl 15 0 empty empty empty 17 7 0 10 -262144 -1 -1 0
+1;
+#X text 84 943 x;
+#X text 125 943 y;
+#X text 435 936 x;
+#X text 476 936 y;
+#X text 522 934 x;
+#X text 563 934 y;
+#X text 85 584 šipky;
+#X text 468 587 q w e r;
+#X obj 572 394 pddplink wikipedia.org/wiki/ASCII -text zde.;
+#X text 377 394 Seznam všech hodnot najdete;
+#X text 66 207 Přes USB jsou k počítači připojitelné různé
+MIDI kontrolery \, tablety \, joysticky \, pady \, WII \, nebo třeba
+____ i senzory \, které snímají srdeční tep a EEG. Pakliže jste
+zběhlí v základech elektrotechniky \, můžete si s pomocí vývojové
+platformy Arduino postavit vstupní zařízení dle vlastního přání.
+;
+#X text 66 325 Objekt [key] má pouze jeden výstup \, na který po
+zmáčknutí klávesy posílá číslo odpovídající její ASCII
+hodnotě _____ v dekadickém zápisu. [keyup] dělá to samé \, ale
+hodnotu posílá až po puštění klávesy.;
+#X obj 434 344 cnv 15 60 15 empty empty empty 20 12 0 14 -262144 -66577
+0;
+#X obj 443 227 cnv 15 60 15 empty empty empty 20 12 0 14 -262144 -66577
+0;
+#X text 107 814 Zapne/vypne čtení dat z myši.;
+#X text 460 824 Zapne \,;
+#X text 488 852 vypne.;
+#X text 165 945 Kolečko.;
+#X text 220 924 Tlačítka.;
+#X text 369 920 Levé;
+#X text 357 935 tlačítko.;
+#X text 522 946 Rychlost.;
+#X text 67 94 Po teoreticky trochu náročnějších kapitolách si
+nyní odpočineme při prozkoumávání vstupních zařízení. Většina
+interakce \, kterou jsme doposud v Pd provozovali \, se týkala inicializace
+bangů \, posuvníků nebo zpráv klikáním tlačítka myši. Klávesnice
+a myš jsou přitom pouze dva základní příklady z celé široké
+škály tzv. HID (Human Interface Devices) zařízení.;
+#X text 66 453 [keyname] má výstupy dva \, na levý posílá 1/0
+podle toho \, zda klávesa je nebo není zmáčknuta \, a na pravý
+výstup pak samotný znak (se selektorem symbol).;
+#X text 67 615 Objekty [key] \, [keyname] a [keyup] budeme nejčastěji
+kombinovat s objektem [select] \, jímž jednotlivé klávesy přiřadíme
+bangům \, a dále pak nějakým dalším událostem ____ v kódu \,
+zahrání tónu \, spuštění animace atd.;
+#X obj 443 654 cnv 15 60 15 empty empty empty 20 12 0 14 -262144 -66577
+0;
+#X text 66 703 Informace týkající se polohy kurzoru a stavu tlačítek
+myši čteme v Pd buď objektem [cursor] nebo objektem [MouseState].
+Nepoužíváme je zároveň \, protože pak jsou některé jejich funkce
+navzájem v konfliktu (např. čtení stavu tlačítek). [MouseState]
+má oproti komplexnějšímu [cursoru] jedinou výhodu \, a to je \,
+že na posledních dvou výstupech nám dává aktuální rychlost
+kurzoru na ose X a Y.;
+#X connect 2 0 7 0;
+#X connect 4 0 6 0;
+#X connect 4 1 5 0;
+#X connect 5 0 12 0;
+#X connect 8 0 9 0;
+#X connect 12 0 10 0;
+#X connect 12 1 11 0;
+#X connect 12 2 13 0;
+#X connect 12 3 14 0;
+#X connect 15 0 16 0;
+#X connect 16 0 18 0;
+#X connect 16 1 19 0;
+#X connect 16 2 20 0;
+#X connect 16 3 21 0;
+#X connect 22 0 28 0;
+#X connect 23 0 24 0;
+#X connect 23 1 25 0;
+#X connect 26 0 22 0;
+#X connect 28 0 23 0;
+#X connect 28 1 27 0;
+#X connect 28 2 29 0;
+#X connect 29 0 30 0;
+#X connect 29 1 31 0;
+#X connect 29 2 32 0;
+#X connect 33 0 40 0;
+#X connect 33 1 36 0;
+#X connect 33 2 37 0;
+#X connect 33 3 38 0;
+#X connect 33 4 39 0;
+#X connect 34 0 33 0;
+#X connect 35 0 33 0;

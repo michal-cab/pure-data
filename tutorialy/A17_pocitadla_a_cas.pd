@@ -1,0 +1,127 @@
+#N canvas 1 54 718 1017 12;
+#X obj 67 73 cnv 15 200 15 empty empty METRO(NOM) 2 8 0 12 -228856
+-66577 0;
+#X obj 84 681 metro 500;
+#X obj 84 662 tgl 15 0 empty empty empty 17 7 0 10 -262144 -1 -1 0
+1;
+#X obj 403 755 f;
+#X obj 442 754 + 1;
+#X obj 84 707 t b b b b;
+#X obj 325 806 f;
+#X obj 365 806 + 1;
+#X obj 212 812 tgl 15 0 empty empty empty 17 7 0 10 -262144 -1 -1 0
+1;
+#X obj 212 859 f;
+#X obj 250 859 + 1;
+#X obj 84 864 tgl 15 0 empty empty empty 17 7 0 10 -262144 -1 -1 0
+1;
+#X obj 84 910 f;
+#X obj 122 909 + 1;
+#X obj 212 833 metro 300;
+#X obj 84 885 metro 150;
+#X obj 85 431 tgl 15 0 empty empty empty 17 7 0 10 -262144 -1 -1 0
+1;
+#X obj 148 432 hsl 128 15 100 1000 0 0 empty empty empty -2 -8 0 10
+-262144 -1 -1 0 1;
+#X obj 85 510 f;
+#X obj 122 510 + 1;
+#X obj 154 564 mod 8;
+#X obj 189 544 hsl 128 15 4 32 0 0 empty empty empty -2 -8 0 10 -262144
+-1 -1 0 1;
+#X obj 85 487 bng 15 250 50 0 empty empty empty 17 7 0 10 -262144 -1
+-1;
+#X obj 122 538 t f f;
+#X floatatom 122 589 5 0 0 0 - - -;
+#X text 66 258 v milisekundách.;
+#X obj 83 295 tgl 15 0 empty empty empty 17 7 0 10 -262144 -1 -1 0
+1;
+#X obj 83 359 bng 15 250 50 0 empty empty empty 17 7 0 10 -262144 -1
+-1;
+#X obj 83 325 metro 500;
+#X msg 143 293 200;
+#X msg 184 293 1000;
+#X floatatom 233 293 5 0 0 0 - - -;
+#X text 286 425 Zde dynamicky měníme délku;
+#X text 286 453 na rozsah 100 až 1000 ms.;
+#X obj 85 458 metro 500;
+#X text 324 537 Zde dynamicky měníme;
+#X text 324 552 horní hranici \, do které;
+#X obj 442 779 % 16;
+#X obj 365 830 % 8;
+#X obj 250 887 % 16;
+#X obj 122 936 % 8;
+#X obj 489 782 hsl 128 15 1 16 0 0 empty empty empty -2 -8 0 10 -262144
+-1 -1 0 1;
+#X obj 399 830 hsl 128 15 1 8 0 0 empty empty empty -2 -8 0 10 -262144
+-1 -1 0 1;
+#X obj 158 939 hsl 128 15 1 8 0 0 empty empty empty -2 -8 0 10 -262144
+-1 -1 0 1;
+#X obj 290 889 hsl 128 15 1 16 0 0 empty empty empty -2 -8 0 10 -262144
+-1 -1 0 1;
+#X text 530 764 1..16;
+#X text 441 812 1..8;
+#X text 303 871 1..16 (8 fází);
+#X text 173 921 1..8 (2 fáze);
+#X text 66 85 Umíme již sestavit počítadlo \, ale zatím nám funguje
+\, jen když ručně klikáme na bang. Možná jste si již položili
+otázku: jak počítadlo automatizovat? Vzpomeňme si na kapitolu o
+tlačítkách a vypínačích - ano \, odpověď najdeme;
+#X text 66 145 v objektu [metro].;
+#X text 286 440 intervalu. Posuvník jsme nastavili;
+#X text 110 483 Bang je zde jen pro názornost \, můžeme ho vypustit.
+;
+#X text 324 565 počítáme. Posuvník je;
+#X text 324 577 nastaven na rozsah 4..32;
+#X text 492 577 .;
+#X text 66 617 Jedním metrem můžeme samozřejmě pohánět více
+počítadel \, spouštět jiná metra atd.;
+#X text 66 169 Objekt [metro] je vlastně metronom \, který v pravidelných
+intervalech posílá bang. Zopakujme si \, že se zapíná zprávou
+[bang( nebo [1( poslanou do aktivního vstupu a vypíná se zprávou
+[stop( nebo [0(. Délku intervalu buď můžeme specifikovat přímo
+argumentem \, nebo dynamicky zprávou poslanou do pasivního vstupu.
+Délka intervalu se zadává;
+#X text 65 384 Spojením metra s počítadlem dostaneme pomyslný "motor"
+- jednotku sloužící k pohánění různých částí kódu.;
+#X connect 1 0 5 0;
+#X connect 2 0 1 0;
+#X connect 3 0 4 0;
+#X connect 4 0 37 0;
+#X connect 4 0 41 0;
+#X connect 5 0 11 0;
+#X connect 5 1 8 0;
+#X connect 5 2 6 0;
+#X connect 5 3 3 0;
+#X connect 6 0 7 0;
+#X connect 7 0 38 0;
+#X connect 7 0 42 0;
+#X connect 8 0 14 0;
+#X connect 9 0 10 0;
+#X connect 10 0 39 0;
+#X connect 10 0 44 0;
+#X connect 11 0 15 0;
+#X connect 12 0 13 0;
+#X connect 13 0 40 0;
+#X connect 13 0 43 0;
+#X connect 14 0 9 0;
+#X connect 15 0 12 0;
+#X connect 16 0 34 0;
+#X connect 17 0 34 1;
+#X connect 18 0 19 0;
+#X connect 19 0 23 0;
+#X connect 20 0 18 1;
+#X connect 21 0 20 1;
+#X connect 22 0 18 0;
+#X connect 23 0 24 0;
+#X connect 23 1 20 0;
+#X connect 26 0 28 0;
+#X connect 28 0 27 0;
+#X connect 29 0 28 1;
+#X connect 30 0 28 1;
+#X connect 31 0 28 1;
+#X connect 34 0 22 0;
+#X connect 37 0 3 1;
+#X connect 38 0 6 1;
+#X connect 39 0 9 1;
+#X connect 40 0 12 1;
+#X coords 0 1120 1 1119 85 60 0;

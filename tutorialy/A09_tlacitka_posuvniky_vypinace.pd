@@ -1,0 +1,107 @@
+#N canvas 1 54 718 1017 12;
+#X obj 88 227 tgl 30 0 empty empty empty 17 7 0 10 -191407 -1 -1 0
+1;
+#X obj 118 227 tgl 30 0 empty empty empty 17 7 0 10 -191407 -1 -1 0
+1;
+#X obj 148 227 tgl 30 0 empty empty empty 17 7 0 10 -191407 -1 -1 0
+1;
+#X obj 178 227 tgl 30 0 empty empty empty 17 7 0 10 -191407 -1 -1 0
+1;
+#X obj 88 165 vsl 30 60 0 127 0 0 empty empty empty 0 -9 1 10 -162280
+-262144 -1 0 1;
+#X obj 118 165 vsl 30 60 0 127 0 0 empty empty empty 0 -9 1 10 -162280
+-262144 -1 0 1;
+#X obj 148 165 vsl 30 60 0 127 0 0 empty empty empty 0 -9 1 10 -162280
+-262144 -1 0 1;
+#X obj 178 165 vsl 30 60 0 127 0 0 empty empty empty 0 -9 1 10 -162280
+-262144 -1 0 1;
+#X obj 88 257 hradio 30 1 0 4 empty empty empty 0 -8 0 10 -228856 -258113
+-1 0;
+#X obj 88 287 knob 28 28 0 127 0 0 empty empty empty 0 -8 0 8 -262144
+-258113 -1 0 1;
+#X obj 118 288 knob 28 28 0 127 0 0 empty empty empty 0 -8 0 8 -262144
+-258113 -1 0 1;
+#X obj 149 288 knob 28 28 0 127 0 0 empty empty empty 0 -8 0 8 -258113
+-258113 -1 0 1;
+#X obj 178 288 knob 28 28 0 127 0 0 empty empty empty 0 -8 0 8 -262144
+-258113 -1 0 1;
+#X obj 67 74 cnv 15 200 15 empty empty CVIČENÍ: 2 8 0 12 -204800
+-66577 0;
+#X text 222 173 v tom \, jak jednotlivé prvky grafického;
+#X text 222 160 Vidíte tedy \, že Pd nabízí velkou míru svobody
+;
+#X text 222 189 uživatelského rozhraní rozvrhneme. Můžeme si;
+#X text 222 205 postavit GUI \, které bude vyhovovat přesně;
+#X text 222 248 Podobnou míru svobody jako je tomu;
+#X text 222 279 nám Pd dávají pochopitelně i v návrhu;
+#X text 222 222 našim potřebám.;
+#X text 222 263 v navrhování grafického "povrchu";
+#X obj 67 500 cnv 15 567 25 empty empty help_i_need_somebody 20 12
+0 14 -1 -262144 0;
+#X obj 67 934 cnv 15 200 15 empty empty CVIČENÍ: 2 8 0 12 -204800
+-66577 0;
+#X text 222 295 kódu. To uvidíme později...;
+#X obj 557 732 image help_1.gif;
+#X obj 552 648 image help_2.gif;
+#X obj 504 95 bng 40 250 50 0 empty empty empty 17 7 0 10 -258113 -1
+-1;
+#X obj 563 96 tgl 40 0 empty empty empty 17 7 0 10 -4034 -1 -1 0 1
+;
+#X obj 513 148 hsl 80 8 0 127 0 0 empty empty empty -2 -8 0 10 -257985
+-1 -1 0 1;
+#X text 68 390 - propojte výstup prvního posuvníku s levým vstupem
+prvního;
+#X text 68 440 - propojte výstup prvního osc~ s levým vstupem dac~
+;
+#X text 82 453 a výstup druhého osc~ s pravým vstupem dac~;
+#X text 68 471 - pohrajte si s posuvníky;
+#X text 69 358 - nastavte rozsah prvního posuvníku na 110 až 220
+;
+#X text 69 340 - vytvořte objekt [dac~] \, dva objekty [osc~] a dva
+posuvníky;
+#X text 83 371 a druhého na 220 až 440;
+#X text 67 692 Kliknutím PTM na prázdnou bílou plochu a zvolením
+Nápovědy z menu obdržíte seznam základních "slov" \, která Pd
+znají - přehledně roztříděných do sekcí podle funkce: čas
+\, MIDI \, matematické operace \, audio objekty atd.;
+#X text 68 947 - prozkoumejte nápovědu k objektům [float] \, [trigger]
+a;
+#X text 487 341 comment;
+#X text 82 405 [osc~] a výstup druhého posuvníku s levým vstupem
+druhého [osc~];
+#X text 66 622 Když na jakýkoliv objekt v Pd kliknete PTM a z menu
+vyberete položku Nápověda (Help) \, otevře se okno _________ s
+podrobným popisem funkce daného objektu \, včetně popisu vstupů
+a výstupů.;
+#X text 66 762 K další detailní nápovědě a materiálům vhodným
+___________ k samostudiu se dostanete (kupodivu) přes menu Nápověda
+-> Pd Help Browser (klávesová zkratka CTRL + b). V první kolonce
+nově otevřeného okna naklikněte položku "Pure Data" a ve druhé
+"5.reference". Ve třetí se zobrazí seznam referenčních souborů
+k jednotlivým objektům. Ke studiu jsou dobré soubory ze sekce all_about_...
+;
+#X text 66 879 V Pd Help Browseru můžete také prozkoumat dokumentaci
+ke všem externím knihovnám (první kolonka) \, které jsou ______
+v Pd-extended obsaženy \, a oficiální Millerův úvod.;
+#X text 459 947 [osc~];
+#X obj 407 640 cnv 15 66 15 empty empty empty 20 12 0 14 -262144 -66577
+0;
+#X obj 394 766 cnv 15 120 15 empty empty empty 20 12 0 14 -262144 -66577
+0;
+#X obj 428 900 cnv 15 120 15 empty empty empty 20 12 0 14 -262144 -66577
+0;
+#X text 66 85 Pokuste se vytvořit několik grafických ovládacích
+prvků __ a přizpůsobit je podobně jako vidíte níž. Tip: pro
+jemnější a přesnější manipulaci s označeným objektem nemusíte
+používat myš \, ale kurzorové šipky na klávesnici.;
+#X text 66 522 Na předchozích stránkách jsme hovořili o objektech
+\, jejich atributech \, o tom \, jaké mohou nebo nemohou příjmat
+zprávy atd. S postupem času a probrané látky toho v tomto ohledu
+opravdu nemálo prozkoumáme \, nicméně zvědavcům ____________
+a samostudia-chtivým nyní můžeme doporučit ke studiu dokumentaci
+a referenční soubory.;
+#X obj 389 570 cnv 15 120 15 empty empty empty 20 12 0 14 -262144 -66577
+0;
+#X obj 457 88 cnv 15 20 15 empty empty empty 20 12 0 14 -262144 -66577
+0;
+#X coords 0 1120 1 1119 85 60 0;

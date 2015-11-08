@@ -1,0 +1,98 @@
+#N canvas 1 54 718 1017 12;
+#X obj 71 73 cnv 15 200 15 empty empty SUBTRAKTIVNÍ_SYNTÉZA 2 8 0
+12 -228856 -66577 0;
+#X obj 93 364 noise~;
+#X obj 478 362 hsl 128 15 0.2 1 0 0 empty empty empty -2 -8 0 10 -262144
+-1 -1 0 1;
+#X obj 475 383 pow 4;
+#X obj 179 405 mtof;
+#X msg 179 362 60;
+#X msg 213 362 62;
+#X msg 252 362 64;
+#X obj 475 406 * 100;
+#X obj 92 502 z~ 64;
+#X obj 149 500 limiter~;
+#X obj 92 541 *~;
+#X obj 306 362 hsl 128 15 110 12000 0 0 empty empty empty -2 -8 0 10
+-262144 -1 -1 0 1;
+#X text 301 376 110..12000 Hz;
+#X obj 93 468 *~ 100;
+#X text 219 500 A pak usměrnit.;
+#X text 178 341 Frekvence "záběru" propusti.;
+#X text 92 344 Bílý šum.;
+#X text 218 406 MIDI na frekvenci.;
+#X text 70 184 [bp~] má tři vstupy. První je pro signál \, druhým
+specifikujeme frekvenci \, kolem které filtr "zabírá". Pásmová
+propust - jak napovídá název - propouští pouze určité pásmo
+v okolí dané frekvence. V Pd máme k dispozici i horní a spodní
+propust (filtry [hip~] a [lop~]) \, s [bp~] ale dané pásmo odfiltrujeme
+snáz. Třetím vstupem u [bp~] specifikujeme strmost filtru - tj.
+jaký rozsah z "okolí" frekvence záběru ještě propustí. Když
+je strmost filtru malá \, je tento rozsah větší a vyfiltrovaný
+signál je více zašumělý a vice versa.;
+#X text 476 341 Strmost propusti.;
+#X obj 540 219 bp~;
+#X obj 539 256 hip~;
+#X obj 539 295 lop~;
+#X obj 92 781 dac~;
+#X obj 92 596 analyzer_nolimit;
+#X text 360 590 Vytáhněte posuvník nastavující;
+#X text 360 620 zapněte vizualizaci signálu a;
+#X text 359 648 spektrum od 110 Hz až po 12000 Hz.;
+#X text 360 686 bílého šumu posouvá ve spektru nahoru;
+#X text 360 700 a dolů. Když posuvník ovládající;
+#X text 358 728 jak se vyfiltrovaná oblast spektra bude;
+#X text 360 742 postupně rozšiřovat.;
+#X obj 91 569 *~;
+#X obj 348 554 tgl 15 0 empty empty empty 17 7 0 10 -262144 -1 -1 0
+1;
+#X obj 93 435 bp~ 440 100;
+#X text 70 83 V aditivní syntéze signály slučujeme a tím vytváříme
+nové kvality ve spektru. U subtraktivní syntézy je proces opačný.
+Výchozím "materiálem" nám bude spektrálně bohatý signál a my
+z něj budeme odečítat složky. S pomocí objektu [bp~] \, což je
+pásmová propust (band-pass filter) \, můžeme __ z bílého šumu
+vyjmout určité frekvence.;
+#X text 147 465 Kvůli velké strmosti filtru musíme signál velmi
+zesílit.;
+#X text 360 606 strmost propusti úplně doprava \,;
+#X text 359 634 druhým posuvníkem si "projeďte";
+#X text 360 672 Uvidíte \, jak se vyfiltrovaná složka;
+#X text 360 714 strmost stáhnete doleva \, uvidíte;
+#X text 70 811 Zkuste experimentovat s mírou strmosti filtru \, ev.
+prozkoumejte \, jak se v kontaktu s bílým šumem chovají objekty
+[hip~] a [lop~]. Subtraktivní syntéza je vhodná ___ k vytváření
+nástrojů \, které mají "vzdušný" charakter - připomíná různé
+flétny a píšťaly.;
+#X text 70 896 V syntetizérech se často používají různé typy
+a kombinace syntéz - již teď se můžete pustit do vlastních průzkumů
+___ a zkusit zkombinovat aditivní a subtraktivní syntézu _____ v
+různých poměrech a s různými obálkami.;
+#X obj 462 149 cnv 15 120 15 empty empty empty 20 12 0 14 -262144 -66577
+0;
+#X obj 462 852 cnv 15 120 15 empty empty empty 20 12 0 14 -262144 -66577
+0;
+#X obj 461 923 cnv 15 120 15 empty empty empty 20 12 0 14 -262144 -66577
+0;
+#X obj 438 937 cnv 15 120 15 empty empty empty 20 12 0 14 -262144 -66577
+0;
+#X connect 1 0 35 0;
+#X connect 2 0 3 0;
+#X connect 3 0 8 0;
+#X connect 4 0 35 1;
+#X connect 5 0 4 0;
+#X connect 6 0 4 0;
+#X connect 7 0 4 0;
+#X connect 8 0 35 2;
+#X connect 9 0 11 0;
+#X connect 10 0 11 1;
+#X connect 11 0 33 0;
+#X connect 12 0 35 1;
+#X connect 14 0 9 0;
+#X connect 14 0 10 0;
+#X connect 25 0 24 0;
+#X connect 25 0 24 1;
+#X connect 33 0 25 0;
+#X connect 34 0 33 1;
+#X connect 34 0 25 1;
+#X connect 35 0 14 0;

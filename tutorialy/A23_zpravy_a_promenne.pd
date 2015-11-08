@@ -1,0 +1,153 @@
+#N canvas 1 54 718 1017 12;
+#X floatatom 438 503 0 0 0 0 - - -;
+#X obj 477 553 print;
+#X msg 477 526 puf \$1 \$2;
+#X floatatom 477 406 5 0 0 0 - - -;
+#X obj 477 484 pack f f;
+#X obj 477 431 t f f;
+#X obj 530 456 + 1;
+#X floatatom 92 189 4 0 0 0 - - -;
+#X floatatom 145 188 4 0 0 0 - - -;
+#X obj 92 271 print;
+#X obj 305 271 print;
+#X floatatom 305 189 5 0 0 0 - - -;
+#X obj 92 217 pack f f;
+#X text 160 224 proměnné;
+#X msg 92 245 \$1 \$2;
+#X text 384 214 posíláme pouze;
+#X text 383 227 atomickou zprávu;
+#X text 383 240 do zprávy \, která;
+#X text 383 253 čeká na seznam;
+#X msg 305 230 \$1 \$2 \$3;
+#X symbolatom 88 309 10 0 0 0 - - -;
+#X floatatom 166 310 5 0 0 0 - - -;
+#X floatatom 214 309 5 0 0 0 - - -;
+#X obj 135 337 t b f;
+#X obj 214 341 t b f;
+#X obj 88 376 pack s f f-------------;
+#X obj 88 431 print;
+#X text 267 306 Změna pasivních vstupů objektu [pack];
+#X text 267 333 posílá nejprve hodnotu do pasivního;
+#X floatatom 88 581 4 0 0 0 - - -;
+#X floatatom 129 581 5 0 0 0 - - -;
+#X obj 129 607 t b f;
+#X obj 88 635 pack f f;
+#X text 180 580 S pomocí zprávy začínající selektorem "set" následovaným
+;
+#X text 180 594 určitým počtem proměnných lze dynamicky měnit
+obsah zprávy \,;
+#X text 180 662 Zkuste prozkoumat \, co se stane \, když selektor
+"set";
+#X text 180 676 nahradíte selektorem "add" nebo "add2".;
+#X obj 67 73 cnv 15 200 15 empty empty PACK 2 8 0 12 -228856 -66577
+0;
+#X obj 67 729 cnv 15 200 15 empty empty UNPACK 2 8 0 12 -228856 -66577
+0;
+#X text 180 623 když budete chtít \, aby si váš patch nějaká
+nastavení;
+#X text 180 635 pamatoval.;
+#X msg 88 696 23 31;
+#X msg 88 665 set \$1 \$2;
+#X msg 88 403 text: \$1 hodnota 1: \$2 hodnota 2: \$3;
+#X floatatom 89 858 5 0 0 0 - - -;
+#X floatatom 129 858 5 0 0 0 - - -;
+#X floatatom 170 858 5 0 0 0 - - -;
+#X msg 359 846 \$1;
+#X msg 400 846 \$2;
+#X msg 440 846 \$3;
+#X floatatom 359 875 5 0 0 0 - - -;
+#X floatatom 400 875 5 0 0 0 - - -;
+#X floatatom 440 875 5 0 0 0 - - -;
+#X obj 359 818 t l l l;
+#X obj 89 831 unpack f f f;
+#X msg 89 804 100 200 300;
+#X msg 359 792 100 200 300;
+#X text 482 861 druhou a jen;
+#X text 481 846 jen první \, jen;
+#X floatatom 548 405 5 0 0 0 - - -;
+#X text 281 432 Zde posíláme seznam o dvou;
+#X text 282 445 prvcích \, takže proměnné;
+#X text 281 470 "nakrmit".;
+#X text 241 509 proměnnou \, takže \$2 už čím;
+#X text 233 803 Složitěji bychom;
+#X text 233 817 to také mohli;
+#X text 234 830 napsat takto:;
+#X symbolatom 89 945 10 0 0 0 - - -;
+#X floatatom 167 945 5 0 0 0 - - -;
+#X floatatom 315 945 5 0 0 0 - - -;
+#X symbolatom 236 945 10 0 0 0 - - -;
+#X obj 89 920 unpack symbol float symbol float;
+#X msg 89 893 jedna 2 tři 4;
+#X text 359 912 Pořadí a typ dat v objektu [unpack] se;
+#X text 359 925 odvíjí od toho \, jak jsou typy dat;
+#X text 358 940 řazeny ve zprávě.;
+#X text 160 211 Posíláme;
+#X text 159 238 jako seznam.;
+#X text 384 195 Chyba:;
+#X text 384 265 o třech prvcích.;
+#X text 267 320 na aktivní s pomocí [trigger]u \, který;
+#X text 263 382 Kombinace typů symbol a float \,;
+#X text 281 458 v [puf \$1 \$2( máme čím;
+#X text 240 495 Tady ale posíláme jen jednu;
+#X text 241 524 "nakrmit" nemáme -> chyba.;
+#X text 482 833 Vyber ze seznamu;
+#X text 482 875 třetí proměnnou.;
+#X text 66 86 A dále musíme do této zprávy poslat seznam "v jednom
+balíku" za pomoci objektu [pack]. [pack] podle daného počtu argumentů
+typu číslo (float \, f) nebo symbol (s) vytvoří seznam se selektorem
+list a pošle ho dál když obdrží zprávu na aktivním vstupu. Počet
+argumentů v objektu [pack] by měl odpovídat počtu proměnných
+ve zprávě \, do které je posíláme.;
+#X text 345 131 \,;
+#X text 267 347 vstupu \, a pak bang do aktivního.;
+#X text 180 609 která v ní po uložení patche zůstane. Využijete
+toho \,;
+#X text 66 741 Opačný proces \, než je zabalení atomů do jednoho
+seznamu objektem [pack] \, je rozbalení seznamu do více atomů. Objekt
+\, který to umí \, se jmenuje [unpack].;
+#X connect 0 0 2 0;
+#X connect 2 0 1 0;
+#X connect 3 0 5 0;
+#X connect 4 0 2 0;
+#X connect 5 0 4 0;
+#X connect 5 1 6 0;
+#X connect 6 0 4 1;
+#X connect 7 0 12 0;
+#X connect 8 0 12 1;
+#X connect 11 0 19 0;
+#X connect 12 0 14 0;
+#X connect 14 0 9 0;
+#X connect 19 0 10 0;
+#X connect 20 0 25 0;
+#X connect 21 0 23 0;
+#X connect 22 0 24 0;
+#X connect 23 0 25 0;
+#X connect 23 1 25 1;
+#X connect 24 0 25 0;
+#X connect 24 1 25 2;
+#X connect 25 0 43 0;
+#X connect 29 0 32 0;
+#X connect 30 0 31 0;
+#X connect 31 0 32 0;
+#X connect 31 1 32 1;
+#X connect 32 0 42 0;
+#X connect 42 0 41 0;
+#X connect 43 0 26 0;
+#X connect 47 0 50 0;
+#X connect 48 0 51 0;
+#X connect 49 0 52 0;
+#X connect 53 0 47 0;
+#X connect 53 1 48 0;
+#X connect 53 2 49 0;
+#X connect 54 0 44 0;
+#X connect 54 1 45 0;
+#X connect 54 2 46 0;
+#X connect 55 0 54 0;
+#X connect 56 0 53 0;
+#X connect 59 0 6 1;
+#X connect 71 0 67 0;
+#X connect 71 1 68 0;
+#X connect 71 2 70 0;
+#X connect 71 3 69 0;
+#X connect 72 0 71 0;
+#X coords 0 1120 1 1119 85 60 0;

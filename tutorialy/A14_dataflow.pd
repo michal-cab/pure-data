@@ -1,0 +1,83 @@
+#N canvas 1 54 718 1017 12;
+#X floatatom 89 132 5 0 0 0 - - -;
+#X floatatom 131 133 5 0 0 0 - - -;
+#X obj 89 213 +;
+#X floatatom 89 240 5 0 0 0 - - -;
+#X obj 131 165 t b f;
+#X obj 67 277 cnv 15 200 15 empty empty SYNTÉZA_PRAVIDEL 2 8 0 12
+-228856 -66577 0;
+#X text 67 291 S největší pravděpodobností vám zmíněná pravidla
+budou připadet krkolomná a bude trvat nějakou dobu \, než se vám
+dostanou "pod kůži". Nicméně bez jejich pochopení a správné
+aplikace není možné mít tok dat v patchi pod kontrolou.;
+#X obj 87 501 bng 15 250 50 0 empty empty empty 17 7 0 10 -262144 -1
+-1;
+#X msg 87 523 1;
+#X obj 477 631 + 1;
+#X obj 477 660 + 1;
+#X obj 477 688 + 1;
+#X obj 87 766 print sekvence;
+#X obj 347 631 + 1;
+#X obj 347 660 + 1;
+#X obj 217 608 + 1;
+#X obj 87 553 trigger float float;
+#X obj 217 579 trigger float float;
+#X obj 347 605 trigger float float;
+#X obj 67 807 cnv 15 200 15 empty empty CVIČENÍ: 2 8 0 12 -204800
+-66577 0;
+#X text 68 823 - pokuste se napsat patch pro výpočet formule a +
+2ab + b;
+#X obj 389 810 cnv 15 10 10 empty empty 2 10 20 0 9 -262144 -66577
+0;
+#X obj 459 810 cnv 15 10 10 empty empty 2 10 20 0 9 -262144 -66577
+0;
+#X text 68 868 - ev. patch navrhněte tak \, aby výsledek tiskl při
+;
+#X text 182 152 do jeho aktivního vstupu bang. Hodnota je tedy;
+#X text 66 70 [trigger]em je možné zprávu také tzv. přetypovat
+- číselnou hodnotu typu float můžeme změnit např. na zprávu
+typu bang. Díky přetypování tak lze aktivizovat pasivní vstupy.
+;
+#X text 183 125 Do pasivního vstupu objektu [+] pošleme s pomocí
+;
+#X text 181 138 [trigger]u nejprve číselnou hodnotu a hned poté
+;
+#X text 184 196 která byla poslána na aktivní vstup objektu [+]
+;
+#X text 182 181 a jednak bang inicializuje přičtení hodnoty \,;
+#X text 182 166 jednak v objektu [+] "uschována" jako atribut;
+#X text 184 210 ev. dříve. Pokud jsme na aktivní vstup [+];
+#X text 471 823 .;
+#X text 68 902 - podívejte se na dokumentaci k objektu [expr];
+#X text 184 225 nic neposlali \, "dřímá" v něm nula.;
+#X text 67 363 Po tom všem \, co jsme si zatím ukázali \, by bylo
+dobré ještě provést syntézu pravidel "odspodu nahoru" a "zprava
+doleva". Jako ilustrační patch poslouží následující "žebřík".
+Představte si \, že Pd při vyhodnocování událostí vždy "slezou
+dolů" po žebříku \, který je nejvíc vpravo \, tam vyhodnotí
+situaci \, a pak postupují nahoru. Nahoře pak postoupí o jednu pozici
+směrem doleva a zase "slezou" úplně dolů a postupují nahoru atd.
+;
+#X text 68 846 - pro výpočet mocniny použijte objekt [pow];
+#X text 81 881 změně jakékoliv proměnné;
+#X text 81 916 a pokuste se vzorec vyjádřit s jeho pomocí;
+#X connect 0 0 2 0;
+#X connect 1 0 4 0;
+#X connect 2 0 3 0;
+#X connect 4 0 2 0;
+#X connect 4 1 2 1;
+#X connect 7 0 8 0;
+#X connect 8 0 16 0;
+#X connect 9 0 10 0;
+#X connect 10 0 11 0;
+#X connect 11 0 12 0;
+#X connect 13 0 14 0;
+#X connect 14 0 12 0;
+#X connect 15 0 12 0;
+#X connect 16 0 12 0;
+#X connect 16 1 17 0;
+#X connect 17 0 15 0;
+#X connect 17 1 18 0;
+#X connect 18 0 13 0;
+#X connect 18 1 9 0;
+#X coords 0 1120 1 1119 85 60 0;

@@ -1,0 +1,118 @@
+#N canvas 1 54 718 1017 12;
+#X obj 67 272 cnv 15 200 15 empty empty [LOADBANG]_-_[SET(_-_ZPRÁVA
+2 8 0 12 -228856 -66577 0;
+#X obj 67 73 cnv 15 567 25 empty empty paměť_patche_-_presety 20
+12 0 14 -1 -262144 0;
+#X obj 131 400 hsl 128 15 0 127 0 0 empty empty empty -2 -8 0 10 -262144
+-1 -1 0 1;
+#X msg 128 421 set \$1;
+#X obj 88 375 loadbang;
+#X msg 394 426 set \$1;
+#X msg 371 453 0;
+#X obj 371 375 loadbang;
+#X obj 394 401 inlet;
+#X obj 371 480 outlet;
+#X text 295 383 A toto je;
+#X text 295 396 verze pro;
+#X text 295 410 subpatch:;
+#X msg 495 290 set kuk;
+#X msg 564 289 set aha;
+#X msg 495 330;
+#X obj 88 485 bng 15 250 50 0 empty empty empty 17 7 0 10 -262144 -1
+-1;
+#X msg 88 891 menusave;
+#N canvas 289 834 178 191 save 0;
+#X msg 61 -692 set \$1;
+#X msg 38 -665 97;
+#X obj 38 -743 loadbang;
+#X obj 61 -717 inlet;
+#X obj 38 -638 outlet;
+#X connect 0 0 1 0;
+#X connect 1 0 4 0;
+#X connect 2 0 1 0;
+#X connect 3 0 0 0;
+#X restore 83 772 pd save;
+#X obj 160 774 hsl 128 15 0 127 0 0 empty empty empty -2 -8 0 10 -262144
+-1 -1 9700 1;
+#X text 66 95 Dalším nedostatkem sekvenceru \, který jsme naprogramovali
+\, je to \, že "zapomíná" svá nastavení. Není to jen případ
+tohoto patche \, ale obecně všech programů napsaných v Pd. Posuvníky
+\, přepínače \, číselné boxy atd. vždy po zavření zapomínají
+své hodnoty. Zůstávají jen údaje zapsané ve zprávách. Obzvláště
+začátečníky \, kteří přijdou o některé __ ze svých pracně
+vytvořených nastavení \, může tento neduh Pd odradit od dalšího
+prozkoumávání a studia.;
+#X obj 423 771 knob 20 20 0 127 0 0 empty empty empty 0 -8 0 8 -262144
+-1 -1 0 1;
+#N canvas 289 834 178 191 save 0;
+#X msg 61 -692 set \$1;
+#X msg 38 -665 0;
+#X obj 38 -743 loadbang;
+#X obj 61 -717 inlet;
+#X obj 38 -638 outlet;
+#X connect 0 0 1 0;
+#X connect 1 0 4 0;
+#X connect 2 0 1 0;
+#X connect 3 0 0 0;
+#X restore 353 772 pd save;
+#X obj 88 934 send pd-ramec38.pd;
+#X text 234 884 Objekt [send] má parametr začínající;
+#X text 234 913 následovanou jménem patche \, ve kterém jsme.;
+#X text 234 899 v tomto případě vždy předponou "pd-";
+#X obj 466 175 cnv 15 19 15 empty empty empty 20 12 0 14 -262144 -66577
+0;
+#X msg 88 456;
+#X text 66 710 Verzi kódu pro subpatch umístíme do subpatche [pd
+save] __ a překříženě spojíme s daným grafickým uživatelským
+prvkem. Ejhle \, máme k dispozici primitivní presetový systém.
+;
+#X obj 457 715 cnv 15 60 15 empty empty empty 20 12 0 14 -262144 -66577
+0;
+#X text 66 224 V této kapitole se podíváme na elementární metody
+\, jak přimět patche k tomu \, aby si své nastavení pamatovaly.
+;
+#X text 66 283 Nejjednodušším a zároveň nejtěžkopádnějším
+způsobem \, jak vytvořit jednoduchý presetový systém (tj. systém
+uchovávající daná nastavení) \, spočívá v kódu sestaveného
+__ z objektu [loadbang] \, ovládacího prvku \, jehož hodnotu chceme
+uchovat \, a dvou zpráv. Vypadá takto:;
+#X text 105 482 [set( negeneruje bang.;
+#X text 66 512 Zopakujme si: Příkaz [set( zapsaný ve zprávě a
+doplněný ___ o argument zapíše do jiné zprávy tento argument
+\, ať už jde o číslo nebo symbol. Když nahradíme argument proměnnou
+\$1 \, [set( do zprávy zapíše vždy danou proměnnou \, která mu
+přiteče na vstup. Tato akce přitom ve zprávě \, do níž zapisujeme
+\, negeneruje bang na výstupu \, takže po kabelu vedoucím zpátky
+do posuvníku při změně nic neteče a hlášku upozorňující nás
+na přetečení zásobníku v konzoli neuvidíme.;
+#X text 66 640 Další část kódu je již elementární: do zprávy
+\, ve které je uložena hodnota \, vede kabel z objektu [loadbang]
+\, takže vždy po otevření daného patche do ní bude poslán bang
+____ a hodnota ze zprávy doteče do posuvníku.;
+#X obj 443 675 cnv 15 60 15 empty empty empty 20 12 0 14 -262144 -66577
+0;
+#X text 66 801 Poslední krok \, na který nesmíme zapomenout \, je
+uložit patch před tím \, než ho zavřeme. Jinak by se hodnota nastavená
+ve zprávě pochopitelně neuložila. Buď patch uložíme "ručně"
+přes klávesovou zkratku CTRL + s \, nebo s pomocí krátkého kódu:
+;
+#X obj 463 317 cnv 15 19 15 empty empty empty 20 12 0 14 -262144 -66577
+0;
+#X obj 457 516 cnv 15 60 15 empty empty empty 20 12 0 14 -262144 -66577
+0;
+#X connect 2 0 3 0;
+#X connect 3 0 28 0;
+#X connect 4 0 28 0;
+#X connect 5 0 6 0;
+#X connect 6 0 9 0;
+#X connect 7 0 6 0;
+#X connect 8 0 5 0;
+#X connect 13 0 15 0;
+#X connect 14 0 15 0;
+#X connect 17 0 23 0;
+#X connect 18 0 19 0;
+#X connect 19 0 18 0;
+#X connect 21 0 22 0;
+#X connect 22 0 21 0;
+#X connect 28 0 2 0;
+#X connect 28 0 16 0;

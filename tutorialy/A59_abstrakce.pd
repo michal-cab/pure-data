@@ -1,0 +1,213 @@
+#N canvas 1 54 718 1017 12;
+#X text 70 70 Nuže \, kód abstrakce bude vypadat takto:;
+#X obj 77 95 cnv 15 550 480 empty empty empty 20 12 0 14 -233017 -66577
+0;
+#X obj 97 286 f;
+#X obj 140 286 + 1;
+#X obj 140 316 mod 16;
+#X floatatom 97 316 5 0 0 0 - - -;
+#X msg 179 286 4;
+#X msg 216 287 8;
+#X msg 255 287 16;
+#X obj 97 103 inlet;
+#X obj 179 257 sel 0 1 2;
+#X obj 97 386 tabread \$0-sekvence;
+#X obj 179 201 r global_seq;
+#N canvas 0 0 450 300 (subpatch) 0;
+#X array \$0-sekvence 16 float 3;
+#A 0 6 6 6 6 6 6 6 6 6 6 6 6 6 6 6 6;
+#X coords 0 12 16 0 130 70 1 0 0;
+#X restore 303 189 graph;
+#X obj 473 427 loadbang;
+#X obj 473 457 \$0;
+#X text 544 98 abs_seq.pd;
+#X obj 97 543 outlet;
+#X obj 139 102 r global_BPM;
+#X obj 487 219 uzi 16;
+#X obj 302 279 hradio 15 1 0 3 empty empty empty 0 -8 0 10 -262144
+-1 -1 0;
+#X obj 302 305 s \$0-seq;
+#X obj 374 279 hradio 15 1 0 3 empty empty empty 0 -8 0 10 -262144
+-1 -1 0;
+#X obj 374 305 s \$0-octave;
+#X obj 97 515 +;
+#X obj 97 422 i;
+#X obj 305 367 hsl 128 8 0 15 0 0 empty empty empty -2 -8 0 10 -262144
+-258113 -1 0 1;
+#X obj 195 228 r \$0-seq;
+#X obj 152 131 r global_reset;
+#X obj 305 432 s \$0-reset;
+#X obj 305 386 bng 15 250 50 0 empty empty empty 17 7 0 10 -262144
+-1 -1;
+#X msg 305 406 0;
+#X obj 180 156 r \$0-reset;
+#X obj 121 355 s \$0-seq_position;
+#X obj 302 336 r \$0-seq_position;
+#X obj 472 332 tabwrite \$0-sekvence;
+#X msg 540 193 0;
+#X obj 556 269 + 1;
+#X obj 519 270 f;
+#X obj 487 245 t b b;
+#X obj 487 299 random 12;
+#X obj 487 168 t b b---;
+#X obj 149 441 sel 0 1 2;
+#X msg 186 471 60;
+#X msg 225 471 72;
+#X msg 149 470 48;
+#X obj 149 418 r \$0-octave;
+#X obj 306 468 bng 15 250 50 0 empty empty empty 17 7 0 10 -262144
+-1 -1;
+#X msg 306 488 0;
+#X obj 306 514 s \$0-rnd_seq;
+#X obj 487 144 r \$0-rnd_seq;
+#N canvas 1188 603 243 220 BPM_bang 0;
+#X floatatom 127 105 5 60 300 1 BPM - -;
+#X obj 81 166 metro;
+#X obj 104 107 tgl 15 0 empty empty empty 17 7 0 10 -262144 -1 -1 0
+1;
+#X msg 127 79 120;
+#X obj 127 51 loadbang;
+#X obj 81 191 outlet;
+#X obj 113 138 expr 60000 / $f1;
+#X connect 0 0 6 0;
+#X connect 1 0 5 0;
+#X connect 2 0 1 0;
+#X connect 3 0 0 0;
+#X connect 4 0 3 0;
+#X connect 6 0 1 1;
+#X coords 0 -1 1 1 90 30 2 100 100;
+#X restore 519 687 pd BPM_bang;
+#X obj 519 725 s global_BPM;
+#X obj 224 442 loadbang;
+#X msg 473 483 \; \$1-sekvence const 6;
+#X obj 520 786 s global_reset;
+#X obj 520 764 bng 15 250 50 0 empty empty empty 17 7 0 10 -262144
+-1 -1;
+#X msg 115 254 0;
+#X obj 87 842 abs_seq;
+#X floatatom 87 946 5 0 0 0 - - -;
+#X obj 258 842 abs_seq;
+#X floatatom 258 946 5 0 0 0 - - -;
+#X obj 432 842 abs_seq;
+#X floatatom 432 946 5 0 0 0 - - -;
+#X text 286 111 |;
+#X text 286 129 |;
+#X text 286 147 |;
+#X text 286 165 |;
+#X text 286 182 |;
+#X text 286 200 |;
+#X text 286 218 |;
+#X text 286 236 |;
+#X text 286 253 |;
+#X text 286 271 |;
+#X text 286 289 |;
+#X text 286 307 |;
+#X text 286 324 |;
+#X text 286 342 |;
+#X text 286 360 |;
+#X text 286 378 |;
+#X text 286 395 |;
+#X text 286 413 |;
+#X text 286 431 |;
+#X text 286 449 |;
+#X text 286 466 |;
+#X text 286 484 |;
+#X text 286 502 |;
+#X text 286 520 |;
+#X text 286 537 |;
+#X text 458 111 |;
+#X text 458 129 |;
+#X text 458 147 |;
+#X text 458 165 |;
+#X text 458 182 |;
+#X text 458 200 |;
+#X text 458 218 |;
+#X text 458 236 |;
+#X text 458 253 |;
+#X text 458 271 |;
+#X text 458 289 |;
+#X text 458 307 |;
+#X text 458 324 |;
+#X text 458 342 |;
+#X text 458 360 |;
+#X text 458 378 |;
+#X text 458 395 |;
+#X text 458 413 |;
+#X text 458 431 |;
+#X text 458 449 |;
+#X text 458 466 |;
+#X text 458 484 |;
+#X text 458 502 |;
+#X text 458 520 |;
+#X text 458 537 |;
+#X text 70 575 Uložíme ho jako "abs_seq.pd" do adresáře s abstrakcemi.
+Když pak vytvoříme v rodičovském patchi instanci \, bude vypadat
+jako objekt [abs_seq] s jedním vstupem a jedním výstupem. To ale
+není všechno. Stejně jako v případě subpatchů \, tak i abstrakce
+podporují tvorbu grafického uživatelského rozhraní. Vraťme se
+tedy k našim znalostem ohledně vytváření GOP:;
+#X text 70 689 Prostým kliknutím LTM otevřeme abstrakci a v jejím
+okně klikneme PTM do bílé plochy a z menu vybereme Vlastnosti \,
+_ v novém okně nastavíme patřičné dimenze \, které GOP má mít
+- v tomto případě je to 151x99 \, ale vy si uživatelské rozhraní
+samozřejmě můžete nadefinovat dle libosti. Nezapomeneme vyškrtnout
+položky "Graph-on-parent" a "Skrýt název objektu". Do červeně
+vyznačeného rámce přetáhneme pole a další grafické prvky. Abstrakci
+nezapomeneme znovu uložit! Zavřeme ji et voilà...;
+#X obj 473 707 cnv 15 30 15 empty empty empty 20 12 0 14 -262144 -66577
+0;
+#X connect 2 0 3 0;
+#X connect 2 0 5 0;
+#X connect 3 0 4 0;
+#X connect 4 0 2 1;
+#X connect 5 0 11 0;
+#X connect 5 0 33 0;
+#X connect 6 0 4 1;
+#X connect 7 0 4 1;
+#X connect 8 0 4 1;
+#X connect 9 0 2 0;
+#X connect 10 0 6 0;
+#X connect 10 1 7 0;
+#X connect 10 2 8 0;
+#X connect 11 0 25 0;
+#X connect 12 0 10 0;
+#X connect 14 0 15 0;
+#X connect 15 0 54 0;
+#X connect 18 0 2 0;
+#X connect 19 0 39 0;
+#X connect 20 0 21 0;
+#X connect 22 0 23 0;
+#X connect 24 0 17 0;
+#X connect 25 0 24 0;
+#X connect 27 0 10 0;
+#X connect 28 0 57 0;
+#X connect 30 0 31 0;
+#X connect 31 0 29 0;
+#X connect 32 0 57 0;
+#X connect 34 0 26 0;
+#X connect 36 0 38 1;
+#X connect 37 0 38 1;
+#X connect 38 0 37 0;
+#X connect 38 0 35 1;
+#X connect 39 0 40 0;
+#X connect 39 1 38 0;
+#X connect 40 0 35 0;
+#X connect 41 0 19 0;
+#X connect 41 1 36 0;
+#X connect 42 0 45 0;
+#X connect 42 1 43 0;
+#X connect 42 2 44 0;
+#X connect 43 0 24 1;
+#X connect 44 0 24 1;
+#X connect 45 0 24 1;
+#X connect 46 0 42 0;
+#X connect 47 0 48 0;
+#X connect 48 0 49 0;
+#X connect 50 0 41 0;
+#X connect 51 0 52 0;
+#X connect 53 0 43 0;
+#X connect 56 0 55 0;
+#X connect 57 0 2 1;
+#X connect 58 0 59 0;
+#X connect 60 0 61 0;
+#X connect 62 0 63 0;
