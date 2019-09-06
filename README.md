@@ -1,7 +1,7 @@
 <h1> pure-data projects</h1>
 
-tutorials (sorry in czech language)  
-were tested with pd-extended 0.43-4  
+tutorials (czech language)  
+tested with pd-extended 0.43-4  
   
   
 TODO:
